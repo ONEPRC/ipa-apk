@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/6 22:33:15
+// 应用数据文件 —— 由本地管理页写入 2026/11/6 22:56:34
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -15,6 +15,19 @@ window.APP_DATA = {
     "icon": "assets/CAACAgIAAxkBAVtQBGjPdWM2oVGhd3-20261106121035.gif"
   },
   "apps": [
+    {
+      "id": "amw53e8ge",
+      "name": "Folia",
+      "version": "2.24",
+      "category": "软件",
+      "platform": "iOS / Android / Windows",
+      "size": "50MB",
+      "icon": "",
+      "url": "https://pan.quark.cn/s/6cb25089ae99",
+      "pwd": "",
+      "description": "音乐播放器",
+      "date": "2026-11-06"
+    },
     {
       "id": "amw52cu56",
       "name": "抖音",
