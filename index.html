@@ -26,15 +26,22 @@
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-.themetoggle{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:var(--muted);flex-shrink:0;transition:.15s}
-.themetoggle:hover{background:var(--soft);color:var(--blue)}
-.themetoggle svg{width:17px;height:17px}
+.themetoggle{width:32px;height:32px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;padding:0;line-height:0;color:var(--muted);flex-shrink:0;transition:background .15s,color .15s;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+/* 悬停背景只在有鼠标的设备上出现，手机点完不会残留 */
+@media (hover:hover) and (pointer:fine){
+  .themetoggle:hover{background:var(--soft);color:var(--blue)}
+}
+.themetoggle:active{background:var(--soft);color:var(--blue)}
+.themetoggle:focus{outline:none}
+.themetoggle:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.themetoggle svg{width:17px;height:17px;display:block}
 .themetoggle .ic-sun{display:none}
 [data-theme="dark"] .themetoggle .ic-sun{display:block}
 [data-theme="dark"] .themetoggle .ic-moon{display:none}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased;font-synthesis:none}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button,a{-webkit-tap-highlight-color:transparent}
 input,select,textarea{font:inherit}
 .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 24px}
 .top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.84);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
