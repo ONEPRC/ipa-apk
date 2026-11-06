@@ -1,9 +1,9 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/6 22:56:34
+// 应用数据文件 —— 由本地管理页写入 2026/11/6 23:32:30
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
     "tagline": "搜索应用，跳转夸克网盘转存下载",
-    "eyebrow": "SEARCH · COPY · OPEN",
+    "eyebrow": "SEARCH · COPY · OPEN ·  仅限群友使用",
     "h1": "找到应用，",
     "h1accent": "一键转存。",
     "note": "链接指向夸克网盘 · 请先转存再下载",
@@ -15,6 +15,20 @@ window.APP_DATA = {
     "icon": "assets/CAACAgIAAxkBAVtQBGjPdWM2oVGhd3-20261106121035.gif"
   },
   "apps": [
+    {
+      "id": "amw53xcka",
+      "name": "TG表情包",
+      "version": "",
+      "category": "其他",
+      "platform": "",
+      "size": "",
+      "icon": "",
+      "iconText": "TG",
+      "url": "https://pan.quark.cn/s/35be98a9ae90",
+      "pwd": "",
+      "description": "TG表情包提取\n小黄鸭，小恐龙等",
+      "date": "2026-11-06"
+    },
     {
       "id": "amw53e8ge",
       "name": "Folia",
