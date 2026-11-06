@@ -342,14 +342,17 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
     var h = hash(a.name);
     box.style.background = 'hsl(' + h + ' 82% 95%)';
     box.style.color = 'hsl(' + h + ' 55% 42%)';
-    box.textContent = firstChar(a.name);
+    // 后台可以自定义图标上显示的文字；留空就自动取名称首字
+    var label = String(a.iconText || '').trim() || firstChar(a.name);
+    box.textContent = label;
+    if(label.length >= 3) box.style.fontSize = Math.max(10, Math.min(18, Math.floor(46 / label.length * 0.95))) + 'px';
     if(a.icon){
       var img = new Image();
       img.alt = '';
       img.decoding = 'async';
       img.referrerPolicy = 'no-referrer';
       img.onload = function(){ box.textContent = ''; box.append(img); };
-      img.onerror = function(){ box.textContent = firstChar(a.name); };
+      img.onerror = function(){ box.textContent = label; };
       img.src = a.icon;
     }
     return box;
@@ -428,6 +431,12 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
     return c;
   }
 
+  // 名称排序用的键：英文/数字开头的排前面（按字母），中文排后面（按拼音）
+  function nameKey(s){
+    var t = String(s || '').trim();
+    return (/^[0-9a-zA-Z]/.test(t) ? '0' : '1') + t;
+  }
+
   function results(){
     var words = norm(state.q).split(' ').filter(Boolean);
     var list = ALL.filter(function(a, i){
@@ -435,7 +444,9 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
       return words.every(function(w){ return SEARCH[i].indexOf(w) > -1; });
     });
     if(state.sort === 'name'){
-      list = list.slice().sort(function(a,b){ return String(a.name).localeCompare(String(b.name), 'zh-CN', {numeric:true}); });
+      list = list.slice().sort(function(a,b){
+        return nameKey(a.name).localeCompare(nameKey(b.name), 'zh-CN', { numeric: true, sensitivity: 'base' }) || a.index - b.index;
+      });
     } else if(state.sort === 'date'){
       list = list.slice().sort(function(a,b){ return String(b.date||'').localeCompare(String(a.date||'')); });
     }
