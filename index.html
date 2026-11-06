@@ -81,7 +81,7 @@ h1 span{color:var(--blue)}
 .name:hover{color:var(--blue)}
 .meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:4px;font-size:11.5px;color:var(--muted)}
 .meta .ver{font-size:11px;font-weight:650;color:var(--blue);background:var(--soft);border-radius:5px;padding:1px 6px;line-height:1.5}
-.meta .sz{font-size:11px;color:#1f7a96;background:#e6f4fa;border-radius:5px;padding:1px 6px;line-height:1.5}
+.meta .sz{font-size:11px;color:#0e6d8a;background:#dcf0f9;border-radius:5px;padding:1px 6px;line-height:1.5}
 .meta .plat{font-size:11px;font-weight:600;color:#b2660f;background:#fff2e0;border-radius:5px;padding:1px 6px;line-height:1.5}
 .code{font-family:ui-monospace,monospace;color:var(--ok);background:#eefaf4;border-radius:4px;padding:0 4px;margin-left:4px}
 .desc{margin:0;font-size:12.5px;line-height:1.7;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.2em}
@@ -390,7 +390,9 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
     name.title = a.name;
     name.onclick = function(){ openDetail(a); };
     var meta = el('div','meta');
-    if(a.platform) meta.append(el('span','plat', a.platform));
+    String(a.platform || '').split(/[\/、,，]/).map(function(s){ return s.trim(); }).filter(Boolean).forEach(function(p){
+      meta.append(el('span','plat', p));
+    });
     if(a.version) meta.append(el('span','ver', 'v' + a.version));
     if(a.size) meta.append(el('span','sz', a.size));
     if(a.pwd) meta.append(el('span','code', '码 ' + a.pwd));
