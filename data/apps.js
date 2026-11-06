@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/6 22:22:14
+// 应用数据文件 —— 由本地管理页写入 2026/11/6 22:33:15
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -11,7 +11,7 @@ window.APP_DATA = {
     "title": "iPA&APK",
     "accent": "#a23bf7",
     "badge": "LoveuT",
-    "pageSize": 20,
+    "pageSize": 10,
     "icon": "assets/CAACAgIAAxkBAVtQBGjPdWM2oVGhd3-20261106121035.gif"
   },
   "apps": [
@@ -38,7 +38,7 @@ window.APP_DATA = {
       "icon": "assets/ims-20261106122325-20261106123-20261106130859.png",
       "url": "https://pan.quark.cn/s/2f463361b6f1",
       "pwd": "",
-      "description": "",
+      "description": "CS2手游  5.8.76\n✅国外私人制作可联网加好友组队等\n✅解锁所有刀，手套，枪皮等\n✅自瞄绘制，飞天遁地，无敌免伤，自动开枪，开局敌方全员爆头等，局内无限金币，房主功能，防封版本，封设备可解除等",
       "date": "2026-11-06"
     },
     {
