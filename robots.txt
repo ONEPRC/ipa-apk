@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# 不欢迎所有搜索引擎抓取本目录
