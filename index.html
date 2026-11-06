@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<meta name="theme-color" content="#f6f7fb">
+<meta name="theme-color" id="themecolor" content="#f6f7fb">
 <meta name="description" content="应用索引：搜索应用，一键跳转夸克网盘转存下载。">
 <title>应用索引 · 夸克网盘下载</title>
 <link rel="icon" id="favicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%233b6cf6'/%3E%3Cg fill='white'%3E%3Crect x='11' y='11' width='7' height='7' rx='2'/%3E%3Crect x='22' y='11' width='7' height='7' rx='2'/%3E%3Crect x='11' y='22' width='7' height='7' rx='2'/%3E%3Crect x='22' y='22' width='7' height='7' rx='2'/%3E%3C/g%3E%3C/svg%3E">
@@ -26,6 +26,12 @@
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
+.themetoggle{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:var(--muted);flex-shrink:0;transition:.15s}
+.themetoggle:hover{background:var(--soft);color:var(--blue)}
+.themetoggle svg{width:17px;height:17px}
+.themetoggle .ic-sun{display:none}
+[data-theme="dark"] .themetoggle .ic-sun{display:block}
+[data-theme="dark"] .themetoggle .ic-moon{display:none}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased;font-synthesis:none}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
@@ -119,6 +125,16 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
 .d-acts .btn{flex:1;justify-content:center;padding:9px 12px}
 .help-list{margin:0;padding-left:18px;font-size:13px;line-height:1.9;color:#5c6478}
 .hint{margin-top:14px;padding:11px 13px;background:#f7f8fc;border-radius:10px;font-size:12px;line-height:1.7;color:var(--muted)}
+.gate{position:fixed;inset:0;z-index:100;background:rgba(246,247,251,.99);backdrop-filter:blur(10px);display:grid;place-items:center;padding:24px}
+.gatebox{width:min(360px,100%);background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 24px 24px;box-shadow:0 24px 60px rgba(20,26,44,.12);text-align:center}
+.gatelock{font-size:26px;line-height:1}
+.gatebox h2{margin:12px 0 6px;font-size:18px}
+.gatesub{margin:0 0 18px;font-size:12.5px;color:var(--muted)}
+.gatebox input{width:100%;height:44px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font-size:14px;outline:0;background:#fbfcfe;text-align:center}
+.gatebox input:focus{border-color:#b9c8ff;box-shadow:0 0 0 3px var(--soft)}
+.gatebox button{width:100%;height:44px;margin-top:10px;border-radius:10px;background:var(--blue);color:#fff;font-weight:600;font-size:14px}
+.gatebox button:hover{background:var(--blue-dark)}
+.gateerr{margin:10px 0 0;font-size:12px;color:#d5544b}
 @media(max-width:640px){
  .hero{padding:32px 0 22px;flex-direction:column;align-items:flex-start;gap:18px}
  .stats{gap:22px}.stats div{text-align:left}
@@ -128,7 +144,46 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
  .resultline{margin:14px 0 10px}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+/* ==========================================================================
+   ② 夜间模式（点右上角图标切换）
+   ========================================================================== */
+[data-theme="dark"]{
+  --bg:#0f131a; --card:#171c25; --ink:#e8edf6; --muted:#8d96a8; --line:#242b37;
+  --blue:#6f8dff; --blue-dark:#5a79f2; --soft:#1d2740; --ok:#43c08f;
+}
+[data-theme="dark"] .top{background:rgba(15,19,26,.86)}
+[data-theme="dark"] .edition{color:#5d6577}
+[data-theme="dark"] .chip{background:#1b212c;border-color:#2a3240;color:#c3cad8}
+[data-theme="dark"] .chip[aria-pressed="true"]{background:#e8edf6;border-color:#e8edf6;color:#11161e}
+[data-theme="dark"] .sort select{background:#1b212c;border-color:#2a3240;color:#c3cad8}
+[data-theme="dark"] .pager button{background:#1b212c;border-color:#2a3240;color:#c3cad8}
+[data-theme="dark"] .pager button[aria-current]{background:#e8edf6;border-color:#e8edf6;color:#11161e}
+[data-theme="dark"] .card:hover{border-color:#303a4c;box-shadow:0 10px 28px rgba(0,0,0,.35)}
+[data-theme="dark"] dialog{background:#171c25}
+[data-theme="dark"] .linkfield{background:#11161e;border-color:#262e3c;color:#c3cad8}
+[data-theme="dark"] .x{background:#242b38;color:#a9b2c3}
+[data-theme="dark"] .btn.ghost{background:#1e2530;border-color:#2a3240;color:#c3cad8}
+[data-theme="dark"] .btn.ghost:hover{background:#252d3a}
+[data-theme="dark"] .tag{background:#1e2530;color:#9fb0cc}
+[data-theme="dark"] .meta .ver{background:#1d2740;color:#93aaff}
+[data-theme="dark"] .meta .sz{background:#12303b;color:#7fd6ef}
+[data-theme="dark"] .meta .plat{background:#3a2a12;color:#f0b96b}
+[data-theme="dark"] .code{background:#123225;color:#5fd3a4}
+[data-theme="dark"] .gatebox{background:#171c25}
+[data-theme="dark"] .gatebox input{background:#11161e;color:#e8edf6}
+[data-theme="dark"] .toast{background:#e8edf6;color:#11161e}
+[data-theme="dark"] .hint{background:#151a23}
+[data-theme="dark"] .empty{color:#8d96a8}
 </style>
+<script>
+(function(){
+  try {
+    var t = localStorage.getItem('appindex.theme');
+    if(!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  } catch(e) { document.documentElement.setAttribute('data-theme', 'light'); }
+})();
+</script>
 </head>
 <body>
 <header class="top">
@@ -138,6 +193,10 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
       <span id="site-title">应用索引</span>
     </a>
     <nav class="nav">
+      <button id="theme-btn" class="themetoggle" type="button" aria-label="切换日间/夜间模式" title="日间 / 夜间">
+        <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.6 5.6l1.5 1.5M16.9 16.9l1.5 1.5M18.4 5.6l-1.5 1.5M7.1 16.9l-1.5 1.5"/></svg>
+        <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.6A8.6 8.6 0 0 1 9.4 3.6a8.6 8.6 0 1 0 11 11Z"/></svg>
+      </button>
       <button id="share-btn" type="button">分享</button>
       <button id="help-btn" type="button">使用说明</button>
       <span class="divider" aria-hidden="true"></span>
@@ -225,6 +284,17 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
 
 <noscript><p style="padding:30px;text-align:center">请启用 JavaScript 以搜索和浏览。</p></noscript>
 
+<div class="gate" id="gate" hidden>
+  <div class="gatebox">
+    <div class="gatelock">🔒</div>
+    <h2>访问需要密码</h2>
+    <p class="gatesub">密码在群里，输入后即可查看全部应用</p>
+    <input id="gatepw" type="password" placeholder="请输入访问密码" autocomplete="off">
+    <button id="gateok" type="button">进入</button>
+    <p class="gateerr" id="gateerr" hidden>密码错误，请重试</p>
+  </div>
+</div>
+
 <script src="data/apps.js"></script>
 <script>
 (function(){
@@ -242,6 +312,16 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
   function el(tag, cls, text){ var e = document.createElement(tag); if(cls) e.className = cls; if(text !== undefined) e.textContent = text; return e; }
   function firstChar(s){ return Array.from(String(s||'#'))[0] || '#'; }
   function hash(s){ var h = 0; for(var i=0;i<s.length;i++) h = (h*31 + s.charCodeAt(i)) % 360; return h; }
+  // 密码哈希（浏览器内置 SHA-256，不存明文）
+  function sha256hex(str){
+    if(!(window.crypto && crypto.subtle)) return Promise.reject(new Error('no crypto'));
+    var data = new TextEncoder().encode(String(str));
+    return crypto.subtle.digest('SHA-256', data).then(function(buf){
+      return Array.prototype.map.call(new Uint8Array(buf), function(b){
+        return ('0' + b.toString(16)).slice(-2);
+      }).join('');
+    });
+  }
   // 颜色混合：把 a 往 b 方向混 t（0~1）
   function mixColor(a, b, t){
     var pa = parseInt(a.slice(1), 16), pb = parseInt(b.slice(1), 16);
@@ -278,13 +358,16 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
     }
   }
 
-  // 主题色：后台选一个颜色，悬停色和浅底色自动算
-  if(SITE.accent && /^#[0-9a-fA-F]{6}$/.test(SITE.accent)){
-    var rootStyle = document.documentElement.style;
-    rootStyle.setProperty('--blue', SITE.accent);
-    rootStyle.setProperty('--blue-dark', mixColor(SITE.accent, '#000000', 0.12));
-    rootStyle.setProperty('--soft', mixColor(SITE.accent, '#ffffff', 0.9));
+  // 主题色：后台选一个颜色，悬停色和浅底色自动算（夜间模式用深一点）
+  function applyAccent(){
+    if(!(SITE.accent && /^#[0-9a-fA-F]{6}$/.test(SITE.accent))) return;
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    var rs = document.documentElement.style;
+    rs.setProperty('--blue', SITE.accent);
+    rs.setProperty('--blue-dark', mixColor(SITE.accent, '#000000', 0.12));
+    rs.setProperty('--soft', mixColor(SITE.accent, dark ? '#0f131a' : '#ffffff', dark ? 0.82 : 0.9));
   }
+  applyAccent();
 
   var SEARCH = ALL.map(function(a){
     return norm([a.name, a.version, a.category, a.platform, a.description, (a.tags||[]).join(' ')].join(' '));
@@ -562,6 +645,18 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
   });
   $('#help-btn').onclick = function(){ $('#help').showModal(); };
 
+  // 日间 / 夜间切换
+  function setTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    try { localStorage.setItem('appindex.theme', t); } catch(e) {}
+    var m = document.getElementById('themecolor');
+    if(m) m.content = t === 'dark' ? '#0f131a' : '#f6f7fb';
+    applyAccent();
+  }
+  $('#theme-btn').onclick = function(){
+    setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  };
+
   // 分享：手机走系统分享面板，电脑复制链接
   $('#share-btn').onclick = function(){
     if(location.protocol === 'file:'){
@@ -582,6 +677,35 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
   if(SITE.updated) $('#st-date').textContent = String(SITE.updated).slice(5, 10).replace('-', '.');
   buildChips();
   render();
+
+  // 访问密码：设了密码就先挡住整页
+  var NEED_PW = SITE.passwordHash || SITE.password;
+  if(NEED_PW && localStorage.getItem('appindex.unlocked') !== SITE.passwordHash && localStorage.getItem('appindex.unlocked') !== '1'){
+    var gate = $('#gate');
+    gate.hidden = false;
+    var pwInput = $('#gatepw');
+    setTimeout(function(){ pwInput.focus(); }, 60);
+    var tryUnlock = function(){
+      Promise.resolve().then(function(){
+        if(SITE.passwordHash) return sha256hex(pwInput.value);
+        return pwInput.value === SITE.password ? 'ok' : 'no';
+      }).then(function(v){
+        var ok = SITE.passwordHash ? (v === SITE.passwordHash) : (v === 'ok');
+        if(ok){
+          localStorage.setItem('appindex.unlocked', SITE.passwordHash || '1');
+          gate.hidden = true;
+        } else {
+          $('#gateerr').hidden = false;
+          pwInput.select();
+        }
+      }).catch(function(){
+        $('#gateerr').textContent = '这个浏览器不支持密码校验，请换浏览器';
+        $('#gateerr').hidden = false;
+      });
+    };
+    $('#gateok').onclick = tryUnlock;
+    pwInput.addEventListener('keydown', function(e){ if(e.key === 'Enter') tryUnlock(); });
+  }
 })();
 </script>
 </body>
