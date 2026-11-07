@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/7 20:46:44
+// 应用数据文件 —— 由本地管理页写入 2026/11/7 22:24:17
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -27,7 +27,7 @@ window.APP_DATA = {
       "category": "软件",
       "platform": "iOS",
       "size": "300MB",
-      "icon": "assets/crop-mw6aoyl0-20261107110322.png",
+      "icon": "assets/微信-20261107142137.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/f79b93425a8c",
       "pwd": "",
@@ -42,12 +42,13 @@ window.APP_DATA = {
       "category": "游戏",
       "platform": "iOS",
       "size": "",
-      "icon": "assets/ims-20261107104652.jpg",
+      "icon": "assets/GTAV-20261107142147.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/8261028e8e54",
       "pwd": "",
       "description": "✅支持中文剧情模式，在线联机等\n✅优化增加在线下载等，资源包下载\n✅在线Mod下载加载\n✅根据kevinerikjs开源制作优化\n✅内置所有作弊功能，无敌秒杀刷车武器都有\n✅里面包含所有GTA所有模组文件，内置所有在线存档，剧情模式等存档进度随意调",
-      "date": "2026-11-07"
+      "date": "2026-11-07",
+      "addedAt": "2026-11-07"
     },
     {
       "id": "amw563sof",
@@ -70,12 +71,13 @@ window.APP_DATA = {
       "category": "其他",
       "platform": "",
       "size": "",
-      "icon": "",
+      "icon": "assets/TG表情包-20261107142008.png",
       "iconText": "TG",
       "url": "https://pan.quark.cn/s/35be98a9ae90",
       "pwd": "",
       "description": "TG表情包提取\n小黄鸭，小恐龙等",
-      "date": "2026-11-06"
+      "date": "2026-11-06",
+      "addedAt": "2026-11-06"
     },
     {
       "id": "amw53e8ge",
@@ -84,11 +86,13 @@ window.APP_DATA = {
       "category": "软件",
       "platform": "iOS / Android / Windows",
       "size": "50MB",
-      "icon": "",
+      "icon": "assets/Folia-20261107142415.png",
+      "iconText": "",
       "url": "https://pan.quark.cn/s/6cb25089ae99",
       "pwd": "",
       "description": "音乐播放器",
-      "date": "2026-11-06"
+      "date": "2026-11-06",
+      "addedAt": "2026-11-06"
     },
     {
       "id": "amw52cu56",
@@ -97,11 +101,13 @@ window.APP_DATA = {
       "category": "软件",
       "platform": "iOS",
       "size": "734MB",
-      "icon": "assets/ims-20261106142210.png",
+      "icon": "assets/抖音-20261107142223.png",
+      "iconText": "",
       "url": "https://pan.quark.cn/s/79d717df7ea3",
       "pwd": "",
       "description": "液态Dyyy",
-      "date": "2026-11-06"
+      "date": "2026-11-06",
+      "addedAt": "2026-11-06"
     },
     {
       "id": "amw4xwyc8",
@@ -110,12 +116,13 @@ window.APP_DATA = {
       "category": "游戏",
       "platform": "iOS / Android",
       "size": "1.6G",
-      "icon": "assets/ims-20261106122325-20261106123-20261106130859.png",
+      "icon": "assets/CS手游-20261107141356.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/2f463361b6f1",
       "pwd": "",
       "description": "CS2手游  5.8.76\n✅国外私人制作可联网加好友组队等\n✅解锁所有刀，手套，枪皮等\n✅自瞄绘制，飞天遁地，无敌免伤，自动开枪，开局敌方全员爆头等，局内无限金币，房主功能，防封版本，封设备可解除等",
       "date": "2026-11-06",
+      "addedAt": "2026-11-06",
       "pinned": true
     },
     {
@@ -125,11 +132,13 @@ window.APP_DATA = {
       "category": "游戏",
       "platform": "iOS",
       "size": "3.34G",
-      "icon": "assets/mJK3S-20261106134012.png",
+      "icon": "assets/Car-Parking-2-20261107141942.png",
+      "iconText": "",
       "url": "https://pan.quark.cn/s/63ab6ff4a61c",
       "pwd": "",
       "description": "手动挡停车2\n✅全功能解锁\n✅所有车辆可购买，包括高级付费等\n✅可购买场地警车灯，性能配件，引擎，车身套件，维护材料等\n✅解锁全部人物动作活动等\n✅中文汉化",
-      "date": "2026-11-06"
+      "date": "2026-11-06",
+      "addedAt": "2026-11-06"
     }
   ]
 };
