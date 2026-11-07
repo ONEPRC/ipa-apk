@@ -74,7 +74,8 @@ h1 span{color:var(--blue)}
 .search input::-webkit-search-results-decoration{-webkit-appearance:none;appearance:none;display:none}
 .search kbd{display:none}
 .search .searchicon{width:18px;height:18px;color:#a6adbd;flex-shrink:0;pointer-events:none}
-#clear{width:24px;height:24px;border-radius:50%;background:#eef0f6;color:var(--muted);font-size:15px;line-height:1;display:grid;place-items:center}
+#clear{width:24px;height:24px;border-radius:50%;background:#eef0f6;color:var(--muted);display:inline-flex;align-items:center;justify-content:center;padding:0;line-height:0}
+#clear svg{width:11px;height:11px;display:block}
 #clear[hidden]{display:none}
 .toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:20px 0 0;flex-wrap:wrap}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
@@ -121,7 +122,9 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
 .d-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 20px 0}
 .d-top h2{margin:0;font-size:17px;line-height:1.4;word-break:break-word}
 .d-top small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
-.x{width:30px;height:30px;border-radius:50%;background:#f2f4f9;color:#79808f;font-size:16px;display:grid;place-items:center;flex-shrink:0}
+.x{width:30px;height:30px;border-radius:50%;background:#f2f4f9;color:#79808f;display:inline-flex;align-items:center;justify-content:center;padding:0;line-height:0;flex-shrink:0;transition:background .15s,color .15s;-webkit-tap-highlight-color:transparent}
+.x svg{width:13px;height:13px;display:block}
+.x:active{background:#e7ebf3}
 .d-body{padding:14px 20px 20px}
 .d-body p{margin:0 0 14px;font-size:13px;line-height:1.75;color:#5c6478;white-space:pre-wrap;word-break:break-word}
 .fieldlab{display:block;font-size:11px;letter-spacing:.08em;color:var(--muted);margin:0 0 6px;font-weight:600}
@@ -228,7 +231,7 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
 
   <div class="search">
     <input id="q" type="search" placeholder="搜索应用名称、版本、关键词…" autocomplete="off" spellcheck="false" aria-label="搜索应用">
-    <button id="clear" type="button" aria-label="清空搜索" hidden>×</button>
+    <button id="clear" type="button" aria-label="清空搜索" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <svg class="searchicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.4 15.4 4.6 4.6"/></svg>
   </div>
 
@@ -258,7 +261,7 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
 <dialog id="detail" aria-labelledby="d-name">
   <div class="d-top">
     <div><h2 id="d-name"></h2><small id="d-sub"></small></div>
-    <button class="x" type="button" data-close="detail" aria-label="关闭">×</button>
+    <button class="x" type="button" data-close="detail" aria-label="关闭"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
   <div class="d-body">
     <p id="d-desc"></p>
@@ -276,7 +279,7 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
 <dialog id="help" aria-labelledby="h-title">
   <div class="d-top">
     <div><h2 id="h-title">使用说明</h2><small>怎么拿到文件</small></div>
-    <button class="x" type="button" data-close="help" aria-label="关闭">×</button>
+    <button class="x" type="button" data-close="help" aria-label="关闭"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
   <div class="d-body">
     <ul class="help-list">
