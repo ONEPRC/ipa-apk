@@ -6,6 +6,14 @@
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" id="themecolor" content="#f6f7fb">
 <meta name="description" content="应用索引：搜索应用，一键跳转夸克网盘转存下载。">
+<!-- 分享卡片：发到微信/QQ 群里显示的预览。把 url 和 image 里的域名换成你自己的网址 -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="iPA&APK">
+<meta property="og:title" content="iPA&APK · 应用下载索引">
+<meta property="og:description" content="搜索应用，直达夸克网盘转存下载。">
+<meta property="og:url" content="https://你的域名/">
+<meta property="og:image" content="https://你的域名/assets/logo-96.gif">
+<meta name="twitter:card" content="summary">
 <title>应用索引 · 夸克网盘下载</title>
 <link rel="icon" id="favicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%233b6cf6'/%3E%3Cg fill='white'%3E%3Crect x='11' y='11' width='7' height='7' rx='2'/%3E%3Crect x='22' y='11' width='7' height='7' rx='2'/%3E%3Crect x='11' y='22' width='7' height='7' rx='2'/%3E%3Crect x='22' y='22' width='7' height='7' rx='2'/%3E%3C/g%3E%3C/svg%3E">
 <style>
@@ -55,6 +63,22 @@ input,select,textarea{font:inherit}
 .divider{width:1px;height:14px;background:var(--line)}
 .edition{font-size:11px;letter-spacing:.14em;color:#a3a9b8}
 .hero{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;padding:52px 0 28px}
+/* 公告栏 */
+.notice{margin:0 0 14px;display:flex;gap:14px;align-items:flex-start;padding:13px 16px 13px 14px;border-radius:var(--r);background:var(--card);border:1px solid var(--line);border-left:3px solid var(--blue)}
+.notice-body{min-width:0;flex:1}
+.notice-head{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--blue);font-weight:700;letter-spacing:.03em}
+.notice-time{margin-left:auto;font-size:11px;font-weight:500;color:var(--muted);letter-spacing:0}
+.notice-icon{width:15px;height:15px;display:inline-flex}
+.notice-icon svg{width:100%;height:100%}
+.notice-text{margin:6px 0 0;font-size:13px;line-height:1.7;color:var(--ink);white-space:pre-wrap;word-break:break-word;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.notice.open .notice-text{display:block;-webkit-line-clamp:unset}
+.notice-more{margin-top:5px;font-size:12px;color:var(--blue);font-weight:600;padding:0}
+.notice-img{width:126px;height:96px;object-fit:cover;border-radius:10px;border:1px solid var(--line);flex-shrink:0;cursor:zoom-in;margin:0}
+.notice-file{display:inline-flex;align-items:center;gap:7px;margin-top:9px;padding:6px 11px;border-radius:9px;background:var(--soft);font-size:12.5px;color:var(--ink);text-decoration:none;max-width:100%}
+.notice-file:hover{color:var(--blue)}
+.notice-file svg{width:14px;height:14px;flex-shrink:0;color:var(--blue)}
+.notice-file span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.notice-file em{font-style:normal;color:var(--muted);font-size:11px;flex-shrink:0}
 .eyebrow{margin:0 0 10px;font-size:11px;letter-spacing:.18em;color:var(--blue);font-weight:700}
 h1{margin:0 0 12px;font-size:clamp(28px,4vw,40px);line-height:1.25;letter-spacing:-.02em}
 h1 em{font-style:normal;color:inherit}
@@ -85,7 +109,11 @@ h1 span{color:var(--blue)}
 .sort select{border:1px solid var(--line);background:#fff;border-radius:8px;padding:5px 8px;font-size:12.5px;color:var(--ink);outline:0}
 .resultline{display:flex;justify-content:space-between;gap:12px;margin:16px 0 12px;font-size:12.5px;color:var(--muted)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:12px;transition:transform .16s,box-shadow .16s,border-color .16s}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:12px;transition:transform .16s,box-shadow .16s,border-color .16s}
+.card.pinned{border-color:#c9d6ff}
+[data-theme="dark"] .card.pinned{border-color:#33436b}
+.pinbadge{position:absolute;top:9px;right:10px;width:17px;height:17px;color:var(--blue);opacity:.85;pointer-events:none}
+.pinbadge svg{width:100%;height:100%;display:block}
 .card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(30,35,54,.07);border-color:#dde3f2}
 .c-head{display:flex;gap:12px;align-items:center}
 .icon{width:46px;height:46px;border-radius:12px;flex-shrink:0;display:grid;place-items:center;font-weight:700;font-size:18px;overflow:hidden;background:var(--soft);color:var(--blue)}
@@ -105,7 +133,7 @@ h1 span{color:var(--blue)}
 .btn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:9px;font-size:12.5px;font-weight:600;border:1px solid transparent;transition:.15s;white-space:nowrap}
 .btn.ghost{background:#f3f5fa;color:#4a5266;border-color:#e7eaf2}
 .btn.ghost:hover{background:#e9edf7}
-.btn.primary{background:var(--blue);color:#fff;box-shadow:0 4px 12px rgba(59,108,246,.22)}
+.btn.primary{background:var(--blue);color:var(--onblue,#fff);box-shadow:0 4px 12px rgba(59,108,246,.22)}
 .btn.primary:hover{background:var(--blue-dark)}
 .pager{display:flex;justify-content:center;gap:6px;padding:30px 0 8px;flex-wrap:wrap}
 .pager button{min-width:34px;height:34px;padding:0 10px;border-radius:9px;background:#fff;border:1px solid var(--line);font-size:12.5px;color:#4a5266}
@@ -114,9 +142,14 @@ h1 span{color:var(--blue)}
 .pager .dots{color:#aab0c0;align-self:center;font-size:12px}
 .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)}
 .empty strong{display:block;color:var(--ink);font-size:16px;margin-bottom:6px;font-weight:650}
-.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:26px 24px 44px;font-size:12px;color:#9aa1b2;border-top:1px solid var(--line);margin-top:26px;max-width:1180px}
+.foot{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:26px 24px 44px;font-size:12px;color:#9aa1b2;border-top:1px solid var(--line);margin:26px auto 0;max-width:1180px}
 .toast{position:fixed;left:50%;bottom:34px;transform:translate(-50%,14px);background:#20263a;color:#fff;font-size:13px;padding:10px 18px;border-radius:10px;opacity:0;pointer-events:none;transition:.2s;z-index:60;max-width:86vw;text-align:center;line-height:1.5}
 .toast.on{opacity:1;transform:translate(-50%,0)}
+.totop{position:fixed;right:18px;bottom:26px;width:44px;height:44px;border-radius:50%;background:var(--card);border:1px solid var(--line);box-shadow:0 10px 26px rgba(20,26,44,.14);display:grid;place-items:center;color:var(--muted);z-index:45;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .2s,transform .2s,background .2s}
+.totop.on{opacity:1;transform:none;pointer-events:auto}
+.totop:hover{color:var(--blue)}
+.totop svg{width:18px;height:18px}
+[data-theme="dark"] .totop{box-shadow:0 10px 26px rgba(0,0,0,.5)}
 dialog{border:0;border-radius:18px;padding:0;width:min(520px,92vw);box-shadow:0 30px 80px rgba(20,26,44,.24);background:#fff;color:var(--ink)}
 dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
 .d-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 20px 0}
@@ -126,14 +159,14 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
 .x svg{width:13px;height:13px;display:block}
 .x:active{background:#e7ebf3}
 .d-body{padding:14px 20px 20px}
-.d-body p{margin:0 0 14px;font-size:13px;line-height:1.75;color:#5c6478;white-space:pre-wrap;word-break:break-word}
+.d-body p{margin:0 0 14px;font-size:13px;line-height:1.75;color:var(--muted);white-space:pre-wrap;word-break:break-word}
 .fieldlab{display:block;font-size:11px;letter-spacing:.08em;color:var(--muted);margin:0 0 6px;font-weight:600}
 .linkfield{width:100%;height:74px;resize:none;border:1px solid var(--line);border-radius:10px;padding:10px;font:12px/1.6 ui-monospace,monospace;color:#3b4256;background:#fafbfe;outline:0}
-.pwdrow{display:flex;align-items:center;gap:8px;margin:12px 0 0;font-size:12.5px;color:#5c6478;flex-wrap:wrap}
+.pwdrow{display:flex;align-items:center;gap:8px;margin:12px 0 0;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
 .pwdrow b{font-family:ui-monospace,monospace;font-size:14px;color:var(--ok);background:#eefaf4;padding:3px 9px;border-radius:6px;letter-spacing:.08em}
 .d-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 .d-acts .btn{flex:1;justify-content:center;padding:9px 12px}
-.help-list{margin:0;padding-left:18px;font-size:13px;line-height:1.9;color:#5c6478}
+.help-list{margin:0;padding-left:18px;font-size:13px;line-height:1.9;color:var(--muted)}
 .hint{margin-top:14px;padding:11px 13px;background:#f7f8fc;border-radius:10px;font-size:12px;line-height:1.7;color:var(--muted)}
 .gate{position:fixed;inset:0;z-index:100;background:rgba(246,247,251,.99);backdrop-filter:blur(10px);display:grid;place-items:center;padding:24px}
 .gatebox{width:min(360px,100%);background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 24px 24px;box-shadow:0 24px 60px rgba(20,26,44,.12);text-align:center}
@@ -142,7 +175,7 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
 .gatesub{margin:0 0 18px;font-size:12.5px;color:var(--muted)}
 .gatebox input{width:100%;height:44px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font-size:14px;outline:0;background:#fbfcfe;text-align:center}
 .gatebox input:focus{border-color:#b9c8ff;box-shadow:0 0 0 3px var(--soft)}
-.gatebox button{width:100%;height:44px;margin-top:10px;border-radius:10px;background:var(--blue);color:#fff;font-weight:600;font-size:14px}
+.gatebox button{width:100%;height:44px;margin-top:10px;border-radius:10px;background:var(--blue);color:var(--onblue,#fff);font-weight:600;font-size:14px}
 .gatebox button:hover{background:var(--blue-dark)}
 .gateerr{margin:10px 0 0;font-size:12px;color:#d5544b}
 @media(max-width:640px){
@@ -152,6 +185,9 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
  .grid{grid-template-columns:1fr;gap:10px}
  .card{padding:15px}.lede{font-size:13px}
  .resultline{margin:14px 0 10px}
+ .notice{flex-direction:column;gap:10px;padding:12px 13px}
+ .search input,.gatebox input{font-size:16px} /* iOS 小于 16px 会放大页面 */
+ .notice-img{width:100%;height:120px;max-height:120px}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 /* ==========================================================================
@@ -184,6 +220,10 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
 [data-theme="dark"] .toast{background:#e8edf6;color:#11161e}
 [data-theme="dark"] .hint{background:#151a23}
 [data-theme="dark"] .empty{color:#8d96a8}
+[data-theme="dark"] #clear{background:#242b38;color:#a9b2c3}
+[data-theme="dark"] .x:active{background:#2c3542}
+[data-theme="dark"] .pwdrow b{background:#123225;color:#5fd3a4}
+[data-theme="dark"] .d-body p{color:#9aa3b5}
 </style>
 <script>
 (function(){
@@ -226,6 +266,7 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
       <div><strong id="st-total">0</strong><span>应用总数</span></div>
       <div><strong id="st-cat">0</strong><span>分类</span></div>
       <div><strong id="st-date">—</strong><span>最近更新</span></div>
+      <div id="st-today-wrap" hidden><strong id="st-today">0</strong><span>今日更新</span></div>
     </div>
   </section>
 
@@ -246,17 +287,39 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
     </label>
   </div>
 
+  <section class="notice" id="notice" hidden>
+    <div class="notice-body">
+      <div class="notice-head">
+        <span class="notice-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h3l7 4V5L7 9H4Z"/><path d="M19 8.5a5 5 0 0 1 0 7"/></svg>
+        </span>
+        <b>公告</b>
+        <span class="notice-time" id="notice-time"></span>
+      </div>
+      <p class="notice-text" id="notice-text"></p>
+      <button class="notice-more" id="notice-more" type="button" hidden>展开</button>
+      <a class="notice-file" id="notice-file" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/></svg>
+        <span id="notice-file-name">下载附件</span>
+        <em id="notice-file-size"></em>
+      </a>
+    </div>
+    <img class="notice-img" id="notice-img" alt="" hidden>
+  </section>
+
   <div class="resultline"><span id="rc"></span></div>
   <div id="grid" class="grid"></div>
   <nav id="pager" class="pager" aria-label="分页"></nav>
 </main>
 
 <footer class="foot">
-  <span id="foot-name">应用索引</span>
   <span id="foot-note">链接指向夸克网盘 · 请先转存再下载</span>
 </footer>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
+<button class="totop" id="totop" type="button" aria-label="回到顶部">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
 
 <dialog id="detail" aria-labelledby="d-name">
   <div class="d-top">
@@ -269,7 +332,7 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
     <textarea id="d-url" class="linkfield" readonly spellcheck="false"></textarea>
     <div class="pwdrow" id="d-pwdrow" hidden>提取码<b id="d-pwd"></b><button class="btn ghost" type="button" id="d-copypwd">复制提取码</button></div>
     <div class="d-acts">
-      <a class="btn primary" id="d-open" href="#" target="_blank" rel="noopener noreferrer">打开夸克网盘</a>
+      <a class="btn primary" id="d-open" href="#" target="_blank" rel="noopener noreferrer">前往下载</a>
       <button class="btn ghost" type="button" id="d-copy">复制链接</button>
       <button class="btn ghost" type="button" id="d-copyall">复制链接+提取码</button>
     </div>
@@ -284,7 +347,7 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
   <div class="d-body">
     <ul class="help-list">
       <li>搜索支持应用名称、版本、分类和简介关键词，多个词用空格分开。</li>
-      <li>点「打开」会跳转到夸克网盘分享页，登录后点「转存」到自己网盘，再从网盘里下载。</li>
+      <li>点「下载」会跳转到夸克网盘分享页，登录后点「转存」到自己网盘，再从网盘里下载。</li>
       <li>有提取码的条目会在卡片上显示，点卡片可查看并复制。</li>
       <li>夸克网页端非会员下载限速，手机浏览器打开通常会引导你安装夸克 App。</li>
     </ul>
@@ -344,7 +407,6 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
   // 站点信息（都能在管理页的「站点设置」里改，这里只是兜底）
   if(SITE.title){
     $('#site-title').textContent = SITE.title;
-    $('#foot-name').textContent = SITE.title;
     document.title = SITE.title + ' · 夸克网盘下载';
   }
   if(SITE.tagline) $('#site-tagline').textContent = SITE.tagline;
@@ -368,16 +430,87 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
     }
   }
 
-  // 主题色：后台选一个颜色，悬停色和浅底色自动算（夜间模式用深一点）
+  // 主题色：后台选一个颜色，悬停色和浅底色自动算
+  // 夜间模式会自动把过暗的颜色调亮，否则按钮会和背景糊在一起
+  function relLum(hex){
+    var n = parseInt(hex.slice(1), 16);
+    var ch = [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255].map(function(v){
+      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * ch[0] + 0.7152 * ch[1] + 0.0722 * ch[2];
+  }
   function applyAccent(){
     if(!(SITE.accent && /^#[0-9a-fA-F]{6}$/.test(SITE.accent))) return;
     var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    var c = SITE.accent;
+    if(dark){
+      var l = relLum(c);
+      if(l < 0.35) c = mixColor(c, '#ffffff', Math.min(0.75, 0.5 + (0.35 - l) * 0.8));
+    }
     var rs = document.documentElement.style;
-    rs.setProperty('--blue', SITE.accent);
-    rs.setProperty('--blue-dark', mixColor(SITE.accent, '#000000', 0.12));
-    rs.setProperty('--soft', mixColor(SITE.accent, dark ? '#0f131a' : '#ffffff', dark ? 0.82 : 0.9));
+    rs.setProperty('--blue', c);
+    rs.setProperty('--blue-dark', mixColor(c, '#000000', 0.12));
+    rs.setProperty('--soft', mixColor(c, dark ? '#0f131a' : '#ffffff', dark ? 0.8 : 0.9));
+    // 主色太亮时，按钮文字改用深色，否则白字看不清
+    rs.setProperty('--onblue', relLum(c) > 0.42 ? '#11161e' : '#ffffff');
   }
   applyAccent();
+
+  // 公告栏
+  function fmtBytes(b){
+    b = Number(b) || 0;
+    if(!b) return '';
+    if(b >= 1048576) return (b / 1048576).toFixed(b >= 10485760 ? 0 : 1) + ' MB';
+    if(b >= 1024) return Math.round(b / 1024) + ' KB';
+    return b + ' B';
+  }
+  function fmtDT(v){
+    if(!v) return '';
+    var s = String(v);
+    var m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if(m) return m[1] + '/' + (+m[2]) + '/' + (+m[3]);
+    var d = new Date(s);
+    if(isNaN(d.getTime())) return s;
+    return d.getFullYear() + '/' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' +
+      ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
+  }
+  (function renderNotice(){
+    var n = SITE.notice;
+    if(!n || n.show === false) return;
+    if(!n.text && !n.image && !n.file) return;
+    var box = $('#notice');
+    box.hidden = false;
+    if(n.text) $('#notice-text').textContent = n.text;
+    if(n.updated) $('#notice-time').textContent = '更新于 ' + fmtDT(n.updated);
+    if(n.text){
+      setTimeout(function(){
+        var t = $('#notice-text');
+        if(t.scrollHeight > t.clientHeight + 2){
+          var btn = $('#notice-more');
+          btn.hidden = false;
+          btn.onclick = function(){
+            var open = box.classList.toggle('open');
+            btn.textContent = open ? '收起' : '展开';
+          };
+        }
+      }, 60);
+    }
+    if(n.image){
+      var im = $('#notice-img');
+      im.src = n.image;
+      im.hidden = false;
+      im.addEventListener('click', function(){ window.open(n.image, '_blank', 'noopener'); });
+    }
+    if(n.file){
+      var a = $('#notice-file');
+      a.href = n.file;
+      if(n.fileName) a.setAttribute('download', n.fileName);
+      a.hidden = false;
+      $('#notice-file-name').textContent = n.fileName || '下载附件';
+      var sz = fmtBytes(n.fileSize);
+      if(sz) $('#notice-file-size').textContent = sz;
+    }
+  })();
 
   var SEARCH = ALL.map(function(a){
     return norm([a.name, a.version, a.category, a.platform, a.description, (a.tags||[]).join(' ')].join(' '));
@@ -459,7 +592,8 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
     if(a.platform) bits.push(a.platform);
     if(a.version) bits.push('v' + a.version);
     if(a.size) bits.push(a.size);
-    if(a.date) bits.push(a.date);
+    var when = fmtDT(a.addedAt) || fmtDT(a.date);
+    if(when) bits.push('收录 ' + when);
     $('#d-sub').textContent = bits.join(' · ');
     $('#d-desc').textContent = a.description || '暂无简介。';
     $('#d-url').value = a.url || '（未填写链接）';
@@ -477,8 +611,26 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
     $('#d-url').scrollTop = 0;
   }
 
+  function pinIcon(){
+    var s = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    s.setAttribute('viewBox','0 0 24 24');
+    s.setAttribute('fill','none');
+    s.setAttribute('stroke','currentColor');
+    s.setAttribute('stroke-width','2');
+    s.setAttribute('stroke-linecap','round');
+    s.setAttribute('stroke-linejoin','round');
+    s.setAttribute('aria-hidden','true');
+    s.innerHTML = '<path d="M9 3h6l-1 5.5 3.5 2.5v1.5H6.5V11L10 8.5 9 3Z"/><path d="M12 12.5V21"/>';
+    return s;
+  }
+
   function card(a, i){
-    var c = el('article','card');
+    var c = el('article', a.pinned ? 'card pinned' : 'card');
+    if(a.pinned){
+      var pb = el('span','pinbadge');
+      pb.append(pinIcon());
+      c.append(pb);
+    }
     var head = el('div','c-head');
     var title = el('div','c-title');
     var name = el('button','name', a.name);
@@ -507,7 +659,7 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
       if(!a.url) return toast('这条还没有填链接');
       copy(a.url, a.pwd ? '链接已复制，提取码 ' + a.pwd : '链接已复制');
     };
-    var openBtn = el(a.url ? 'a' : 'button', 'btn primary', '打开');
+    var openBtn = el(a.url ? 'a' : 'button', 'btn primary', '下载');
     if(a.url){
       openBtn.href = a.url;
       openBtn.target = '_blank';
@@ -543,7 +695,10 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
     } else if(state.sort === 'date'){
       list = list.slice().sort(function(a,b){ return String(b.date||'').localeCompare(String(a.date||'')); });
     }
-    return list;
+    // 置顶的永远排最前，其余保持当前排序
+    var pinned = [], rest = [];
+    list.forEach(function(a){ (a.pinned ? pinned : rest).push(a); });
+    return pinned.concat(rest);
   }
 
   function pagerButton(text, page, label){
@@ -667,6 +822,19 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
     setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
   };
 
+  // 回到顶部
+  (function(){
+    var btn = $('#totop');
+    var onScroll = function(){
+      btn.classList.toggle('on', window.pageYOffset > 600);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    btn.addEventListener('click', function(){
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+
   // 分享：手机走系统分享面板，电脑复制链接
   $('#share-btn').onclick = function(){
     if(location.protocol === 'file:'){
@@ -685,6 +853,12 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
   $('#st-total').textContent = ALL.length;
   $('#st-cat').textContent = CATS.length;
   if(SITE.updated) $('#st-date').textContent = String(SITE.updated).slice(5, 10).replace('-', '.');
+  (function(){
+    var d = new Date(), p = function(n){ return ('0' + n).slice(-2); };
+    var key = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+    var n = ALL.filter(function(a){ return String(a.addedAt || a.date || '').slice(0, 10) === key; }).length;
+    if(n > 0){ $('#st-today').textContent = n; $('#st-today-wrap').hidden = false; }
+  })();
   buildChips();
   render();
 
