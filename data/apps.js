@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/6 23:32:30
+// 应用数据文件 —— 由本地管理页写入 2026/11/7 18:31:30
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -7,14 +7,28 @@ window.APP_DATA = {
     "h1": "找到应用，",
     "h1accent": "一键转存。",
     "note": "链接指向夸克网盘 · 请先转存再下载",
-    "updated": "2026-11-06",
+    "updated": "2026-11-07",
     "title": "iPA&APK",
-    "accent": "#a23bf7",
+    "accent": "#100f0f",
     "badge": "LoveuT",
     "pageSize": 10,
     "icon": "assets/CAACAgIAAxkBAVtQBGjPdWM2oVGhd3-20261106121035.gif"
   },
   "apps": [
+    {
+      "id": "amw563sof",
+      "name": "交互壁纸",
+      "version": "",
+      "category": "软件",
+      "platform": "iOS",
+      "size": "",
+      "icon": "",
+      "iconText": "壁纸",
+      "url": "https://pan.quark.cn/s/6f0165da1835",
+      "pwd": "",
+      "description": "交互壁纸软件+530张交互壁纸合集",
+      "date": "2026-11-06"
+    },
     {
       "id": "amw53xcka",
       "name": "TG表情包",
@@ -60,9 +74,10 @@ window.APP_DATA = {
       "name": "CS手游",
       "version": "1.4",
       "category": "游戏",
-      "platform": "iOS",
+      "platform": "iOS / Android",
       "size": "1.6G",
       "icon": "assets/ims-20261106122325-20261106123-20261106130859.png",
+      "iconText": "",
       "url": "https://pan.quark.cn/s/2f463361b6f1",
       "pwd": "",
       "description": "CS2手游  5.8.76\n✅国外私人制作可联网加好友组队等\n✅解锁所有刀，手套，枪皮等\n✅自瞄绘制，飞天遁地，无敌免伤，自动开枪，开局敌方全员爆头等，局内无限金币，房主功能，防封版本，封设备可解除等",
