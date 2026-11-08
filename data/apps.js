@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/8 22:12:34
+// 应用数据文件 —— 由本地管理页写入 2026/11/8 22:19:25
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -16,9 +16,26 @@ window.APP_DATA = {
       "show": true,
       "text": "",
       "updated": "2026-11-07T20:46"
-    }
+    },
+    "icon": "assets/logo.png",
+    "rev": 1794147565737
   },
   "apps": [
+    {
+      "id": "amw7x4xfq",
+      "name": "饥饿鲨：进化",
+      "version": "14.6.0",
+      "category": "游戏",
+      "platform": "iOS",
+      "size": "201MB",
+      "icon": "https://i.urusai.cc/rsjEk.jpg",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/500ce575c489",
+      "pwd": "",
+      "description": "一键解锁钻石金币",
+      "date": "2026-11-08",
+      "addedAt": "2026-11-08T22:19"
+    },
     {
       "id": "amw7wdhuz",
       "name": "潜水员戴夫",
