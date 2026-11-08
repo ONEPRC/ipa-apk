@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/8 22:01:24
+// 应用数据文件 —— 由本地管理页写入 2026/11/8 22:04:33
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -23,7 +23,7 @@ window.APP_DATA = {
     {
       "id": "amw7wdhuz",
       "name": "潜水员戴夫",
-      "version": "v1.0.49",
+      "version": "1.0.49",
       "category": "游戏",
       "platform": "iOS",
       "size": "2.98GB",
