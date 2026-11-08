@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/8 22:04:33
+// 应用数据文件 —— 由本地管理页写入 2026/11/8 22:05:04
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -53,7 +53,7 @@ window.APP_DATA = {
     {
       "id": "amw6agvin",
       "name": "微信",
-      "version": "8.0.76..",
+      "version": "8.0.76",
       "category": "软件",
       "platform": "iOS",
       "size": "300MB",
