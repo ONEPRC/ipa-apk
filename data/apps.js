@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/7 22:24:17
+// 应用数据文件 —— 由本地管理页写入 2026/11/8 21:44:17
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -7,7 +7,7 @@ window.APP_DATA = {
     "h1": "找到应用，",
     "h1accent": "一键转存。",
     "note": "链接指向夸克网盘 · 请先转存再下载",
-    "updated": "2026-11-07",
+    "updated": "2026-11-08",
     "title": "iPA&APK",
     "accent": "#100f0f",
     "badge": "LoveuT",
@@ -20,6 +20,21 @@ window.APP_DATA = {
     }
   },
   "apps": [
+    {
+      "id": "amw7vvqxa",
+      "name": "王国保卫战6",
+      "version": "",
+      "category": "游戏",
+      "platform": "iOS",
+      "size": "495MB",
+      "icon": "https://i.urusai.cc/vlUJX.jpg",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/682f6c899ba0",
+      "pwd": "",
+      "description": "✅解锁全内购英雄/防御塔/法术\n✅无敌免伤/超级秒杀\n✅无限钻石/局内无限金币\n✅英雄/法术/技能升级无限点数\n✅多倍加速",
+      "date": "2026-11-08",
+      "addedAt": "2026-11-08T21:44"
+    },
     {
       "id": "amw6agvin",
       "name": "微信",
