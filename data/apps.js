@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/8 21:58:05
+// 应用数据文件 —— 由本地管理页写入 2026/11/8 22:01:24
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -29,7 +29,7 @@ window.APP_DATA = {
       "size": "2.98GB",
       "icon": "https://i.urusai.cc/lyCHg.png",
       "iconText": "",
-      "url": "",
+      "url": "https://pan.quark.cn/s/eef6066402d1",
       "pwd": "",
       "description": "✅解锁丛林等全DLC\n✅无限金币/冻结物品\n✅无限氧气/无限子弹\n✅无敌免伤/使用不消耗\n✅多倍餐厅/潜水加速\n✅新增丛林无限金币，物品不减等",
       "date": "2026-11-08",
