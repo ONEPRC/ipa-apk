@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/8 21:44:17
+// 应用数据文件 —— 由本地管理页写入 2026/11/8 21:58:05
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -12,7 +12,7 @@ window.APP_DATA = {
     "accent": "#100f0f",
     "badge": "LoveuT",
     "pageSize": 10,
-    "icon": "assets/logo.png",
+    "icon": "assets/CAACAgIAAxkBAVtQBGjPdWM2oVGhd3-20261106121035.gif",
     "notice": {
       "show": true,
       "text": "",
@@ -20,6 +20,21 @@ window.APP_DATA = {
     }
   },
   "apps": [
+    {
+      "id": "amw7wdhuz",
+      "name": "潜水员戴夫",
+      "version": "v1.0.49",
+      "category": "游戏",
+      "platform": "iOS",
+      "size": "2.98GB",
+      "icon": "https://i.urusai.cc/lyCHg.png",
+      "iconText": "",
+      "url": "",
+      "pwd": "",
+      "description": "✅解锁丛林等全DLC\n✅无限金币/冻结物品\n✅无限氧气/无限子弹\n✅无敌免伤/使用不消耗\n✅多倍餐厅/潜水加速\n✅新增丛林无限金币，物品不减等",
+      "date": "2026-11-08",
+      "addedAt": "2026-11-08T21:58"
+    },
     {
       "id": "amw7vvqxa",
       "name": "王国保卫战6",
