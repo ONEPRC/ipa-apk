@@ -12,7 +12,7 @@ window.APP_DATA = {
     "accent": "#100f0f",
     "badge": "LoveuT",
     "pageSize": 10,
-    "icon": "assets/CAACAgIAAxkBAVtQBGjPdWM2oVGhd3-20261106121035.gif",
+    "icon": "assets/logo.png",
     "notice": {
       "show": true,
       "text": "",
