@@ -377,7 +377,24 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
   var $ = function(s){ return document.querySelector(s); };
   var ALL = (DATA && Array.isArray(DATA.apps) ? DATA.apps : []).filter(function(a){ return a && a.name; });
   var SITE = (DATA && DATA.site) || {};
-  var PAGE = Number(SITE.pageSize) > 0 ? Number(SITE.pageSize) : 24;
+  var CONFIG_PAGE = Number(SITE.pageSize) > 0 ? Number(SITE.pageSize) : 24;
+  // 每页条数按当前列数补齐整行，避免最后一行空着
+  function pageSizeNow(){
+    var g = $('#grid');
+    var cols = 1;
+    if(g){
+      var tpl = getComputedStyle(g).gridTemplateColumns || '';
+      var n = tpl.split(' ').filter(function(s){ return s && s !== 'none'; }).length;
+      if(n > 0) cols = n;
+      else {
+        // 网格是空的时候拿不到列数，按卡片最小宽度估算
+        var w = g.clientWidth || g.getBoundingClientRect().width || 0;
+        cols = Math.max(1, Math.floor((w + 14) / (272 + 14)));
+      }
+    }
+    var rows = Math.max(1, Math.round(CONFIG_PAGE / cols));
+    return cols * rows;
+  }
   var state = { q:'', cat:'全部', sort:'default', page:1 };
   var current = null;
 
@@ -717,6 +734,7 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
 
   function render(){
     var list = results();
+    var PAGE = pageSizeNow();
     var pages = Math.max(1, Math.ceil(list.length / PAGE));
     state.page = Math.min(Math.max(1, state.page), pages);
     var start = (state.page - 1) * PAGE;
@@ -848,6 +866,16 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
     }
     copy(url, '网址已复制，发给朋友吧');
   };
+
+  // 窗口变宽变窄时列数会变，重新算一次每页条数
+  var resizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function(){
+      state.page = 1;
+      render();
+    }, 200);
+  });
 
   // 初始化
   $('#st-total').textContent = ALL.length;
