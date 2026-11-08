@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/8 22:10:43
+// 应用数据文件 —— 由本地管理页写入 2026/11/8 22:12:34
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -16,8 +16,7 @@ window.APP_DATA = {
       "show": true,
       "text": "",
       "updated": "2026-11-07T20:46"
-    },
-    "icon": "https://bkimg.cdn.bcebos.com/pic/4610b912c8fcc3cec3fde4930b0ec188d43f87948a72?x-bce-process=image/format,f_auto/quality,Q_70/resize,m_lfit,limit_1,w_536"
+    }
   },
   "apps": [
     {
