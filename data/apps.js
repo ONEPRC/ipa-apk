@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/8 22:20:06
+// 应用数据文件 —— 由本地管理页写入 2026/11/9 18:22:51
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -7,7 +7,7 @@ window.APP_DATA = {
     "h1": "找到应用，",
     "h1accent": "一键转存。",
     "note": "链接指向夸克网盘 · 请先转存再下载",
-    "updated": "2026-11-08",
+    "updated": "2026-11-09",
     "title": "iPA&APK",
     "accent": "#100f0f",
     "badge": "LoveuT",
@@ -18,9 +18,24 @@ window.APP_DATA = {
       "updated": "2026-11-07T20:46"
     },
     "icon": "assets/logo.png",
-    "rev": 1794147606332
+    "rev": 1794219771783
   },
   "apps": [
+    {
+      "id": "amw944ef2",
+      "name": "汽水音乐",
+      "version": "20.4.0",
+      "category": "软件",
+      "platform": "iOS",
+      "size": "197.2MB",
+      "icon": "https://i.urusai.cc/Da0ug.png",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/8b015cdcafe3",
+      "pwd": "",
+      "description": "秒过激励式视频。",
+      "date": "2026-11-09",
+      "addedAt": "2026-11-09T18:22"
+    },
     {
       "id": "amw7x4xfq",
       "name": "饥饿鲨：进化",
