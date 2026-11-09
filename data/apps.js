@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/9 20:47:59
+// 应用数据文件 —— 由本地管理页写入 2026/11/9 20:48:05
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-07T20:46"
     },
     "icon": "assets/logo.png",
-    "rev": 1794228479155,
+    "rev": 1794228485942,
     "categories": [
       "游戏",
       "软件",
@@ -197,7 +197,7 @@ window.APP_DATA = {
       "id": "amw52cu56",
       "name": "抖音",
       "version": "41.00",
-      "category": "软件",
+      "category": "影音",
       "platform": "iOS",
       "size": "734MB",
       "icon": "assets/抖音-20261107142223.png",
