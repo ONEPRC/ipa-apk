@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/9 18:27:45
+// 应用数据文件 —— 由本地管理页写入 2026/11/9 18:30:08
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,9 +18,24 @@ window.APP_DATA = {
       "updated": "2026-11-07T20:46"
     },
     "icon": "assets/logo.png",
-    "rev": 1794220065914
+    "rev": 1794220208726
   },
   "apps": [
+    {
+      "id": "amw94dx4m",
+      "name": "红果漫剧",
+      "version": "7.4.1",
+      "category": "软件",
+      "platform": "",
+      "size": "319MB",
+      "icon": "https://i.urusai.cc/jBiuL.png",
+      "iconText": "",
+      "url": "",
+      "pwd": "",
+      "description": "✅抖音漫剧软件\n✅动画短剧一应俱全\n✅解锁会员功能",
+      "date": "2026-11-09",
+      "addedAt": "2026-11-09T18:30"
+    },
     {
       "id": "amw94auxj",
       "name": "Game Cheats Manager",
