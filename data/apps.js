@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/9 18:59:00
+// 应用数据文件 —— 由本地管理页写入 2026/11/9 18:59:26
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-07T20:46"
     },
     "icon": "assets/logo.png",
-    "rev": 1794221940754,
+    "rev": 1794221966350,
     "categories": [
       "工具"
     ]
@@ -148,7 +148,7 @@ window.APP_DATA = {
       "id": "amw563sof",
       "name": "交互壁纸",
       "version": "",
-      "category": "软件",
+      "category": "工具",
       "platform": "iOS",
       "size": "",
       "icon": "",
@@ -156,7 +156,8 @@ window.APP_DATA = {
       "url": "https://pan.quark.cn/s/6f0165da1835",
       "pwd": "",
       "description": "交互壁纸软件+530张交互壁纸合集",
-      "date": "2026-11-06"
+      "date": "2026-11-06",
+      "addedAt": "2026-11-06"
     },
     {
       "id": "amw53xcka",
