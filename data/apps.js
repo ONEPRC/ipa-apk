@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/9 18:22:51
+// 应用数据文件 —— 由本地管理页写入 2026/11/9 18:27:45
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,9 +18,24 @@ window.APP_DATA = {
       "updated": "2026-11-07T20:46"
     },
     "icon": "assets/logo.png",
-    "rev": 1794219771783
+    "rev": 1794220065914
   },
   "apps": [
+    {
+      "id": "amw94auxj",
+      "name": "Game Cheats Manager",
+      "version": "2.3.3",
+      "category": "软件",
+      "platform": "Windows",
+      "size": "",
+      "icon": "assets/Game-Cheats-Manager-20261109102648.png",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/ec52cadc2aee",
+      "pwd": "",
+      "description": "风灵月影修改器大全免费版",
+      "date": "2026-11-09",
+      "addedAt": "2026-11-09T18:27"
+    },
     {
       "id": "amw944ef2",
       "name": "汽水音乐",
