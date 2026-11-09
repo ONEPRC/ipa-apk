@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/9 20:31:55
+// 应用数据文件 —— 由本地管理页写入 2026/11/9 20:47:59
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-07T20:46"
     },
     "icon": "assets/logo.png",
-    "rev": 1794227515792,
+    "rev": 1794228479155,
     "categories": [
       "游戏",
       "软件",
@@ -32,7 +32,7 @@ window.APP_DATA = {
       "id": "amw94dx4m",
       "name": "红果漫剧",
       "version": "7.4.1",
-      "category": "软件",
+      "category": "影音",
       "platform": "",
       "size": "319MB",
       "icon": "https://i.urusai.cc/jBiuL.png",
@@ -62,7 +62,7 @@ window.APP_DATA = {
       "id": "amw944ef2",
       "name": "汽水音乐",
       "version": "20.4.0",
-      "category": "软件",
+      "category": "影音",
       "platform": "iOS",
       "size": "197.2MB",
       "icon": "https://i.urusai.cc/Da0ug.png",
