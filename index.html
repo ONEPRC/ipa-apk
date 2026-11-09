@@ -491,6 +491,11 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
     return d.getFullYear() + '/' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' +
       ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
   }
+  // 前台只显示日期，不显示几点几分
+  function fmtD(v){
+    var s = fmtDT(v);
+    return s ? s.split(' ')[0] : '';
+  }
   (function renderNotice(){
     var n = SITE.notice;
     if(!n || n.show === false) return;
@@ -609,7 +614,7 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
     if(a.platform) bits.push(a.platform);
     if(a.version) bits.push('v' + a.version);
     if(a.size) bits.push(a.size);
-    var when = fmtDT(a.addedAt) || fmtDT(a.date);
+    var when = fmtD(a.addedAt) || fmtD(a.date);
     if(when) bits.push('收录 ' + when);
     $('#d-sub').textContent = bits.join(' · ');
     $('#d-desc').textContent = a.description || '暂无简介。';
