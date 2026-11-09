@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/9 18:58:47
+// 应用数据文件 —— 由本地管理页写入 2026/11/9 18:59:00
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-07T20:46"
     },
     "icon": "assets/logo.png",
-    "rev": 1794221927357,
+    "rev": 1794221940754,
     "categories": [
       "工具"
     ]
@@ -177,7 +177,7 @@ window.APP_DATA = {
       "id": "amw53e8ge",
       "name": "Folia",
       "version": "2.24",
-      "category": "软件",
+      "category": "影音",
       "platform": "iOS / Android / Windows",
       "size": "50MB",
       "icon": "assets/Folia-20261107142415.png",
