@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/9 18:38:35
+// 应用数据文件 —— 由本地管理页写入 2026/11/9 18:55:54
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-07T20:46"
     },
     "icon": "assets/logo.png",
-    "rev": 1794220715072
+    "rev": 1794221754638
   },
   "apps": [
     {
@@ -30,7 +30,7 @@ window.APP_DATA = {
       "size": "319MB",
       "icon": "https://i.urusai.cc/jBiuL.png",
       "iconText": "",
-      "url": "https://pan.quark.cn/s/6aba2cce7ba9",
+      "url": "https://pan.quark.cn/s/61421519663c",
       "pwd": "",
       "description": "✅抖音漫剧软件\n✅动画短剧一应俱全\n✅解锁会员功能",
       "date": "2026-11-09",
