@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/9 20:56:42
+// 应用数据文件 —— 由本地管理页写入 2026/11/9 21:15:11
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-09T20:51"
     },
     "icon": "assets/logo.png",
-    "rev": 1794229002767,
+    "rev": 1794230111967,
     "categories": [
       "游戏",
       "软件",
@@ -28,6 +28,21 @@ window.APP_DATA = {
     ]
   },
   "apps": [
+    {
+      "id": "amw9aa6ii",
+      "name": "GestaltX",
+      "version": "1.02",
+      "category": "工具",
+      "platform": "iOS",
+      "size": "2.3MB",
+      "icon": "",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/05f717a1d5ca",
+      "pwd": "",
+      "description": "修复预设停用逻辑：原本不存在的字段会被删除，原本存在的字段恢复其原始值和类型，不再统一写入 0。\n• 首次没有备份时，会自动创建备份，并保留修改前的字段状态，重新打开 App 后仍可还原。\n• 每个预设新增“还原”按钮，支持单独还原该项，保留其他尚未应用的修改。\n• 新增“移除新增字段”功能，用于清理确认是后来添加的字段。\n• 调整 NeoSpring 的加载和触发时机，修正回到前台时提前关闭注销页面的问题。\n\n支持 iOS / iPadOS 27.x；iOS / iPadOS 26.x 不支持本机 MobileGestalt 访问。签名至少需要一个可用的 App Group。",
+      "date": "2026-11-09",
+      "addedAt": "2026-11-09T21:15"
+    },
     {
       "id": "amw94dx4m",
       "name": "红果漫剧",
@@ -50,7 +65,7 @@ window.APP_DATA = {
       "category": "工具",
       "platform": "Windows",
       "size": "",
-      "icon": "assets/Game-Cheats-Manager-20261109102648-128.png",
+      "icon": "assets/Game-Cheats-Manager-20261109102648.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/ec52cadc2aee",
       "pwd": "",
@@ -125,7 +140,7 @@ window.APP_DATA = {
       "category": "软件",
       "platform": "iOS",
       "size": "300MB",
-      "icon": "assets/微信-20261107142137-128.png",
+      "icon": "assets/微信-20261107142137.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/f79b93425a8c",
       "pwd": "",
@@ -140,7 +155,7 @@ window.APP_DATA = {
       "category": "游戏",
       "platform": "iOS",
       "size": "",
-      "icon": "assets/GTAV-20261107142147-128.png",
+      "icon": "assets/GTAV-20261107142147.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/8261028e8e54",
       "pwd": "",
@@ -170,7 +185,7 @@ window.APP_DATA = {
       "category": "其他",
       "platform": "",
       "size": "",
-      "icon": "assets/TG表情包-20261107142008-128.png",
+      "icon": "assets/TG表情包-20261107142008.png",
       "iconText": "TG",
       "url": "https://pan.quark.cn/s/35be98a9ae90",
       "pwd": "",
@@ -185,7 +200,7 @@ window.APP_DATA = {
       "category": "影音",
       "platform": "iOS / Android / Windows",
       "size": "50MB",
-      "icon": "assets/Folia-20261107142415-128.png",
+      "icon": "assets/Folia-20261107142415.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/6cb25089ae99",
       "pwd": "",
@@ -200,7 +215,7 @@ window.APP_DATA = {
       "category": "影音",
       "platform": "iOS",
       "size": "734MB",
-      "icon": "assets/抖音-20261107142223-128.png",
+      "icon": "assets/抖音-20261107142223.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/79d717df7ea3",
       "pwd": "",
@@ -215,7 +230,7 @@ window.APP_DATA = {
       "category": "游戏",
       "platform": "iOS / Android",
       "size": "1.6G",
-      "icon": "assets/CS手游-20261107141356-128.png",
+      "icon": "assets/CS手游-20261107141356.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/2f463361b6f1",
       "pwd": "",
@@ -231,7 +246,7 @@ window.APP_DATA = {
       "category": "游戏",
       "platform": "iOS",
       "size": "3.34G",
-      "icon": "assets/Car-Parking-2-20261107141942-128.png",
+      "icon": "assets/Car-Parking-2-20261107141942.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/63ab6ff4a61c",
       "pwd": "",
