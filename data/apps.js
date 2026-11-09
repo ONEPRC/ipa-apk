@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/9 20:51:48
+// 应用数据文件 —— 由本地管理页写入 2026/11/9 20:56:42
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-09T20:51"
     },
     "icon": "assets/logo.png",
-    "rev": 1794228708700,
+    "rev": 1794229002767,
     "categories": [
       "游戏",
       "软件",
@@ -50,7 +50,7 @@ window.APP_DATA = {
       "category": "工具",
       "platform": "Windows",
       "size": "",
-      "icon": "assets/Game-Cheats-Manager-20261109102648.png",
+      "icon": "assets/Game-Cheats-Manager-20261109102648-128.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/ec52cadc2aee",
       "pwd": "",
@@ -125,7 +125,7 @@ window.APP_DATA = {
       "category": "软件",
       "platform": "iOS",
       "size": "300MB",
-      "icon": "assets/微信-20261107142137.png",
+      "icon": "assets/微信-20261107142137-128.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/f79b93425a8c",
       "pwd": "",
@@ -140,7 +140,7 @@ window.APP_DATA = {
       "category": "游戏",
       "platform": "iOS",
       "size": "",
-      "icon": "assets/GTAV-20261107142147.png",
+      "icon": "assets/GTAV-20261107142147-128.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/8261028e8e54",
       "pwd": "",
@@ -170,7 +170,7 @@ window.APP_DATA = {
       "category": "其他",
       "platform": "",
       "size": "",
-      "icon": "assets/TG表情包-20261107142008.png",
+      "icon": "assets/TG表情包-20261107142008-128.png",
       "iconText": "TG",
       "url": "https://pan.quark.cn/s/35be98a9ae90",
       "pwd": "",
@@ -185,7 +185,7 @@ window.APP_DATA = {
       "category": "影音",
       "platform": "iOS / Android / Windows",
       "size": "50MB",
-      "icon": "assets/Folia-20261107142415.png",
+      "icon": "assets/Folia-20261107142415-128.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/6cb25089ae99",
       "pwd": "",
@@ -200,7 +200,7 @@ window.APP_DATA = {
       "category": "影音",
       "platform": "iOS",
       "size": "734MB",
-      "icon": "assets/抖音-20261107142223.png",
+      "icon": "assets/抖音-20261107142223-128.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/79d717df7ea3",
       "pwd": "",
@@ -215,7 +215,7 @@ window.APP_DATA = {
       "category": "游戏",
       "platform": "iOS / Android",
       "size": "1.6G",
-      "icon": "assets/CS手游-20261107141356.png",
+      "icon": "assets/CS手游-20261107141356-128.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/2f463361b6f1",
       "pwd": "",
@@ -231,7 +231,7 @@ window.APP_DATA = {
       "category": "游戏",
       "platform": "iOS",
       "size": "3.34G",
-      "icon": "assets/Car-Parking-2-20261107141942.png",
+      "icon": "assets/Car-Parking-2-20261107141942-128.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/63ab6ff4a61c",
       "pwd": "",
