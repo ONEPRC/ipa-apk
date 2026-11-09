@@ -84,10 +84,10 @@ h1{margin:0 0 12px;font-size:clamp(28px,4vw,40px);line-height:1.25;letter-spacin
 h1 em{font-style:normal;color:inherit}
 h1 span{color:var(--blue)}
 .lede{margin:0;color:var(--muted);font-size:14px;max-width:46ch}
-.stats{display:flex;gap:28px;flex-shrink:0}
-.stats div{text-align:right}
-.stats strong{display:block;font-size:22px;line-height:1.2;font-variant-numeric:tabular-nums}
-.stats span{font-size:11px;color:var(--muted)}
+.stats{display:flex;gap:26px;flex-shrink:0}
+.stats div{text-align:center;min-width:52px}
+.stats strong{display:block;font-size:22px;line-height:1.25;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stats span{font-size:11px;color:var(--muted);white-space:nowrap}
 .search{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0 14px;height:54px;box-shadow:0 1px 2px rgba(30,35,54,.04)}
 .search:focus-within{border-color:#b9c8ff;box-shadow:0 0 0 4px var(--soft)}
 .search input{-webkit-appearance:none;appearance:none;flex:1;border:0;outline:0;background:none;font-size:15px;min-width:0}
@@ -190,7 +190,7 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
 .gateerr{margin:10px 0 0;font-size:12px;color:#d5544b}
 @media(max-width:640px){
  .hero{padding:32px 0 22px;flex-direction:column;align-items:flex-start;gap:18px}
- .stats{gap:22px}.stats div{text-align:left}
+ .stats{gap:20px}.stats div{text-align:left;min-width:0}
  .top-in{height:56px}.edition{display:none}
  .grid{grid-template-columns:1fr;gap:10px}
  .card{padding:15px}.lede{font-size:13px}
