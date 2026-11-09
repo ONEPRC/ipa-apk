@@ -226,7 +226,7 @@ window.APP_DATA = {
     {
       "id": "amw4xwyc8",
       "name": "CS手游",
-      "version": "1.4",
+      "version": "1.4.1",
       "category": "游戏",
       "platform": "iOS / Android",
       "size": "1.6G",
