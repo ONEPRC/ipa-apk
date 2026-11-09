@@ -541,7 +541,15 @@ dialog::backdrop{background:rgba(22,27,40,.42);backdrop-filter:blur(2px)}
   // 分类
   var catCount = {};
   ALL.forEach(function(a){ var c = a.category || '未分类'; catCount[c] = (catCount[c]||0) + 1; });
-  var CATS = Object.keys(catCount).sort(function(a,b){ return catCount[b] - catCount[a] || a.localeCompare(b,'zh-CN'); });
+  // 分类顺序：优先按后台设置的 site.categories 顺序，没设的按数量排
+  var CATS = Object.keys(catCount).sort(function(a, b){
+    var order = SITE.categories || [];
+    var ia = order.indexOf(a), ib = order.indexOf(b);
+    if(ia === -1 && ib === -1) return catCount[b] - catCount[a] || a.localeCompare(b, 'zh-CN');
+    if(ia === -1) return 1;
+    if(ib === -1) return -1;
+    return ia - ib;
+  });
 
   function buildChips(){
     var box = $('#chips');
