@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/9 21:15:11
+// 应用数据文件 —— 由本地管理页写入 2026/11/10 19:57:52
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -7,7 +7,7 @@ window.APP_DATA = {
     "h1": "找到应用，",
     "h1accent": "一键转存。",
     "note": "链接指向夸克网盘 · 请先转存再下载",
-    "updated": "2026-11-09",
+    "updated": "2026-11-10",
     "title": "iPA&APK",
     "accent": "#100f0f",
     "badge": "LoveuT",
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-09T20:51"
     },
     "icon": "assets/logo.png",
-    "rev": 1794230111967,
+    "rev": 1794311872843,
     "categories": [
       "游戏",
       "软件",
@@ -48,7 +48,7 @@ window.APP_DATA = {
       "name": "红果漫剧",
       "version": "7.4.1",
       "category": "影音",
-      "platform": "",
+      "platform": "iOS",
       "size": "319MB",
       "icon": "https://i.urusai.cc/jBiuL.png",
       "iconText": "",
