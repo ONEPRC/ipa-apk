@@ -226,7 +226,7 @@ window.APP_DATA = {
     {
       "id": "amw4xwyc8",
       "name": "CS手游",
-      "version": "1.4.1",
+      "version": "1.4",
       "category": "游戏",
       "platform": "iOS / Android",
       "size": "1.6G",
@@ -234,7 +234,7 @@ window.APP_DATA = {
       "iconText": "",
       "url": "https://pan.quark.cn/s/2f463361b6f1",
       "pwd": "",
-      "description": "CS2手游  \n✅国外私人制作可联网加好友组队等\n✅解锁所有刀，手套，枪皮等\n✅自瞄绘制，飞天遁地，无敌免伤，自动开枪，开局敌方全员爆头等，局内无限金币，房主功能，防封版本，封设备可解除等",
+      "description": "CS2手游  5.8.76\n✅国外私人制作可联网加好友组队等\n✅解锁所有刀，手套，枪皮等\n✅自瞄绘制，飞天遁地，无敌免伤，自动开枪，开局敌方全员爆头等，局内无限金币，房主功能，防封版本，封设备可解除等",
       "date": "2026-11-06",
       "addedAt": "2026-11-06",
       "pinned": true
