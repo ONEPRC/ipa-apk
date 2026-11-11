@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/11 19:39:43
+// 应用数据文件 —— 由本地管理页写入 2026/11/11 19:41:59
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-09T20:51"
     },
     "icon": "assets/logo.png",
-    "rev": 1794397183237,
+    "rev": 1794397319444,
     "categories": [
       "游戏",
       "软件",
@@ -64,7 +64,7 @@ window.APP_DATA = {
       "version": "2.3.3",
       "category": "工具",
       "platform": "Windows",
-      "size": "",
+      "size": "2.3MB",
       "icon": "assets/Game-Cheats-Manager-20261109102648.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/ec52cadc2aee",
