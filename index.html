@@ -1063,7 +1063,6 @@ dialog::backdrop{background:rgba(22,27,40,.36);-webkit-backdrop-filter:blur(6px)
     pwInput.addEventListener('input', function(){
       if(pwInput.value.length > LEN) pwInput.value = pwInput.value.slice(0, LEN);
       syncPins();
-      if(SITE.pwdLen && pwInput.value.length >= LEN) tryUnlock();
     });
     setTimeout(function(){ pwInput.focus(); syncPins(); }, 60);
     var tryUnlock = function(){
