@@ -206,7 +206,16 @@ dialog::backdrop{background:rgba(22,27,40,.36);-webkit-backdrop-filter:blur(6px)
 .disc-list li:last-child{margin-bottom:0}
 .hint{margin-top:14px;padding:11px 13px;background:#f7f8fc;border-radius:10px;font-size:12px;line-height:1.7;color:var(--muted)}
 .gate{position:fixed;inset:0;z-index:100;background:rgba(246,247,251,.99);backdrop-filter:blur(10px);display:grid;place-items:center;padding:24px}
-.gatebox{width:min(360px,100%);background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 24px 24px;box-shadow:0 24px 60px rgba(20,26,44,.12);text-align:center}
+.pins{display:flex;justify-content:center;gap:9px;margin:18px 0 6px;cursor:text}
+.pin{width:42px;height:52px;border:1px solid var(--line);border-radius:12px;background:#fff;display:grid;place-items:center;transition:border-color .15s,box-shadow .15s}
+.pin.active{border-color:var(--blue);box-shadow:0 0 0 3px var(--soft)}
+.pin.filled{border-color:var(--blue)}
+.pin i{width:9px;height:9px;border-radius:50%;background:var(--ink);display:block;opacity:0;transition:opacity .12s}
+.pin.filled i{opacity:1}
+.pinreal{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.pins.shake{animation:pinShake .32s}
+@keyframes pinShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+.gatebox{position:relative;width:min(360px,100%);background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 24px 24px;box-shadow:0 24px 60px rgba(20,26,44,.12);text-align:center}
 .gatelock{font-size:26px;line-height:1}
 .gatebox h2{margin:12px 0 6px;font-size:18px}
 .gatesub{margin:0 0 18px;font-size:12.5px;color:var(--muted)}
@@ -431,7 +440,8 @@ dialog::backdrop{background:rgba(22,27,40,.36);-webkit-backdrop-filter:blur(6px)
     <div class="gatelock">🔒</div>
     <h2>访问需要密码</h2>
     <p class="gatesub">密码在群里，输入后即可查看全部应用</p>
-    <input id="gatepw" type="password" placeholder="请输入访问密码" autocomplete="off">
+    <div class="pins" id="gatepins"></div>
+    <input id="gatepw" class="pinreal" type="password" autocomplete="off" autocapitalize="off" spellcheck="false">
     <button id="gateok" type="button">进入</button>
     <p class="gateerr" id="gateerr" hidden>密码错误，请重试</p>
   </div>
@@ -1026,7 +1036,32 @@ dialog::backdrop{background:rgba(22,27,40,.36);-webkit-backdrop-filter:blur(6px)
     var gate = $('#gate');
     gate.hidden = false;
     var pwInput = $('#gatepw');
-    setTimeout(function(){ pwInput.focus(); }, 60);
+    var LEN = Number(SITE.pwdLen) > 0 ? Math.min(12, Number(SITE.pwdLen)) : 6;
+    var pinsBox = $('#gatepins');
+    var pinEls = [];
+    for(var pi = 0; pi < LEN; pi++){
+      var cell = document.createElement('div');
+      cell.className = 'pin';
+      cell.appendChild(document.createElement('i'));
+      pinsBox.appendChild(cell);
+      pinEls.push(cell);
+    }
+    function syncPins(){
+      var n = pwInput.value.length;
+      pinEls.forEach(function(el, i){
+        el.classList.toggle('filled', i < n);
+        el.classList.toggle('active', i === n && document.activeElement === pwInput);
+      });
+    }
+    pinsBox.addEventListener('click', function(){ pwInput.focus(); });
+    pwInput.addEventListener('focus', syncPins);
+    pwInput.addEventListener('blur', syncPins);
+    pwInput.addEventListener('input', function(){
+      if(pwInput.value.length > LEN) pwInput.value = pwInput.value.slice(0, LEN);
+      syncPins();
+      if(SITE.pwdLen && pwInput.value.length >= LEN) tryUnlock();
+    });
+    setTimeout(function(){ pwInput.focus(); syncPins(); }, 60);
     var tryUnlock = function(){
       Promise.resolve().then(function(){
         if(SITE.passwordHash) return sha256hex(pwInput.value);
@@ -1038,7 +1073,11 @@ dialog::backdrop{background:rgba(22,27,40,.36);-webkit-backdrop-filter:blur(6px)
           gate.hidden = true;
         } else {
           $('#gateerr').hidden = false;
-          pwInput.select();
+          pinsBox.classList.add('shake');
+          setTimeout(function(){ pinsBox.classList.remove('shake'); }, 340);
+          pwInput.value = '';
+          syncPins();
+          pwInput.focus();
         }
       }).catch(function(){
         $('#gateerr').textContent = '这个浏览器不支持密码校验，请换浏览器';
