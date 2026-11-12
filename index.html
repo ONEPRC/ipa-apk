@@ -34,6 +34,7 @@
   --glass:rgba(255,255,255,.34);
   --glass-line:rgba(255,255,255,.72);
   --scrim:rgba(0,0,0,0);
+  --topbar:rgba(255,255,255,.94);
   --txtsh:0 1px 3px rgba(255,255,255,.85);
   --scrim-top:rgba(255,255,255,.72);
   /* 蜂窝六边形纹理（平铺 SVG，改 opacity 调浓淡） */
@@ -65,7 +66,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 button,a{-webkit-tap-highlight-color:transparent}
 input,select,textarea{font:inherit}
 .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 24px}
-.top{position:sticky;top:0;z-index:20;background:var(--glass);
+.top{position:sticky;top:0;z-index:20;background:var(--topbar);
   border-bottom:1px solid var(--glass-line);
   box-shadow:0 1px 0 rgba(20,26,44,.04),inset 0 1px 0 rgba(255,255,255,.9)}
 .top-in{height:64px;display:flex;align-items:center;justify-content:space-between}
@@ -237,11 +238,12 @@ dialog::backdrop{background:rgba(22,27,40,.36);-webkit-backdrop-filter:blur(6px)
   --glass:rgba(8,12,18,.30);
   --glass-line:rgba(255,255,255,.14);
   --scrim:rgba(0,0,0,0);
+  --topbar:rgba(10,14,20,.92);
   --txtsh:0 1px 3px rgba(0,0,0,.55);
   --scrim-top:rgba(4,6,10,.78);
   --hexc:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill='%23ffffff' fill-opacity='0.07' fill-rule='evenodd'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/svg%3E");
 }
-[data-theme="dark"] .top{background:var(--glass);border-bottom-color:var(--glass-line);
+[data-theme="dark"] .top{background:var(--topbar);border-bottom-color:var(--glass-line);
   box-shadow:0 1px 0 rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06)}
 [data-theme="dark"] .search{background:var(--glass);border-color:var(--glass-line);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 2px 12px rgba(0,0,0,.25)}
