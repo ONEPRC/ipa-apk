@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/12 23:14:13
+// 应用数据文件 —— 由本地管理页写入 2026/11/12 23:21:02
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -15,10 +15,10 @@ window.APP_DATA = {
     "notice": {
       "show": false,
       "text": "",
-      "updated": "2026-11-09T20:51"
+      "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1794496453556,
+    "rev": 1794496862860,
     "categories": [
       "游戏",
       "软件",
@@ -26,8 +26,8 @@ window.APP_DATA = {
       "工具",
       "其他"
     ],
-    "wallDesktop": "https://kkimgs.yisou.com/ims?kt=url&at=ori&key=aHR0cHM6Ly9nZC1oYmltZy5odWFiYW4uY29tL2U2NTg5YmRjMGNjNDMzNmM4YTc0ZGVmNzM3ZTRmY2VmNTYzNGRiM2M1ZDMzYy05T0JXZklfZnc2NTh3ZWJw&sign=yx:YzjTKW56mEKIgeQ8lnsJfrresOA=&tv=0_0",
-    "wallMobile": "https://kkimgs.yisou.com/ims?kt=url&at=ori&key=aHR0cHM6Ly9nZC1oYmltZy5odWFiYW4uY29tL2U2NTg5YmRjMGNjNDMzNmM4YTc0ZGVmNzM3ZTRmY2VmNTYzNGRiM2M1ZDMzYy05T0JXZklfZnc2NTh3ZWJw&sign=yx:YzjTKW56mEKIgeQ8lnsJfrresOA=&tv=0_0"
+    "wallDesktop": "https://kkimgs.yisou.com/ims?kt=url&at=ori&key=aHR0cHM6Ly9pbWcuZXV3ZWIuY24vd3AtY29udGVudC91cGxvYWRzLzIwMTgvMDkvQ29sb3ItQnVyc3QtMy0xMDI0eDU3Ni5qcGc=&sign=yx:aIL2D8LaVYXjHO745T0KZSseQD0=&tv=0_0",
+    "wallMobile": "https://kkimgs.yisou.com/ims?kt=url&at=ori&key=aHR0cHM6Ly9pbWcuZXV3ZWIuY24vd3AtY29udGVudC91cGxvYWRzLzIwMTgvMDkvQ29sb3ItQnVyc3QtMy0xMDI0eDU3Ni5qcGc=&sign=yx:aIL2D8LaVYXjHO745T0KZSseQD0=&tv=0_0"
   },
   "apps": [
     {
