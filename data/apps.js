@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/12 23:33:57
+// 应用数据文件 —— 由本地管理页写入 2026/11/12 23:35:16
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,16 +18,14 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1794497637884,
+    "rev": 1794497716167,
     "categories": [
       "游戏",
       "软件",
       "影音",
       "工具",
       "其他"
-    ],
-    "wallDesktop": "https://kkimgs.yisou.com/ims?kt=url&at=ori&key=aHR0cHM6Ly9nZC1oYmltZy5odWFiYW4uY29tL2U2NTg5YmRjMGNjNDMzNmM4YTc0ZGVmNzM3ZTRmY2VmNTYzNGRiM2M1ZDMzYy05T0JXZklfZnc2NTh3ZWJw&sign=yx:YzjTKW56mEKIgeQ8lnsJfrresOA=&tv=0_0",
-    "wallMobile": "https://kkimgs.yisou.com/ims?kt=url&at=ori&key=aHR0cHM6Ly9nZC1oYmltZy5odWFiYW4uY29tL2U2NTg5YmRjMGNjNDMzNmM4YTc0ZGVmNzM3ZTRmY2VmNTYzNGRiM2M1ZDMzYy05T0JXZklfZnc2NTh3ZWJw&sign=yx:YzjTKW56mEKIgeQ8lnsJfrresOA=&tv=0_0"
+    ]
   },
   "apps": [
     {
