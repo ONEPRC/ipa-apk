@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/15 21:22:27
+// 应用数据文件 —— 由本地管理页写入 2026/11/15 21:48:51
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -7,7 +7,7 @@ window.APP_DATA = {
     "h1": "找到应用，",
     "h1accent": "一键转存。",
     "note": "链接指向夸克网盘 · 请先转存再下载",
-    "updated": "2026-11-12",
+    "updated": "2026-11-15",
     "title": "iPA&APK",
     "accent": "#100f0f",
     "badge": "LoveuT",
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1794748947665,
+    "rev": 1794750531174,
     "categories": [
       "游戏",
       "软件",
@@ -33,7 +33,7 @@ window.APP_DATA = {
     {
       "id": "amw9aa6ii",
       "name": "GestaltX",
-      "version": "1.02",
+      "version": "1.1.1",
       "category": "工具",
       "platform": "iOS",
       "size": "2.3MB",
