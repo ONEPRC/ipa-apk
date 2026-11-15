@@ -231,25 +231,42 @@ dialog::backdrop{background:rgba(22,27,40,.36);-webkit-backdrop-filter:blur(6px)
 .disc-list li{margin-bottom:8px}
 .disc-list li:last-child{margin-bottom:0}
 .hint{margin-top:14px;padding:11px 13px;background:#f7f8fc;border-radius:10px;font-size:12px;line-height:1.7;color:var(--muted)}
-.gate{position:fixed;inset:0;z-index:100;background:rgba(246,247,251,.99);backdrop-filter:blur(10px);display:grid;place-items:center;padding:24px}
+.gate{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:24px;
+  background:rgba(8,13,21,.42);
+  -webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%)}
+.gate[hidden]{display:none}
 .pins{display:flex;justify-content:center;gap:9px;margin:18px 0 6px;cursor:text}
-.pin{width:42px;height:52px;border:1px solid var(--line);border-radius:12px;background:#fff;display:grid;place-items:center;transition:border-color .15s,box-shadow .15s}
-.pin.active{border-color:var(--blue);box-shadow:0 0 0 3px var(--soft)}
-.pin.filled{border-color:var(--blue)}
-.pin i{width:9px;height:9px;border-radius:50%;background:var(--ink);display:block;opacity:0;transition:opacity .12s}
+.pin{width:44px;height:54px;border-radius:14px;display:grid;place-items:center;transition:border-color .15s,box-shadow .15s,background .15s;
+  background:rgb(255 255 255 / 10%);
+  border:1px solid rgb(255 255 255 / 26%);
+  box-shadow:inset 1px 1px 0 rgb(255 255 255 / 34%),0 4px 14px rgb(0 0 0 / 18%)}
+.pin.active{border-color:rgb(255 255 255 / 85%);box-shadow:0 0 0 3px rgb(255 255 255 / 16%),inset 1px 1px 0 rgb(255 255 255 / 40%)}
+.pin.filled{border-color:rgb(255 255 255 / 55%)}
+.pin i{width:9px;height:9px;border-radius:50%;background:#fff;display:block;opacity:0;transition:opacity .12s;box-shadow:0 0 10px rgb(255 255 255 / 55%)}
 .pin.filled i{opacity:1}
 .pinreal{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .pins.shake{animation:pinShake .32s}
 @keyframes pinShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
-.gatebox{position:relative;width:min(360px,100%);background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 24px 24px;box-shadow:0 24px 60px rgba(20,26,44,.12);text-align:center}
-.gatelock{font-size:26px;line-height:1}
+.gatebox{position:relative;width:min(360px,100%);border-radius:26px;padding:30px 24px 24px;text-align:center;
+  background:linear-gradient(158deg,rgb(255 255 255 / 20%) 0%,rgb(10 14 22 / 34%) 44%,rgb(10 14 22 / 26%) 100%);
+  -webkit-backdrop-filter:blur(28px) saturate(170%);backdrop-filter:blur(28px) saturate(170%);
+  box-shadow:
+    inset 1px 1px 0 rgb(255 255 255 / 45%),
+    inset -1px -1px 0 rgb(255 255 255 / 12%),
+    0 0 0 .5px rgb(255 255 255 / 20%),
+    0 30px 70px rgb(0 0 0 / 50%);
+  color:#fff;box-shadow:0 24px 60px rgba(20,26,44,.12);text-align:center}
+.gatelock{font-size:26px;line-height:1;filter:drop-shadow(0 2px 10px rgb(0 0 0 / 35%))}
 .gatebox h2{margin:12px 0 6px;font-size:18px}
-.gatesub{margin:0 0 18px;font-size:12.5px;color:var(--muted)}
+.gatesub{margin:0 0 18px;font-size:12.5px;color:rgb(255 255 255 / 68%)}
 .gatebox input{width:100%;height:44px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font-size:14px;outline:0;background:#fbfcfe;text-align:center}
 .gatebox input:focus{border-color:#b9c8ff;box-shadow:0 0 0 3px var(--soft)}
-.gatebox button{width:100%;height:44px;margin-top:10px;border-radius:10px;background:var(--blue);color:var(--onblue,#fff);font-weight:600;font-size:14px}
+.gatebox button{width:100%;height:46px;margin-top:14px;border-radius:14px;background:rgb(255 255 255 / 92%);color:#0c1420;font-size:14.5px;font-weight:650;box-shadow:inset 0 1px 0 #fff,0 8px 22px rgb(0 0 0 / 28%);transition:transform .12s,background .15s}
+.gatebox button:hover{background:#fff}
+.gatebox button:active{transform:scale(.985)}
+.gatebox button:disabled{opacity:.5}
 .gatebox button:hover{background:var(--blue-dark)}
-.gateerr{margin:10px 0 0;font-size:12px;color:#d5544b}
+.gateerr{margin:10px 0 0;font-size:12px;color:#ffb0aa}
 @media(max-width:640px){
  .hero{padding:32px 0 22px;flex-direction:column;align-items:flex-start;gap:18px}
  .stats{gap:18px}.stats div{text-align:center;min-width:0}
@@ -317,11 +334,11 @@ dialog::backdrop{background:rgba(22,27,40,.36);-webkit-backdrop-filter:blur(6px)
 [data-theme="dark"] .meta .sz{background:#12303b;color:#7fd6ef}
 [data-theme="dark"] .meta .plat{background:#3a2a12;color:#f0b96b}
 [data-theme="dark"] .code{background:#123225;color:#5fd3a4}
-[data-theme="dark"] .gatebox{background:#171c25}
-[data-theme="dark"] .gatebox input{background:#11161e;color:#e8edf6}
-[data-theme="dark"] .pin{background:#11161e;border-color:#2a3240}
-[data-theme="dark"] .pin i{background:#e8edf6}
-[data-theme="dark"] .pin.active,[data-theme="dark"] .pin.filled{border-color:#6f8dff}
+
+
+
+
+
 [data-theme="dark"] .toast{background:#e8edf6;color:#11161e}
 [data-theme="dark"] .hint{background:#151a23}
 [data-theme="dark"] .empty{color:#8d96a8}
