@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
@@ -164,7 +164,9 @@ h1 span{color:var(--blue)}
 [data-theme="dark"] .card.pinned{border-color:#33436b}
 .pinbadge{position:absolute;top:9px;right:10px;width:17px;height:17px;color:var(--blue);opacity:.85;pointer-events:none}
 .pinbadge svg{width:100%;height:100%;display:block}
-.card:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.card:focus{outline:none}
+.card{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body.kb-nav .card:focus-visible{outline:2px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px rgba(255,255,255,.18)}
 .card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(30,35,54,.07);border-color:#dde3f2}
 .c-head{display:flex;gap:12px;align-items:center}
 .icon{width:46px;height:46px;border-radius:12px;flex-shrink:0;display:grid;place-items:center;font-weight:700;font-size:18px;overflow:hidden;background:var(--soft);color:var(--blue)}
@@ -210,7 +212,7 @@ dialog{border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:0;width:
   box-shadow:0 30px 80px rgba(20,26,44,.22),inset 0 1px 0 rgba(255,255,255,.9);
   background:var(--glass);color:var(--ink);
   -webkit-backdrop-filter:saturate(180%) blur(24px);backdrop-filter:saturate(180%) blur(24px)}
-dialog::backdrop{background:rgba(22,27,40,.36);-webkit-backdrop-filter:blur(6px) saturate(120%);backdrop-filter:blur(6px) saturate(120%)}
+dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px) saturate(120%);backdrop-filter:blur(6px) saturate(120%)}
 .d-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 20px 0}
 .d-top h2{margin:0;font-size:17px;line-height:1.4;word-break:break-word}
 .d-top small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
@@ -1115,6 +1117,16 @@ dialog::backdrop{background:rgba(22,27,40,.36);-webkit-backdrop-filter:blur(6px)
   }
   document.addEventListener('pointerup', hexOff, { passive: true });
   document.addEventListener('pointercancel', hexOff, { passive: true });
+
+  // 只有键盘操作才显示焦点框（手机点击不显示）
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Tab' || e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowUp' || e.key === 'ArrowDown'){
+      document.body.classList.add('kb-nav');
+    }
+  }, true);
+  document.addEventListener('pointerdown', function(){
+    document.body.classList.remove('kb-nav');
+  }, true);
 
   // 初始化
   $('#st-total').textContent = ALL.length;
