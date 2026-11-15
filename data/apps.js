@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/15 21:48:51
+// 应用数据文件 —— 由本地管理页写入 2026/11/15 21:50:11
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1794750531174,
+    "rev": 1794750611847,
     "categories": [
       "游戏",
       "软件",
@@ -30,6 +30,22 @@ window.APP_DATA = {
     "pwdLen": 4
   },
   "apps": [
+    {
+      "id": "amw4xwyc8",
+      "name": "CS手游",
+      "version": "1.4",
+      "category": "游戏",
+      "platform": "iOS / Android",
+      "size": "1.6G",
+      "icon": "assets/CS手游-20261107141356.png",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/2f463361b6f1",
+      "pwd": "",
+      "description": "CS2手游 \n✅国外私人制作可联网加好友组队等\n✅解锁所有刀，手套，枪皮等\n✅自瞄绘制，飞天遁地，无敌免伤，自动开枪，开局敌方全员爆头等，局内无限金币，房主功能，防封版本，封设备可解除等",
+      "date": "2026-11-06",
+      "addedAt": "2026-11-06",
+      "pinned": true
+    },
     {
       "id": "amw9aa6ii",
       "name": "GestaltX",
@@ -224,22 +240,6 @@ window.APP_DATA = {
       "description": "液态Dyyy",
       "date": "2026-11-06",
       "addedAt": "2026-11-06"
-    },
-    {
-      "id": "amw4xwyc8",
-      "name": "CS手游",
-      "version": "1.4",
-      "category": "游戏",
-      "platform": "iOS / Android",
-      "size": "1.6G",
-      "icon": "assets/CS手游-20261107141356.png",
-      "iconText": "",
-      "url": "https://pan.quark.cn/s/2f463361b6f1",
-      "pwd": "",
-      "description": "CS2手游 \n✅国外私人制作可联网加好友组队等\n✅解锁所有刀，手套，枪皮等\n✅自瞄绘制，飞天遁地，无敌免伤，自动开枪，开局敌方全员爆头等，局内无限金币，房主功能，防封版本，封设备可解除等",
-      "date": "2026-11-06",
-      "addedAt": "2026-11-06",
-      "pinned": true
     },
     {
       "id": "amw50e9a0",
