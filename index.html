@@ -31,8 +31,14 @@
   --soft:#eef2ff;       /* 主色浅底 */
   --ok:#2f9e78;         /* 提取码颜色 */
   /* 玻璃磨砂：底色 / 描边 / 壁纸压暗层 */
-  --glass:rgba(255,255,255,.55);
-  --glass-line:rgba(255,255,255,.72);
+  /* —— 玻璃 —— */
+  --glass:linear-gradient(158deg,rgb(255 255 255 / 26%) 0%,rgb(255 255 255 / 11%) 44%,rgb(255 255 255 / 16%) 100%);
+  --glass-flat:rgb(255 255 255 / 12%);
+  --glass-line:rgb(255 255 255 / 22%);
+  --glass-hi:rgb(255 255 255 / 55%);
+  --glass-lo:rgb(255 255 255 / 14%);
+  --glass-shadow:0 10px 30px rgb(30 50 90 / 14%);
+  --glass-blur:blur(28px) saturate(170%);
   --glass-stroke:rgba(20,30,50,.16);
   --glass-blur:blur(28px) saturate(150%);
   --blob1:rgba(150,185,255,.55);
@@ -59,7 +65,13 @@
 .themetoggle .ic-sun{display:none}
 [data-theme="dark"] .themetoggle .ic-sun{display:block}
 [data-theme="dark"] .themetoggle .ic-moon{display:none}
-body{margin:0;background-color:var(--bg);background-image:radial-gradient(60% 50% at 85% -10%,var(--blob1),transparent 62%),radial-gradient(50% 50% at 0% 6%,var(--blob2),transparent 58%);background-repeat:no-repeat;color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased;font-synthesis:none}
+body{margin:0;background-color:var(--bg);color:var(--ink);
+  background-image:
+    radial-gradient(120% 70% at 50% 106%, rgba(255,232,196,.85) 0%, rgba(255,232,196,0) 62%),
+    radial-gradient(90% 55% at 50% 62%, rgba(255,240,214,.70) 0%, rgba(255,240,214,0) 72%),
+    radial-gradient(85% 60% at 10% 2%, rgba(168,204,238,.85) 0%, rgba(168,204,238,0) 70%),
+    linear-gradient(180deg,#dbe9f6 0%,#e8eef4 38%,#f2ecdd 64%,#e6e2d6 100%);
+  background-repeat:no-repeat;font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased;font-synthesis:none}
 /* 壁纸用固定图层，手机上 background-attachment:fixed 不生效 */
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   background-image:linear-gradient(var(--scrim),var(--scrim)),var(--wall,url("img/wall-desktop.jpg"));
@@ -111,8 +123,7 @@ h1 span{color:var(--blue)}
 .stats span{font-size:11px;color:var(--muted);white-space:nowrap}
 .search{display:flex;align-items:center;gap:10px;background:var(--glass);border:0;border-radius:16px;padding:0 14px;height:54px;
   -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
-  box-shadow:0 0 0 .5px var(--glass-stroke),0 3px 10px rgba(0,0,0,.05),0 0 24px rgba(0,0,0,.03);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,1),0 6px 20px rgba(50,70,110,.05);transition:box-shadow .18s,border-color .18s}
+  X_BROKENset 0 1px 0 rgba(255,255,255,1),0 6px 20px rgba(50,70,110,.05);transition:box-shadow .18s,border-color .18s}
 .search:focus-within{border-color:#b9c8ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 0 0 4px var(--soft),0 2px 12px rgba(30,35,54,.06)}
 .search input{-webkit-appearance:none;appearance:none;flex:1;border:0;outline:0;background:none;font-size:15px;min-width:0}
 /* 关掉浏览器自带的搜索框放大镜（手机上常见） */
@@ -127,8 +138,8 @@ h1 span{color:var(--blue)}
 #clear[hidden]{display:none}
 .toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:20px 0 0;flex-wrap:wrap}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
-.chip{padding:6px 12px;border-radius:999px;background:var(--glass);border:0;box-shadow:0 0 0 .5px var(--glass-stroke);
-  -webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);font-size:12.5px;color:var(--muted)}
+.chip{padding:6px 12px;border-radius:999px;background:var(--glass);border:0;box-shadow:inset 1px 1px 0 var(--glass-hi),0 0 0 .5px var(--glass-line);
+  -webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);font-size:12.5px;color:var(--muted)}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff;font-weight:600}
 .sort{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px}
 .sort select{border:1px solid var(--line);background:#fff;border-radius:8px;padding:5px 8px;font-size:12.5px;color:var(--ink);outline:0}
@@ -136,7 +147,12 @@ h1 span{color:var(--blue)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:14px}
 .card{position:relative;overflow:hidden;background:var(--glass);border:0;border-radius:var(--r);
   -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
-  box-shadow:0 0 0 .5px var(--glass-stroke),0 3px 10px rgba(0,0,0,.05),0 0 24px rgba(0,0,0,.03);padding:18px;display:flex;flex-direction:column;gap:12px;transition:transform .16s,box-shadow .16s,border-color .16s}
+  box-shadow:
+      inset 1px 1px 0 var(--glass-hi),
+      inset -1px -1px 0 var(--glass-lo),
+      0 0 0 .5px var(--glass-line),
+      var(--glass-shadow);
+  padding:18px;display:flex;flex-direction:column;gap:12px;transition:transform .16s,box-shadow .16s,border-color .16s}
 /* 鼠标聚光灯：六边形只在光标附近显形 */
 .card::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;z-index:0;
   background-image:var(--hexc);background-attachment:local;
@@ -251,11 +267,21 @@ dialog::backdrop{background:rgba(22,27,40,.36);-webkit-backdrop-filter:blur(6px)
 /* ==========================================================================
    ② 夜间模式（点右上角图标切换）
    ========================================================================== */
+[data-theme="dark"] body{background-image:
+    radial-gradient(120% 70% at 50% 108%, rgba(150,126,90,.30) 0%, rgba(150,126,90,0) 62%),
+    radial-gradient(90% 55% at 50% 58%, rgba(200,172,126,.13) 0%, rgba(200,172,126,0) 70%),
+    radial-gradient(80% 60% at 12% 4%, rgba(120,160,210,.55) 0%, rgba(120,160,210,0) 68%),
+    radial-gradient(90% 70% at 92% 18%, rgba(70,110,170,.45) 0%, rgba(70,110,170,0) 70%),
+    linear-gradient(180deg,#1b2634 0%,#28333f 40%,#4a473f 64%,#12161c 100%)}
 [data-theme="dark"]{
-  --bg:#0f131a; --card:#171c25; --ink:#e8edf6; --muted:#8d96a8; --line:#242b37;
+  --bg:#0f131a; --card:#171c25; --ink:#e8edf6; --muted:#a9b3c4; --line:#242b37;
   --blue:#6f8dff; --blue-dark:#5a79f2; --soft:#1d2740; --ok:#43c08f;
-  --glass:rgba(18,22,30,.52);
-  --glass-line:rgba(255,255,255,.14);
+  --glass:linear-gradient(158deg,rgb(255 255 255 / 16%) 0%,rgb(8 12 20 / 34%) 42%,rgb(10 14 22 / 26%) 100%);
+  --glass-flat:rgb(10 14 22 / 26%);
+  --glass-line:rgb(255 255 255 / 16%);
+  --glass-hi:rgb(255 255 255 / 38%);
+  --glass-lo:rgb(255 255 255 / 10%);
+  --glass-shadow:0 12px 34px rgb(0 0 0 / 42%);
   --glass-stroke:rgba(255,255,255,.16);
   --glass-blur:blur(28px) saturate(150%);
   --blob1:rgba(70,110,255,.28);
@@ -271,6 +297,9 @@ dialog::backdrop{background:rgba(22,27,40,.36);-webkit-backdrop-filter:blur(6px)
 [data-theme="dark"] .search{background:var(--glass);border-color:var(--glass-line);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 2px 12px rgba(0,0,0,.25)}
 [data-theme="dark"] .card{background:var(--glass)}
+/* card-ink-shadow */
+[data-theme="dark"] .card .name,[data-theme="dark"] .card .lede,[data-theme="dark"] .card .meta,
+[data-theme="dark"] .card .cat,[data-theme="dark"] .card .desc{text-shadow:0 1px 8px rgb(0 0 0 / 45%)}
 [data-theme="dark"] .edition{color:#e9eef7}[data-theme="dark"] .lede,[data-theme="dark"] .resultline,[data-theme="dark"] .sort,[data-theme="dark"] .foot{color:#e9eef7}
 [data-theme="dark"] .chip{background:#1b212c;border-color:#2a3240;color:#c3cad8}
 [data-theme="dark"] .chip[aria-pressed="true"]{background:#e8edf6;border-color:#e8edf6;color:#11161e}
