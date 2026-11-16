@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/15 21:58:08
+// 应用数据文件 —— 由本地管理页写入 2026/11/16 23:35:37
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -7,7 +7,7 @@ window.APP_DATA = {
     "h1": "找到应用，",
     "h1accent": "一键转存。",
     "note": "链接指向夸克网盘 · 请先转存再下载",
-    "updated": "2026-11-15",
+    "updated": "2026-11-16",
     "title": "iPA&APK",
     "accent": "#100f0f",
     "pageSize": 10,
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1794751088731,
+    "rev": 1794843337234,
     "categories": [
       "游戏",
       "软件",
@@ -30,6 +30,21 @@ window.APP_DATA = {
     "badge": "QQ：897763598"
   },
   "apps": [
+    {
+      "id": "amwjfdq5t",
+      "name": "WX液态插件2.0",
+      "version": "",
+      "category": "插件",
+      "platform": "iOS",
+      "size": "",
+      "icon": "",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/189e28ec218c",
+      "pwd": "",
+      "description": "WX美化插件",
+      "date": "2026-11-16",
+      "addedAt": "2026-11-16T23:35"
+    },
     {
       "id": "amw4xwyc8",
       "name": "CS手游",
