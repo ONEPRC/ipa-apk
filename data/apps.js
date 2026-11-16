@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/16 23:35:37
+// 应用数据文件 —— 由本地管理页写入 2026/11/16 23:35:58
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1794843337234,
+    "rev": 1794843358692,
     "categories": [
       "游戏",
       "软件",
@@ -32,7 +32,7 @@ window.APP_DATA = {
   "apps": [
     {
       "id": "amwjfdq5t",
-      "name": "WX液态插件2.0",
+      "name": "WCG",
       "version": "",
       "category": "插件",
       "platform": "iOS",
@@ -58,8 +58,7 @@ window.APP_DATA = {
       "pwd": "",
       "description": "CS2手游 \n✅国外私人制作可联网加好友组队等\n✅解锁所有刀，手套，枪皮等\n✅自瞄绘制，飞天遁地，无敌免伤，自动开枪，开局敌方全员爆头等，局内无限金币，房主功能，防封版本，封设备可解除等",
       "date": "2026-11-06",
-      "addedAt": "2026-11-06",
-      "pinned": true
+      "addedAt": "2026-11-06"
     },
     {
       "id": "amw9aa6ii",
