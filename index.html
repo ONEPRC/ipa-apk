@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
@@ -143,7 +143,7 @@ h1 span{color:var(--blue)}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff;font-weight:600}
 .sort{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px}
 .sort select{border:1px solid var(--line);background:#fff;border-radius:8px;padding:5px 8px;font-size:12.5px;color:var(--ink);outline:0}
-.resultline{display:flex;justify-content:space-between;gap:12px;margin:16px 0 12px;font-size:12.5px;color:var(--muted)}
+.resultline{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:16px 0 12px;font-size:12.5px;color:var(--muted)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:14px}
 .card{position:relative;overflow:hidden;cursor:pointer;background:var(--glass);border:0;border-radius:var(--r);
   -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
@@ -272,7 +272,8 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
 .gateerr{margin:10px 0 0;font-size:12px;color:#c0392b}
 @media(max-width:640px){
  .hero{padding:32px 0 22px;flex-direction:column;align-items:flex-start;gap:18px}
- .stats{gap:18px}.stats div{text-align:center;min-width:0}
+ .stats{gap:12px;width:100%;justify-content:space-between}.stats div{text-align:center;min-width:0;flex:1}
+ 
  .top-in{height:56px}.edition{display:none}
  .grid{grid-template-columns:1fr;gap:10px}
  .card{padding:15px}.lede{font-size:13px}
@@ -416,13 +417,6 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
 
   <div class="toolbar">
     <div class="chips" id="chips" role="group" aria-label="按分类筛选"></div>
-    <label class="sort">排序
-      <select id="sort" aria-label="排序方式">
-        <option value="default">收录顺序</option>
-        <option value="name">名称 A–Z</option>
-        <option value="date">最近更新</option>
-      </select>
-    </label>
   </div>
 
   <section class="notice" id="notice" hidden>
@@ -445,7 +439,13 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
     <img class="notice-img" id="notice-img" alt="" hidden>
   </section>
 
-  <div class="resultline"><span id="rc"></span></div>
+  <div class="resultline"><span id="rc"></span><label class="sort">排序
+      <select id="sort" aria-label="排序方式">
+        <option value="default">收录顺序</option>
+        <option value="name">名称 A–Z</option>
+        <option value="date">最近更新</option>
+      </select>
+    </label></div>
   <div id="grid" class="grid"></div>
   <nav id="pager" class="pager" aria-label="分页"></nav>
 </main>
