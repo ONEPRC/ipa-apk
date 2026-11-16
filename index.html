@@ -663,6 +663,7 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
       ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
   }
   // 前台只显示日期，不显示几点几分
+  function latestOf(a){ return String((a && (a.updatedAt || a.addedAt || a.date)) || ''); }
   function fmtD(v){
     var s = fmtDT(v);
     return s ? s.split(' ')[0] : '';
@@ -793,8 +794,10 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
     if(a.platform) bits.push(a.platform);
     if(a.version) bits.push('v' + a.version);
     if(a.size) bits.push(a.size);
-    var when = fmtD(a.addedAt) || fmtD(a.date);
-    if(when) bits.push('收录 ' + when);
+    var added = fmtD(a.addedAt) || fmtD(a.date);
+    var upd = a.updatedAt ? fmtD(a.updatedAt) : '';
+    if(upd) bits.push('更新 ' + upd);
+    else if(added) bits.push('收录 ' + added);
     $('#d-sub').textContent = bits.join(' · ');
     $('#d-desc').textContent = a.description || '暂无简介。';
     $('#d-url').value = a.url || '（未填写链接）';
@@ -916,7 +919,7 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
         return nameKey(a.name).localeCompare(nameKey(b.name), 'zh-CN', { numeric: true, sensitivity: 'base' }) || a.index - b.index;
       });
     } else if(state.sort === 'date'){
-      list = list.slice().sort(function(a,b){ return String(b.date||'').localeCompare(String(a.date||'')); });
+      list = list.slice().sort(function(a,b){ return latestOf(b).localeCompare(latestOf(a)); });
     }
     // 置顶的永远排最前，其余保持当前排序
     var pinned = [], rest = [];
@@ -1135,7 +1138,7 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
   (function(){
     var d = new Date(), p = function(n){ return ('0' + n).slice(-2); };
     var key = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
-    var n = ALL.filter(function(a){ return String(a.addedAt || a.date || '').slice(0, 10) === key; }).length;
+    var n = ALL.filter(function(a){ return latestOf(a).slice(0, 10) === key; }).length;
     if(n > 0){ $('#st-today').textContent = n; $('#st-today-wrap').hidden = false; }
   })();
   buildChips();
