@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/16 23:45:37
+// 应用数据文件 —— 由本地管理页写入 2026/11/16 23:45:50
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1794843937769,
+    "rev": 1794843950560,
     "categories": [
       "游戏",
       "软件",
@@ -48,7 +48,7 @@ window.APP_DATA = {
     {
       "id": "amw4xwyc8",
       "name": "CS手游",
-      "version": "1.4.2",
+      "version": "1.4.1",
       "category": "游戏",
       "platform": "iOS / Android",
       "size": "1.6G",
