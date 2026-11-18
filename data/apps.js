@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/18 19:02:23
+// 应用数据文件 —— 由本地管理页写入 2026/11/18 19:02:49
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1794999743196,
+    "rev": 1794999769975,
     "categories": [
       "游戏",
       "软件",
@@ -48,7 +48,7 @@ window.APP_DATA = {
     {
       "id": "amwjfdq5t",
       "name": "WCG",
-      "version": "",
+      "version": "4.3.6",
       "category": "插件",
       "platform": "iOS",
       "size": "",
@@ -58,7 +58,8 @@ window.APP_DATA = {
       "pwd": "",
       "description": "WX美化插件",
       "date": "2026-11-16",
-      "addedAt": "2026-11-16T23:35"
+      "addedAt": "2026-11-16T23:35",
+      "updatedAt": "2026-11-18T19:02"
     },
     {
       "id": "amw4xwyc8",
