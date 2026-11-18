@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/18 19:17:43
+// 应用数据文件 —— 由本地管理页写入 2026/11/18 19:19:43
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1795000663399,
+    "rev": 1795000783607,
     "categories": [
       "游戏",
       "软件",
@@ -112,7 +112,7 @@ window.APP_DATA = {
       "id": "amw9aa6ii",
       "name": "GestaltX",
       "version": "1.1.1",
-      "category": "工具",
+      "category": "软件",
       "platform": "iOS",
       "size": "2.3MB",
       "icon": "",
@@ -121,7 +121,8 @@ window.APP_DATA = {
       "pwd": "",
       "description": "修复预设停用逻辑：原本不存在的字段会被删除，原本存在的字段恢复其原始值和类型，不再统一写入 0\n• 首次没有备份时，会自动创建备份，并保留修改前的字段状态，重新打开 App 后仍可还原。\n• 每个预设新增“还原”按钮，支持单独还原该项，保留其他尚未应用的修改。\n• 新增“移除新增字段”功能，用于清理确认是后来添加的字段。\n• 调整 NeoSpring 的加载和触发时机，修正回到前台时提前关闭注销页面的问题。\n\n支持 iOS / iPadOS 27.x；iOS / iPadOS 26.x 不支持本机 MobileGestalt 访问。签名至少需要一个可用的 App Group。",
       "date": "2026-11-09",
-      "addedAt": "2026-11-09T21:15"
+      "addedAt": "2026-11-09T21:15",
+      "updatedAt": "2026-11-18T19:19"
     },
     {
       "id": "amw94dx4m",
@@ -157,7 +158,7 @@ window.APP_DATA = {
       "id": "amw944ef2",
       "name": "汽水音乐",
       "version": "20.4.0",
-      "category": "影音",
+      "category": "软件",
       "platform": "iOS",
       "size": "197.2MB",
       "icon": "https://i.urusai.cc/Da0ug.png",
@@ -166,7 +167,8 @@ window.APP_DATA = {
       "pwd": "",
       "description": "秒过激励式视频。",
       "date": "2026-11-09",
-      "addedAt": "2026-11-09T18:22"
+      "addedAt": "2026-11-09T18:22",
+      "updatedAt": "2026-11-18T19:19"
     },
     {
       "id": "amw7x4xfq",
