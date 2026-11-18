@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/18 19:02:49
+// 应用数据文件 —— 由本地管理页写入 2026/11/18 19:09:24
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1794999769975,
+    "rev": 1795000164325,
     "categories": [
       "游戏",
       "软件",
@@ -30,6 +30,21 @@ window.APP_DATA = {
     "badge": "QQ：897763598"
   },
   "apps": [
+    {
+      "id": "amwm0r2pm",
+      "name": "WQFlies",
+      "version": "0.9.18",
+      "category": "软件",
+      "platform": "iOS",
+      "size": "2MB",
+      "icon": "",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/b93cd32d202e",
+      "pwd": "",
+      "description": "新UI\n支持iOS26～iOS27.3Beta1\n适用于iOS26和iO27的文件浏览器、应用程序数据管理器和缓存清理器。\n证书需要有 App Groups 权限，才能使用。",
+      "date": "2026-11-18",
+      "addedAt": "2026-11-18T19:09"
+    },
     {
       "id": "amwm0i1rp",
       "name": "抖音助手",
