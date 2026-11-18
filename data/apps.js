@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/16 23:45:50
+// 应用数据文件 —— 由本地管理页写入 2026/11/18 19:02:23
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -7,7 +7,7 @@ window.APP_DATA = {
     "h1": "找到应用，",
     "h1accent": "一键转存。",
     "note": "链接指向夸克网盘 · 请先转存再下载",
-    "updated": "2026-11-16",
+    "updated": "2026-11-18",
     "title": "iPA&APK",
     "accent": "#100f0f",
     "pageSize": 10,
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1794843950560,
+    "rev": 1794999743196,
     "categories": [
       "游戏",
       "软件",
@@ -30,6 +30,21 @@ window.APP_DATA = {
     "badge": "QQ：897763598"
   },
   "apps": [
+    {
+      "id": "amwm0i1rp",
+      "name": "抖音助手",
+      "version": "2.2.7",
+      "category": "插件",
+      "platform": "iOS",
+      "size": "",
+      "icon": "",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/f27b85c756ee",
+      "pwd": "",
+      "description": "dy插件",
+      "date": "2026-11-18",
+      "addedAt": "2026-11-18T19:02"
+    },
     {
       "id": "amwjfdq5t",
       "name": "WCG",
