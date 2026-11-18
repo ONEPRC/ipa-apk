@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/18 19:19:43
+// 应用数据文件 —— 由本地管理页写入 2026/11/18 19:19:52
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1795000783607,
+    "rev": 1795000792401,
     "categories": [
       "游戏",
       "软件",
@@ -279,7 +279,7 @@ window.APP_DATA = {
       "id": "amw53e8ge",
       "name": "Folia",
       "version": "2.24",
-      "category": "影音",
+      "category": "软件",
       "platform": "iOS / Android / Windows",
       "size": "50MB",
       "icon": "assets/Folia-20261107142415.png",
@@ -288,13 +288,14 @@ window.APP_DATA = {
       "pwd": "",
       "description": "音乐播放器",
       "date": "2026-11-06",
-      "addedAt": "2026-11-06"
+      "addedAt": "2026-11-06",
+      "updatedAt": "2026-11-18T19:19"
     },
     {
       "id": "amw52cu56",
       "name": "抖音",
       "version": "41.00",
-      "category": "影音",
+      "category": "软件",
       "platform": "iOS",
       "size": "734MB",
       "icon": "assets/抖音-20261107142223.png",
@@ -303,7 +304,8 @@ window.APP_DATA = {
       "pwd": "",
       "description": "液态Dyyy",
       "date": "2026-11-06",
-      "addedAt": "2026-11-06"
+      "addedAt": "2026-11-06",
+      "updatedAt": "2026-11-18T19:19"
     },
     {
       "id": "amw50e9a0",
