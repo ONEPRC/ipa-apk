@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/18 23:14:43
+// 应用数据文件 —— 由本地管理页写入 2026/11/18 23:21:26
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1795014883717,
+    "rev": 1795015286239,
     "categories": [
       "游戏",
       "软件",
@@ -30,6 +30,22 @@ window.APP_DATA = {
     "badge": "QQ：897763598"
   },
   "apps": [
+    {
+      "id": "amwm9r6um",
+      "name": "网易云音乐",
+      "version": "9.6.20",
+      "category": "软件",
+      "platform": "iOS",
+      "size": "",
+      "icon": "https://i.urusai.cc/2ENMg.png",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/71203cb465b9",
+      "pwd": "",
+      "description": "✅解锁会员",
+      "date": "2026-11-18",
+      "expireAt": "2026-11-25",
+      "addedAt": "2026-11-18T23:21"
+    },
     {
       "id": "amwm1u529",
       "name": "OverPAKE",
