@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/18 19:39:46
+// 应用数据文件 —— 由本地管理页写入 2026/11/18 19:41:32
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1795001986947,
+    "rev": 1795002092670,
     "categories": [
       "游戏",
       "软件",
@@ -33,7 +33,7 @@ window.APP_DATA = {
     {
       "id": "amwm1u529",
       "name": "OverPAKE",
-      "version": "",
+      "version": "0.7.2",
       "category": "游戏",
       "platform": "iOS",
       "size": "",
@@ -41,9 +41,10 @@ window.APP_DATA = {
       "iconText": "",
       "url": "https://pan.quark.cn/s/45864fc5a136",
       "pwd": "",
-      "description": "",
+      "description": "Over peak •巅峰崛起~\n🔵锁定120帧•无限能量\n🔵移速 •飞行速度调节\n🔵中文•全局NoAds \n⏺无敌没写•写了会毫无意思",
       "date": "2026-11-18",
-      "addedAt": "2026-11-18T19:39"
+      "addedAt": "2026-11-18T19:39",
+      "updatedAt": "2026-11-18T19:41"
     },
     {
       "id": "amwm11rsh",
