@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/18 23:14:19
+// 应用数据文件 —— 由本地管理页写入 2026/11/18 23:14:43
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1795014859658,
+    "rev": 1795014883717,
     "categories": [
       "游戏",
       "软件",
@@ -44,9 +44,7 @@ window.APP_DATA = {
       "description": "Over peak •巅峰崛起~\n✅锁定120帧•无限能量\n✅移速 •飞行速度调节\n✅中文•全局NoAds \n无敌没写•写了会毫无意思",
       "date": "2026-11-18",
       "addedAt": "2026-11-18T19:39",
-      "updatedAt": "2026-11-18T19:42",
-      "offline": true,
-      "pinned": true
+      "updatedAt": "2026-11-18T19:42"
     },
     {
       "id": "amwm11rsh",
