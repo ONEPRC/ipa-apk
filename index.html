@@ -533,7 +533,17 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
 
   var DATA = window.APP_DATA;
   var $ = function(s){ return document.querySelector(s); };
-  var ALL = (DATA && Array.isArray(DATA.apps) ? DATA.apps : []).filter(function(a){ return a && a.name; });
+  // 下架判定：手动下架 或 有效期已过
+  function isLive(a){
+    if(!a) return false;
+    if(a.offline) return false;
+    if(a.expireAt){
+      var end = new Date(String(a.expireAt) + 'T23:59:59');
+      if(!isNaN(end.getTime()) && Date.now() > end.getTime()) return false;
+    }
+    return true;
+  }
+  var ALL = (DATA && Array.isArray(DATA.apps) ? DATA.apps : []).filter(function(a){ return a && a.name && isLive(a); });
   var SITE = (DATA && DATA.site) || {};
   var CONFIG_PAGE = Number(SITE.pageSize) > 0 ? Number(SITE.pageSize) : 24;
   // 每页条数按当前列数补齐整行，避免最后一行空着
