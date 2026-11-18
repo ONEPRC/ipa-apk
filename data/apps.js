@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/18 19:09:24
+// 应用数据文件 —— 由本地管理页写入 2026/11/18 19:17:43
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1795000164325,
+    "rev": 1795000663399,
     "categories": [
       "游戏",
       "软件",
@@ -30,6 +30,21 @@ window.APP_DATA = {
     "badge": "QQ：897763598"
   },
   "apps": [
+    {
+      "id": "amwm11rsh",
+      "name": "DYKiller",
+      "version": "0.7.2",
+      "category": "插件",
+      "platform": "iOS",
+      "size": "4.4MB",
+      "icon": "",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/ad8e1270a7c0",
+      "pwd": "",
+      "description": "液态玻璃显示最低支持iOS26+系统！\n\nAdd:\n- 新增听抖音页面与播放控件液态玻璃\n- 新增首页双列作品流与精选频道底部拉伸\n- 新增首页双列作品流AI按钮移除\n\nFix:\n- 修复聊天顶栏玻璃显示异常与尺寸更新不及时\n- 修复聊天页液态玻璃顶栏失效",
+      "date": "2026-11-18",
+      "addedAt": "2026-11-18T19:17"
+    },
     {
       "id": "amwm0r2pm",
       "name": "WQFlies",
