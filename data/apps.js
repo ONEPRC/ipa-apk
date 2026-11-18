@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/18 19:20:30
+// 应用数据文件 —— 由本地管理页写入 2026/11/18 19:39:46
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1795000830704,
+    "rev": 1795001986947,
     "categories": [
       "游戏",
       "软件",
@@ -30,6 +30,21 @@ window.APP_DATA = {
     "badge": "QQ：897763598"
   },
   "apps": [
+    {
+      "id": "amwm1u529",
+      "name": "OverPAKE",
+      "version": "",
+      "category": "游戏",
+      "platform": "iOS",
+      "size": "",
+      "icon": "https://pic.ncsep.com/up/2026-10/2026100909463381361.webp",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/45864fc5a136",
+      "pwd": "",
+      "description": "",
+      "date": "2026-11-18",
+      "addedAt": "2026-11-18T19:39"
+    },
     {
       "id": "amwm11rsh",
       "name": "DYKiller",
