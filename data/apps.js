@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/18 23:25:02
+// 应用数据文件 —— 由本地管理页写入 2026/11/18 23:57:06
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1795015502611,
+    "rev": 1795017426580,
     "categories": [
       "游戏",
       "软件",
@@ -30,6 +30,22 @@ window.APP_DATA = {
     "badge": "QQ：897763598"
   },
   "apps": [
+    {
+      "id": "amwmb12cn",
+      "name": "红果短剧",
+      "version": "7.0.9",
+      "category": "软件",
+      "platform": "iOS",
+      "size": "220MB",
+      "icon": "https://i.urusai.cc/cUPA0.png",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/c0c1778c7118",
+      "pwd": "",
+      "description": "✅解锁会员",
+      "date": "2026-11-18",
+      "expireAt": "2026-11-25",
+      "addedAt": "2026-11-18T23:57"
+    },
     {
       "id": "amwm9r6um",
       "name": "网易云音乐",
