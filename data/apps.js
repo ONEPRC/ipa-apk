@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/19 10:48:20
+// 应用数据文件 —— 由本地管理页写入 2026/11/19 12:58:41
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1795056500729,
+    "rev": 1795064321996,
     "categories": [
       "游戏",
       "软件",
@@ -286,7 +286,7 @@ window.APP_DATA = {
       "name": "GTAV",
       "version": "",
       "category": "游戏",
-      "platform": "iOS",
+      "platform": "iOS / Android",
       "size": "20G",
       "icon": "assets/GTAV-20261107142147.png",
       "iconText": "",
@@ -294,7 +294,8 @@ window.APP_DATA = {
       "pwd": "",
       "description": "✅支持中文剧情模式，在线联机等\n✅优化增加在线下载等，资源包下载\n✅在线Mod下载加载\n✅根据kevinerikjs开源制作优化\n✅内置所有作弊功能，无敌秒杀刷车武器都有\n✅里面包含所有GTA所有模组文件，内置所有在线存档，剧情模式等存档进度随意调",
       "date": "2026-11-07",
-      "addedAt": "2026-11-07"
+      "addedAt": "2026-11-07",
+      "updatedAt": "2026-11-19T12:58"
     },
     {
       "id": "amw563sof",
