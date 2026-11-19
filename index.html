@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
@@ -249,7 +249,9 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
 .pin.filled{border-color:rgba(59,108,246,.35)}
 .pin i{width:9px;height:9px;border-radius:50%;background:#16202c;display:block;opacity:0;transition:opacity .12s}
 .pin.filled i{opacity:1}
-.pinreal{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.pinreal{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;border:0;background:transparent;
+  opacity:0;font-size:16px;color:transparent;caret-color:transparent;cursor:text}
+.pins{position:relative}
 .pins.shake{animation:pinShake .32s}
 @keyframes pinShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
 .gatebox{position:relative;width:min(360px,100%);border-radius:26px;padding:30px 24px 24px;text-align:center;
@@ -273,6 +275,9 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
 .gatebox button:hover{background:var(--blue-dark)}
 .gateerr{margin:10px 0 0;font-size:12px;color:#c0392b}
 @media(max-width:640px){
+ /* 手机：卡片模糊减半，避免滚动掉帧 */
+ .card{--glass-blur:blur(14px) saturate(160%)}
+ .chip{-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
  .hero{padding:32px 0 22px;flex-direction:column;align-items:flex-start;gap:18px}
  .stats{gap:12px;width:100%;justify-content:space-between}.stats div{text-align:center;min-width:0;flex:1}
  
@@ -521,8 +526,9 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
     <div class="gatelock">🔒</div>
     <h2>访问需要密码</h2>
     <p class="gatesub">密码在群里，输入后即可查看全部应用</p>
-    <div class="pins" id="gatepins"></div>
-    <input id="gatepw" class="pinreal" type="password" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <div class="pins" id="gatepins">
+      <input id="gatepw" class="pinreal" type="password" autocomplete="off" autocapitalize="off" spellcheck="false">
+    </div>
     <button id="gateok" type="button">进入</button>
     <p class="gateerr" id="gateerr" hidden>密码错误，请重试</p>
   </div>
@@ -921,7 +927,14 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
                   ['然','R'],['撒','S'],['塌','T'],['挖','W'],['昔','X'],['压','Y'],['匝','Z']];
   var PY_COL = null;
   try { PY_COL = new Intl.Collator('zh-Hans-CN', { sensitivity: 'base' }); } catch(e) {}
-  function nameMeta(s){
+  // 平台名统一大小写（Macos / iOS / Android / Windows）
+  function fixPlat(s){
+    return String(s || '')
+      .replace(/\bmacos\b/gi, 'Macos')
+      .replace(/\bios\b/gi, 'iOS')
+      .replace(/\bandroid\b/gi, 'Android')
+      .replace(/\bwindows\b/gi, 'Windows');
+  }  function nameMeta(s){
     var t = String(s || '').trim();
     var ch = t ? Array.from(t)[0] : '';
     var out = { letter: '#', ascii: false, rest: t.toLowerCase() };
@@ -1192,7 +1205,7 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
       var cell = document.createElement('div');
       cell.className = 'pin';
       cell.appendChild(document.createElement('i'));
-      pinsBox.appendChild(cell);
+      pinsBox.insertBefore(cell, pwInput);
       pinEls.push(cell);
     }
     function syncPins(){
