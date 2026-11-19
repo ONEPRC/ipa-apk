@@ -132,8 +132,7 @@ h1 span{color:var(--blue)}
   box-shadow:
       inset 1px 1px 0 var(--glass-hi),
       inset -1px -1px 0 var(--glass-lo),
-      0 0 0 .5px var(--glass-line),
-      var(--glass-shadow);
+      0 0 0 .5px var(--glass-line);
   padding:18px;display:flex;flex-direction:column;gap:12px;transition:transform .16s,box-shadow .16s,border-color .16s}
 /* 卡片子元素提到上层（原来的蜂窝聚光灯已移除：会触发整卡重绘，产生糊边阴影） */
 .card>*{position:relative;z-index:1}
@@ -144,7 +143,10 @@ h1 span{color:var(--blue)}
 .card:focus{outline:none}
 .card{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 body.kb-nav .card:focus-visible{outline:2px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px rgba(255,255,255,.18)}
-.card:hover{box-shadow:0 12px 30px rgba(30,35,54,.10);border-color:#dde3f2}
+.card:hover{box-shadow:
+      inset 1px 1px 0 var(--glass-hi),
+      inset -1px -1px 0 var(--glass-lo),
+      0 0 0 1px #b9c8ff}
 .c-head{display:flex;gap:12px;align-items:center}
 .icon{width:46px;height:46px;border-radius:12px;flex-shrink:0;display:grid;place-items:center;font-weight:700;font-size:18px;overflow:hidden;background:var(--soft);color:var(--blue)}
 .icon img{width:100%;height:100%;object-fit:cover;display:block}
