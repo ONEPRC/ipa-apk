@@ -69,7 +69,6 @@
   if(SITE.h1) $('#h1a').textContent = SITE.h1;
   if(SITE.h1accent) $('#h1b').textContent = SITE.h1accent;
   if(SITE.note) $('#foot-note').textContent = SITE.note;
-  if(SITE.badge) $('#badge').textContent = SITE.badge;
 
   // 站点图标：同时用作左上角 Logo 和浏览器标签页图标
   // 支持完整网址，也支持上传到 assets/ 后的相对路径
