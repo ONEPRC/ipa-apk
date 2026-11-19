@@ -75,7 +75,8 @@ main.wrap{flex:1 0 auto;width:100%}
 .mark i{background:#fff;border-radius:1.5px}
 .mark.has-img{display:block;background:none;box-shadow:none;overflow:hidden}
 .mark.has-img img{width:100%;height:100%;object-fit:cover;border-radius:9px;display:block}
-.nav{display:flex;align-items:center;gap:16px;font-size:13px;color:var(--muted);margin-left:auto}
+.nav{display:flex;align-items:center;gap:16px;font-size:13px;color:var(--muted)}
+.top-in .nav{margin-left:auto}
 .hero{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;padding:52px 0 28px}
 /* 公告栏 */
 .notice{margin:0 0 14px;display:flex;gap:14px;align-items:flex-start;padding:13px 16px 13px 14px;border-radius:var(--r);background:var(--card);border:1px solid var(--line);border-left:3px solid var(--blue)}
@@ -134,12 +135,7 @@ h1 span{color:var(--blue)}
       0 0 0 .5px var(--glass-line),
       var(--glass-shadow);
   padding:18px;display:flex;flex-direction:column;gap:12px;transition:transform .16s,box-shadow .16s,border-color .16s}
-/* 鼠标聚光灯：六边形只在光标附近显形 */
-.card::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;z-index:0;
-  background-image:var(--hexc);
-  opacity:var(--hexo,0);transition:opacity .22s ease;
-  -webkit-mask-image:radial-gradient(circle 120px at var(--mx,50%) var(--my,50%),#000 0%,rgba(0,0,0,.75) 42%,transparent 72%);
-  mask-image:radial-gradient(circle 120px at var(--mx,50%) var(--my,50%),#000 0%,rgba(0,0,0,.75) 42%,transparent 72%)}
+/* 卡片子元素提到上层（原来的蜂窝聚光灯已移除：会触发整卡重绘，产生糊边阴影） */
 .card>*{position:relative;z-index:1}
 .card.pinned{border-color:#c9d6ff}
 [data-theme="dark"] .card.pinned{border-color:#33436b}
