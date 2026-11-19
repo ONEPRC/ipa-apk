@@ -75,9 +75,7 @@ main.wrap{flex:1 0 auto;width:100%}
 .mark i{background:#fff;border-radius:1.5px}
 .mark.has-img{display:block;background:none;box-shadow:none;overflow:hidden}
 .mark.has-img img{width:100%;height:100%;object-fit:cover;border-radius:9px;display:block}
-.nav{display:flex;align-items:center;gap:16px;font-size:13px;color:var(--muted)}
-.divider{width:1px;height:14px;background:var(--line)}
-.edition{font-size:11px;letter-spacing:.14em;color:#c2c8d6}
+.nav{display:flex;align-items:center;gap:16px;font-size:13px;color:var(--muted);margin-left:auto}
 .hero{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;padding:52px 0 28px}
 /* 公告栏 */
 .notice{margin:0 0 14px;display:flex;gap:14px;align-items:flex-start;padding:13px 16px 13px 14px;border-radius:var(--r);background:var(--card);border:1px solid var(--line);border-left:3px solid var(--blue)}
@@ -262,7 +260,7 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
  .hero{padding:32px 0 22px;flex-direction:column;align-items:flex-start;gap:18px}
  .stats{gap:12px;width:100%;justify-content:space-between}.stats div{text-align:center;min-width:0;flex:1}
  
- .top-in{height:56px}.edition{display:none}
+ .top-in{height:56px}
  .grid{grid-template-columns:1fr;gap:10px}
  .card{padding:15px}.lede{font-size:13px}
  .resultline{margin:14px 0 10px}
@@ -309,7 +307,7 @@ html[data-theme="dark"]{background-image:
 /* card-ink-shadow */
 [data-theme="dark"] .card .name,[data-theme="dark"] .card .lede,[data-theme="dark"] .card .meta,
 [data-theme="dark"] .card .cat,[data-theme="dark"] .card .desc{text-shadow:0 1px 8px rgb(0 0 0 / 45%)}
-[data-theme="dark"] .edition{color:#e9eef7}[data-theme="dark"] .lede,[data-theme="dark"] .resultline,[data-theme="dark"] .sort,[data-theme="dark"] .foot{color:#e9eef7}
+[data-theme="dark"] .lede,[data-theme="dark"] .resultline,[data-theme="dark"] .sort,[data-theme="dark"] .foot{color:#e9eef7}
 [data-theme="dark"] .chip{background:#1b212c;border-color:#2a3240;color:#c3cad8}
 [data-theme="dark"] .chip[aria-pressed="true"]{background:#e8edf6;border-color:#e8edf6;color:#11161e}
 [data-theme="dark"] .sort select{background:#1b212c;border-color:#2a3240;color:#c3cad8}
