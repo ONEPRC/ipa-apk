@@ -915,34 +915,31 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
   }
 
   // 名称排序用的键：英文/数字开头的排前面（按字母），中文排后面（按拼音）
-  // 首字母：英文直接用，中文用中文排序规则反推拼音首字母
-  var PY_BOUND = ['阿','八','擦','搭','蛾','发','噶','哈','击','喀','拉','妈','拿','哦','啪','期','然','撒','塌','挖','昔','压','匝'];
-  var PY_LETTER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  // 首字母：英文直接用，中文按拼音分桶（配对的边界表，避免字母错位）
+  var PY_PAIRS = [['阿','A'],['八','B'],['擦','C'],['搭','D'],['蛾','E'],['发','F'],['噶','G'],['哈','H'],
+                  ['击','J'],['喀','K'],['拉','L'],['妈','M'],['拿','N'],['哦','O'],['啪','P'],['期','Q'],
+                  ['然','R'],['撒','S'],['塌','T'],['挖','W'],['昔','X'],['压','Y'],['匝','Z']];
   var PY_COL = null;
   try { PY_COL = new Intl.Collator('zh-Hans-CN', { sensitivity: 'base' }); } catch(e) {}
-  function firstLetter(s){
+  function nameMeta(s){
     var t = String(s || '').trim();
-    if(!t) return '#';
-    var ch = Array.from(t)[0];
-    if(/[0-9]/.test(ch)) return '0';
-    if(/[a-zA-Z]/.test(ch)) return ch.toUpperCase();
-    if(!PY_COL) return '#';
-    var idx = -1;
-    for(var i = 0; i < PY_BOUND.length; i++){
-      if(PY_COL.compare(ch, PY_BOUND[i]) >= 0) idx = i; else break;
+    var ch = t ? Array.from(t)[0] : '';
+    var out = { letter: '#', ascii: false, rest: t.toLowerCase() };
+    if(!ch) return out;
+    if(/[0-9]/.test(ch)){ out.letter = '0'; out.ascii = true; return out; }
+    if(/[a-zA-Z]/.test(ch)){ out.letter = ch.toUpperCase(); out.ascii = true; return out; }
+    if(!PY_COL) return out;
+    for(var i = 0; i < PY_PAIRS.length; i++){
+      if(PY_COL.compare(ch, PY_PAIRS[i][0]) >= 0) out.letter = PY_PAIRS[i][1];
+      else break;
     }
-    return idx >= 0 ? PY_LETTER[idx] : '#';
+    return out;
   }
-  // 平台名统一大小写
-  function fixPlat(s){
-    return String(s || '')
-      .replace(/\bmacos\b/gi, 'Macos')
-      .replace(/\bios\b/gi, 'iOS')
-      .replace(/\bandroid\b/gi, 'Android')
-      .replace(/\bwindows\b/gi, 'Windows');
-  }
-  function nameKey(s){
-    return firstLetter(s) + String(s || '').trim().toLowerCase();
+  function compareName(x, y){
+    var a = nameMeta(x), b = nameMeta(y);
+    if(a.letter !== b.letter) return a.letter < b.letter ? -1 : 1;
+    if(a.ascii !== b.ascii) return a.ascii ? -1 : 1;   // 同字母时英文在前，中文在后
+    return a.rest.localeCompare(b.rest, 'zh-Hans-CN', { numeric: true, sensitivity: 'base' });
   }
 
   function results(){
@@ -953,7 +950,7 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
     });
     if(state.sort === 'name'){
       list = list.slice().sort(function(a,b){
-        return nameKey(a.name).localeCompare(nameKey(b.name), 'zh-CN', { numeric: true, sensitivity: 'base' }) || a.index - b.index;
+        return compareName(a.name, b.name) || a.index - b.index;
       });
     } else if(state.sort === 'date'){
       list = list.slice().sort(function(a,b){ return latestOf(b).localeCompare(latestOf(a)); });
