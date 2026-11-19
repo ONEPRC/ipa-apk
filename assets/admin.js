@@ -106,7 +106,7 @@
   // 站点文案：在管理页直接改，不用碰 HTML
   var SITE_FIELDS = [
     ['s-title','title'], ['s-tagline','tagline'], ['s-h1','h1'], ['s-h1accent','h1accent'],
-    ['s-eyebrow','eyebrow'], ['s-badge','badge'], ['s-pagesize','pageSize'], ['s-note','note'],
+    ['s-eyebrow','eyebrow'], ['s-pagesize','pageSize'], ['s-note','note'],
     ['s-accent','accent'], ['s-icon','icon'],
     ['s-wall-desk','wallDesktop'], ['s-wall-mob','wallMobile']
   ];
