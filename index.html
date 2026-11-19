@@ -295,7 +295,7 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
 /* ==========================================================================
    ② 夜间模式（点右上角图标切换）
    ========================================================================== */
-[data-theme="dark"] html{background-image:
+html[data-theme="dark"]{background-image:
     radial-gradient(120% 70% at 50% 108%, rgba(150,126,90,.30) 0%, rgba(150,126,90,0) 62%),
     radial-gradient(90% 55% at 50% 58%, rgba(200,172,126,.13) 0%, rgba(200,172,126,0) 70%),
     radial-gradient(80% 60% at 12% 4%, rgba(120,160,210,.55) 0%, rgba(120,160,210,0) 68%),
@@ -370,6 +370,25 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
 [data-theme="dark"] .pin.filled{border-color:rgb(255 255 255 / 55%)}
 [data-theme="dark"] .gatebox button{background:rgb(255 255 255 / 92%);color:#0c1420}
 [data-theme="dark"] .gatebox button:hover{background:#fff}
+
+/* ================= 深色：纯色平底 + 实心卡片（不走玻璃） ================= */
+html[data-theme="dark"]{background-image:none !important;background-color:#0f131a}
+[data-theme="dark"] .top{background:rgba(15,19,26,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-bottom:1px solid #232a36;box-shadow:none}
+[data-theme="dark"] .search{background:#171c25;border:1px solid #242b37;
+  -webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
+[data-theme="dark"] .search:focus-within{border-color:#3b6cf6;box-shadow:0 0 0 3px rgba(59,108,246,.18)}
+[data-theme="dark"] .chip{background:#1b212c;border:1px solid #2a3240;color:#c3cad8;
+  -webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
+[data-theme="dark"] .chip[aria-pressed="true"]{background:#e8edf6;border-color:#e8edf6;color:#11161e}
+[data-theme="dark"] .card{background:#171c25;border:1px solid #242b37;
+  -webkit-backdrop-filter:none;backdrop-filter:none;
+  box-shadow:0 8px 24px rgba(0,0,0,.28)}
+[data-theme="dark"] .card:hover{border-color:#303a4c;box-shadow:0 12px 30px rgba(0,0,0,.36)}
+[data-theme="dark"] dialog{background:#171c25;border:1px solid #242b37;
+  -webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+[data-theme="dark"] .linkfield{background:#11161e;border-color:#262e3c;color:#c3cad8}
+[data-theme="dark"] .notice{background:#171c25;border-color:#242b37}
 </style>
 <script>
 (function(){
