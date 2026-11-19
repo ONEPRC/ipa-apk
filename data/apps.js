@@ -1,9 +1,9 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/19 19:38:40
+// 应用数据文件 —— 由本地管理页写入 2026/11/19 19:40:02
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
     "tagline": "搜索应用，跳转夸克网盘转存下载",
-    "eyebrow": "SEARCH · COPY · OPEN ·  QQ897763598",
+    "eyebrow": "SEARCH · COPY · OPEN",
     "h1": "找到应用，",
     "h1accent": "一键转存。",
     "note": "链接指向夸克网盘 · 请先转存再下载",
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-12T23:21"
     },
     "icon": "assets/logo.png",
-    "rev": 1795088320786,
+    "rev": 1795088402172,
     "categories": [
       "游戏",
       "软件",
@@ -26,8 +26,7 @@ window.APP_DATA = {
       "影音"
     ],
     "passwordHash": "188ee5431101abc0a8d3a7bf4e3520a3f2608b39a5c396cf1ff4b03edb0cf5e7",
-    "pwdLen": 4,
-    "badge": "QQ：897763598"
+    "pwdLen": 4
   },
   "apps": [
     {
