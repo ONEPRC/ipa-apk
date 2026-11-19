@@ -598,36 +598,7 @@
     }, 200);
   });
 
-  // 卡片上的蜂窝聚光灯：跟着鼠标走
-  var hexRaf = 0, hexTarget = null, hexLit = null;
-  document.addEventListener('pointermove', function(e){
-    var c = e.target && e.target.closest ? e.target.closest('.card') : null;
-    if(hexLit && hexLit !== c) hexLit.style.setProperty('--hexo', '0');
-    if(!c){ hexLit = null; return; }
-    hexLit = c;
-    c.style.setProperty('--hexo', '1');
-    hexTarget = { el: c, x: e.clientX, y: e.clientY };
-    if(hexRaf) return;
-    hexRaf = requestAnimationFrame(function(){
-      hexRaf = 0;
-      if(!hexTarget) return;
-      var r = hexTarget.el.getBoundingClientRect();
-      hexTarget.el.style.setProperty('--mx', (hexTarget.x - r.left) + 'px');
-      hexTarget.el.style.setProperty('--my', (hexTarget.y - r.top) + 'px');
-      hexTarget = null;
-    });
-  }, { passive: true });
 
-  // 手指松开后过一会儿淡出
-  var hexOffTimer;
-  function hexOff(){
-    clearTimeout(hexOffTimer);
-    hexOffTimer = setTimeout(function(){
-      if(hexLit){ hexLit.style.setProperty('--hexo', '0'); hexLit = null; }
-    }, 700);
-  }
-  document.addEventListener('pointerup', hexOff, { passive: true });
-  document.addEventListener('pointercancel', hexOff, { passive: true });
 
   // 只有键盘操作才显示焦点框（手机点击不显示）
   document.addEventListener('keydown', function(e){
