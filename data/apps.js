@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/20 22:14:27
+// 应用数据文件 —— 由本地管理页写入 2026/11/20 22:15:15
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795184067388,
+    "rev": 1795184115799,
     "categories": [
       "游戏",
       "应用",
@@ -146,7 +146,7 @@ window.APP_DATA = {
       "id": "amwm0r2pm",
       "name": "WQFlies",
       "version": "0.9.18",
-      "category": "",
+      "category": "应用",
       "platform": "iOS",
       "size": "2MB",
       "icon": "",
@@ -155,7 +155,8 @@ window.APP_DATA = {
       "pwd": "",
       "description": "新UI\n支持iOS26～iOS27.3Beta1\n适用于iOS26和iO27的文件浏览器、应用程序数据管理器和缓存清理器。\n证书需要有 App Groups 权限，才能使用。",
       "date": "2026-11-18",
-      "addedAt": "2026-11-18T19:09"
+      "addedAt": "2026-11-18T19:09",
+      "updatedAt": "2026-11-20T22:15"
     },
     {
       "id": "amwm0i1rp",
@@ -192,7 +193,7 @@ window.APP_DATA = {
       "id": "amw9aa6ii",
       "name": "GestaltX",
       "version": "1.1.1",
-      "category": "",
+      "category": "应用",
       "platform": "iOS",
       "size": "2.3MB",
       "icon": "",
@@ -202,13 +203,13 @@ window.APP_DATA = {
       "description": "修复预设停用逻辑：原本不存在的字段会被删除，原本存在的字段恢复其原始值和类型，不再统一写入 0\n• 首次没有备份时，会自动创建备份，并保留修改前的字段状态，重新打开 App 后仍可还原。\n• 每个预设新增“还原”按钮，支持单独还原该项，保留其他尚未应用的修改。\n• 新增“移除新增字段”功能，用于清理确认是后来添加的字段。\n• 调整 NeoSpring 的加载和触发时机，修正回到前台时提前关闭注销页面的问题。\n\n支持 iOS / iPadOS 27.x；iOS / iPadOS 26.x 不支持本机 MobileGestalt 访问。签名至少需要一个可用的 App Group。",
       "date": "2026-11-09",
       "addedAt": "2026-11-09T21:15",
-      "updatedAt": "2026-11-18T19:19"
+      "updatedAt": "2026-11-20T22:15"
     },
     {
       "id": "amw94dx4m",
       "name": "红果漫剧",
       "version": "7.4.1",
-      "category": "",
+      "category": "应用",
       "platform": "iOS",
       "size": "319MB",
       "icon": "https://i.urusai.cc/jBiuL.png",
@@ -218,13 +219,13 @@ window.APP_DATA = {
       "description": "✅抖音漫剧软件\n✅动画短剧一应俱全\n✅解锁会员功能",
       "date": "2026-11-09",
       "addedAt": "2026-11-09T18:30",
-      "updatedAt": "2026-11-18T19:20"
+      "updatedAt": "2026-11-20T22:15"
     },
     {
       "id": "amw94auxj",
       "name": "Game Cheats Manager",
       "version": "2.3.3",
-      "category": "",
+      "category": "应用",
       "platform": "Windows",
       "size": "2.3MB",
       "icon": "assets/Game-Cheats-Manager-20261109102648.png",
@@ -234,7 +235,7 @@ window.APP_DATA = {
       "description": "风灵月影修改器大全免费版",
       "date": "2026-11-09",
       "addedAt": "2026-11-09T18:27",
-      "updatedAt": "2026-11-18T19:20"
+      "updatedAt": "2026-11-20T22:14"
     },
     {
       "id": "amw944ef2",
