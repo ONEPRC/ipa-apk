@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/20 22:35:47
+// 应用数据文件 —— 由本地管理页写入 2026/11/20 22:36:01
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795185347224,
+    "rev": 1795185361088,
     "categories": [
       "游戏",
       "应用",
@@ -30,6 +30,21 @@ window.APP_DATA = {
     "pwdLen": 4
   },
   "apps": [
+    {
+      "id": "amwp30hgf",
+      "name": "1",
+      "version": "",
+      "category": "测试",
+      "platform": "Macos",
+      "size": "",
+      "icon": "",
+      "iconText": "",
+      "url": "",
+      "pwd": "",
+      "description": "",
+      "date": "2026-11-20",
+      "addedAt": "2026-11-20T22:36"
+    },
     {
       "id": "amwoyu6ot",
       "name": "屏蔽iOS更新",
