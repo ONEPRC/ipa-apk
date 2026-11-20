@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/20 22:10:12
+// 应用数据文件 —— 由本地管理页写入 2026/11/20 22:12:34
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,12 +17,14 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795183812380,
+    "rev": 1795183954349,
     "categories": [
       "游戏",
+      "应用",
+      "影音",
       "插件",
       "其他",
-      "影音"
+      "未分类"
     ],
     "passwordHash": "188ee5431101abc0a8d3a7bf4e3520a3f2608b39a5c396cf1ff4b03edb0cf5e7",
     "pwdLen": 4
@@ -80,7 +82,7 @@ window.APP_DATA = {
       "id": "amwmb12cn",
       "name": "红果短剧",
       "version": "7.0.9",
-      "category": "",
+      "category": "应用",
       "platform": "iOS",
       "size": "220MB",
       "icon": "https://i.urusai.cc/cUPA0.png",
@@ -90,7 +92,8 @@ window.APP_DATA = {
       "description": "✅解锁会员",
       "date": "2026-11-18",
       "expireAt": "2026-11-25",
-      "addedAt": "2026-11-18T23:57"
+      "addedAt": "2026-11-18T23:57",
+      "updatedAt": "2026-11-20T22:12"
     },
     {
       "id": "amwm9r6um",
