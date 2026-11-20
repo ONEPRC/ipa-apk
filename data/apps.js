@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/19 20:40:48
+// 应用数据文件 —— 由本地管理页写入 2026/11/20 20:37:49
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -12,12 +12,12 @@ window.APP_DATA = {
     "accent": "#100f0f",
     "pageSize": 10,
     "notice": {
-      "show": true,
+      "show": false,
       "text": "今日更新：",
-      "updated": "2026-11-19T20:38"
+      "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795092048111,
+    "rev": 1795178269096,
     "categories": [
       "游戏",
       "软件",
