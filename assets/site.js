@@ -202,6 +202,34 @@
     return ia - ib;
   });
 
+  // 分类胶囊：块宽收成「第一行」的宽度，整块居中；换行的第二行自然与第一行左对齐
+  function fitChips(){
+    var box = document.getElementById('chips');
+    if(!box) return;
+    box.style.width = '';
+    box.style.marginLeft = '';
+    box.style.marginRight = '';
+    var kids = box.children;
+    if(!kids.length) return;
+    var top = kids[0].offsetTop, last = kids[0];
+    for(var i = 1; i < kids.length; i++){
+      if(kids[i].offsetTop !== top) break;
+      last = kids[i];
+    }
+    var wrapped = false;
+    for(var k = 0; k < kids.length; k++){ if(kids[k].offsetTop !== top){ wrapped = true; break; } }
+    var w = last.offsetLeft + last.offsetWidth;
+    if(wrapped && w > 0){
+      box.style.width = w + 'px';
+      box.style.marginLeft = 'auto';
+      box.style.marginRight = 'auto';
+    }
+  }
+  window.addEventListener('resize', function(){
+    clearTimeout(fitChips._t);
+    fitChips._t = setTimeout(fitChips, 150);
+  });
+
   function buildChips(){
     var box = $('#chips');
     var frag = document.createDocumentFragment();
@@ -214,6 +242,7 @@
       frag.append(b);
     });
     box.replaceChildren(frag);
+    setTimeout(fitChips, 0);
   }
 
   function toast(msg){
