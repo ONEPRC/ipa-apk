@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/20 21:53:21
+// 应用数据文件 —— 由本地管理页写入 2026/11/20 21:58:22
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795182801099,
+    "rev": 1795183102918,
     "categories": [
       "游戏",
       "软件",
@@ -224,7 +224,7 @@ window.APP_DATA = {
       "id": "amw944ef2",
       "name": "汽水音乐",
       "version": "20.4.0",
-      "category": "软件",
+      "category": "影音",
       "platform": "iOS",
       "size": "197.2MB",
       "icon": "https://i.urusai.cc/Da0ug.png",
@@ -234,7 +234,7 @@ window.APP_DATA = {
       "description": "秒过激励式视频。",
       "date": "2026-11-09",
       "addedAt": "2026-11-09T18:22",
-      "updatedAt": "2026-11-18T19:19"
+      "updatedAt": "2026-11-20T21:58"
     },
     {
       "id": "amw7x4xfq",
