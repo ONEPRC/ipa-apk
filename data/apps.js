@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/20 22:12:34
+// 应用数据文件 —— 由本地管理页写入 2026/11/20 22:14:27
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,11 +17,10 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795183954349,
+    "rev": 1795184067388,
     "categories": [
       "游戏",
       "应用",
-      "影音",
       "插件",
       "其他",
       "未分类"
@@ -241,7 +240,7 @@ window.APP_DATA = {
       "id": "amw944ef2",
       "name": "汽水音乐",
       "version": "20.4.0",
-      "category": "影音",
+      "category": "应用",
       "platform": "iOS",
       "size": "197.2MB",
       "icon": "https://i.urusai.cc/Da0ug.png",
@@ -251,7 +250,7 @@ window.APP_DATA = {
       "description": "秒过激励式视频。",
       "date": "2026-11-09",
       "addedAt": "2026-11-09T18:22",
-      "updatedAt": "2026-11-20T21:58"
+      "updatedAt": "2026-11-20T22:14"
     },
     {
       "id": "amw7x4xfq",
@@ -302,7 +301,7 @@ window.APP_DATA = {
       "id": "amw6agvin",
       "name": "微信",
       "version": "8.0.76",
-      "category": "",
+      "category": "应用",
       "platform": "iOS",
       "size": "300MB",
       "icon": "assets/微信-20261107142137.png",
@@ -311,7 +310,8 @@ window.APP_DATA = {
       "pwd": "",
       "description": "✅微信全权限砸壳安装包\n✅多开版",
       "date": "2026-11-07",
-      "addedAt": "2026-11-07"
+      "addedAt": "2026-11-07",
+      "updatedAt": "2026-11-20T22:14"
     },
     {
       "id": "amw6a1m5r",
@@ -333,7 +333,7 @@ window.APP_DATA = {
       "id": "amw563sof",
       "name": "交互壁纸",
       "version": "",
-      "category": "",
+      "category": "其他",
       "platform": "iOS",
       "size": "",
       "icon": "",
@@ -343,7 +343,7 @@ window.APP_DATA = {
       "description": "交互壁纸软件+530张交互壁纸合集",
       "date": "2026-11-06",
       "addedAt": "2026-11-06",
-      "updatedAt": "2026-11-18T19:20"
+      "updatedAt": "2026-11-20T22:14"
     },
     {
       "id": "amw53xcka",
