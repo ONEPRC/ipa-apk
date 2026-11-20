@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/20 22:15:15
+// 应用数据文件 —— 由本地管理页写入 2026/11/20 22:15:46
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795184115799,
+    "rev": 1795184146197,
     "categories": [
       "游戏",
       "应用",
@@ -98,7 +98,7 @@ window.APP_DATA = {
       "id": "amwm9r6um",
       "name": "网易云音乐",
       "version": "9.6.20",
-      "category": "",
+      "category": "应用",
       "platform": "iOS",
       "size": "206MB",
       "icon": "https://kkimgs.yisou.com/ims?kt=url&at=ori&key=aHR0cDovL2ltZy5xcXpoaS5jb20vaS8yYTI3MDk4MTM2NDh4MTIxMTY1MTg2OGIyNTMuanBn&sign=yx:RDvHSryzV68MSSGylKO3QLAFnYY=&tv=0_0",
@@ -109,7 +109,7 @@ window.APP_DATA = {
       "date": "2026-11-18",
       "expireAt": "2026-11-25",
       "addedAt": "2026-11-18T23:21",
-      "updatedAt": "2026-11-19T19:58"
+      "updatedAt": "2026-11-20T22:15"
     },
     {
       "id": "amwm1u529",
@@ -365,7 +365,7 @@ window.APP_DATA = {
       "id": "amw53e8ge",
       "name": "Folia",
       "version": "2.24",
-      "category": "",
+      "category": "应用",
       "platform": "iOS / Android / Windows",
       "size": "50MB",
       "icon": "assets/Folia-20261107142415.png",
@@ -375,13 +375,13 @@ window.APP_DATA = {
       "description": "音乐播放器",
       "date": "2026-11-06",
       "addedAt": "2026-11-06",
-      "updatedAt": "2026-11-18T19:19"
+      "updatedAt": "2026-11-20T22:15"
     },
     {
       "id": "amw52cu56",
       "name": "抖音",
       "version": "41.00",
-      "category": "",
+      "category": "应用",
       "platform": "iOS",
       "size": "734MB",
       "icon": "assets/抖音-20261107142223.png",
@@ -391,7 +391,7 @@ window.APP_DATA = {
       "description": "液态Dyyy",
       "date": "2026-11-06",
       "addedAt": "2026-11-06",
-      "updatedAt": "2026-11-18T19:19"
+      "updatedAt": "2026-11-20T22:15"
     },
     {
       "id": "amw50e9a0",
