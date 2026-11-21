@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/20 23:01:27
+// 应用数据文件 —— 由本地管理页写入 2026/11/21 19:43:07
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -7,7 +7,7 @@ window.APP_DATA = {
     "h1": "找到应用，",
     "h1accent": "一键转存。",
     "note": "链接指向夸克网盘 · 请先转存再下载",
-    "updated": "2026-11-20",
+    "updated": "2026-11-21",
     "title": "IPA&APK",
     "accent": "#100f0f",
     "pageSize": 10,
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795186887664,
+    "rev": 1795261387359,
     "categories": [
       "游戏",
       "应用",
@@ -28,6 +28,21 @@ window.APP_DATA = {
     "pwdLen": 4
   },
   "apps": [
+    {
+      "id": "amwqc9zp5",
+      "name": "XP3Player",
+      "version": "1.3.11",
+      "category": "应用",
+      "platform": "iOS",
+      "size": "16.1",
+      "icon": "https://hv.z.wiki/autoupload/20241216/4yFJ/51db2858dc62bb78f8236cb4e270d919.png?type=ha",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/ae49d56710f2",
+      "pwd": "",
+      "description": "全权限砸壳\n以C++语言编写的视频播放器\n国区商店58¥\n额外说明：\n纯净无弹窗\n支持自签和巨魔",
+      "date": "2026-11-21",
+      "addedAt": "2026-11-21T19:43"
+    },
     {
       "id": "amwoyu6ot",
       "name": "屏蔽iOS更新",
