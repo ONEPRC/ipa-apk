@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/21 20:14:06
+// 应用数据文件 —— 由本地管理页写入 2026/11/21 20:31:00
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795263246209,
+    "rev": 1795264260900,
     "categories": [
       "游戏",
       "应用",
@@ -28,6 +28,21 @@ window.APP_DATA = {
     "pwdLen": 4
   },
   "apps": [
+    {
+      "id": "amwqdzksj",
+      "name": "严阵以待",
+      "version": "",
+      "category": "未分类",
+      "platform": "",
+      "size": "",
+      "icon": "https://img.3dmgame.com/uploads/images/thumbkwdfirst/20200715/1594796326_450333.jpg",
+      "iconText": "",
+      "url": "",
+      "pwd": "",
+      "description": "",
+      "date": "2026-11-21",
+      "addedAt": "2026-11-21T20:31"
+    },
     {
       "id": "amwqddtzz",
       "name": "罪恶都市",
