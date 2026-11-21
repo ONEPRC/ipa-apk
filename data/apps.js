@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/21 20:44:22
+// 应用数据文件 —— 由本地管理页写入 2026/11/21 21:05:18
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795265062511,
+    "rev": 1795266318538,
     "categories": [
       "游戏",
       "应用",
@@ -28,6 +28,22 @@ window.APP_DATA = {
     "pwdLen": 4
   },
   "apps": [
+    {
+      "id": "amwqf7omb",
+      "name": "孤胆车神",
+      "version": "6.3.0",
+      "category": "游戏",
+      "platform": "iOS",
+      "size": "1.2G",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/7f/b8/ec/7fb8ec34-923d-7513-2298-b95dd459fbd9/AppIcon-0-0-1x_U007emarketing-0-0-0-9-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/246x0w.webp",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/4c911d06f0cf",
+      "pwd": "",
+      "description": "✅砸壳破解版✅增强功能\n✅无限货币✅无限弹药\n✅无警察\n(进入游戏前请关闭网络）",
+      "date": "2026-11-21",
+      "expireAt": "2026-11-22",
+      "addedAt": "2026-11-21T21:05"
+    },
     {
       "id": "amwqee4jx",
       "name": "圣安地列斯",
