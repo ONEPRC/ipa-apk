@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/21 19:43:24
+// 应用数据文件 —— 由本地管理页写入 2026/11/21 20:01:04
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795261404696,
+    "rev": 1795262464366,
     "categories": [
       "游戏",
       "应用",
@@ -28,6 +28,21 @@ window.APP_DATA = {
     "pwdLen": 4
   },
   "apps": [
+    {
+      "id": "amwqcx2q3",
+      "name": "FilzaMod",
+      "version": "2.2",
+      "category": "应用",
+      "platform": "iOS",
+      "size": "3.2MB",
+      "icon": "https://hv.z.wiki/autoupload/20250305/P46M/a3be29565b107cc171da75dda8ebf96b.png",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/63f799c1ddca",
+      "pwd": "",
+      "description": "文件管理器",
+      "date": "2026-11-21",
+      "addedAt": "2026-11-21T20:01"
+    },
     {
       "id": "amwqc9zp5",
       "name": "XP3Player",
