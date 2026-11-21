@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/21 20:01:04
+// 应用数据文件 —— 由本地管理页写入 2026/11/21 20:14:06
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795262464366,
+    "rev": 1795263246209,
     "categories": [
       "游戏",
       "应用",
@@ -28,6 +28,21 @@ window.APP_DATA = {
     "pwdLen": 4
   },
   "apps": [
+    {
+      "id": "amwqddtzz",
+      "name": "罪恶都市",
+      "version": "1.8",
+      "category": "游戏",
+      "platform": "iOS",
+      "size": "907MB",
+      "icon": "https://i.urusai.cc/PUBmo.png",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/3d614bbe2c95",
+      "pwd": "",
+      "description": "✅人物绘制✅血量显示\n✅内存修改✅作弊码修改\n✅多种功能✅群友投稿",
+      "date": "2026-11-21",
+      "addedAt": "2026-11-21T20:14"
+    },
     {
       "id": "amwqcx2q3",
       "name": "FilzaMod",
