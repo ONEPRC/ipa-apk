@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/21 20:42:19
+// 应用数据文件 —— 由本地管理页写入 2026/11/21 20:43:07
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795264939505,
+    "rev": 1795264987513,
     "categories": [
       "游戏",
       "应用",
@@ -35,13 +35,14 @@ window.APP_DATA = {
       "category": "游戏",
       "platform": "iOS",
       "size": "1.6G",
-      "icon": "https://shouyou.3dmgame.com/android/1060.html",
+      "icon": "https://syimg.3dmgame.com/uploadimg/ico/2025/0519/1747640728872567.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/474dd75c3517",
       "pwd": "",
       "description": "✅AppStore付费游戏\n✅汉化版加作弊器\n✅无限生命无限金币\n✅无限刷武器载具等\n✅巨魔或者 证书签名安装",
       "date": "2026-11-21",
-      "addedAt": "2026-11-21T20:42"
+      "addedAt": "2026-11-21T20:42",
+      "updatedAt": "2026-11-21T20:43"
     },
     {
       "id": "amwqdzksj",
