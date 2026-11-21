@@ -208,7 +208,7 @@ dialog::backdrop{background:rgba(10,16,26,.28);-webkit-backdrop-filter:blur(6px)
 .d-body{padding:14px 20px 20px}
 .d-body p{margin:0 0 14px;font-size:13px;line-height:1.75;color:var(--muted);white-space:pre-wrap;word-break:break-word}
 .fieldlab{display:block;font-size:11px;letter-spacing:.08em;color:var(--muted);margin:0 0 6px;font-weight:600}
-.linkfield{width:100%;height:74px;resize:none;border:1px solid var(--line);border-radius:10px;padding:10px;font:12px/1.6 ui-monospace,monospace;color:#3b4256;background:#fafbfe;outline:0}
+.linkfield{width:100%;height:74px;resize:none;border:1px solid var(--line);border-radius:10px;padding:10px;font:12px/1.6 ui-monospace,monospace;color:#3b4256;background:#fafbfe;outline:0;word-break:break-all;overflow-wrap:anywhere}
 .pwdrow{display:flex;align-items:center;gap:8px;margin:12px 0 0;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
 .pwdrow b{font-family:ui-monospace,monospace;font-size:14px;color:var(--ok);background:#eefaf4;padding:3px 9px;border-radius:6px;letter-spacing:.08em}
 .d-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
