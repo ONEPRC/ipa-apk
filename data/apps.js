@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/21 21:05:18
+// 应用数据文件 —— 由本地管理页写入 2026/11/22 19:28:45
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -7,7 +7,7 @@ window.APP_DATA = {
     "h1": "找到应用，",
     "h1accent": "一键转存。",
     "note": "链接指向夸克网盘 · 请先转存再下载",
-    "updated": "2026-11-21",
+    "updated": "2026-11-22",
     "title": "IPA&APK",
     "accent": "#100f0f",
     "pageSize": 10,
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795266318538,
+    "rev": 1795346925266,
     "categories": [
       "游戏",
       "应用",
@@ -399,7 +399,7 @@ window.APP_DATA = {
     {
       "id": "amw6a1m5r",
       "name": "GTAV",
-      "version": "",
+      "version": "6.6.0",
       "category": "游戏",
       "platform": "iOS / Android",
       "size": "20G",
@@ -407,10 +407,10 @@ window.APP_DATA = {
       "iconText": "",
       "url": "https://pan.quark.cn/s/8261028e8e54",
       "pwd": "",
-      "description": "✅支持中文剧情模式，在线联机等\n✅优化增加在线下载等，资源包下载\n✅在线Mod下载加载\n✅根据kevinerikjs开源制作优化\n✅内置所有作弊功能，无敌秒杀刷车武器都有\n✅里面包含所有GTA所有模组文件，内置所有在线存档，剧情模式等存档进度随意调",
+      "description": "✅支持中文剧情模式等\n✅优化增加在线下载等，资源包下载 \n✅在线Mod下载加载\n✅内置所有作弊功能，无敌秒杀刷车武器都有\n✅里面包含所有GTA所有模组文件，内置所有在线存档，剧情模式等存档进度随意调\n✅巨魔或者 证书签名安装软件 \n✅根据kevinerikjs开源制作优化\n✅内置所有作弊功能，无敌秒杀刷车武器都有\n✅里面包含所有GTA所有模组文件，内置所有在线存档，剧情模式等存档进度随意调",
       "date": "2026-11-07",
       "addedAt": "2026-11-07",
-      "updatedAt": "2026-11-19T12:58"
+      "updatedAt": "2026-11-22T19:28"
     },
     {
       "id": "amw563sof",
