@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/23 20:32:08
+// 应用数据文件 —— 由本地管理页写入 2026/11/23 22:52:33
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795437128069,
+    "rev": 1795445553742,
     "categories": [
       "游戏",
       "应用",
@@ -28,6 +28,23 @@ window.APP_DATA = {
     "pwdLen": 4
   },
   "apps": [
+    {
+      "id": "amw4xwyc8",
+      "name": "CS手游",
+      "version": "1.4.1",
+      "category": "游戏",
+      "platform": "iOS / Android",
+      "size": "1.6G",
+      "icon": "assets/CS手游-20261107141356.png",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/2f463361b6f1",
+      "pwd": "",
+      "description": "CS2手游 \n✅国外私人制作可联网加好友组队等\n✅解锁所有刀，手套，枪皮等\n✅自瞄绘制，飞天遁地，无敌免伤，自动开枪，开局敌方全员爆头等，局内无限金币，房主功能，防封版本，封设备可解除等",
+      "date": "2026-11-06",
+      "addedAt": "2026-11-06",
+      "pinned": true,
+      "updatedAt": "2026-11-16T23:45"
+    },
     {
       "id": "amwt8wq1r",
       "name": "艾尔登法环",
@@ -171,23 +188,6 @@ window.APP_DATA = {
       "date": "2026-11-20",
       "addedAt": "2026-11-20T20:39",
       "updatedAt": "2026-11-20T21:53"
-    },
-    {
-      "id": "amw4xwyc8",
-      "name": "CS手游",
-      "version": "1.4.1",
-      "category": "游戏",
-      "platform": "iOS / Android",
-      "size": "1.6G",
-      "icon": "assets/CS手游-20261107141356.png",
-      "iconText": "",
-      "url": "https://pan.quark.cn/s/2f463361b6f1",
-      "pwd": "",
-      "description": "CS2手游 \n✅国外私人制作可联网加好友组队等\n✅解锁所有刀，手套，枪皮等\n✅自瞄绘制，飞天遁地，无敌免伤，自动开枪，开局敌方全员爆头等，局内无限金币，房主功能，防封版本，封设备可解除等",
-      "date": "2026-11-06",
-      "addedAt": "2026-11-06",
-      "pinned": true,
-      "updatedAt": "2026-11-16T23:45"
     },
     {
       "id": "amwmb12cn",
