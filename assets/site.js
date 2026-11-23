@@ -112,7 +112,7 @@
     return '<div class="card" data-open="' + a.id + '" style="background:' + color(a) + '">' +
       '<div class="art">' + bgLayer(a) + iconHTML(a) + '</div>' +
       '<div class="txt"><div class="kick">' + catOf(a) + '</div>' +
-        '<h2>' + a.name + '</h2><p>' + sub(a) + '</p>' +
+        '<h2>' + a.name + '</h2><p>' + (a.note || '') + '</p>' +
         '<div class="foot"><div class="ic">' + iconHTML(a) + '</div>' +
           '<div class="m"><b>' + a.name + '</b><span>' + (a.version ? 'v' + a.version : sub(a)) + '</span></div>' +
           '<button class="get">获取</button></div>' +
@@ -131,9 +131,9 @@
   }
   function row(a){
     return '<div class="row" data-open="' + a.id + '"><div class="ic">' + iconHTML(a) + '</div>' +
-      '<div class="tx">' +
-        '<div class="l1">' + (a.note ? a.note : '&nbsp;') + '</div>' +
-        '<div class="l2">' + a.name + '</div>' +
+      '<div class="tx' + (a.note ? ' has-note' : '') + '">' +
+        '<div class="l1">' + a.name + '</div>' +
+        (a.note ? '<div class="l2">' + a.note + '</div>' : '') +
       '</div>' +
       '<button class="btn">获取</button></div>';
   }
