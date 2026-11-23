@@ -121,11 +121,11 @@
   function featBlock(a){
     return '<div class="feat" data-open="' + a.id + '">' +
       '<div class="kick">' + (state.tab === 'games' ? '本周热玩' : '现已推出') + '</div>' +
-      '<h2>' + a.name + '</h2><p>' + sub(a) + '</p>' +
+      '<h2>' + a.name + '</h2><p class="sub1">' + (a.note || '') + '</p>' +
       '<div class="visual" style="background:' + color(a) + '">' + bgLayer(a) +
         iconHTML(a).replace('<img ', '<img class="big" ').replace('<span>', '<span class="big">') +
         '<div class="overlay"><div class="ic">' + iconHTML(a) + '</div>' +
-          '<div class="m"><b>' + a.name + '</b><span>' + sub(a) + '</span></div>' +
+          '<div class="m"><b>' + a.name + '</b><span>' + (a.note || '') + '</span></div>' +
           '<button class="get">获取</button></div>' +
       '</div></div>';
   }
