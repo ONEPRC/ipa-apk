@@ -362,7 +362,8 @@ body{-webkit-text-size-adjust:100%}
 .tabbar{opacity:0;transition:opacity .26s ease}
 .tabbar.ready{opacity:1}
 
-/* 列表行两行结构 */
+
+/* 列表行：名称 + 一句话（没填一句话时名称与获取按钮居中对齐） */
 .row .tx{display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:0;flex:1}
-.row .tx .l1{font-size:13px;color:var(--sub);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.row .tx .l2{font-size:16px;color:var(--ink);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .tx .l1{font-size:16px;color:var(--ink);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .tx .l2{font-size:13px;color:var(--sub);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
