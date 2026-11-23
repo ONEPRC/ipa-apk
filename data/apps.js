@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/22 19:28:45
+// 应用数据文件 —— 由本地管理页写入 2026/11/23 19:35:54
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -7,7 +7,7 @@ window.APP_DATA = {
     "h1": "找到应用，",
     "h1accent": "一键转存。",
     "note": "链接指向夸克网盘 · 请先转存再下载",
-    "updated": "2026-11-22",
+    "updated": "2026-11-23",
     "title": "IPA&APK",
     "accent": "#100f0f",
     "pageSize": 10,
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795346925266,
+    "rev": 1795433754613,
     "categories": [
       "游戏",
       "应用",
@@ -28,6 +28,21 @@ window.APP_DATA = {
     "pwdLen": 4
   },
   "apps": [
+    {
+      "id": "amwt6wf4e",
+      "name": "dsh-purge",
+      "version": "1.7.20",
+      "category": "插件",
+      "platform": "Windows",
+      "size": "",
+      "icon": "",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/31fe1b0c5f0e",
+      "pwd": "",
+      "description": "让 AI 安装，把下面这句话发给能操作本机的 Agent：\n帮我把 https://github.com/kingcharleslzy-ai/dsh-purge 的最新稳定版装到我正在用的 DSH。先读仓库 AGENTS.md 的安装章节，检查有没有旧版，有就保留设置原地迁移。装好告诉我实际版本和 profile，重启由我自己操作。",
+      "date": "2026-11-23",
+      "addedAt": "2026-11-23T19:35"
+    },
     {
       "id": "amwqf7omb",
       "name": "孤胆车神",
