@@ -175,7 +175,11 @@
     }
 
     var HOME_MAX = 10;
-    var feats = list.slice(0, Math.min(1, list.length)), rest = list.slice(feats.length, feats.length + HOME_MAX);
+    // 顶部「本周热玩」：有置顶就只显示置顶（多个可横滑翻页）；没有置顶就显示最近更新的 1 个
+    var pinned = list.filter(function(a){ return a.pinned; });
+    var feats = pinned.length ? pinned : list.slice(0, 1);
+    // 下面列表：置顶的不重复出现，最多 10 行
+    var rest = list.filter(function(a){ return feats.indexOf(a) === -1; }).slice(0, HOME_MAX);
     var secTitle = state.tab === 'games' ? (list.length + ' 款近期佳作') : (list.length + ' 款大家都在用');
     stage.innerHTML =
       '<div class="hscroll">' + feats.map(featBlock).join('') + '</div>' +
