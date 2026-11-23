@@ -367,3 +367,26 @@ body{-webkit-text-size-adjust:100%}
 .row .tx{display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:0;flex:1}
 .row .tx .l1{font-size:16px;color:var(--ink);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .row .tx .l2{font-size:13px;color:var(--sub);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* 电脑端密码门：去掉全屏实时模糊，避免逐帧重绘导致闪烁 */
+.gate2{contain:layout paint}
+@media (min-width:900px){
+  .gate2{
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    background:rgba(10,10,12,.62) !important;
+  }
+  .gate2 .k{
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    background:rgba(255,255,255,.16) !important;
+  }
+}
+
+/* 电脑端密码门垂直居中、遮罩更实 */
+@media (min-width:900px){
+  .gate2{align-items:center !important;padding:0 !important}
+  .gate2 .g2-in{min-height:auto !important}
+  .gate2 .g2-foot{margin-top:30px !important}
+  .gate2 .g2-pad{margin-top:6px !important}
+}
