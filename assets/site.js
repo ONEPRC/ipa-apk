@@ -195,7 +195,7 @@
           '<h2>' + a.name + '</h2>' +
           '<p class="dline">' + (a.note || '') + '</p>' +
           '<div class="drow"><button class="dbtn">获取</button>' +
-            '<span class="dshare"><svg viewBox="0 0 24 24"><path d="M12 3.5v10"/><path d="m8.5 7 3.5-3.5L15.5 7"/><path d="M6 11.5V19a1.5 1.5 0 0 0 1.5 1.5h9A1.5 1.5 0 0 0 18 19v-7.5"/></svg></span>' +
+            '<span class="dshare" data-act="copypwd"><svg viewBox="0 0 24 24"><path d="M12 3.5v10"/><path d="m8.5 7 3.5-3.5L15.5 7"/><path d="M6 11.5V19a1.5 1.5 0 0 0 1.5 1.5h9A1.5 1.5 0 0 0 18 19v-7.5"/></svg></span>' +
           '</div>' +
         '</div>' +
       '</div>' +
@@ -204,11 +204,6 @@
         '<div><em>平台</em><b>' + plat + '</b><small>系统</small></div>' +
         '<div><em>分类</em><b>' + cat + '</b><small>排行榜</small></div>' +
         '<div><em>大小</em><b>' + sizeNum(a.size) + '</b><small>' + sizeUnit(a.size) + '</small></div>' +
-      '</div>' +
-      '<div class="dacts">' +
-        '<button class="dact primary" data-act="open">前往下载</button>' +
-        '<button class="dact" data-act="copy">复制链接</button>' +
-        '<button class="dact" data-act="copypwd">复制+提取码</button>' +
       '</div>' +
       (a.shots && a.shots.length
         ? '<div class="shots">' + a.shots.map(function(s){ return '<img src="' + fixPath(s) + '" alt="">'; }).join('') + '</div>'
@@ -460,6 +455,27 @@
       syncPins();
     });
     setTimeout(function(){ pwInput.focus(); syncPins(); }, 60);
+
+    // 数字键盘
+    (function buildKeypad(){
+      var pad = document.getElementById('gatepad');
+      if(!pad) return;
+      var keys = ['1','2','3','4','5','6','7','8','9','','0','del'];
+      keys.forEach(function(k){
+        var b = document.createElement('button');
+        b.type = 'button';
+        if(k === ''){ b.className = 'k empty'; }
+        else if(k === 'del'){ b.className = 'k del'; b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6H9L3 12l6 6h11a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1Z"/><path d="m12 9.5 5 5M17 9.5l-5 5"/></svg>'; }
+        else { b.className = 'k'; b.textContent = k; }
+        b.onclick = function(){
+          if(k === 'del'){ pwInput.value = pwInput.value.slice(0, -1); }
+          else if(k){ if(pwInput.value.length < LEN) pwInput.value += k; }
+          syncPins();
+          if(pwInput.value.length === LEN) setTimeout(tryUnlock, 120);
+        };
+        pad.appendChild(b);
+      });
+    })();
 
     var err = document.getElementById('gateerr');
     function fail(){
