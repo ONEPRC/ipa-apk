@@ -280,6 +280,12 @@
         var sw = act.querySelector('.sw'); if(sw) sw.classList.toggle('on', !dark);
         return;
       }
+      if(a2 === 'copypwd'){
+        var cur2 = state.detail;
+        if(!cur2){ toast('没有可复制的链接'); return; }
+        copyText(fullLink(cur2) + (cur2.pwd ? ' 提取码 ' + cur2.pwd : ''), '链接和提取码已复制');
+        return;
+      }
       if(a2 === 'share'){ if(navigator.share){ navigator.share({ title: document.title, url: location.href }).catch(function(){}); } else { location.href = 'mailto:?body=' + encodeURIComponent(location.href); } return; }
       if(a2 === 'help'){ var sh = document.getElementById('sheet'); if(sh) sh.classList.add('open'); return; }
       if(a2 === 'closesheet'){ var sh2 = document.getElementById('sheet'); if(sh2) sh2.classList.remove('open'); return; }
@@ -500,3 +506,81 @@
     pwInput.addEventListener('keydown', function(e){ if(e.key === 'Enter') tryUnlock(); });
   })();
 
+
+/* ================= 密码门（自建 DOM，iOS 锁屏风） ================= */
+(function gateBoot(){
+  var SITE = (window.APP_DATA && window.APP_DATA.site) || {};
+  var hashes = SITE.passwordHash;
+  if(!hashes) return;
+  var KEY = 'appindex.unlocked';
+  try{ if(sessionStorage.getItem(KEY) === hashes) return; }catch(e){}
+  if(document.getElementById('gate2')) return;   // 只建一次
+
+  var LEN = Number(SITE.pwdLen) > 0 ? Math.min(12, Number(SITE.pwdLen)) : 4;
+  var val = '';
+
+  var wrap = document.createElement('div');
+  wrap.id = 'gate2';
+  wrap.className = 'gate2';
+  wrap.innerHTML =
+    '<div class="g2-in">' +
+      '<div class="g2-title">输入密码</div>' +
+      '<div class="g2-dots" id="g2dots"></div>' +
+      '<div class="g2-err" id="g2err"></div>' +
+      '<div class="g2-pad" id="g2pad"></div>' +
+      '<div class="g2-foot"><button type="button" id="g2cancel">取消</button><button type="button" id="g2help">紧急情况</button></div>' +
+    '</div>';
+  document.body.appendChild(wrap);
+
+  var dots = wrap.querySelector('#g2dots');
+  var err = wrap.querySelector('#g2err');
+  for(var i = 0; i < LEN; i++) dots.appendChild(document.createElement('i'));
+
+  function paint(){
+    var ks = dots.children;
+    for(var j = 0; j < ks.length; j++) ks[j].className = j < val.length ? 'on' : '';
+  }
+  paint();
+
+  function sha(str){
+    // 复用页面里的实现
+    try { return sha256hex(str); } catch(e){ return ''; }
+  }
+  function check(){
+    if(sha(val) === hashes){
+      try{ sessionStorage.setItem(KEY, hashes); }catch(e){}
+      wrap.remove();
+      try{ render(); }catch(e){}
+    } else {
+      err.textContent = '密码错误，请重试';
+      wrap.classList.add('shake');
+      setTimeout(function(){ wrap.classList.remove('shake'); }, 340);
+      val = ''; paint();
+    }
+  }
+
+  var keys = ['1','2','3','4','5','6','7','8','9','','0','del'];
+  var pad = wrap.querySelector('#g2pad');
+  keys.forEach(function(k){
+    var b = document.createElement('button');
+    b.type = 'button';
+    if(k === ''){ b.className = 'k empty'; }
+    else if(k === 'del'){ b.className = 'k del'; b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6H9L3 12l6 6h11a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1Z"/><path d="m12 9.5 5 5M17 9.5l-5 5"/></svg>'; }
+    else { b.className = 'k'; b.textContent = k; }
+    b.onclick = function(){
+      err.textContent = '';
+      if(k === 'del') val = val.slice(0, -1);
+      else if(k && val.length < LEN) val += k;
+      paint();
+      if(val.length === LEN) setTimeout(check, 130);
+    };
+    pad.appendChild(b);
+  });
+
+  wrap.querySelector('#g2cancel').onclick = function(){
+    val = ''; paint(); err.textContent = '';
+  };
+  wrap.querySelector('#g2help').onclick = function(){
+    err.textContent = '密码在群里，问一下群主';
+  };
+})();
