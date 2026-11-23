@@ -137,6 +137,13 @@
 
   /* ---------- 三个页面 ---------- */
   function renderHome(){
+    if(state.tab === 'today' && !listFor('today').length){
+      document.getElementById('stage').innerHTML =
+        '<div class="empty" style="padding:80px 0;text-align:center;color:var(--sub);font-size:15px;line-height:1.8">' +
+        '今天还没有更新<br><small style="font-size:13px;opacity:.7">去「游戏」「应用」看看历史收录</small></div>';
+      var tbE = document.querySelector('.tabbar'); if(tbE) tbE.classList.add('ready');
+      return;
+    }
     var stage = document.getElementById('stage');
     var list = listFor(state.tab);
 
