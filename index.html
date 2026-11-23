@@ -64,8 +64,6 @@
 </nav>
 
 <script src="../data/apps.js"></script>
-<script src="data/apps.js"></script>
-<script src="assets/site.js?v=604b37c3"></script>
 <div class="gate" id="gate" hidden>
   <div class="gatebox">
     <div class="gatelock">🔒</div>
@@ -74,11 +72,15 @@
     <div class="pins" id="gatepins">
       <input id="gatepw" class="pinreal" type="password" autocomplete="off" autocapitalize="off" spellcheck="false">
     </div>
-    <button id="gateok" type="button">进入</button>
+    <div class="gatepad" id="gatepad"></div>
+    <div class="gatefoot"><button type="button" id="gate-cancel">取消</button><button type="button" id="gate-emerg">紧急情况</button></div>
+    <button id="gateok" type="button" hidden>进入</button>
     <p class="gateerr" id="gateerr" hidden>密码错误，请重试</p>
   </div>
 </div>
 
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="data/apps.js"></script>
+<script src="assets/site.js?v=d5a6c8ea"></script>
 </body>
