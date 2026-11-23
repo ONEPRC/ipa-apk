@@ -175,7 +175,7 @@
     }
 
     var HOME_MAX = 10;
-    var feats = list.slice(0, Math.min(4, list.length)), rest = list.slice(feats.length, HOME_MAX);
+    var feats = list.slice(0, Math.min(1, list.length)), rest = list.slice(feats.length, feats.length + HOME_MAX);
     var secTitle = state.tab === 'games' ? (list.length + ' 款近期佳作') : (list.length + ' 款大家都在用');
     stage.innerHTML =
       '<div class="hscroll">' + feats.map(featBlock).join('') + '</div>' +
