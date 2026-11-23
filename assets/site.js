@@ -131,7 +131,10 @@
   }
   function row(a){
     return '<div class="row" data-open="' + a.id + '"><div class="ic">' + iconHTML(a) + '</div>' +
-      '<div class="tx"><b>' + a.name + '</b><span>' + sub(a) + '</span></div>' +
+      '<div class="tx">' +
+        '<div class="l1">' + (a.note ? a.note : '&nbsp;') + '</div>' +
+        '<div class="l2">' + a.name + '</div>' +
+      '</div>' +
       '<button class="btn">获取</button></div>';
   }
 
