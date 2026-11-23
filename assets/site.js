@@ -482,8 +482,6 @@
       try{ render(); }catch(e){}
     } else {
       err.textContent = '密码错误，请重试';
-      wrap.classList.add('shake');
-      setTimeout(function(){ wrap.classList.remove('shake'); }, 340);
       val = ''; paint();
     }
   }
