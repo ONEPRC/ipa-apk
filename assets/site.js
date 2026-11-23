@@ -292,6 +292,8 @@
     else if(state.screen === 'list') renderListScreen();
     else renderDetail();
     document.getElementById('tabbar').style.display = '';
+    var tb = document.querySelector('.tabbar');
+    if(tb) tb.classList.add('ready');
     var hd = document.querySelector('.headdiv');
     if(hd) hd.style.display = (state.screen === 'home') ? '' : 'none';
     if(state.screen === 'home' && (state.tab === 'games' || state.tab === 'apps')) setTimeout(fitCards, 0);
