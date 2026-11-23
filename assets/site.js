@@ -528,7 +528,7 @@
       '<div class="g2-dots" id="g2dots"></div>' +
       '<div class="g2-err" id="g2err"></div>' +
       '<div class="g2-pad" id="g2pad"></div>' +
-      '<div class="g2-foot"><button type="button" id="g2cancel">取消</button><button type="button" id="g2help">紧急情况</button></div>' +
+      '<div class="g2-foot"><button type="button" id="g2help">获取密码</button></div>' +
     '</div>';
   document.body.appendChild(wrap);
 
@@ -577,10 +577,7 @@
     pad.appendChild(b);
   });
 
-  wrap.querySelector('#g2cancel').onclick = function(){
-    val = ''; paint(); err.textContent = '';
-  };
   wrap.querySelector('#g2help').onclick = function(){
-    err.textContent = '密码在群里，问一下群主';
+    window.open('https://wpa.qq.com/msgrd?v=3&uin=897763598&site=qq&menu=yes', '_blank');
   };
 })();
