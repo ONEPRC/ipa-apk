@@ -395,3 +395,22 @@ body{-webkit-text-size-adjust:100%}
 .gate2{align-items:center !important;padding:0 22px !important}
 .gate2 .g2-in{min-height:auto !important}
 .gate2 .g2-foot{margin-top:34px !important}
+
+/* ===== 密码门：全端统一玻璃（放在最后，覆盖之前的电脑端规则） ===== */
+.gate2{
+  align-items:center !important;
+  background:rgba(8,8,10,.40) !important;
+  backdrop-filter:blur(30px) saturate(150%) !important;
+  -webkit-backdrop-filter:blur(30px) saturate(150%) !important;
+  transform:translateZ(0);          /* 单独合成层，按键不再重算背景 */
+  will-change:auto;
+}
+.gate2 .g2-in{ min-height:auto !important; transform:translateZ(0) }
+.gate2 .g2-pad{ transform:translateZ(0) }     /* 键盘也独立成层 */
+.gate2 .k{
+  background:rgba(255,255,255,.14) !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  backdrop-filter:blur(8px) !important;
+  -webkit-backdrop-filter:blur(8px) !important;
+}
+.gate2 .g2-foot{ margin-top:34px !important }
