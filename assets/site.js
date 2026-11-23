@@ -143,8 +143,8 @@
         '<div class="searchbar"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.8 15.8 4.6 4.6"/></svg>' +
         '<input id="q" placeholder="游戏、App、关键词" value="' + state.q.replace(/"/g,'') + '"></div>' +
         '<div class="sect"><h3>' + (state.q ? '搜索结果' : '为你推荐') + '</h3></div>' +
-        '<p class="sectsub">' + (list.length ? list.length + ' 个应用' : '没有匹配的应用') + '</p>' +
-        (list.length ? '<div class="list">' + list.map(row).join('') + '</div>' : '<div class="empty">换个词试试</div>');
+        '<p class="sectsub" id="srcount">' + (list.length ? list.length + ' 个应用' : '没有匹配的应用') + '</p>' +
+        '<div class="list" id="srlist">' + list.map(row).join('') + '</div>' + (list.length ? '' : '<div class="empty" id="srempty">换个词试试</div>');
       var inp = document.getElementById('q');
       inp.addEventListener('input', function(){
         state.q = this.value;
