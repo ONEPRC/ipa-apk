@@ -287,6 +287,19 @@
       state.screen = 'list'; render(); window.scrollTo(0,0); return;
     }
 
+    // 「获取 / 下载」按钮：直接打开网盘链接
+    var gbtn = e.target.closest('.get,.btn,.dbtn');
+    if(gbtn){
+      e.stopPropagation();
+      var host = gbtn.closest('[data-open]');
+      var target = null;
+      if(host){ target = ALL.filter(function(x){ return x.id === host.getAttribute('data-open'); })[0]; }
+      if(!target && state.screen === 'detail') target = state.detail;
+      if(target && target.url){ window.open(fullLink(target), '_blank'); }
+      else toast('这条还没有链接');
+      return;
+    }
+
     var db = e.target.closest('.dact');
     if(db){
       var kind = db.getAttribute('data-act');
