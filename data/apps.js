@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/23 22:53:35
+// 应用数据文件 —— 由本地管理页写入 2026/11/23 23:07:04
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,14 +17,14 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795445615632,
+    "rev": 1795446424381,
     "categories": [
       "游戏",
       "应用",
       "插件",
       "其他"
     ],
-    "passwordHash": "188ee5431101abc0a8d3a7bf4e3520a3f2608b39a5c396cf1ff4b03edb0cf5e7",
+    "passwordHash": "4739ee3bd29e4f415da8ba9298a087e0fdc9c61378420ba8fbbab298bd74c4df",
     "pwdLen": 4
   },
   "apps": [
