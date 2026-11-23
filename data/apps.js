@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/23 19:35:54
+// 应用数据文件 —— 由本地管理页写入 2026/11/23 20:32:08
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795433754613,
+    "rev": 1795437128069,
     "categories": [
       "游戏",
       "应用",
@@ -28,6 +28,21 @@ window.APP_DATA = {
     "pwdLen": 4
   },
   "apps": [
+    {
+      "id": "amwt8wq1r",
+      "name": "艾尔登法环",
+      "version": "1.17.2",
+      "category": "游戏",
+      "platform": "Windows",
+      "size": "64G",
+      "icon": "https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1245620/header.jpg?t=1744748041",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/584ff2bcf2e3",
+      "pwd": "",
+      "description": "解压即撸| 单机+联机\n豪华中文全DLC+黄金树幽影 +褪色者组合包DLC",
+      "date": "2026-11-23",
+      "addedAt": "2026-11-23T20:32"
+    },
     {
       "id": "amwt6wf4e",
       "name": "dsh-purge",
