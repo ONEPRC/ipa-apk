@@ -504,3 +504,38 @@
     window.open('https://wpa.qq.com/msgrd?v=3&uin=897763598&site=qq&menu=yes', '_blank');
   };
 })();
+
+/* ===== 底栏：长按左右滑动切换 ===== */
+(function tabbarSwipe(){
+  var bar = document.querySelector('.tabbar');
+  if(!bar) return;
+  var startX = 0, startIdx = 0, dragging = false, timer = null;
+  var tabs = function(){ return Array.prototype.slice.call(bar.querySelectorAll('.tab')); };
+
+  function idx(){ return tabs().findIndex(function(t){ return t.classList.contains('on'); }); }
+  function pick(i){
+    var list = tabs();
+    i = Math.max(0, Math.min(list.length - 1, i));
+    if(list[i]) list[i].click();
+  }
+
+  bar.addEventListener('pointerdown', function(e){
+    if(e.pointerType === 'mouse') return;
+    startX = e.clientX; startIdx = idx();
+    timer = setTimeout(function(){ dragging = true; }, 260);   // 长按 260ms 才进入滑动
+  });
+  bar.addEventListener('pointermove', function(e){
+    if(!dragging) return;
+    var dx = e.clientX - startX;
+    var step = bar.clientWidth / tabs().length;
+    var move = Math.round(dx / step);
+    if(move !== 0){
+      pick(startIdx - move * -1);
+      startIdx = idx(); startX = e.clientX;
+    }
+  });
+  function end(){ clearTimeout(timer); dragging = false; }
+  bar.addEventListener('pointerup', end);
+  bar.addEventListener('pointercancel', end);
+  bar.addEventListener('pointerleave', end);
+})();
