@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/23 22:52:33
+// 应用数据文件 —— 由本地管理页写入 2026/11/23 22:53:35
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-20T20:37"
     },
     "icon": "assets/logo.png",
-    "rev": 1795445553742,
+    "rev": 1795445615632,
     "categories": [
       "游戏",
       "应用",
@@ -57,8 +57,11 @@ window.APP_DATA = {
       "url": "https://pan.quark.cn/s/584ff2bcf2e3",
       "pwd": "",
       "description": "解压即撸| 单机+联机\n豪华中文全DLC+黄金树幽影 +褪色者组合包DLC",
+      "note": "豪华版",
+      "whatsNew": "修复bug",
       "date": "2026-11-23",
-      "addedAt": "2026-11-23T20:32"
+      "addedAt": "2026-11-23T20:32",
+      "updatedAt": "2026-11-23T22:53"
     },
     {
       "id": "amwt6wf4e",
