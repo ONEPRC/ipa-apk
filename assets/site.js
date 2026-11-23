@@ -37,6 +37,19 @@
   }
   function sizeNum(s){ var m = String(s||'').match(/[\d.]+/); return m ? m[0] : '—'; }
   function sizeUnit(s){ var m = String(s||'').match(/[a-zA-Z]+/); return m ? m[0].toUpperCase() : ''; }
+  function ago(v){
+    var t = Date.parse(String(v || '').replace(' ', 'T'));
+    if(!t) return '';
+    var d = Date.now() - t;
+    if(d < 0) d = 0;
+    var m = Math.floor(d / 60000), hh = Math.floor(m / 60), dd = Math.floor(hh / 24), ww = Math.floor(dd / 7);
+    if(m < 1) return '刚刚';
+    if(m < 60) return m + ' 分钟前';
+    if(hh < 24) return hh + ' 小时前';
+    if(dd < 7) return dd + ' 天前';
+    if(ww < 5) return ww + ' 周前';
+    return fmtDay(v).slice(0, 10);
+  }
   function fmtDay(v){
     var s = String(v || '').trim();
     if(!s) return '—';
@@ -206,7 +219,9 @@
       '</div>') +
       '<div class="ddesc">' + (a.description || '暂无简介') + '</div>' +
 
-      (a.whatsNew ? '<div class="dnew"><div class="nt"><h3>新功能</h3><span>版本 ' + (a.version || '') + '</span></div>' +
+      (a.whatsNew ? '<div class="dnew">' +
+        '<div class="nt"><h3>新功能</h3><span>' + ago(a.updatedAt || a.addedAt || a.date) + '</span></div>' +
+        '<div class="ver">版本 ' + (a.version || '—') + '</div>' +
         '<p>' + String(a.whatsNew).replace(/\n/g, '<br>') + '</p></div>' : '') +
       '<div class="ddev">' +
         '<div class="v"><span class="blue">' + (a.updatedAt ? '更新时间' : '收录时间') + '</span>' +
