@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/23 23:38:18
+// 应用数据文件 —— 由本地管理页写入 2026/11/24 00:15:51
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -7,7 +7,7 @@ window.APP_DATA = {
     "h1": "找到应用，",
     "h1accent": "一键转存。",
     "note": "链接指向夸克网盘 · 请先转存再下载",
-    "updated": "2026-11-23",
+    "updated": "2026-11-24",
     "title": "IPA&APK",
     "accent": "#100f0f",
     "pageSize": 10,
@@ -17,7 +17,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795448298906,
+    "rev": 1795450551482,
     "categories": [
       "游戏",
       "应用",
@@ -158,7 +158,8 @@ window.APP_DATA = {
       "pwd": "",
       "description": "文件管理器",
       "date": "2026-11-21",
-      "addedAt": "2026-11-21T20:01"
+      "addedAt": "2026-11-21T20:01",
+      "pinned": true
     },
     {
       "id": "amwqc9zp5",
@@ -174,7 +175,8 @@ window.APP_DATA = {
       "description": "全权限砸壳\n以C++语言编写的视频播放器\n国区商店58¥\n额外说明：\n纯净无弹窗\n支持自签和巨魔",
       "date": "2026-11-21",
       "addedAt": "2026-11-21T19:43",
-      "updatedAt": "2026-11-21T19:43"
+      "updatedAt": "2026-11-21T19:43",
+      "pinned": true
     },
     {
       "id": "amwoyu6ot",
