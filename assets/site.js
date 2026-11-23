@@ -139,8 +139,7 @@
   function renderHome(){
     if(state.tab === 'today' && !listFor('today').length){
       document.getElementById('stage').innerHTML =
-        '<div class="empty" style="padding:80px 0;text-align:center;color:var(--sub);font-size:15px;line-height:1.8">' +
-        '今天还没有更新<br><small style="font-size:13px;opacity:.7">去「游戏」「应用」看看历史收录</small></div>';
+        '<div class="empty" style="padding:120px 0;text-align:center;color:var(--sub);font-size:15px">今日暂无更新</div>';
       var tbE = document.querySelector('.tabbar'); if(tbE) tbE.classList.add('ready');
       return;
     }
@@ -176,7 +175,7 @@
     }
 
     var HOME_MAX = 10;
-    var feats = list.slice(0, 4), rest = list.slice(4, HOME_MAX);
+    var feats = list.slice(0, Math.min(4, list.length)), rest = list.slice(feats.length, HOME_MAX);
     var secTitle = state.tab === 'games' ? (list.length + ' 款近期佳作') : (list.length + ' 款大家都在用');
     stage.innerHTML =
       '<div class="hscroll">' + feats.map(featBlock).join('') + '</div>' +
