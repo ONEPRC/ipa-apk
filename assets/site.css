@@ -252,7 +252,11 @@ html[data-theme="dark"] .menu{background:rgba(32,32,35,.62)}
 .notice-file em{font-style:normal;color:var(--sub);font-size:11px;flex-shrink:0}
 .pinbadge{position:absolute;top:9px;right:10px;width:17px;height:17px;color:var(--blue);opacity:.85;pointer-events:none}
 .pinbadge svg{width:100%;height:100%;display:block}
-.toast{position:fixed;left:50%;bottom:34px;transform:translate(-50%,14px);background:#20263a;color:#fff;font-size:13px;padding:10px 18px;border-radius:10px;opacity:0;pointer-events:none;transition:.2s;z-index:60;max-width:86vw;text-align:center;line-height:1.5}
+.toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,10px);z-index:200;
+  padding:11px 18px;border-radius:16px;font-size:14px;color:#fff;
+  background:rgba(60,60,67,.62);backdrop-filter:blur(28px) saturate(180%);
+  -webkit-backdrop-filter:blur(28px) saturate(180%);
+  box-shadow:0 12px 34px rgba(0,0,0,.24);opacity:0;pointer-events:none;transition:.22s}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 .gate{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:24px;
   background:rgba(8,13,21,.16);
@@ -340,12 +344,12 @@ html[data-theme="dark"] .menu{background:rgba(32,32,35,.62)}
   border:0;
   box-shadow:none;
 }
-.notice .notice-body{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0;flex:1}
+.notice .notice-body{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;min-width:0;flex:1}
 .notice .notice-head{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--blue);letter-spacing:0}
 .notice .notice-icon{width:15px;height:15px;flex:0 0 auto}
 .notice .notice-icon svg{width:15px;height:15px}
 .notice .notice-text{margin:0;font-size:13.5px;line-height:1.5;color:var(--ink);
   white-space:pre-wrap;word-break:break-word;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.notice .notice-time{margin:0;font-size:11.5px;color:var(--sub);text-align:left;order:99}
+.notice .notice-time{margin:8px 0 0;font-size:11.5px;color:var(--sub);text-align:center;order:99}
 html[data-theme="dark"] .notice{background:rgba(120,120,128,.16)}
 @media(min-width:900px){ .notice{margin:16px 36px 4px} }
