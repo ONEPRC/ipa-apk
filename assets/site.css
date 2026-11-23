@@ -356,3 +356,7 @@ html[data-theme="dark"] .notice{background:rgba(120,120,128,.16)}
 
 html,body{touch-action:manipulation}
 body{-webkit-text-size-adjust:100%}
+
+/* 底栏：内容渲染后再淡入 */
+.tabbar{opacity:0;transition:opacity .26s ease}
+.tabbar.ready{opacity:1}
