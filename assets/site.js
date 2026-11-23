@@ -411,7 +411,7 @@
 
   // 公告
   (function renderNotice(){
-    var n = DATA.site && DATA.site.notice;
+    var n = (window.APP_DATA && window.APP_DATA.site && window.APP_DATA.site.notice) || null;
     var box = document.getElementById('notice');
     if(!n || n.on === false || !box) return;
     var hasText = !!(n.text && String(n.text).trim());
@@ -425,7 +425,7 @@
 
   // 密码门
   (function gateInit(){
-    var SITE = DATA.site || {};
+    var SITE = (window.APP_DATA && window.APP_DATA.site) || {};
     var hashes = SITE.passwordHash;
     if(!hashes) return;
     var KEY = 'appindex.unlocked';
