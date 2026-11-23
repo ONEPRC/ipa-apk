@@ -187,7 +187,7 @@ html[data-theme="dark"] .sheet .box{background:rgba(32,32,35,.62);color:#f5f5f7}
 .dnew h3{margin:0;font-size:20px;font-weight:800}
 .dnew .nt span{font-size:13px;color:var(--sub)}
 .dnew p{margin:0;font-size:15px;line-height:1.6;color:var(--ink)}
-.ddev{margin:4px 0 0;min-width:0}
+.ddev{margin:4px 0 0;min-width:0;border-top:1px solid var(--line);margin-top:16px;padding-top:4px}
 .ddev .k{font-size:13px;color:var(--sub)}
 .ddev .v{display:flex;align-items:center;justify-content:space-between;font-size:16px;padding:12px 0}
 .ddev .v span.blue{color:var(--blue);font-weight:500}
@@ -334,8 +334,8 @@ html[data-theme="dark"] .menu{background:rgba(32,32,35,.62)}
 .gate2 .k.del svg{width:30px;height:30px;opacity:.95}
 .gate2 .g2-foot{margin-top:auto;display:flex;justify-content:center;width:100%;max-width:330px;padding-top:26px}
 .gate2 .g2-foot button{background:none;border:0;color:#fff;font-size:16px;opacity:.92;cursor:pointer}
-.gate2.shake .g2-dots{animation:g2shake .32s}
-@keyframes g2shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+
+25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
 
 /* ===== 公告条（对齐卡片） ===== */
 .notice{
