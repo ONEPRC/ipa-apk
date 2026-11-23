@@ -17,7 +17,49 @@
   var state = { tab:'today', screen:'home', listTitle:'', detail:null, q:'', sort:'default' };
 
   function catOf(a){ return a.category || '未分类'; }
-  function color(a){ return COLOR[catOf(a)] || '#2b2b30'; }
+
+  /* 从图标提取主色，作为卡片底色（失败则回退分类色） */
+  var ICON_BG = {}, ICON_BUSY = {};
+  function colorFromIcon(a){
+    if(!a || !a.icon) return null;
+    if(ICON_BG[a.id]) return ICON_BG[a.id];
+    if(ICON_BUSY[a.id]) return null;
+    ICON_BUSY[a.id] = true;
+    var img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = function(){
+      try{
+        var c = document.createElement('canvas');
+        c.width = 16; c.height = 16;
+        var x = c.getContext('2d');
+        x.drawImage(img, 0, 0, 16, 16);
+        var d = x.getImageData(0, 0, 16, 16).data;
+        var r = 0, g = 0, b = 0, n = 0, best = null, bestSat = -1;
+        for(var i = 0; i < d.length; i += 4){
+          if(d[i + 3] < 120) continue;
+          r += d[i]; g += d[i + 1]; b += d[i + 2]; n++;
+          var mx = Math.max(d[i], d[i + 1], d[i + 2]), mn = Math.min(d[i], d[i + 1], d[i + 2]);
+          var sat = mx === 0 ? 0 : (mx - mn) / mx;
+          if(sat > bestSat && mx > 40 && mx < 245){ bestSat = sat; best = [d[i], d[i + 1], d[i + 2]]; }
+        }
+        var rgb = best || (n ? [r / n, g / n, b / n] : null);
+        if(!rgb){ ICON_BUSY[a.id] = false; return; }
+        var R = Math.round(rgb[0]), G = Math.round(rgb[1]), B = Math.round(rgb[2]);
+        // 压暗 + 提饱和，做成底色
+        var k = 0.82;
+        ICON_BG[a.id] = 'rgb(' + Math.round(R * k) + ',' + Math.round(G * k) + ',' + Math.round(B * k) + ')';
+        ICON_BUSY[a.id] = false;
+        if(!colorFromIcon._t){
+          colorFromIcon._t = setTimeout(function(){ colorFromIcon._t = null; try{ render(); }catch(e){} }, 60);
+        }
+      }catch(e){ ICON_BUSY[a.id] = false; }
+    };
+    img.onerror = function(){ ICON_BUSY[a.id] = false; };
+    img.src = fixPath(a.icon);
+    return null;
+  }
+
+  function color(a){ var ic = colorFromIcon(a); if(ic) return ic; return COLOR[catOf(a)] || '#2b2b30'; }
   function sub(a){
     var t = (a.description || '').replace(/\s+/g,' ').trim();
     return t ? t.slice(0, 48) : ((a.platform || '') + (a.size ? ' · ' + a.size : ''));
