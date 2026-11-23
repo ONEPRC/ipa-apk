@@ -414,3 +414,17 @@ body{-webkit-text-size-adjust:100%}
   -webkit-backdrop-filter:blur(8px) !important;
 }
 .gate2 .g2-foot{ margin-top:34px !important }
+
+/* ===== 详情页：分享按钮 / 返回箭头加大 ===== */
+.dtop{position:relative}
+.dshare{display:flex;align-items:flex-end;justify-content:center;align-self:stretch;padding-bottom:2px;cursor:pointer}
+.dshare svg{width:27px;height:27px;stroke-width:1.9}
+.dtop .get,.dtop .btn.primary{height:44px}
+.back{font-size:17px;font-weight:400;gap:2px}
+.back svg{width:22px;height:22px;stroke-width:2.4;margin-left:-3px}
+
+/* 详情页首行：获取 + 分享底部对齐 */
+.drow{display:flex;align-items:flex-end;gap:12px}
+.drow .dbtn{height:44px;display:inline-flex;align-items:center;justify-content:center}
+.drow .dshare{margin-left:auto;height:44px;display:flex;align-items:flex-end;padding-bottom:9px}
+.drow .dshare svg{width:27px;height:27px}
