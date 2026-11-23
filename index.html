@@ -1,170 +1,71 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="referrer" content="no-referrer">
-<meta name="theme-color" id="themecolor" content="#f6f7fb">
-<meta name="description" content="应用索引：搜索应用，一键跳转夸克网盘转存下载。">
-<!-- 分享卡片：发到微信/QQ 群里显示的预览 -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="iPA&APK">
-<meta property="og:title" content="iPA&APK · 应用下载索引">
-<meta property="og:description" content="搜索应用，直达夸克网盘转存下载。">
-<meta property="og:url" content="https://oneprc.github.io/ipa-apk/">
-<meta property="og:image" content="https://oneprc.github.io/ipa-apk/assets/logo.png">
-<meta name="twitter:card" content="summary">
-<title>应用索引 · 夸克网盘下载</title>
-<link rel="icon" id="favicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%233b6cf6'/%3E%3Cg fill='white'%3E%3Crect x='11' y='11' width='7' height='7' rx='2'/%3E%3Crect x='22' y='11' width='7' height='7' rx='2'/%3E%3Crect x='11' y='22' width='7' height='7' rx='2'/%3E%3Crect x='22' y='22' width='7' height='7' rx='2'/%3E%3C/g%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/site.css?v=a0c19f0c">
-<script>
-(function(){
-  try {
-    var t = localStorage.getItem('appindex.theme');
-    if(!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', t);
-  } catch(e) { document.documentElement.setAttribute('data-theme', 'light'); }
-})();
-</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>应用索引</title>
+<link rel="stylesheet" href="assets/site.css?v=f768260b">
 </head>
 <body>
-<header class="top">
-  <div class="wrap top-in">
-    <a class="brand" href="#" id="home" aria-label="返回首页">
-      <span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <span id="site-title">应用索引</span>
-    </a>
-    <nav class="nav">
-      <button id="theme-btn" class="themetoggle" type="button" aria-label="切换日间/夜间模式" title="日间 / 夜间">
-        <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.6 5.6l1.5 1.5M16.9 16.9l1.5 1.5M18.4 5.6l-1.5 1.5M7.1 16.9l-1.5 1.5"/></svg>
-        <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.6A8.6 8.6 0 0 1 9.4 3.6a8.6 8.6 0 1 0 11 11Z"/></svg>
-      </button>
-      <button id="share-btn" type="button">分享</button>
-      <button id="help-btn" type="button">使用说明</button>
-    </nav>
-  </div>
-</header>
-
-<main class="wrap">
-  <section class="hero">
-    <div>
-      <p class="eyebrow" id="eyebrow">SEARCH · COPY · OPEN</p>
-      <h1><em id="h1a">找到应用，</em><span id="h1b">一键转存。</span></h1>
-      <p class="lede" id="site-tagline">搜索应用名称或版本，复制夸克网盘链接与提取码，转存后即可下载。</p>
+<div class="app">
+  <div class="pad">
+    <div class="headwrap">
+      <div class="head" id="head"></div>
     </div>
-    <div class="stats" aria-label="资源统计">
-      <div><strong id="st-total">0</strong><span>应用总数</span></div>
-      <div><strong id="st-cat">0</strong><span>分类</span></div>
-      <div><strong id="st-date">—</strong><span>最近更新</span></div>
-      <div id="st-today-wrap" hidden><strong id="st-today">0</strong><span>今日更新</span></div>
-    </div>
-  </section>
-
-  <div class="search">
-    <input id="q" type="search" placeholder="搜索应用名称、版本、关键词…" autocomplete="off" spellcheck="false" aria-label="搜索应用">
-    <button id="clear" type="button" aria-label="清空搜索" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    <svg class="searchicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.4 15.4 4.6 4.6"/></svg>
   </div>
-
-  <div class="toolbar">
-    <div class="chips" id="chips" role="group" aria-label="按分类筛选"></div>
-  </div>
-
+  <div class="headdiv"></div>
   <section class="notice" id="notice" hidden>
-    <div class="notice-body">
-      <div class="notice-head">
-        <span class="notice-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h3l7 4V5L7 9H4Z"/><path d="M19 8.5a5 5 0 0 1 0 7"/></svg>
-        </span>
-        <b>公告</b>
+  <div class="notice-body">
+    <div class="notice-head"><span class="notice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h3l7 4V5L7 9H4Z"/><path d="M19 8.5a5 5 0 0 1 0 7"/></svg></span><b>公告</b></div>
+    <p class="notice-text" id="notice-text"></p>
+    <span class="notice-time" id="notice-time"></span>
+  </div>
+</section>
+  <div class="pad" id="stage" style="padding-top:6px"></div>
+
+  <div class="sheet" id="sheet">
+    <div class="box">
+      <h3>使用说明</h3>
+      <p>① 点应用卡片查看详情，<b>复制链接</b>或<b>复制链接+提取码</b>；</p>
+      <p>② 打开夸克 App 会自动识别，转存后即可下载；</p>
+      <p>③ 链接有有效期，失效了等群里更新。</p>
+      <div class="disc">
+        <h4>免责声明</h4>
+        <ol style="margin:0;padding-left:16px">
+          <li>本站所有资源均收集于互联网，仅供学习和研究使用，版权归原作者或原公司所有。</li>
+          <li>用户下载后请于 24 小时内删除，如果您觉得资源满意，请务必购买正版支持开发者。</li>
+          <li>本站不承担任何因使用本站资源而产生的法律责任。如有侵权，请联系管理员反馈，我们将第一时间核实并删除相关内容。</li>
+          <li>访问本站即视为您同意并接受本免责声明的所有条款。</li>
+        </ol>
       </div>
-      <p class="notice-text" id="notice-text"></p>
-      <button class="notice-more" id="notice-more" type="button" hidden>展开</button>
-      <span class="notice-time" id="notice-time"></span>
-      <a class="notice-file" id="notice-file" hidden>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/></svg>
-        <span id="notice-file-name">下载附件</span>
-        <em id="notice-file-size"></em>
-      </a>
-    </div>
-    <img class="notice-img" id="notice-img" alt="" hidden>
-  </section>
-
-  <div class="resultline"><span id="rc"></span><label class="sort">排序
-      <select id="sort" aria-label="排序方式">
-        <option value="default">收录顺序</option>
-        <option value="name">名称 A–Z</option>
-        <option value="date">最近更新</option>
-      </select>
-    </label></div>
-  <div id="grid" class="grid"></div>
-  <nav id="pager" class="pager" aria-label="分页"></nav>
-</main>
-
-<footer class="foot">
-  <span id="foot-note">链接指向夸克网盘 · 请先转存再下载</span>
-  <button class="foot-link" id="disclaimer-open" type="button">免责声明</button>
-</footer>
-
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
-<button class="totop" id="totop" type="button" aria-label="回到顶部">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</button>
-
-<dialog id="detail" aria-labelledby="d-name">
-  <div class="d-top">
-    <div><h2 id="d-name"></h2><small id="d-sub"></small></div>
-    <button class="x" type="button" data-close="detail" aria-label="关闭"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  </div>
-  <div class="d-body">
-    <p id="d-desc"></p>
-    <span class="fieldlab">夸克网盘链接</span>
-    <textarea id="d-url" class="linkfield" readonly spellcheck="false"></textarea>
-    <div class="pwdrow" id="d-pwdrow" hidden>提取码<b id="d-pwd"></b><button class="btn ghost" type="button" id="d-copypwd">复制提取码</button></div>
-    <div class="d-acts">
-      <a class="btn primary" id="d-open" href="#" target="_blank" rel="noopener noreferrer">前往下载</a>
-      <button class="btn ghost" type="button" id="d-copy">复制链接</button>
-      <button class="btn ghost" type="button" id="d-copyall">复制链接+提取码</button>
+      <button class="ok" data-act="closesheet">知道了</button>
     </div>
   </div>
-</dialog>
+</div>
 
-<dialog id="help" aria-labelledby="h-title">
-  <div class="d-top">
-    <div><h2 id="h-title">使用说明</h2><small>怎么拿到文件</small></div>
-    <button class="x" type="button" data-close="help" aria-label="关闭"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  </div>
-  <div class="d-body">
-    <ul class="help-list">
-      <li>搜索支持应用名称、版本、分类和简介关键词，多个词用空格分开。</li>
-      <li>点「下载」会跳转到夸克网盘分享页，登录后点「转存」到自己网盘，再从网盘里下载。</li>
-      <li>有提取码的条目会在卡片上显示，点卡片可查看并复制。</li>
-      <li>夸克网页端非会员下载限速，手机浏览器打开通常会引导你安装夸克 App。</li>
-    </ul>
-    <div class="hint">本页只是一个目录，不存放文件，所有文件都在夸克网盘。若链接失效，说明分享已被删除或取消，请联系管理员更新。</div>
-  </div>
-</dialog>
+<nav class="tabbar" id="tabbar">
+  <button class="tab on" data-tab="today">
+    <svg viewBox="0 0 24 24"><rect x="4.5" y="3" width="15" height="18" rx="3"/><path d="M8 8.5h8M8 13h8M8 17.5h4.5"/></svg>
+    Today
+  </button>
+  <button class="tab" data-tab="games">
+    <svg viewBox="0 0 24 24"><path d="M12 3.4c2.3 1.9 3.5 4.5 3.5 7.3 0 2.5-1.2 4.7-3.5 6.5-2.3-1.8-3.5-4-3.5-6.5 0-2.8 1.2-5.4 3.5-7.3Z"/><path d="M8.7 12.6 6.6 16.2l2.9-.6"/><path d="M15.3 12.6l2.1 3.6-2.9-.6"/><path d="M10.7 17.6 12 21l1.3-3.4"/><circle cx="12" cy="8.6" r="1.2"/></svg>
+    游戏
+  </button>
+  <button class="tab" data-tab="apps">
+    <svg viewBox="0 0 24 24"><path d="M12 3.6 20.4 8 12 12.4 3.6 8 12 3.6Z"/><path d="m3.6 12.6 8.4 4.4 8.4-4.4"/><path d="m3.6 16.8 8.4 4.4 8.4-4.4"/></svg>
+    应用
+  </button>
+  <button class="tab" data-tab="search">
+    <svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.8 15.8 4.6 4.6"/></svg>
+    搜索
+  </button>
+</nav>
 
-<dialog id="disclaimer" aria-labelledby="disc-title">
-  <div class="d-top">
-    <div><h2 id="disc-title">免责声明</h2><small>请在使用前阅读</small></div>
-    <button class="x" type="button" data-close="disclaimer" aria-label="关闭"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  </div>
-  <div class="d-body">
-    <div class="disc-icon" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v17M7 20h10M5 7h14"/><path d="M5 7l-2.5 5.5a3 3 0 0 0 5 0L5 7ZM19 7l-2.5 5.5a3 3 0 0 0 5 0L19 7Z"/></svg>
-    </div>
-    <ol class="disc-list">
-      <li>本站（<span id="disc-name">iPA&APK</span>）所有资源均收集于互联网，仅供学习和研究使用，版权归原作者或原公司所有。</li>
-      <li>用户下载后请于 24 小时内删除，如果您觉得资源满意，请务必购买正版支持开发者。</li>
-      <li>本站不承担任何因使用本站资源而产生的法律责任。如有侵权，请联系管理员反馈，我们将第一时间核实并删除相关内容。</li>
-      <li>访问本站即视为您同意并接受本免责声明的所有条款。</li>
-    </ol>
-  </div>
-</dialog>
-
-<noscript><p style="padding:30px;text-align:center">请启用 JavaScript 以搜索和浏览。</p></noscript>
-
+<script src="../data/apps.js"></script>
+<script src="data/apps.js"></script>
+<script src="assets/site.js?v=4044018d"></script>
 <div class="gate" id="gate" hidden>
   <div class="gatebox">
     <div class="gatelock">🔒</div>
@@ -178,7 +79,6 @@
   </div>
 </div>
 
-<script src="data/apps.js"></script>
-<script src="assets/site.js?v=496b0b2c"></script>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
-</html>
