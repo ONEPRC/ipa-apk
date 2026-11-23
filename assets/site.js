@@ -245,6 +245,9 @@
 
   function render(){
     renderHead();
+    // 公告（noticeOnlyToday）只在 Today 展示
+    var nb = document.getElementById('notice');
+    if(nb){ nb.style.display = (state.tab === 'today' && state.screen === 'home') ? '' : 'none'; }
     if(state.screen === 'home') renderHome();
     else if(state.screen === 'list') renderListScreen();
     else renderDetail();
@@ -423,88 +426,8 @@
     box.classList.add('shown');
   })();
 
-  // 密码门
-  (function gateInit(){
-    var SITE = (window.APP_DATA && window.APP_DATA.site) || {};
-    var hashes = SITE.passwordHash;
-    if(!hashes) return;
-    var KEY = 'appindex.unlocked';
-    try{ if(sessionStorage.getItem(KEY) === hashes) return; }catch(e){}
+  // （旧密码门已停用）
 
-    var gate = document.getElementById('gate');
-    if(!gate) return;
-    gate.hidden = false;
-
-    var pwInput = document.getElementById('gatepw');
-    var pinsBox = document.getElementById('gatepins');
-    var LEN = Number(SITE.pwdLen) > 0 ? Math.min(12, Number(SITE.pwdLen)) : 6;
-    var pinEls = [];
-    for(var i = 0; i < LEN; i++){
-      var cell = document.createElement('div');
-      cell.className = 'pin';
-      cell.appendChild(document.createElement('i'));
-      pinsBox.insertBefore(cell, pwInput);
-      pinEls.push(cell);
-    }
-    function syncPins(){
-      var n = pwInput.value.length;
-      pinEls.forEach(function(el, k){
-        el.classList.toggle('filled', k < n);
-        el.classList.toggle('active', k === n && document.activeElement === pwInput);
-      });
-    }
-    pinsBox.addEventListener('click', function(){ pwInput.focus(); });
-    pwInput.addEventListener('focus', syncPins);
-    pwInput.addEventListener('blur', syncPins);
-    pwInput.addEventListener('input', function(){
-      if(pwInput.value.length > LEN) pwInput.value = pwInput.value.slice(0, LEN);
-      syncPins();
-    });
-    setTimeout(function(){ pwInput.focus(); syncPins(); }, 60);
-
-    // 数字键盘
-    (function buildKeypad(){
-      var pad = document.getElementById('gatepad');
-      if(!pad) return;
-      var keys = ['1','2','3','4','5','6','7','8','9','','0','del'];
-      keys.forEach(function(k){
-        var b = document.createElement('button');
-        b.type = 'button';
-        if(k === ''){ b.className = 'k empty'; }
-        else if(k === 'del'){ b.className = 'k del'; b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6H9L3 12l6 6h11a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1Z"/><path d="m12 9.5 5 5M17 9.5l-5 5"/></svg>'; }
-        else { b.className = 'k'; b.textContent = k; }
-        b.onclick = function(){
-          if(k === 'del'){ pwInput.value = pwInput.value.slice(0, -1); }
-          else if(k){ if(pwInput.value.length < LEN) pwInput.value += k; }
-          syncPins();
-          if(pwInput.value.length === LEN) setTimeout(tryUnlock, 120);
-        };
-        pad.appendChild(b);
-      });
-    })();
-
-    var err = document.getElementById('gateerr');
-    function fail(){
-      err.hidden = false;
-      err.textContent = '密码错误，请重试';
-      pinsBox.classList.add('shake');
-      setTimeout(function(){ pinsBox.classList.remove('shake'); }, 340);
-      pwInput.value = ''; syncPins(); pwInput.focus();
-    }
-    function tryUnlock(){
-      sha256hex(pwInput.value).then ? 0 : 0;
-      var hex;
-      try { hex = sha256hex(pwInput.value); } catch(e){ hex = ''; }
-      if(hex === hashes){
-        try{ sessionStorage.setItem(KEY, hashes); }catch(e){}
-        gate.hidden = true;
-        render && render();
-      } else fail();
-    }
-
-    document.getElementById('gateok').onclick = tryUnlock;
-    pwInput.addEventListener('keydown', function(e){ if(e.key === 'Enter') tryUnlock(); });
-  })();
 
 
 /* ================= 密码门（自建 DOM，iOS 锁屏风） ================= */
