@@ -553,8 +553,8 @@
       for(var k = 0; k < hs.children.length; k++) hs.children[k].style.flex = '';
       return;
     }
-    var PAD = 18, GAP = 6, PEEK = 12;
-    var W = hs.clientWidth - PAD - GAP - PEEK;
+    var GAP = 6, PEEK = 12, SIDE = 36;   // 左右各 18 内边距
+    var W = hs.clientWidth - SIDE - GAP - PEEK;
     for(var i = 0; i < hs.children.length; i++){
       hs.children[i].style.flex = '0 0 ' + W + 'px';
       hs.children[i].style.borderRadius = '20px';
