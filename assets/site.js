@@ -1188,6 +1188,9 @@
         '</div>' +
         '<div class="sgroup">' +
           '<button class="srow" data-sact="share"><span>分享给朋友</span><i class="chev">›</i></button>' +
+          '<button class="srow" data-sact="nick"><span>修改昵称</span><i class="chev">›</i></button>' +
+          '<button class="srow" data-sact="backup"><span>备份记录（同步码）</span><i class="chev">›</i></button>' +
+          '<button class="srow" data-sact="restore"><span>恢复记录</span><i class="chev">›</i></button>' +
           '<button class="srow" data-sact="help" onclick="try{window.gotoHelp&&window.gotoHelp();document.documentElement.classList.remove(\'locked\');}catch(e){}"><span>使用说明</span><i class="chev">›</i></button>' +
         '</div>' +
         updBlock() +
