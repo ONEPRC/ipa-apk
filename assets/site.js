@@ -124,7 +124,7 @@
       var u = fixPath(shot);
       return '<div class="bg" style="background-image:url(\'' + u + '\')"></div>' +
              '<img class="shotlb" src="' + u + '" alt="" draggable="false">' +
-             '<div class="veil"></div>';
+             '<div class="veil soft"></div>';
     }
     if(!a.icon) return '<div class="veil"></div>';
     return '<div class="bg" style="background-image:url(\'' + fixPath(a.icon) + '\')"></div><div class="veil"></div>';
