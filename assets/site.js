@@ -242,6 +242,13 @@
   }
   function dlCount(){ try { return dlUpdates().length; } catch(e){ return 0; } }
   window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, label: dlLabel, all: dlAll };
+  window.APP_NAV = {
+    detail: function(a){
+      if(!a) return;
+      state.detail = a; state.screen = 'detail'; state.listTitle = '账户';
+      render(); window.scrollTo(0, 0);
+    }
+  };
 
   function paintBadge(){
     var n = 0;
@@ -974,7 +981,7 @@
         var gid = e.target.closest('[data-goto]').getAttribute('data-goto');
         close();
         var ga = (window.APP_DATA.apps || []).filter(function(x){ return x.id === gid; })[0];
-        if(ga){ state.detail = ga; state.screen = 'detail'; state.listTitle = '账户'; render(); }
+        if(ga && window.APP_NAV){ window.APP_NAV.detail(ga); }
         return;
       }
 
@@ -987,6 +994,8 @@
           window.open(u, '_blank');
           if(window.__DL) window.__DL.set(app.id, app.version);
           close();
+          try{ render(); }catch(e){}          /* 全局按钮同步成「已获取」 */
+          try{ if(window.paintBadge) window.paintBadge(); }catch(e){}
         }
         return;
       }
