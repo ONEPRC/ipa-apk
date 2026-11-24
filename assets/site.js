@@ -1377,7 +1377,6 @@ if('serviceWorker' in navigator && location.protocol !== 'file:'){
     var el = e.target.closest('.hscroll, .shots');
     if(!el) return;
     hs = el; startX = e.clientX; startLeft = el.scrollLeft; moved = false;
-    try{ el.setPointerCapture(e.pointerId); }catch(err){}
   }, true);
 
   document.addEventListener('pointermove', function(e){
