@@ -853,3 +853,14 @@ html[data-theme="dark"] .toast{
   aspect-ratio:16/9 !important;
   height:auto !important;
 }
+
+/* 16:9 严格生效：不再用 max-height 打破比例；图片统一 cover 填满 */
+.card .art{
+  aspect-ratio:16/9 !important;
+  height:auto !important;
+  max-height:none !important;
+}
+.card .art .shotlb{object-fit:cover !important}
+.shotitem,.shots.single .shotitem{aspect-ratio:16/9 !important;height:auto !important}
+.shotitem img{object-fit:cover !important}
+.dshot{aspect-ratio:16/9 !important;height:auto !important}
