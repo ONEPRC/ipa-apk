@@ -697,13 +697,22 @@
         if(wasHelp){
           state._helpShown = false;
           var stg0 = document.getElementById('stage');
-          if(stg0) stg0.classList.add('page-out');
-          // 抽屉同时上拉，视觉上像"退回到账户页"
+          // 复制当前页作为幽灵层，向右滑出
+          if(stg0){
+            var r0 = stg0.getBoundingClientRect();
+            var ghost = stg0.cloneNode(true);
+            ghost.className = 'stage-ghost page-out';
+            ghost.style.left = r0.left + 'px';
+            ghost.style.top = r0.top + 'px';
+            ghost.style.width = r0.width + 'px';
+            ghost.style.minHeight = r0.height + 'px';
+            document.body.appendChild(ghost);
+            setTimeout(function(){ ghost.remove(); }, 300);
+          }
+          // 底下立刻变成账户页
+          state.screen = 'home';
+          render(); window.scrollTo(0, 0);
           if(window.openAccountSheet) window.openAccountSheet();
-          setTimeout(function(){
-            state.screen = 'home';
-            render(); window.scrollTo(0, 0);
-          }, 240);
           return;
         }
         state.screen = 'home';
