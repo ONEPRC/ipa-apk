@@ -1159,8 +1159,6 @@
   }
 
   function build(){
-    if(built) return;
-    built = true;
     var st = (window.APP_DATA && window.APP_DATA.site) || {};
     var siteName = st.title || 'IPA&APK';
     var grp = st.qqGroup || '';
@@ -1172,12 +1170,15 @@
       syncShort = full ? (full.slice(0, 10) + '…') : '';
     }catch(e){ syncShort = ''; }
 
-    bg = document.createElement('div');
-    bg.className = 'sbg';
-    bg.onclick = close;
-
-    panel = document.createElement('div');
-    panel.className = 'spnl';
+    if(!bg){
+      bg = document.createElement('div');
+      bg.className = 'sbg';
+      bg.onclick = close;
+      panel = document.createElement('div');
+      panel.className = 'spnl';
+      document.body.appendChild(bg);
+      document.body.appendChild(panel);
+    }
     panel.innerHTML =
       '<div class="shead"><span>账户</span><button type="button" class="sdone">完成</button></div>' +
       '<div class="sbody">' +
@@ -1204,9 +1205,6 @@
         updBlock() +
 
       '</div>';
-
-    document.body.appendChild(bg);
-    document.body.appendChild(panel);
 
     panel.querySelector('.sdone').onclick = close;
 
