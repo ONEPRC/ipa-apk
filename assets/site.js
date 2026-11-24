@@ -633,8 +633,11 @@
     else if(state.screen === 'list') renderListScreen();
     else if(state.screen === 'help'){
       renderHelp();
-      var stg = document.getElementById('stage');
-      if(stg){ stg.classList.remove('page-in'); void stg.offsetWidth; stg.classList.add('page-in'); }
+      if(!state._helpShown){
+        state._helpShown = true;
+        var stg = document.getElementById('stage');
+        if(stg){ stg.classList.remove('page-in'); void stg.offsetWidth; stg.classList.add('page-in'); }
+      }
     }
     else renderDetail();
     document.getElementById('tabbar').style.display = (state.screen === 'help') ? 'none' : '';
@@ -691,11 +694,20 @@
       }
       if(a2 === 'back'){
         var wasHelp = state.screen === 'help';
+        if(wasHelp){
+          state._helpShown = false;
+          var stg0 = document.getElementById('stage');
+          if(stg0) stg0.classList.add('page-out');
+          // 抽屉同时上拉，视觉上像"退回到账户页"
+          if(window.openAccountSheet) window.openAccountSheet();
+          setTimeout(function(){
+            state.screen = 'home';
+            render(); window.scrollTo(0, 0);
+          }, 240);
+          return;
+        }
         state.screen = 'home';
         render(); window.scrollTo(0, 0);
-        if(wasHelp && window.openAccountSheet){
-          setTimeout(function(){ window.openAccountSheet(); }, 120);
-        }
         return;
       }
     }
