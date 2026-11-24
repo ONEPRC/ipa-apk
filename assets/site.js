@@ -239,7 +239,7 @@
       return;
     }
     if(state.tab === 'search'){
-      if(!String(state.q || '').trim()){
+      if(!String(state.q || '').trim() && !state.catf){
         var words;
         try { words = exploreWords(6); } catch(e){ words = []; }
         if(!words || !words.length) words = ['游戏', 'App', '插件'];
