@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/25 00:23:55
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 00:24:30
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795537435696,
+    "rev": 1795537470929,
     "categories": [
       "游戏",
       "应用",
@@ -155,7 +155,7 @@ window.APP_DATA = {
     },
     {
       "id": "amwqcx2q3",
-      "name": "Fii",
+      "name": "FilzalL",
       "version": "2.2",
       "category": "应用",
       "platform": "iOS",
@@ -167,7 +167,7 @@ window.APP_DATA = {
       "description": "文件管理器",
       "date": "2026-11-21",
       "addedAt": "2026-11-21T20:01",
-      "updatedAt": "2026-11-25T00:23"
+      "updatedAt": "2026-11-25T00:24"
     },
     {
       "id": "amwqc9zp5",
