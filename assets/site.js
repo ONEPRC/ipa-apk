@@ -239,8 +239,10 @@
       return;
     }
     if(state.tab === 'search'){
-      if(!state.q.trim()){
-        var words = exploreWords(6);
+      if(!String(state.q || '').trim()){
+        var words;
+        try { words = exploreWords(6); } catch(e){ words = []; }
+        if(!words || !words.length) words = ['游戏', 'App', '插件'];
         var rec = ALL.slice().sort(function(x, y){ return String(latest(y)).localeCompare(String(latest(x))); }).slice(0, 6);
         stage.innerHTML =
           '<div class="searchwrap"><div class="searchbar"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.8 15.8 4.6 4.6"/></svg>' +
