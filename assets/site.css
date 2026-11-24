@@ -934,4 +934,3 @@ html[data-theme="dark"] .toast{
 /* 拖动期间：关掉吸附、禁止平滑滚动 */
 .hscroll.dragging,.shots.dragging{scroll-snap-type:none !important;scroll-behavior:auto !important}
 .hscroll,.shots{scroll-behavior:auto}
-.hscroll.dragging .feat,.shots.dragging .shotitem{pointer-events:none}
