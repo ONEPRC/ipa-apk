@@ -900,16 +900,23 @@ html[data-theme="dark"] .toast{
 .shots{scroll-snap-align:start;scroll-padding-left:18px}
 .shots .shotitem{scroll-snap-align:start}
 
-/* 详情多图：整屏一张，无左右露出 */
+
+/* 详情多图：与应用页精选卡完全同款 */
 .shots{
-  margin:16px 0 !important;
-  padding:0 !important;
-  gap:10px !important;
-  scroll-padding:0 !important;
+  margin:16px -18px !important;
+  padding:0 18px !important;
+  gap:6px !important;
+  scroll-padding-left:18px !important;
   scroll-snap-type:x mandatory;
 }
 .shots .shotitem{
-  flex:0 0 100% !important;
+  flex:0 0 auto;
   scroll-snap-align:start;
-  width:100%;
+  border-radius:16px;
+  overflow:hidden;
+  aspect-ratio:16/9;
+}
+@media (min-width:900px){
+  .shots{margin:16px -36px !important;padding:0 36px !important;gap:20px !important;scroll-padding-left:36px !important}
+  .shots .shotitem{flex:0 0 calc(50% - 10px) !important}
 }
