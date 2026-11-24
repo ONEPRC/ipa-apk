@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/24 19:42:38
+// 应用数据文件 —— 由本地管理页写入 2026/11/24 19:50:32
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795520558050,
+    "rev": 1795521032784,
     "categories": [
       "游戏",
       "应用",
@@ -332,7 +332,7 @@ window.APP_DATA = {
     {
       "id": "amw94dx4m",
       "name": "红果漫剧",
-      "version": "7.4.1",
+      "version": "7.4.2",
       "category": "应用",
       "platform": "iOS",
       "size": "319MB",
@@ -341,9 +341,10 @@ window.APP_DATA = {
       "url": "https://pan.quark.cn/s/61421519663c",
       "pwd": "",
       "description": "✅抖音漫剧软件\n✅动画短剧一应俱全\n✅解锁会员功能",
+      "whatsNew": "修复一些问题",
       "date": "2026-11-09",
       "addedAt": "2026-11-09T18:30",
-      "updatedAt": "2026-11-20T22:15"
+      "updatedAt": "2026-11-24T19:50"
     },
     {
       "id": "amw94auxj",
