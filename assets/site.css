@@ -685,3 +685,12 @@ html[data-theme="dark"] .updcard{background:#2c2c2e}
 /* 列表行按钮：覆盖 .row .btn 的 padding，三态等宽 */
 .row .btn{flex:0 0 auto;min-width:72px;height:32px;padding:0 12px;display:inline-flex;align-items:center;justify-content:center;line-height:1}
 
+
+/* 横滑卡片：滑动过程中也保持圆角（只修圆角，不改布局） */
+.hscroll .feat{
+  border-radius:20px;
+  overflow:hidden;
+  -webkit-mask-image:-webkit-radial-gradient(#fff,#000);  /* 防止 iOS 拖动时圆角被重绘成直角 */
+}
+.hscroll.dragging .feat{border-radius:20px}
+.hscroll .feat .visual{border-radius:18px}
