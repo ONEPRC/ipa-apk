@@ -950,3 +950,6 @@ html[data-theme="dark"] .toast{
 
 /* 图片本身不拦截纵向手势 */
 img{touch-action:auto !important}
+
+/* 有大图时：只留底部渐变，图片保持清晰 */
+.veil.soft{background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.42)) !important}
