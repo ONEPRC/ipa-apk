@@ -690,3 +690,21 @@ html[data-theme="dark"] .updcard{background:#2c2c2e}
 /* 只让图片本身圆角，卡片外层不裁切 */
 .feat .visual{border-radius:18px;overflow:hidden}
 .feat{border-radius:0 !important;overflow:visible !important}
+
+/* 电脑端暗色：整页（含底栏下方）都黑 */
+html[data-theme="dark"], html[data-theme="dark"] body{background:#000 !important}
+html[data-theme="dark"] .app{background:#000}
+@media (min-width:900px){
+  html[data-theme="dark"] body{background:#000 !important}
+  html[data-theme="dark"] .app{background:#0f131a !important}
+}
+/* 底栏容器区域跟随主题 */
+html[data-theme="dark"] .tabbar{background:rgba(30,30,33,.9) !important}
+
+/* 只让图片保持圆角（iOS 拖动时也圆） */
+.feat .visual{
+  transform:translateZ(0);
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
+  will-change:transform;
+}
