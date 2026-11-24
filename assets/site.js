@@ -242,6 +242,22 @@
   function dlCount(){ try { return dlUpdates().length; } catch(e){ return 0; } }
   window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, label: dlLabel, all: dlAll };
 
+  function paintBadge(){
+    var n = 0;
+    try { n = (window.__DL ? window.__DL.updates().length : 0); } catch(e){ n = 0; }
+    document.querySelectorAll('.avatar').forEach(function(av){
+      var b = av.querySelector('.badge');
+      if(!n){ if(b) b.remove(); return; }
+      if(!b){
+        b = document.createElement('span');
+        b.className = 'badge';
+        av.appendChild(b);
+      }
+      b.textContent = n > 99 ? '99+' : n;
+    });
+  }
+  window.paintBadge = paintBadge;
+
   function row(a){
     return '<div class="row" data-open="' + a.id + '"><div class="ic">' + iconHTML(a) + '</div>' +
       '<div class="tx' + (a.note ? ' has-note' : '') + '">' +
@@ -499,6 +515,7 @@
     var hd = document.querySelector('.headdiv');
     if(hd) hd.style.display = (state.screen === 'home') ? '' : 'none';
     if(state.screen === 'home' && (state.tab === 'games' || state.tab === 'apps')) setTimeout(fitCards, 0);
+    try{ if(window.paintBadge) window.paintBadge(); }catch(e){}
   }
 
   /* ---------- 事件 ---------- */
@@ -599,6 +616,7 @@
         var lb = dlLabel(target);
         gbtn.textContent = lb;
         gbtn.className = gbtn.className.replace(/\s*(get|got|update)\b/g, '') + ' ' + dlState(target);
+        try{ if(window.paintBadge) window.paintBadge(); }catch(e){}
       }
       else toast('这条还没有链接');
       return;
