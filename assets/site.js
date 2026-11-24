@@ -1365,6 +1365,7 @@ if('serviceWorker' in navigator && location.protocol !== 'file:'){
     var el = e.target.closest('.hscroll, .shots');
     if(!el) return;
     hs = el; startX = e.clientX; startLeft = el.scrollLeft; moved = false;
+    try{ el.setPointerCapture(e.pointerId); }catch(err){}
   }, true);
 
   document.addEventListener('pointermove', function(e){
@@ -1372,6 +1373,7 @@ if('serviceWorker' in navigator && location.protocol !== 'file:'){
     var dx = e.clientX - startX;
     if(Math.abs(dx) > 4){
       moved = true;
+      e.preventDefault();
       hs.scrollLeft = startLeft - dx;
       hs.classList.add('dragging');
     }
@@ -1520,3 +1522,12 @@ document.addEventListener('click', function(e){
 
   if(window.ME_UI) window.ME_UI.open('restore');
 }, true);
+
+/* 电脑端：Shift + 滚轮横向滑动（精选卡 / 详情多图） */
+document.addEventListener('wheel', function(e){
+  if(!e.shiftKey) return;
+  var el = e.target.closest('.hscroll, .shots');
+  if(!el) return;
+  e.preventDefault();
+  el.scrollLeft += (e.deltaY || e.deltaX);
+}, { passive: false });
