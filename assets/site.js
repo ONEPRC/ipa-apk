@@ -908,3 +908,10 @@
     if(e.target.closest('#avabtn, #avabtn2, #avabtn3')){ e.preventDefault(); e.stopPropagation(); open(); }
   }, true);
 })();
+
+/* 注册 Service Worker（可添加到主屏 / 离线打开） */
+if('serviceWorker' in navigator && location.protocol !== 'file:'){
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').catch(function(){});
+  });
+}
