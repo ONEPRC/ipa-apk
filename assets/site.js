@@ -126,7 +126,7 @@
   function renderHead(){
     var box = document.getElementById('head');
     if(state.screen === 'home'){
-      var t = state.tab === 'today' ? 'Today' : (state.tab === 'games' ? '游戏' : (state.tab === 'apps' ? '应用' : '搜索'));
+      var t = state.tab === 'today' ? 'Today' : (state.tab === 'games' ? '游戏' : (state.tab === 'apps' ? 'App' : '搜索'));
       box.innerHTML =
         '<h1>' + t + '</h1>' +
         '<div class="avatar" id="avabtn" role="button" aria-label="设置"><img src="' + LOGO + '" alt=""></div>' +
@@ -144,7 +144,7 @@
         '</div>';
       return;
     }
-    var label = state.tab === 'games' ? '游戏' : (state.tab === 'apps' ? '应用' : (state.tab === 'today' ? 'Today' : '搜索'));
+    var label = state.tab === 'games' ? '游戏' : (state.tab === 'apps' ? 'App' : (state.tab === 'today' ? 'Today' : '搜索'));
     box.innerHTML = '<button class="back" data-act="back">' +
       '<svg viewBox="0 0 24 24"><path d="m14.5 6-6 6 6 6"/></svg>' + label + '</button>' +
       '<div class="avatar" id="avabtn2" role="button" aria-label="设置"><img src="' + LOGO + '" alt=""></div>' +
