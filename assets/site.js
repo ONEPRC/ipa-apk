@@ -265,7 +265,8 @@
             c0.onclick = function(ev){
               ev.preventDefault(); ev.stopPropagation();
               inp0.blur();
-              var w0 = document.querySelector('.searchwrap'); if(w0) w0.classList.remove('focus');
+              state.q = '';
+              render();
             };
           }
           var x0 = document.querySelector('.sclear');
@@ -304,9 +305,12 @@
       var cancelBtn = document.querySelector('.scancel');
       if(cancelBtn && inp){
         var exitInput = function(ev){
-          if(ev) ev.stopPropagation();
+          if(ev){ ev.stopPropagation(); }
           try{ inp.blur(); }catch(e){}
-          var w = document.querySelector('.searchwrap'); if(w) w.classList.remove('focus');
+          state.q = '';                    // 退出搜索：清空关键词
+          render();                        // 回到「探索更多 / 为你推荐」
+          var q8 = document.getElementById('q');
+          if(q8) q8.blur();
         };
         cancelBtn.addEventListener('pointerdown', exitInput, true);
         cancelBtn.addEventListener('click', exitInput, true);
