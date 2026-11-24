@@ -304,11 +304,12 @@
       var cancelBtn = document.querySelector('.scancel');
       if(cancelBtn && inp){
         var exitInput = function(ev){
-          if(ev) ev.stopPropagation();          // 不拦截默认行为，让焦点正常移走
+          if(ev) ev.stopPropagation();
           try{ inp.blur(); }catch(e){}
           var w = document.querySelector('.searchwrap'); if(w) w.classList.remove('focus');
         };
-        cancelBtn.addEventListener('click', exitInput);
+        cancelBtn.addEventListener('pointerdown', exitInput, true);
+        cancelBtn.addEventListener('click', exitInput, true);
       }
       var clrBtn = document.querySelector('.sclear');
       if(clrBtn && inp){
