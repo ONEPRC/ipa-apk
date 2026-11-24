@@ -1535,6 +1535,7 @@ document.addEventListener('dragstart', function(e){
   var drag = null, raf = 0, lastX = 0, lastT = 0, vel = 0;
 
   document.addEventListener('pointerdown', function(e){
+    if(e.pointerType && e.pointerType !== 'mouse') return;   // 触屏走原生滚动
     var el = e.target.closest('.hscroll, .shots');
     if(!el) return;
     drag = {
