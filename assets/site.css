@@ -739,3 +739,7 @@ html[data-theme="dark"] .tabbar{background:rgba(30,30,33,.9) !important}
   box-shadow:-8px 0 24px rgba(0,0,0,.08);
   pointer-events:none;
 }
+
+/* 密码锁定：键盘不可点 */
+.gate2.locked .g2-pad{pointer-events:none}
+.gate2.locked .g2-err{color:#ffb4b4}
