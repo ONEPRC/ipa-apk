@@ -731,3 +731,11 @@ html[data-theme="dark"] .tabbar{background:rgba(30,30,33,.9) !important}
   from{transform:translateX(0);opacity:1}
   to{transform:translateX(100%);opacity:.6}
 }
+
+/* 幽灵层：用来做"页面向右滑出"的过渡，底下已经是目标页 */
+.stage-ghost{
+  position:fixed;z-index:60;overflow:hidden;
+  background:var(--bg);
+  box-shadow:-8px 0 24px rgba(0,0,0,.08);
+  pointer-events:none;
+}
