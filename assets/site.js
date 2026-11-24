@@ -166,7 +166,7 @@
     if(tab === 'apps')  return ALL.filter(function(a){ return catOf(a) !== '游戏'; });
     if(tab === 'today'){
       var t = todayKey();
-      return ALL.filter(function(a){ return latest(a).slice(0,10) === t; });
+      return ALL.filter(function(a){ return !a.pinned && latest(a).slice(0,10) === t; });
     }
     return ALL;
   }
