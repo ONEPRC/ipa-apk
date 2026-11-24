@@ -527,3 +527,7 @@ html[data-theme="dark"] .sgroup{background:#2c2c2e}
 .sclear svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.6;stroke-linecap:round}
 .scclear[hidden],.sclear[hidden]{display:none}
 .scancel{background:none;border:0;color:var(--blue);font-size:16px;padding:0 2px;cursor:pointer;flex:0 0 auto}
+
+/* 取消：只有输入框聚焦时才显示 */
+.searchwrap .scancel{display:none}
+.searchwrap.focus .scancel{display:block}
