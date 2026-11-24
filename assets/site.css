@@ -899,3 +899,17 @@ html[data-theme="dark"] .toast{
 /* 详情多图：首图贴左（留 18px），只在右侧露出下一张 */
 .shots{scroll-snap-align:start;scroll-padding-left:18px}
 .shots .shotitem{scroll-snap-align:start}
+
+/* 详情多图：整屏一张，无左右露出 */
+.shots{
+  margin:16px 0 !important;
+  padding:0 !important;
+  gap:10px !important;
+  scroll-padding:0 !important;
+  scroll-snap-type:x mandatory;
+}
+.shots .shotitem{
+  flex:0 0 100% !important;
+  scroll-snap-align:start;
+  width:100%;
+}
