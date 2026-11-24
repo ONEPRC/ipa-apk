@@ -193,7 +193,7 @@
         '</div>';
       return;
     }
-    var label = state.screen === 'help' ? '使用说明' : (state.screen === 'mine' ? '我的获取' : (state.tab === 'games' ? '游戏' : (state.tab === 'apps' ? 'App' : (state.tab === 'today' ? 'Today' : '搜索'))));
+    var label = state.screen === 'help' ? '使用说明' : (state.tab === 'games' ? '游戏' : (state.tab === 'apps' ? 'App' : (state.tab === 'today' ? 'Today' : '搜索')));
     box.innerHTML = '<button class="back" data-act="back">' +
       '<svg viewBox="0 0 24 24"><path d="m14.5 6-6 6 6 6"/></svg>' + label + '</button>' +
       '<div class="avatar" id="avabtn2" role="button" aria-label="设置"><img src="' + LOGO + '" alt=""></div>' +
@@ -266,36 +266,9 @@
     try{ return JSON.parse(localStorage.getItem(DLKEY) || '{}'); }catch(e){ return {}; }
   }
   function dlGet(id){ return dlAll()[id] || null; }
-  function dlInfo(id){
-    var raw = dlAll()[id];
-    if(raw === undefined) return null;
-    if(typeof raw === 'string') return { v: raw, at: null };
-    return { v: raw.v, at: raw.at || null };
-  }
   function dlSet(id, ver){
-    var o = dlAll();
-    o[id] = { v: String(ver || ''), at: new Date().toISOString() };
+    var o = dlAll(); o[id] = String(ver || '');
     try{ localStorage.setItem(DLKEY, JSON.stringify(o)); }catch(e){}
-  }
-  function dlSet2(id, ver, at){
-    var o = dlAll(); o[id] = { v: String(ver || ''), at: at || new Date().toISOString() };
-    try{ localStorage.setItem(DLKEY, JSON.stringify(o)); }catch(e){}
-  }
-  function dlRemove(id){
-    var o = dlAll(); delete o[id];
-    try{ localStorage.setItem(DLKEY, JSON.stringify(o)); }catch(e){}
-  }
-  function dlMine(){
-    var o = dlAll(), out = [];
-    ALL.forEach(function(a){
-      var rec = o[a.id];
-      if(rec === undefined) return;
-      var v = (typeof rec === 'string') ? rec : rec.v;
-      var at = (typeof rec === 'string') ? null : rec.at;
-      out.push({ app: a, from: v, at: at, state: String(v) === String(a.version || '') ? 'got' : 'update' });
-    });
-    out.sort(function(x, y){ return String(y.at || '').localeCompare(String(x.at || '')); });
-    return out;
   }
   function dlState(a){
     var rec = dlGet(a.id);
@@ -307,22 +280,22 @@
     return st === 'got' ? '已获取' : (st === 'update' ? '更新' : '获取');
   }
   function dlUpdates(){
-    var out = [];
-    dlMine().forEach(function(o){ if(o.state === 'update') out.push({ app: o.app, from: o.from }); });
+    var o = dlAll(), out = [];
+    ALL.forEach(function(a){
+      var rec = o[a.id];
+      if(rec === undefined) return;
+      if(String(rec) !== String(a.version || '')) out.push({ app: a, from: rec });
+    });
     return out;
   }
   function dlCount(){ try { return dlUpdates().length; } catch(e){ return 0; } }
   window.__BUILD = BUILD_ID;
-  window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, label: dlLabel, all: dlAll, mine: dlMine, remove: dlRemove, set2: dlSet2 };
+  window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, label: dlLabel, all: dlAll };
   window.gotoHelp = function(){
     state.screen = 'help'; state.listTitle = '使用说明';
     render(); window.scrollTo(0, 0);
   };
   window.APP_NAV = {
-    mine: function(){
-      state.screen = 'mine'; state.listTitle = '我的获取'; state._mineShown = false;
-      render(); window.scrollTo(0, 0);
-    },
     help: function(){
       state.screen = 'help'; state.listTitle = '使用说明';
       render(); window.scrollTo(0, 0);
@@ -573,41 +546,6 @@
     return arr;
   }
 
-  function renderMine(){
-    var stage = document.getElementById('stage');
-    var list = (window.__DL ? window.__DL.mine() : []);
-    if(!list.length){
-      stage.innerHTML = '<div class="mineempty">还没有获取过应用<br><small>点任意应用的「获取」就会记在这里</small></div>';
-      return;
-    }
-    function cnDate(v){
-      if(!v) return '未记录时间';
-      var d = new Date(v);
-      if(isNaN(d.getTime())) return '未记录时间';
-      return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
-    }
-    var rows = list.map(function(o){
-      var a = o.app;
-      var ic = a.icon ? '<img src="' + fixPath(a.icon) + '" alt="">' : '<span class="t">' + (a.iconText || a.name).slice(0,2) + '</span>';
-      return '<div class="minerow" data-open="' + a.id + '">' +
-        '<div class="uic">' + ic + '</div>' +
-        '<div class="utx">' +
-          '<b>' + a.name + '</b>' +
-          '<em>v' + (o.from || '—') + (o.state === 'update' ? ' → v' + (a.version || '') : '') + '</em>' +
-          '<small>' + cnDate(o.at) + '</small>' +
-        '</div>' +
-        (o.state === 'update'
-          ? '<button class="ubtn" data-upd="' + a.id + '">更新</button>'
-          : '<span class="ubtn plain">已获取</span>') +
-      '</div>';
-    }).join('');
-    stage.innerHTML =
-      '<div class="sect"><h3>我的获取（' + list.length + '）</h3>' +
-        '<button class="more" data-sync="1" style="color:var(--blue);background:none;border:0;font-size:15px">备份记录</button></div>' +
-      '<p class="sectsub">换设备可以用「备份记录」生成的码恢复</p>' +
-      '<div class="minelist">' + rows + '</div>';
-  }
-
   function renderHelp(){
     var st = (window.APP_DATA && window.APP_DATA.site) || {};
     var grp = st.qqGroup || '';
@@ -723,14 +661,6 @@
     if(nb){ nb.style.display = (state.tab === 'today' && state.screen === 'home') ? '' : 'none'; }
     if(state.screen === 'home') renderHome();
     else if(state.screen === 'list') renderListScreen();
-    else if(state.screen === 'mine'){
-      renderMine();
-      if(!state._mineShown){
-        state._mineShown = true;
-        var stgM = document.getElementById('stage');
-        if(stgM){ stgM.classList.remove('page-in'); void stgM.offsetWidth; stgM.classList.add('page-in'); }
-      }
-    }
     else if(state.screen === 'help'){
       renderHelp();
       if(!state._helpShown){
@@ -740,7 +670,7 @@
       }
     }
     else renderDetail();
-    document.getElementById('tabbar').style.display = (state.screen === 'help' || state.screen === 'mine') ? 'none' : '';
+    document.getElementById('tabbar').style.display = (state.screen === 'help') ? 'none' : '';
     var tb = document.querySelector('.tabbar');
     if(tb) tb.classList.add('ready');
     var hd = document.querySelector('.headdiv');
@@ -793,14 +723,6 @@
         return;
       }
       if(a2 === 'back'){
-        var wasMine = state.screen === 'mine';
-        if(wasMine){
-          state._mineShown = false;
-          state.screen = 'home';
-          render(); window.scrollTo(0, 0);
-          if(window.openAccountSheet) window.openAccountSheet();
-          return;
-        }
         var wasHelp = state.screen === 'help';
         if(wasHelp){
           state._helpShown = false;
@@ -1230,7 +1152,6 @@
         '</div>' +
         '<div class="sgroup">' +
           '<button class="srow" data-sact="share"><span>分享给朋友</span><i class="chev">›</i></button>' +
-          '<button class="srow" data-sact="mine"><span>我的获取</span><i class="chev">›</i></button>' +
           '<button class="srow" data-sact="help" onclick="try{window.gotoHelp&&window.gotoHelp();document.documentElement.classList.remove(\'locked\');}catch(e){}"><span>使用说明</span><i class="chev">›</i></button>' +
         '</div>' +
         updBlock() +
@@ -1295,11 +1216,6 @@
       if(act === 'share'){
         if(navigator.share){ navigator.share({ title: document.title, url: location.href }).catch(function(){}); }
         else { try{ copyText(location.href, '链接已复制'); }catch(err){} }
-        return;
-      }
-      if(act === 'mine'){
-        close();
-        if(window.APP_NAV) window.APP_NAV.mine();
         return;
       }
       if(act === 'help'){
