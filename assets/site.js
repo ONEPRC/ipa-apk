@@ -683,6 +683,8 @@
     var st = (window.APP_DATA && window.APP_DATA.site) || {};
     var siteName = st.title || 'IPA&APK';
     var grp = st.qqGroup || '';
+    var av = document.querySelector('.avatar img');
+    var logo = av ? av.getAttribute('src') : '';
 
     bg = document.createElement('div');
     bg.className = 'sbg';
@@ -695,7 +697,7 @@
       '<div class="sbody">' +
         '<div class="sgroup">' +
           '<div class="suser">' +
-            '<div class="suav"><img src="' + LOGO + '" alt=""></div>' +
+            '<div class="suav">' + (logo ? '<img src="' + logo + '" alt="">' : '') + '</div>' +
             '<div class="suinfo"><b>' + siteName + '</b><span>应用索引 · 网盘分享</span></div>' +
           '</div>' +
         '</div>' +
