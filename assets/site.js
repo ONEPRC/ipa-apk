@@ -1440,3 +1440,18 @@ document.addEventListener('click', function(e){
 
   window.ME_UI = { open: open, close: close };
 })();
+
+/* 昵称 / 恢复记录：文档级捕获，确保一次点击生效 */
+document.addEventListener('click', function(e){
+  var row = e.target.closest('[data-sact]');
+  if(!row) return;
+  var act = row.getAttribute('data-sact');
+  if(act !== 'nick' && act !== 'restore') return;
+  e.preventDefault(); e.stopPropagation();
+
+  var pl = document.querySelector('.spnl'); if(pl) pl.classList.remove('on');
+  var bg = document.querySelector('.sbg'); if(bg) bg.classList.remove('on');
+  document.documentElement.classList.remove('locked');
+
+  if(window.ME_UI) window.ME_UI.open(act === 'nick' ? 'nick' : 'restore');
+}, true);
