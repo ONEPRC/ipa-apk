@@ -43,8 +43,9 @@
             if(d[i + 3] < 140) continue;
             var r = d[i], g = d[i + 1], b = d[i + 2];
             var mx = Math.max(r, g, b), mn = Math.min(r, g, b);
-            if(mx < 35) continue;               // 太黑（描边）
-            if(mn > 235) continue;              // 太白（logo 文字）
+            if(mx < 35) continue;                       // 太黑（描边）
+            if(mn > 235) continue;                      // 太白（logo 文字）
+            if((mx - mn) / mx < 0.18) continue;         // 低饱和（灰底/白底）跳过
             var key = (r >> 5) + ',' + (g >> 5) + ',' + (b >> 5);
             if(!bucket[key]) bucket[key] = { n: 0, r: 0, g: 0, b: 0 };
             bucket[key].n++; bucket[key].r += r; bucket[key].g += g; bucket[key].b += b;
@@ -136,7 +137,7 @@
     if(tab === 'apps')  return ALL.filter(function(a){ return catOf(a) !== '游戏'; });
     if(tab === 'today'){
       var t = todayKey();
-      return ALL.filter(function(a){ return latest(a).slice(0,10) === t; });
+      return ALL.filter(function(a){ return !a.pinned && latest(a).slice(0,10) === t; });
     }
     return ALL;
   }
