@@ -678,7 +678,7 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
         '<div><em>大小</em><b>' + sizeNum(a.size) + '</b><small>' + sizeUnit(a.size) + '</small></div>' +
       '</div>' +
       (a.shots && a.shots.length
-        ? '<div class="shots">' + a.shots.map(function(sh){
+        ? '<div class="shots' + (a.shots.length === 1 ? ' single' : '') + '">' + a.shots.map(function(sh){
             return '<div class="shotitem">' +
               '<div class="shotbg" style="background-image:url(' + fixPath(sh) + ')"></div>' +
               '<img src="' + fixPath(sh) + '" alt="" onerror="window.__shotFail&&window.__shotFail(this)">' +
