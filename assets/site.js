@@ -1521,25 +1521,36 @@ document.addEventListener('dragstart', function(e){
   if(e.target.closest('.hscroll, .shots')) e.preventDefault();
 }, true);
 
-/* ===== 桌面端鼠标拖拽（不影响点击、不用指针捕获） ===== */
+/* ===== 桌面端鼠标拖拽：rAF 节流 + 惯性，更顺滑 ===== */
 (function mouseDragBoot(){
-  var drag = null;
+  var drag = null, raf = 0, lastX = 0, lastT = 0, vel = 0;
 
   document.addEventListener('pointerdown', function(e){
-    if(e.pointerType && e.pointerType !== 'mouse') return;      // 触屏走原生滚动
+    if(e.pointerType && e.pointerType !== 'mouse') return;
     var el = e.target.closest('.hscroll, .shots');
     if(!el) return;
     drag = { el: el, x: e.clientX, left: el.scrollLeft, moved: false };
+    lastX = e.clientX; lastT = performance.now(); vel = 0;
     el.classList.add('dragging');
   }, true);
 
   document.addEventListener('pointermove', function(e){
     if(!drag) return;
     var dx = e.clientX - drag.x;
-    if(Math.abs(dx) > 5){
+    if(Math.abs(dx) > 4){
       drag.moved = true;
       e.preventDefault();
-      drag.el.scrollLeft = drag.left - dx;
+      var now = performance.now();
+      var dt = Math.max(1, now - lastT);
+      vel = (e.clientX - lastX) / dt;      // px/ms
+      lastX = e.clientX; lastT = now;
+      var target = drag.left - dx;
+      if(!raf){
+        raf = requestAnimationFrame(function(){
+          raf = 0;
+          if(drag) drag.el.scrollLeft = target;
+        });
+      }
     }
   }, true);
 
@@ -1548,8 +1559,13 @@ document.addEventListener('dragstart', function(e){
     var el = drag.el, moved = drag.moved;
     el.classList.remove('dragging');
     drag = null;
+    if(raf){ cancelAnimationFrame(raf); raf = 0; }
     if(moved){
-      // 拖完的一次 click 吞掉，避免误进详情
+      // 惯性：按松手瞬间的速度滑一小段
+      var glide = -vel * 220;
+      if(Math.abs(glide) > 12){
+        try{ el.scrollBy({ left: glide, behavior: 'smooth' }); }catch(err){ el.scrollLeft += glide; }
+      }
       var stop = function(ev){ ev.stopPropagation(); ev.preventDefault(); };
       document.addEventListener('click', stop, true);
       setTimeout(function(){ document.removeEventListener('click', stop, true); }, 0);
@@ -1558,3 +1574,4 @@ document.addEventListener('dragstart', function(e){
   document.addEventListener('pointerup', end, true);
   document.addEventListener('pointercancel', end, true);
 })();
+
