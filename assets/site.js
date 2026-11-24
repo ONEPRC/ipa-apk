@@ -224,7 +224,9 @@
   /* ---------- 卡片 ---------- */
   function todayCard(a){
     return '<div class="card" data-open="' + a.id + '" style="background:' + color(a) + '">' +
-      '<div class="art">' + bgLayer(a) + iconHTML(a) + '</div>' +
+      '<div class="art">' + bgLayer(a) +
+        ((a.shots && a.shots.length) ? '' : iconHTML(a)) +
+      '</div>' +
       '<div class="txt"><div class="kick">' + catOf(a) + '</div>' +
         '<h2>' + a.name + '</h2><p>' + (a.note || '') + '</p>' +
         '<div class="foot"><div class="ic">' + iconHTML(a) + '</div>' +
