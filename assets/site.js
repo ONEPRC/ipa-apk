@@ -119,9 +119,15 @@
     return '<span>' + (a.iconText || a.name || '?').slice(0,2) + '</span>';
   }
   function bgLayer(a){
-    var img = (a.shots && a.shots.length) ? a.shots[0] : a.icon;
-    if(!img) return '<div class="veil"></div>';
-    return '<div class="bg" style="background-image:url(\'' + fixPath(img) + '\')"></div><div class="veil"></div>';
+    var shot = (a.shots && a.shots.length) ? a.shots[0] : null;
+    if(shot){
+      var u = fixPath(shot);
+      return '<div class="bg" style="background-image:url(\'' + u + '\')"></div>' +
+             '<img class="shotlb" src="' + u + '" alt="">' +
+             '<div class="veil"></div>';
+    }
+    if(!a.icon) return '<div class="veil"></div>';
+    return '<div class="bg" style="background-image:url(\'' + fixPath(a.icon) + '\')"></div><div class="veil"></div>';
   }
 
   function color(a){
