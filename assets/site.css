@@ -690,7 +690,6 @@ html[data-theme="dark"] .updcard{background:#2c2c2e}
 .hscroll .feat{
   border-radius:20px;
   overflow:hidden;
-  -webkit-mask-image:-webkit-radial-gradient(#fff,#000);  /* 防止 iOS 拖动时圆角被重绘成直角 */
 }
 .hscroll.dragging .feat{border-radius:20px}
 .hscroll .feat .visual{border-radius:18px}
