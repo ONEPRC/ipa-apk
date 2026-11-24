@@ -1572,7 +1572,7 @@ document.addEventListener('dragstart', function(e){
     if(!raf){
       raf = requestAnimationFrame(function(){
         raf = 0;
-        elNow.scrollLeft = target;
+        if(elNow) elNow.scrollLeft = target;
       });
     }
   }, { capture: true, passive: false });
@@ -1581,26 +1581,16 @@ document.addEventListener('dragstart', function(e){
     if(!drag) return;
     var el = drag.el;
     if(drag.moved && drag.axis === 'x' && e && typeof e.clientX === 'number'){
-      el.scrollLeft = drag.left - (e.clientX - drag.x);   // 补上最后一帧
+      el.scrollLeft = drag.left - (e.clientX - drag.x);
     }
     var moved = drag.moved && Math.abs(el.scrollLeft - drag.left) > 2;
     el.classList.remove('dragging');
     drag = null;
     if(raf){ cancelAnimationFrame(raf); raf = 0; }
     if(moved){
-      // 磁性吸附：滑到最近的一张
-      var kids = Array.prototype.slice.call(el.children).filter(function(k){ return k.offsetWidth > 0; });
-      if(kids.length){
-        var cur = el.scrollLeft;
-        var best = cur, min = 1e9;
-        kids.forEach(function(k){
-          var p = k.offsetLeft - el.offsetLeft - 18;   // 18 = 左内边距
-          var d = Math.abs(p - cur);
-          if(d < min){ min = d; best = p; }
-        });
-        if(Math.abs(best - cur) > 4){
-          try{ el.scrollTo({ left: best, behavior: 'smooth' }); }catch(err){ el.scrollLeft = best; }
-        }
+      var glide = -vel * 220;
+      if(Math.abs(glide) > 12){
+        try{ el.scrollBy({ left: glide, behavior: 'smooth' }); }catch(err){ el.scrollLeft += glide; }
       }
       var stop = function(ev){ ev.stopPropagation(); ev.preventDefault(); };
       document.addEventListener('click', stop, true);
