@@ -885,3 +885,13 @@ html[data-theme="dark"] .toast{
   .shots{gap:20px}
   .shots .shotitem{flex:0 0 calc(50% - 10px)}
 }
+
+/* 横滑区域：禁止拖拽/选中/长按弹菜单 */
+.hscroll img,.shots img,.card .art img{
+  -webkit-user-drag:none;
+  user-drag:none;
+  -webkit-touch-callout:none;
+  user-select:none;
+  pointer-events:auto;
+}
+.shots,.hscroll{touch-action:pan-x;-webkit-user-select:none;user-select:none}
