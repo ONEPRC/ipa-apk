@@ -1602,3 +1602,35 @@ document.addEventListener('dragstart', function(e){
 })();
 
 
+
+/* ===== 鼠标事件兜底拖拽（pointer 失效时接管） ===== */
+(function mouseFallbackBoot(){
+  var d = null;
+  document.addEventListener('mousedown', function(e){
+    if(e.button !== 0) return;
+    var el = e.target.closest('.hscroll, .shots');
+    if(!el) return;
+    d = { el: el, x: e.clientX, left: el.scrollLeft, moved: false };
+  }, true);
+  document.addEventListener('mousemove', function(e){
+    if(!d) return;
+    var dx = e.clientX - d.x;
+    if(Math.abs(dx) > 6){
+      d.moved = true;
+      e.preventDefault();
+      d.el.scrollLeft = d.left - dx;
+    }
+  }, true);
+  function up(){
+    if(!d) return;
+    var el = d.el, moved = d.moved;
+    d = null;
+    if(moved){
+      var stop = function(ev){ ev.stopPropagation(); ev.preventDefault(); };
+      document.addEventListener('click', stop, true);
+      setTimeout(function(){ document.removeEventListener('click', stop, true); }, 0);
+    }
+  }
+  document.addEventListener('mouseup', up, true);
+  document.addEventListener('mouseleave', up, true);
+})();
