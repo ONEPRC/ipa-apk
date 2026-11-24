@@ -27,37 +27,45 @@
     if(ICON_BUSY[a.id]) return null;
     ICON_BUSY[a.id] = true;
 
-    function paint(src, revoke){
-      var img = new Image();                 // 不要设 crossOrigin，同源图直接可用
+    function paint(src, isRetry){
+      var img = new Image();
       img.onload = function(){
         try{
           var cv = document.createElement('canvas');
-          cv.width = 16; cv.height = 16;
+          cv.width = 24; cv.height = 24;
           var x = cv.getContext('2d');
-          x.drawImage(img, 0, 0, 16, 16);
-          var d = x.getImageData(0, 0, 16, 16).data;
-          var r = 0, g = 0, b = 0, n = 0, best = null, bestSat = -1;
+          x.drawImage(img, 0, 0, 24, 24);
+          var d = x.getImageData(0, 0, 24, 24).data;
+
+          // 按 32 级量化统计出现最多的颜色（主色），排除过亮/过暗/透明
+          var bucket = {}, bestKey = null, bestCount = 0;
           for(var i = 0; i < d.length; i += 4){
-            if(d[i + 3] < 120) continue;
-            r += d[i]; g += d[i + 1]; b += d[i + 2]; n++;
-            var mx = Math.max(d[i], d[i + 1], d[i + 2]), mn = Math.min(d[i], d[i + 1], d[i + 2]);
-            var sat = mx === 0 ? 0 : (mx - mn) / mx;
-            if(sat > bestSat && mx > 40 && mx < 245){ bestSat = sat; best = [d[i], d[i + 1], d[i + 2]]; }
+            if(d[i + 3] < 140) continue;
+            var r = d[i], g = d[i + 1], b = d[i + 2];
+            var mx = Math.max(r, g, b), mn = Math.min(r, g, b);
+            if(mx < 35) continue;               // 太黑（描边）
+            if(mn > 235) continue;              // 太白（logo 文字）
+            var key = (r >> 5) + ',' + (g >> 5) + ',' + (b >> 5);
+            if(!bucket[key]) bucket[key] = { n: 0, r: 0, g: 0, b: 0 };
+            bucket[key].n++; bucket[key].r += r; bucket[key].g += g; bucket[key].b += b;
+            if(bucket[key].n > bestCount){ bestCount = bucket[key].n; bestKey = key; }
           }
-          var rgb = best || (n ? [r / n, g / n, b / n] : null);
+
           ICON_BUSY[a.id] = false;
-          if(!rgb) return;
-          var k = 0.82;
-          ICON_BG[a.id] = 'rgb(' + Math.round(rgb[0] * k) + ',' + Math.round(rgb[1] * k) + ',' + Math.round(rgb[2] * k) + ')';
+          if(!bestKey) return;
+
+          var s0 = bucket[bestKey];
+          var R = s0.r / s0.n, G = s0.g / s0.n, B = s0.b / s0.n;
+          var k = 0.78;                          // 压暗，保证白字清晰
+          ICON_BG[a.id] = 'rgb(' + Math.round(R * k) + ',' + Math.round(G * k) + ',' + Math.round(B * k) + ')';
+
           if(!colorFromIcon._t){
             colorFromIcon._t = setTimeout(function(){ colorFromIcon._t = null; try{ render(); }catch(e){} }, 60);
           }
         }catch(e){
-          // 画布被污染 → 用 fetch 拿 blob 再画一次
-          if(revoke) { ICON_BUSY[a.id] = false; return; }
+          if(isRetry){ ICON_BUSY[a.id] = false; return; }
           fetch(src).then(function(r){ return r.blob(); }).then(function(bl){
-            var u = URL.createObjectURL(bl);
-            paint(u, true);
+            paint(URL.createObjectURL(bl), true);
           }).catch(function(){ ICON_BUSY[a.id] = false; });
         }
       };
