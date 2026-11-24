@@ -976,7 +976,7 @@
     try { return sha256hex(str); } catch(e){ return ''; }
   }
   var LOCK_KEY = 'appindex.pwlock';
-  var LOCK_STEPS = { 5: 60, 6: 300, 7: 900, 8: 3600 };
+  var LOCK_STEPS = { 3: 60, 4: 300, 5: 900, 6: 3600 };   // 3次=1分钟 4次=5分钟 5次=15分钟 6次以上=1小时
   function lockGet(){ try { return JSON.parse(localStorage.getItem(LOCK_KEY) || '{}'); } catch(e){ return {}; } }
   function lockSet(o){ try { localStorage.setItem(LOCK_KEY, JSON.stringify(o)); } catch(e){} }
   function lockLeft(){ var o = lockGet(); return Math.max(0, Math.round(((o.until || 0) - Date.now()) / 1000)); }
