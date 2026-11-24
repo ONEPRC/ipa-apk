@@ -1446,12 +1446,30 @@ document.addEventListener('click', function(e){
   var row = e.target.closest('[data-sact]');
   if(!row) return;
   var act = row.getAttribute('data-sact');
-  if(act !== 'nick' && act !== 'restore') return;
+
+  // 备份码：直接复制并提示
+  if(act === 'sync'){
+    e.preventDefault(); e.stopPropagation();
+    var code = '';
+    try{ code = window.__ME ? window.__ME.makeCode() : ''; }catch(err){ code = ''; }
+    if(!code){ if(window.toast) window.toast('暂无可备份的记录'); return; }
+    var ta = document.createElement('textarea');
+    ta.value = code;
+    ta.style.cssText = 'position:fixed;top:-999px;left:-999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand('copy'); }catch(err){}
+    ta.remove();
+    if(window.toast) window.toast('复制成功');
+    return;
+  }
+
+  if(act !== 'restore') return;
   e.preventDefault(); e.stopPropagation();
 
   var pl = document.querySelector('.spnl'); if(pl) pl.classList.remove('on');
   var bg = document.querySelector('.sbg'); if(bg) bg.classList.remove('on');
   document.documentElement.classList.remove('locked');
 
-  if(window.ME_UI) window.ME_UI.open(act === 'nick' ? 'nick' : 'restore');
+  if(window.ME_UI) window.ME_UI.open('restore');
 }, true);
