@@ -904,7 +904,7 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
     }
 
     var card = e.target.closest('[data-open]');
-    var hsw = card ? card.closest('.hscroll') : null;
+    var hsw = card ? card.closest('.hscroll, .shots') : null;
     if(hsw && hsw._dragEnd && Date.now() - hsw._dragEnd < 200) return;   // 刚拖过，忽略这次点击
     if(card && !e.target.closest('.btn,.get')){
       var id = card.getAttribute('data-open');
@@ -1351,7 +1351,7 @@ if('serviceWorker' in navigator && location.protocol !== 'file:'){
   var hs = null, startX = 0, startLeft = 0, moved = false;
 
   document.addEventListener('pointerdown', function(e){
-    var el = e.target.closest('.hscroll');
+    var el = e.target.closest('.hscroll, .shots');
     if(!el) return;
     hs = el; startX = e.clientX; startLeft = el.scrollLeft; moved = false;
   }, true);
