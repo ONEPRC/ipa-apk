@@ -703,21 +703,13 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
 
   // 让横滑卡片左右露出完全一致
   function fitCards(){
-    // 1) 详情页多图：与精选卡同款露出（单张整宽、多张右露 12px）
+    // 1) 详情页多图：一屏一张，宽度交给 CSS
     document.querySelectorAll('.shots').forEach(function(sh){
       var n = sh.children.length;
       if(!n) return;
-      if(innerWidth >= 900){
-        for(var w0 = 0; w0 < n; w0++) sh.children[w0].style.flex = '';
-        sh.style.scrollSnapType = '';
-        return;
-      }
-      var G2 = 10, PEEK2 = 12, SIDE2 = 36;
-      var base = sh.parentElement ? sh.parentElement.clientWidth : sh.clientWidth;
-      var W2 = (n === 1) ? (base - SIDE2) : (base - SIDE2 - G2 - PEEK2);
-      for(var q = 0; q < n; q++) sh.children[q].style.flex = '0 0 ' + W2 + 'px';
-      if(!sh.dataset.init){ sh.dataset.init = '1'; sh.scrollLeft = 0; }
+      for(var q = 0; q < n; q++) sh.children[q].style.flex = '';
       sh.style.scrollSnapType = (n === 1) ? 'none' : '';
+      if(!sh.dataset.init){ sh.dataset.init = '1'; sh.scrollLeft = 0; }
     });
 
     // 2) 首页精选卡
