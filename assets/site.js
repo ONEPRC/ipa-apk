@@ -708,7 +708,8 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
       var n = sh.children.length;
       if(!n) return;
       var G2 = 10, PEEK2 = 12, SIDE2 = 36;
-      var W2 = (n === 1) ? (sh.clientWidth - SIDE2) : (sh.clientWidth - SIDE2 - G2 - PEEK2);
+      var base = sh.parentElement ? sh.parentElement.clientWidth : sh.clientWidth;
+      var W2 = (n === 1) ? (base - SIDE2) : (base - SIDE2 - G2 - PEEK2);
       for(var q = 0; q < n; q++) sh.children[q].style.flex = '0 0 ' + W2 + 'px';
       sh.style.scrollSnapType = (n === 1) ? 'none' : '';
     });
