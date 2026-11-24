@@ -554,7 +554,12 @@
       return;
     }
     var GAP = 6, PEEK = 12, SIDE = 36;   // 左右各 18 内边距
-    var W = hs.clientWidth - SIDE - GAP - PEEK;
+    // 只有一张卡时左右对称；多张卡时留出右侧露出
+    var W = (hs.children.length === 1)
+      ? hs.clientWidth - SIDE
+      : hs.clientWidth - SIDE - GAP - PEEK;
+    if(hs.children.length === 1){ hs.style.scrollSnapType = 'none'; }
+    else { hs.style.scrollSnapType = ''; }
     for(var i = 0; i < hs.children.length; i++){
       hs.children[i].style.flex = '0 0 ' + W + 'px';
       hs.children[i].style.borderRadius = '20px';
