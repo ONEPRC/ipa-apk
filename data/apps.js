@@ -2,6 +2,7 @@
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
+    "qqGroup": "873866223",
     "tagline": "搜索应用，跳转夸克网盘转存下载",
     "eyebrow": "SEARCH · COPY · OPEN ·  仅限群友使用·  873866223",
     "h1": "找到应用，",
