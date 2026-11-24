@@ -307,10 +307,16 @@
         var exitInput = function(ev){
           if(ev){ ev.stopPropagation(); }
           try{ inp.blur(); }catch(e){}
-          state.q = '';                    // 退出搜索：清空关键词
-          render();                        // 回到「探索更多 / 为你推荐」
-          var q8 = document.getElementById('q');
-          if(q8) q8.blur();
+          state.q = '';                    // 退出搜索
+          render();                        // 回到探索页
+          // iOS 有时会在重绘后再把焦点塞回输入框，这里多次兜底清除
+          [0, 60, 160, 320].forEach(function(t){
+            setTimeout(function(){
+              var w = document.querySelector('.searchwrap'); if(w) w.classList.remove('focus');
+              var q = document.getElementById('q');
+              if(q && document.activeElement === q) q.blur();
+            }, t);
+          });
         };
         cancelBtn.addEventListener('pointerdown', exitInput, true);
         cancelBtn.addEventListener('click', exitInput, true);
