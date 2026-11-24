@@ -303,12 +303,13 @@
       var wrap1 = inp ? inp.closest('.searchwrap') : null;
       var cancelBtn = document.querySelector('.scancel');
       if(cancelBtn && inp){
-        cancelBtn.onmousedown = function(ev){ ev.preventDefault(); };
-        cancelBtn.onclick = function(ev){
-          ev.preventDefault(); ev.stopPropagation();
-          inp.blur();
+        var exitInput = function(ev){
+          if(ev){ ev.preventDefault(); ev.stopPropagation(); }
+          try{ inp.blur(); }catch(e){}
           var w = document.querySelector('.searchwrap'); if(w) w.classList.remove('focus');
         };
+        cancelBtn.addEventListener('pointerdown', exitInput, true);
+        cancelBtn.addEventListener('click', exitInput, true);
       }
       var clrBtn = document.querySelector('.sclear');
       if(clrBtn && inp){
