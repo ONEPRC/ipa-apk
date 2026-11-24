@@ -759,3 +759,29 @@ html[data-theme="dark"] .tabbar{background:rgba(30,30,33,.9) !important}
 .mefoot{display:flex;gap:10px;margin-top:14px}
 .mebtn{flex:1;padding:11px;border:0;border-radius:12px;background:var(--blue);color:#fff;font-size:15px;font-weight:600;cursor:pointer}
 .mebtn.ghost{background:var(--gray);color:var(--ink)}
+
+/* 备份码行：右侧对齐 */
+.srow.sync{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.srow.sync .sright{display:flex;align-items:center;gap:6px;margin-left:auto}
+.srow.sync .scode{font-style:normal;color:var(--sub);font-size:14px;letter-spacing:.02em}
+
+/* 恢复记录弹窗：玻璃质感 */
+.mebg{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);background:rgba(0,0,0,.28)}
+.mebox{
+  background:rgba(255,255,255,.72) !important;
+  backdrop-filter:blur(40px) saturate(180%);
+  -webkit-backdrop-filter:blur(40px) saturate(180%);
+  border:.5px solid rgba(255,255,255,.6);
+  box-shadow:0 24px 70px rgba(0,0,0,.3);
+}
+html[data-theme="dark"] .mebox{
+  background:rgba(40,40,44,.72) !important;
+  border-color:rgba(255,255,255,.12);
+}
+.mebox input,.mebox textarea{
+  background:rgba(255,255,255,.55) !important;
+  border:1px solid rgba(0,0,0,.06) !important;
+  backdrop-filter:blur(10px);
+}
+html[data-theme="dark"] .mebox input,
+html[data-theme="dark"] .mebox textarea{background:rgba(0,0,0,.28) !important;border-color:rgba(255,255,255,.12) !important}
