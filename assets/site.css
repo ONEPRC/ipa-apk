@@ -669,8 +669,8 @@ html[data-theme="dark"] .updcard{background:#2c2c2e}
 .dbtn[data-dl="update"]{background:var(--blue) !important;color:#fff !important}
 
 /* 横滑卡片：允许横向手势 */
-.hscroll{touch-action:auto !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
-.hscroll .feat{touch-action:auto}
+.hscroll{touch-action:pan-y !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.hscroll .feat{touch-action:pan-y}
 
 .hscroll{cursor:grab}
 .hscroll.dragging{cursor:grabbing;scroll-snap-type:none}
@@ -902,7 +902,7 @@ html[data-theme="dark"] .toast{
   scroll-snap-type:x mandatory;
   scroll-padding-left:18px;
   scrollbar-width:none;
-  touch-action:auto;
+  touch-action:pan-y;
   -webkit-overflow-scrolling:touch;
   overscroll-behavior-x:contain;
 }
@@ -935,47 +935,47 @@ html[data-theme="dark"] .toast{
 .hscroll.dragging,.shots.dragging{scroll-snap-type:none !important;scroll-behavior:auto !important}
 .hscroll,.shots{scroll-behavior:auto}
 
-/* ===== 2026-11-25 仅此三条追加 ===== */
-/* 1) iOS：blur/transform 子元素破坏父级圆角裁切 → 加隔离 */
-.card,.feat{isolation:isolate;-webkit-mask-image:-webkit-radial-gradient(white, black);transform:translateZ(0)}
-/* 2) 触屏允许上下+左右原生手势 */
+/* Today 卡片图标：绝对居中（不受 grid 行影响） */
+.card .art > span,
+.card .art > img:not(.shotlb){
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  margin:0 !important;
+}
+
+/* 横滑区域：允许上下滚动，横向用脚本接管 */
+.hscroll,.shots{touch-action:pan-y pinch-zoom !important}
+
+/* 图片本身不拦截纵向手势 */
+img{touch-action:auto !important}
+
+/* 有大图时：只留底部渐变，图片保持清晰 */
+.veil.soft{background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.42)) !important}
+
+/* 触屏：上下左右都交给系统滚动（最顺） */
 .hscroll,.shots{touch-action:auto !important}
-/* 3) 卡片图标绝对居中 */
-.card .art > span,.card .art > img:not(.shotlb){
-  position:absolute !important;left:50% !important;top:50% !important;
-  transform:translate(-50%,-50%) !important;margin:0 !important;
+
+/* iOS：blur/transform 子元素会破坏父级圆角裁切，加隔离修复直角 */
+.card,.feat{
+  isolation:isolate;
+  -webkit-mask-image:-webkit-radial-gradient(white, black);
+  transform:translateZ(0);
+}
+.card .art,.feat .visual{overflow:hidden}
+
+/* ===== 修复 1：iOS 圆角被 blur/transform 子元素破坏 → 出现直角 ===== */
+.card,.feat{
+  isolation:isolate;
+  -webkit-mask-image:-webkit-radial-gradient(white, black);
+  transform:translateZ(0);
 }
 
-/* 横滑不再强制吸附（否则拖动后会弹回原位，看起来像滑不动） */
-.hscroll,.shots{scroll-snap-type:none !important}
+/* ===== 修复 2：横滑卡顿 → 交还原生手势，并关闭强制吸附 ===== */
+.hscroll,.shots{
+  touch-action:auto !important;
+  scroll-snap-type:none !important;
+  -webkit-overflow-scrolling:touch;
+}
 .hscroll .feat,.shots .shotitem{scroll-snap-align:none !important}
-
-/* 详情多图：显式宽度（否则 aspect-ratio + auto 宽会让图撑成竖长条） */
-.shots .shotitem{
-  flex:0 0 calc(100% - 54px) !important;
-  width:calc(100% - 54px) !important;
-  aspect-ratio:16/9 !important;
-  height:auto !important;
-  max-height:none !important;
-}
-.shots .shotitem img{
-  width:100% !important;
-  height:100% !important;
-  object-fit:cover !important;
-}
-@media (min-width:900px){
-  .shots .shotitem{flex:0 0 calc(50% - 10px) !important;width:calc(50% - 10px) !important}
-}
-
-/* 单张详情图：占满内容宽，左右各 18 内缩 */
-.shots.single .shotitem{
-  flex:0 0 calc(100% - 36px) !important;
-  width:calc(100% - 36px) !important;
-  aspect-ratio:16/9 !important;
-}
-@media (min-width:900px){
-  .shots.single .shotitem{
-    flex:0 0 calc(100% - 72px) !important;
-    width:calc(100% - 72px) !important;
-  }
-}
