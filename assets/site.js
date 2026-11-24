@@ -240,6 +240,7 @@
     return out;
   }
   function dlCount(){ try { return dlUpdates().length; } catch(e){ return 0; } }
+  window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, label: dlLabel, all: dlAll };
 
   function row(a){
     return '<div class="row" data-open="' + a.id + '"><div class="ic">' + iconHTML(a) + '</div>' +
@@ -861,19 +862,39 @@
 
   function updBlock(){
     var list = [];
-    try { list = dlUpdates(); } catch(e){ list = []; }
+    try { list = (window.__DL ? window.__DL.updates() : []); } catch(e){ list = []; }
     if(!list.length) return '';
+
+    function cnDate(v){
+      var d = new Date(String(v || '').replace(' ', 'T'));
+      if(isNaN(d.getTime())) return '';
+      return d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日';
+    }
+
     var rows = list.map(function(o){
       var a = o.app;
-      var ic = a.icon ? '<img src="' + fixPath(a.icon) + '" alt="">' : '<span class="t">' + (a.iconText || a.name).slice(0,2) + '</span>';
-      return '<button class="srow upd" data-upd="' + a.id + '">' +
-        '<span class="uic">' + ic + '</span>' +
-        '<span class="utx"><b>' + a.name + '</b><em>v' + (o.from || '—') + ' → v' + (a.version || '—') + '</em></span>' +
-        '<span class="ubtn">更新</span></button>';
+      var ic = a.icon
+        ? '<img src="' + fixPath(a.icon) + '" alt="">'
+        : '<span class="t">' + (a.iconText || a.name).slice(0, 2) + '</span>';
+      var note = String(a.whatsNew || '').replace(/\n/g, ' ');
+      return '<div class="updrow">' +
+        '<div class="updtop" data-upd="' + a.id + '">' +
+          '<div class="uic">' + ic + '</div>' +
+          '<div class="utx"><b>' + a.name + '</b><em>' + cnDate(a.updatedAt || a.addedAt || a.date) + '</em></div>' +
+          '<span class="ubtn">更新</span>' +
+        '</div>' +
+        (note ? '<div class="unote"><span>' + note + '</span>' +
+          '<button class="umore" data-goto="' + a.id + '">更多</button></div>' : '') +
+      '</div>';
     }).join('');
-    return '<div class="sgroup">' +
-      '<div class="srow plain updhead"><span>可用更新</span><em>' + list.length + '</em></div>' +
-      rows + '</div>';
+
+    return '<div class="updwrap">' +
+      '<div class="updtag">可用更新</div>' +
+      '<div class="updcard">' +
+        '<div class="updhead"><button class="uall" data-allupd="1">全部更新</button>' +
+          '<span class="ubadge">' + list.length + '</span></div>' +
+        rows +
+      '</div></div>';
   }
 
   function build(){
@@ -917,6 +938,21 @@
 
     panel.querySelector('.sdone').onclick = close;
     panel.addEventListener('click', function(e){
+      if(e.target.closest('[data-allupd]')){
+        var lst = (window.__DL ? window.__DL.updates() : []);
+        lst.forEach(function(o){ if(window.__DL) window.__DL.set(o.app.id, o.app.version); });
+        close();
+        toast('已全部更新');
+        return;
+      }
+      if(e.target.closest('[data-goto]')){
+        var gid = e.target.closest('[data-goto]').getAttribute('data-goto');
+        close();
+        var ga = (window.APP_DATA.apps || []).filter(function(x){ return x.id === gid; })[0];
+        if(ga){ state.detail = ga; state.screen = 'detail'; state.listTitle = '账户'; render(); }
+        return;
+      }
+
       var up = e.target.closest('[data-upd]');
       if(up){
         var id = up.getAttribute('data-upd');
@@ -924,7 +960,7 @@
         if(app && app.url){
           var u = app.url + (app.pwd && app.url.indexOf('pwd=') === -1 ? (app.url.indexOf('?') > -1 ? '&' : '?') + 'pwd=' + app.pwd : '');
           window.open(u, '_blank');
-          dlSet(app.id, app.version);
+          if(window.__DL) window.__DL.set(app.id, app.version);
           close();
         }
         return;
