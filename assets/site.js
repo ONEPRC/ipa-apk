@@ -704,6 +704,8 @@
     '</div>';
   document.body.appendChild(wrap);
 
+  document.documentElement.classList.add('locked');
+
   var dots = wrap.querySelector('#g2dots');
   var err = wrap.querySelector('#g2err');
   for(var i = 0; i < LEN; i++) dots.appendChild(document.createElement('i'));
@@ -739,6 +741,7 @@
     if(sha(val) === hashes){
       try{ sessionStorage.setItem(KEY, hashes); localStorage.removeItem('appindex.pwlock'); }catch(e){}
       wrap.remove();
+      document.documentElement.classList.remove('locked');
       try{ render(); }catch(e){}
     } else {
       err.textContent = '密码错误，请重试';
