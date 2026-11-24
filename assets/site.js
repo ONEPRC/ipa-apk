@@ -1165,6 +1165,11 @@
     var grp = st.qqGroup || '';
     var av = document.querySelector('.avatar img');
     var logo = av ? av.getAttribute('src') : '';
+    var syncShort = '';
+    try{
+      var full = (window.__ME && window.__ME.makeCode) ? window.__ME.makeCode() : '';
+      syncShort = full ? (full.slice(0, 10) + '…') : '';
+    }catch(e){ syncShort = ''; }
 
     bg = document.createElement('div');
     bg.className = 'sbg';
@@ -1176,12 +1181,17 @@
       '<div class="shead"><span>账户</span><button type="button" class="sdone">完成</button></div>' +
       '<div class="sbody">' +
         '<div class="sgroup">' +
-          '<div class="suser" data-sact="qq">' +
+          '<div class="suser">' +
             '<div class="suav">' + (logo ? '<img src="' + logo + '" alt="">' : '') + '</div>' +
-            '<div class="suinfo"><b>' + (window.__ME && window.__ME.nick() ? window.__ME.nick() : '未设置昵称') + '</b>' +
-              '<span>' + siteName + (grp ? ' · 群 ' + grp : '') + '</span></div>' +
+            '<div class="suinfo"><b>' + siteName + '</b>' +
+              '<span>' + (grp ? grp : '未设置群号') + '</span></div>' +
             '<i class="chev">›</i>' +
           '</div>' +
+          '<button class="srow sync" data-sact="sync">' +
+            '<span>备份码</span>' +
+            '<em class="scode">' + (syncShort || '点击生成') + '</em>' +
+            '<i class="chev">›</i>' +
+          '</button>' +
         '</div>' +
         '<div class="sgroup">' +
           '<button class="srow" data-sact="theme"><span>暗黑模式</span><span class="sw' + (document.documentElement.dataset.theme === 'dark' ? ' on' : '') + '"></span></button>' +
