@@ -686,10 +686,7 @@ html[data-theme="dark"] .updcard{background:#2c2c2e}
 .row .btn{flex:0 0 auto;min-width:72px;height:32px;padding:0 12px;display:inline-flex;align-items:center;justify-content:center;line-height:1}
 
 
-/* 横滑卡片：滑动过程中也保持圆角（只修圆角，不改布局） */
-.hscroll .feat{
-  border-radius:20px;
-  overflow:hidden;
-}
-.hscroll.dragging .feat{border-radius:20px}
-.hscroll .feat .visual{border-radius:18px}
+
+/* 只让图片本身圆角，卡片外层不裁切 */
+.feat .visual{border-radius:18px;overflow:hidden}
+.feat{border-radius:0 !important;overflow:visible !important}
