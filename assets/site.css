@@ -669,8 +669,8 @@ html[data-theme="dark"] .updcard{background:#2c2c2e}
 .dbtn[data-dl="update"]{background:var(--blue) !important;color:#fff !important}
 
 /* 横滑卡片：允许横向手势 */
-.hscroll{touch-action:pan-x !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
-.hscroll .feat{touch-action:pan-x}
+.hscroll{touch-action:auto !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.hscroll .feat{touch-action:auto}
 
 .hscroll{cursor:grab}
 .hscroll.dragging{cursor:grabbing;scroll-snap-type:none}
@@ -902,7 +902,7 @@ html[data-theme="dark"] .toast{
   scroll-snap-type:x mandatory;
   scroll-padding-left:18px;
   scrollbar-width:none;
-  touch-action:pan-x;
+  touch-action:auto;
   -webkit-overflow-scrolling:touch;
   overscroll-behavior-x:contain;
 }
@@ -945,3 +945,7 @@ html[data-theme="dark"] .toast{
   position:absolute !important;left:50% !important;top:50% !important;
   transform:translate(-50%,-50%) !important;margin:0 !important;
 }
+
+/* 横滑不再强制吸附（否则拖动后会弹回原位，看起来像滑不动） */
+.hscroll,.shots{scroll-snap-type:none !important}
+.hscroll .feat,.shots .shotitem{scroll-snap-align:none !important}
