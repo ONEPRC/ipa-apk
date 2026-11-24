@@ -558,3 +558,15 @@ html[data-theme="dark"] .sgroup{background:#2c2c2e}
 }
 .sbody{min-height:calc(100% - 52px)}
 .sbody::after{content:"";display:block;flex:1}
+
+/* 账户抽屉：宽度锁定屏幕，内容不溢出 */
+.spnl{
+  left:0 !important;right:0 !important;
+  width:auto !important;max-width:100vw !important;
+  overflow:hidden;
+  box-sizing:border-box;
+}
+.spnl .sbody{box-sizing:border-box;padding-left:16px !important;padding-right:16px !important;overflow-x:hidden}
+.spnl .sgroup{max-width:100%;box-sizing:border-box}
+.spnl .srow,.spnl .suser{max-width:100%;box-sizing:border-box}
+.spnl .srow .sw{flex:0 0 auto}
