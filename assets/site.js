@@ -609,11 +609,20 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
   }
   function sortItems(items){
     var arr = items.slice();
-    if(state.sort === 'name') arr.sort(byName);            // 纯按名称，不看置顶
-    else if(state.sort === 'date') arr.sort(function(a, b){
-      return String(latest(b)).localeCompare(String(latest(a)));   // 纯按时间
-    });
-    // default = 收录顺序（数据原顺序），同样不看置顶
+    if(state.sort === 'name'){
+      arr.sort(byName);
+    } else if(state.sort === 'date'){
+      arr.sort(function(a, b){
+        return String(latest(b)).localeCompare(String(latest(a)));
+      });
+    } else {
+      // 收录顺序：按收录时间（addedAt 优先，其次 date），新的在前
+      arr.sort(function(a, b){
+        var ka = String(a.addedAt || a.date || '');
+        var kb = String(b.addedAt || b.date || '');
+        return kb.localeCompare(ka);
+      });
+    }
     return arr;
   }
 
