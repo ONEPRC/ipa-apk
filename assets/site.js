@@ -258,6 +258,25 @@
           '<div class="sect"><h3>为你推荐</h3></div>' +
           '<div class="list">' + rec.map(row).join('') + '</div>';
         var inp0 = document.getElementById('q');
+        (function(){
+          var c0 = document.querySelector('.scancel');
+          if(c0 && inp0){
+            c0.onmousedown = function(ev){ ev.preventDefault(); };
+            c0.onclick = function(ev){
+              ev.preventDefault(); ev.stopPropagation();
+              inp0.blur();
+              var w0 = document.querySelector('.searchwrap'); if(w0) w0.classList.remove('focus');
+            };
+          }
+          var x0 = document.querySelector('.sclear');
+          if(x0 && inp0){
+            x0.onmousedown = function(ev){ ev.preventDefault(); };
+            x0.onclick = function(ev){
+              ev.preventDefault(); ev.stopPropagation();
+              inp0.value = ''; state.q = ''; x0.hidden = true; inp0.focus();
+            };
+          }
+        })();
         var wrap0 = inp0 ? inp0.closest('.searchwrap') : null;
         if(inp0){
           inp0.addEventListener('focus', function(){ if(wrap0) wrap0.classList.add('focus'); });
@@ -282,6 +301,15 @@
         '<div class="list" id="srlist">' + list.map(row).join('') + '</div>' + (list.length ? '' : '<div class="empty" id="srempty">换个词试试</div>');
       var inp = document.getElementById('q');
       var wrap1 = inp ? inp.closest('.searchwrap') : null;
+      var cancelBtn = document.querySelector('.scancel');
+      if(cancelBtn && inp){
+        cancelBtn.onmousedown = function(ev){ ev.preventDefault(); };
+        cancelBtn.onclick = function(ev){
+          ev.preventDefault(); ev.stopPropagation();
+          inp.blur();
+          var w = document.querySelector('.searchwrap'); if(w) w.classList.remove('focus');
+        };
+      }
       var clrBtn = document.querySelector('.sclear');
       if(clrBtn && inp){
         clrBtn.onmousedown = function(ev){ ev.preventDefault(); };
