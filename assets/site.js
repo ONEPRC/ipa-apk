@@ -119,6 +119,32 @@
     return '<span>' + (a.iconText || a.name || '?').slice(0,2) + '</span>';
   }
   function bgLayer(a){
+    var img = (a.shots && a.shots.length) ? a.shots[0] : a.icon;
+    if(!img) return '<div class="veil"></div>';
+    return '<div class="bg" style="background-image:url(\'' + fixPath(img) + '\')"></div><div class="veil"></div>';
+  }
+
+  function color(a){
+    var ic = colorFromIcon(a);
+    if(ic) return ic;
+    var c = COLOR[catOf(a)];
+    if(c) return c;
+    var PAL = ['#2f5fbf', '#5b3aa8', '#2b6e37', '#b0462f', '#1f7a8c', '#7a4b1f'];
+    var h = 0, nm = String(a.name || '');
+    for(var i = 0; i < nm.length; i++) h = (h * 31 + nm.charCodeAt(i)) % 997;
+    return PAL[h % PAL.length];
+  }
+  function sub(a){
+    var t = (a.description || '').replace(/\s+/g,' ').trim();
+    return t ? t.slice(0, 48) : ((a.platform || '') + (a.size ? ' · ' + a.size : ''));
+  }
+  function fixPath(u){ if(!u) return ''; if(/^https?:|^data:/.test(u)) return u; return u.replace(/^\/+/, ''); }
+  window.fp = fixPath;
+  function iconHTML(a){
+    if(a.icon) return '<img src="' + fixPath(a.icon) + '" alt="">';
+    return '<span>' + (a.iconText || a.name || '?').slice(0,2) + '</span>';
+  }
+  function bgLayer(a){
     return a.icon
       ? '<div class="bg" style="background-image:url(\'' + fixPath(a.icon) + '\')"></div><div class="veil"></div>'
       : '<div class="veil"></div>' +
