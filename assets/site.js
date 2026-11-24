@@ -703,24 +703,34 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
 
   // 让横滑卡片左右露出完全一致
   function fitCards(){
+    // 1) 详情页多图：与精选卡同款露出（单张整宽、多张右露 12px）
+    document.querySelectorAll('.shots').forEach(function(sh){
+      var n = sh.children.length;
+      if(!n) return;
+      var G2 = 10, PEEK2 = 12, SIDE2 = 36;
+      var W2 = (n === 1) ? (sh.clientWidth - SIDE2) : (sh.clientWidth - SIDE2 - G2 - PEEK2);
+      for(var q = 0; q < n; q++) sh.children[q].style.flex = '0 0 ' + W2 + 'px';
+      sh.style.scrollSnapType = (n === 1) ? 'none' : '';
+    });
+
+    // 2) 首页精选卡
     var hs = document.querySelector('.hscroll');
     if(!hs) return;
     if(innerWidth >= 900){
       for(var k = 0; k < hs.children.length; k++) hs.children[k].style.flex = '';
       return;
     }
-    var GAP = 6, PEEK = 12, SIDE = 36;   // 左右各 18 内边距
-    // 只有一张卡时左右对称；多张卡时留出右侧露出
+    var GAP = 6, PEEK = 12, SIDE = 36;
     var W = (hs.children.length === 1)
       ? hs.clientWidth - SIDE
       : hs.clientWidth - SIDE - GAP - PEEK;
-    if(hs.children.length === 1){ hs.style.scrollSnapType = 'none'; }
-    else { hs.style.scrollSnapType = ''; }
+    hs.style.scrollSnapType = (hs.children.length === 1) ? 'none' : '';
     for(var i = 0; i < hs.children.length; i++){
       hs.children[i].style.flex = '0 0 ' + W + 'px';
       hs.children[i].style.borderRadius = '20px';
     }
   }
+
   window.addEventListener('resize', function(){
     clearTimeout(fitCards._t);
     fitCards._t = setTimeout(fitCards, 120);
