@@ -14,7 +14,7 @@
     return true;
   }
   var ALL = (DATA.apps || []).filter(function(a){ return a && a.name && isLive(a); });
-  var COLOR = { '游戏':'#2b6e37', '软件':'#15489c', '插件':'#5b3aa8', '其他':'#3a3a3c', '未分类':'#3a3a3c' };
+  var COLOR = { '游戏':'#2b6e37', '应用':'#2f5fbf', '软件':'#15489c', '插件':'#5b3aa8', '其他':'#3a3a3c', '未分类':'#3a3a3c' };
   var state = { tab:'today', screen:'home', listTitle:'', detail:null, q:'', sort:'default' };
 
   function catOf(a){ return a.category || '未分类'; }
@@ -78,7 +78,16 @@
     return null;
   }
 
-  function color(a){ var ic = colorFromIcon(a); if(ic) return ic; return COLOR[catOf(a)] || '#2b2b30'; }
+  function color(a){
+    var ic = colorFromIcon(a);
+    if(ic) return ic;
+    var c = COLOR[catOf(a)];
+    if(c) return c;
+    var PAL = ['#2f5fbf', '#5b3aa8', '#2b6e37', '#b0462f', '#1f7a8c', '#7a4b1f'];
+    var h = 0, nm = String(a.name || '');
+    for(var i = 0; i < nm.length; i++) h = (h * 31 + nm.charCodeAt(i)) % 997;
+    return PAL[h % PAL.length];
+  }
   function sub(a){
     var t = (a.description || '').replace(/\s+/g,' ').trim();
     return t ? t.slice(0, 48) : ((a.platform || '') + (a.size ? ' · ' + a.size : ''));
