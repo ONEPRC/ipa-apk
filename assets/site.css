@@ -653,3 +653,15 @@ html[data-theme="dark"] .updcard{background:#2c2c2e}
 /* 头像不裁剪，角标才能露出来 */
 .avatar{overflow:visible !important;border-radius:50%}
 .avatar img{border-radius:50% !important;overflow:hidden}
+
+/* 获取按钮三态（data-dl） */
+.get{
+  background:#fff;color:#0a0a0a;border:0;border-radius:999px;
+  padding:7px 18px;font-size:15px;font-weight:600;line-height:1.1;
+}
+.get[data-dl="update"]{background:var(--blue);color:#fff}
+.get[data-dl="got"]{background:rgba(255,255,255,.22);color:#fff}
+.btn[data-dl="got"]{background:rgba(120,120,128,.14) !important;color:var(--sub) !important;box-shadow:none !important}
+.btn[data-dl="update"]{background:var(--blue) !important;color:#fff !important}
+.dbtn[data-dl="got"]{background:rgba(120,120,128,.16) !important;color:var(--sub) !important}
+.dbtn[data-dl="update"]{background:var(--blue) !important;color:#fff !important}
