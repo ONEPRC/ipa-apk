@@ -988,3 +988,24 @@ html[data-theme="dark"] .toast{
   .shots{gap:20px !important}
   .shots .shotitem{flex:0 0 calc(50% - 10px) !important}
 }
+
+/* 详情多图：左右各露 12，对称 */
+.shots{
+  margin:16px 0 !important;
+  padding:0 12px !important;
+  gap:6px !important;
+  scroll-padding-left:12px !important;
+  scroll-snap-type:x mandatory !important;
+  touch-action:pan-x;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;
+}
+.shots .shotitem{flex:0 0 auto;scroll-snap-align:start !important;border-radius:16px;overflow:hidden;aspect-ratio:16/9}
+@media (min-width:900px){
+  .shots{padding:0 24px !important;gap:20px !important;scroll-padding-left:24px !important}
+  .shots .shotitem{flex:0 0 calc(50% - 22px) !important}
+}
+
+/* 详情多图：居中吸附 —— 停在中间时左右露出必然相等 */
+.shots{scroll-snap-type:x mandatory !important;scroll-padding:0 !important}
+.shots .shotitem{scroll-snap-align:center !important}
