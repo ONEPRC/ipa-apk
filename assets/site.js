@@ -605,7 +605,7 @@
           '<div class="helprow"><b>3</b><div>本站不承担任何因使用本站资源而产生的法律责任。如有侵权，请联系管理员，我们将第一时间核实并删除。</div></div>' +
           '<div class="helprow"><b>4</b><div>访问本站即视为您同意并接受本免责声明的所有条款。</div></div>' +
         '</div>' +
-        '<button class="helpbtn" data-sact="qq">加入 QQ 群</button>' +
+        
       '</div>';
   }
 
@@ -1183,7 +1183,7 @@
       '<div class="shead"><span>账户</span><button type="button" class="sdone">完成</button></div>' +
       '<div class="sbody">' +
         '<div class="sgroup">' +
-          '<div class="suser">' +
+          '<div class="suser" data-sact="qq">' +
             '<div class="suav">' + (logo ? '<img src="' + logo + '" alt="">' : '') + '</div>' +
             '<div class="suinfo"><b>' + siteName + '</b>' +
               '<span>' + (grp ? grp : '未设置群号') + '</span></div>' +
