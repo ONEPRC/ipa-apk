@@ -961,3 +961,24 @@ html[data-theme="dark"] .toast{
   .shots .shotitem{flex:0 0 calc(50% - 10px) !important}
   .shots::after{display:none}
 }
+
+/* 详情多图：结构与 .hscroll 一致 */
+.shots{
+  margin:16px -18px !important;
+  padding:0 18px !important;
+  gap:6px !important;
+  scroll-padding-left:18px !important;
+  scroll-snap-type:x mandatory !important;
+}
+.shots::after{display:none !important}
+.shots .shotitem{
+  flex:0 0 auto;
+  border-radius:16px;
+  overflow:hidden;
+  aspect-ratio:16/9;
+  scroll-snap-align:start !important;
+}
+@media (min-width:900px){
+  .shots{margin:16px -36px !important;padding:0 36px !important;gap:20px !important;scroll-padding-left:36px !important}
+  .shots .shotitem{flex:0 0 calc(50% - 10px) !important}
+}
