@@ -37,28 +37,48 @@
           x.drawImage(img, 0, 0, 24, 24);
           var d = x.getImageData(0, 0, 24, 24).data;
 
-          // 按 32 级量化统计出现最多的颜色（主色），排除过亮/过暗/透明
-          var bucket = {}, bestKey = null, bestCount = 0;
+          // 统计所有不透明像素的颜色桶，取「出现次数最多」的那个
+          var bucket = {}, list = [];
           for(var i = 0; i < d.length; i += 4){
             if(d[i + 3] < 140) continue;
             var r = d[i], g = d[i + 1], b = d[i + 2];
-            var mx = Math.max(r, g, b), mn = Math.min(r, g, b);
-            if(mx < 35) continue;                       // 太黑（描边）
-            if(mn > 235) continue;                      // 太白（logo 文字）
-            if((mx - mn) / mx < 0.18) continue;         // 低饱和（灰底/白底）跳过
-            var key = (r >> 5) + ',' + (g >> 5) + ',' + (b >> 5);
+            var key = (r >> 4) + ',' + (g >> 4) + ',' + (b >> 4);
             if(!bucket[key]) bucket[key] = { n: 0, r: 0, g: 0, b: 0 };
             bucket[key].n++; bucket[key].r += r; bucket[key].g += g; bucket[key].b += b;
-            if(bucket[key].n > bestCount){ bestCount = bucket[key].n; bestKey = key; }
           }
+          for(var k in bucket){
+            var o = bucket[k];
+            var R = o.r / o.n, G = o.g / o.n, B = o.b / o.n;
+            // 亮度：0 黑 → 1 白
+            var lum = (0.299 * R + 0.587 * G + 0.114 * B) / 255;
+            var mx = Math.max(R, G, B), mn = Math.min(R, G, B);
+            var sat = mx === 0 ? 0 : (mx - mn) / mx;
+            list.push({ n: o.n, r: R, g: G, b: B, lum: lum, sat: sat });
+          }
+          list.sort(function(p1, p2){ return p2.n - p1.n; });
 
           ICON_BUSY[a.id] = false;
-          if(!bestKey) return;
+          if(!list.length) return;
 
-          var s0 = bucket[bestKey];
-          var R = s0.r / s0.n, G = s0.g / s0.n, B = s0.b / s0.n;
-          var k = 0.78;                          // 压暗，保证白字清晰
-          ICON_BG[a.id] = 'rgb(' + Math.round(R * k) + ',' + Math.round(G * k) + ',' + Math.round(B * k) + ')';
+          // 从最多的开始找：太黑/太白/太灰的都跳过，取第一个能用的
+          var pick = null;
+          for(var j = 0; j < list.length; j++){
+            var c = list[j];
+            if(c.lum < 0.12 || c.lum > 0.9) continue;   // 太黑 / 太白
+            if(c.sat < 0.12) continue;                  // 太灰
+            pick = c; break;
+          }
+          if(!pick){
+            // 整张图都是黑白灰 → 用最深/最浅之外的那个最多次要色
+            for(var m = 0; m < list.length; m++){
+              if(list[m].lum >= 0.12 && list[m].lum <= 0.9){ pick = list[m]; break; }
+            }
+          }
+          if(!pick) pick = list[0];
+
+          // 稍微压暗一点，保证白字可读
+          var f = 0.84;
+          ICON_BG[a.id] = 'rgb(' + Math.round(pick.r * f) + ',' + Math.round(pick.g * f) + ',' + Math.round(pick.b * f) + ')';
 
           if(!colorFromIcon._t){
             colorFromIcon._t = setTimeout(function(){ colorFromIcon._t = null; try{ render(); }catch(e){} }, 60);
