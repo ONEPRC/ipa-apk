@@ -164,7 +164,7 @@
         '<h2>' + a.name + '</h2><p>' + (a.note || '') + '</p>' +
         '<div class="foot"><div class="ic">' + iconHTML(a) + '</div>' +
           '<div class="m"><b>' + a.name + '</b><span>' + (a.version ? 'v' + a.version : sub(a)) + '</span></div>' +
-          '<button class="get">获取</button></div>' +
+          '<button class="get ' + dlState(a) + '">' + dlLabel(a) + '</button></div>' +
       '</div></div>';
   }
   function featBlock(a){
@@ -175,7 +175,7 @@
         iconHTML(a).replace('<img ', '<img class="big" ').replace('<span>', '<span class="big">') +
         '<div class="overlay"><div class="ic">' + iconHTML(a) + '</div>' +
           '<div class="m"><b>' + a.name + '</b><span>' + (a.note || '') + '</span></div>' +
-          '<button class="get">获取</button></div>' +
+          '<button class="get ' + dlState(a) + '">' + dlLabel(a) + '</button></div>' +
       '</div></div>';
   }
   var QKEY = 'appindex.qlog';
@@ -248,7 +248,7 @@
         '<div class="l1">' + a.name + '</div>' +
         (a.note ? '<div class="l2">' + a.note + '</div>' : '') +
       '</div>' +
-      '<button class="btn">获取</button></div>';
+      '<button class="btn ' + dlState(a) + '">' + dlLabel(a) + '</button></div>';
   }
 
   /* ---------- 三个页面 ---------- */
@@ -880,7 +880,7 @@
     var rows = list.map(function(o){
       var a = o.app;
       var ic = a.icon
-        ? '<img src="' + fixPath(a.icon) + '" alt="">'
+        ? '<img src="' + fp(a.icon) + '" alt="">'
         : '<span class="t">' + (a.iconText || a.name).slice(0, 2) + '</span>';
       var note = String(a.whatsNew || '').replace(/\n/g, ' ');
       return '<div class="updrow">' +
