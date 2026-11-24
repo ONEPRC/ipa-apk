@@ -173,11 +173,6 @@ html[data-theme="dark"] .sheet .box{background:rgba(32,32,35,.62);color:#f5f5f7}
 .dstats em{display:block;font-style:normal;font-size:11.5px;color:var(--sub);text-transform:uppercase;letter-spacing:.04em}
 .dstats b{display:block;font-size:20px;font-weight:700;margin-top:2px}
 .dstats small{display:block;font-size:11.5px;color:var(--sub)}
-.shots{display:flex;gap:10px;overflow-x:auto;margin:16px -18px;padding:0 18px;scrollbar-width:none;scroll-snap-type:x mandatory}
-.shots::-webkit-scrollbar{display:none}
-.shotitem{position:relative;flex:0 0 86%;border-radius:16px;overflow:hidden;scroll-snap-align:start;background:#e9e9ee;aspect-ratio:16/9}
-.shotbg{position:absolute;inset:-20px;background-size:cover;background-position:center;filter:blur(22px) saturate(140%);transform:scale(1.12);z-index:0}
-.shotitem img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
 .dshot{margin:16px 0;border-radius:18px;overflow:hidden;height:200px;position:relative;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(160deg,rgba(0,0,0,.05),rgba(0,0,0,.25))}
 .dshot .bg{position:absolute;inset:-24px;background-size:cover;background-position:center;filter:blur(22px) saturate(150%) brightness(.95);transform:scale(1.2)}
@@ -817,9 +812,7 @@ html[data-theme="dark"] .toast{
 .card .art .veil{z-index:1 !important}
 .card .art img.big,.card .art span.big{z-index:3 !important}
 
-/* 详情大图：单张铺满宽度；图片完整显示不裁切，空余用同图虚化填满 */
-.shots.single .shotitem{flex:0 0 100%}
-.shotitem img{object-fit:contain !important;background:transparent !important}
+/* 详情大图：单张铺满宽度；图片完整显示不裁切，空余用同图虚化填满 *
 /* 无图占位与有图高度一致 */
 .dshot{height:220px !important}
 
@@ -842,13 +835,6 @@ html[data-theme="dark"] .toast{
 }
 .card .art .shotlb{object-fit:cover !important}
 
-.shots.single .shotitem,
-.shotitem{
-  aspect-ratio:16/9 !important;
-  height:auto !important;
-}
-.shotitem img{object-fit:cover !important}
-
 .dshot{
   aspect-ratio:16/9 !important;
   height:auto !important;
@@ -861,151 +847,86 @@ html[data-theme="dark"] .toast{
   max-height:none !important;
 }
 .card .art .shotlb{object-fit:cover !important}
-.shotitem,.shots.single .shotitem{aspect-ratio:16/9 !important;height:auto !important}
-.shotitem img{object-fit:cover !important}
 .dshot{aspect-ratio:16/9 !important;height:auto !important}
 
-/* 详情多图：可横向滑动 */
-.shots{
-  overflow-x:auto !important;
-  touch-action:pan-x !important;
-  -webkit-overflow-scrolling:touch;
-  overscroll-behavior-x:contain;
-  cursor:grab;
-}
-.shots.dragging{cursor:grabbing;scroll-snap-type:none}
-.shotitem{user-select:none;-webkit-user-select:none}
+/* 详情多图：可横向滑动 *
 
-/* 详情多图：与精选卡一致的露出 */
-.shots{gap:10px !important;scroll-padding-left:18px}
-.shotitem{flex:0 0 auto}
+/* 详情多图：与精选卡一致的露出 *
 
 /* 电脑端：详情多图与精选卡同款（两列，可原生横滑） */
 @media (min-width:900px){
-  .shots{gap:20px}
-  .shots .shotitem{flex:0 0 calc(50% - 10px)}
 }
 
-/* 横滑区域：禁止拖拽/选中/长按弹菜单 */
-.hscroll img,.shots img,.card .art img{
-  -webkit-user-drag:none;
-  user-drag:none;
-  -webkit-touch-callout:none;
-  user-select:none;
-  pointer-events:auto;
-}
-.shots,.hscroll{touch-action:pan-x;-webkit-user-select:none;user-select:none}
+/* 横滑区域：禁止拖拽/选中/长按弹菜单 *
 
-/* 详情多图：首图贴左（留 18px），只在右侧露出下一张 */
-.shots{scroll-snap-align:start;scroll-padding-left:18px}
-.shots .shotitem{scroll-snap-align:start}
+/* 详情多图：首图贴左（留 18px），只在右侧露出下一张 *
 
 
-/* 详情多图：与应用页精选卡完全同款 */
-.shots{
-  margin:16px -18px !important;
-  padding:0 18px !important;
-  gap:6px !important;
-  scroll-padding-left:18px !important;
-  scroll-snap-type:x mandatory;
-}
-.shots .shotitem{
-  flex:0 0 auto;
-  scroll-snap-align:start;
-  border-radius:16px;
-  overflow:hidden;
-  aspect-ratio:16/9;
-}
+/* 详情多图：与应用页精选卡完全同款 *
 @media (min-width:900px){
-  .shots{margin:16px -36px !important;padding:0 36px !important;gap:20px !important;scroll-padding-left:36px !important}
-  .shots .shotitem{flex:0 0 calc(50% - 10px) !important}
 }
 
-/* 详情多图：左右露出完全对称 */
-.shots{
-  margin:16px 18px !important;
-  padding:0 !important;
-  gap:6px !important;
-  scroll-padding:0 !important;
-  scroll-snap-type:x mandatory;
-}
-.shots .shotitem{
-  flex:0 0 auto;
-  border-radius:16px;
-  overflow:hidden;
-  aspect-ratio:16/9;
-  scroll-snap-align:start;
-}
+/* 详情多图：左右露出完全对称 *
 @media (min-width:900px){
-  .shots{margin:16px 36px !important;gap:20px !important}
-  .shots .shotitem{flex:0 0 calc(50% - 10px) !important}
 }
 
 .card .art{display:grid !important;place-items:center !important;align-content:center !important}
 
-/* 详情多图：居中吸附，左右露出相等 */
-.shots .shotitem{scroll-snap-align:center !important}
-.shots{scroll-snap-type:x mandatory !important;scroll-padding:0 !important}
+/* 详情多图：居中吸附，左右露出相等 *
 
-/* 详情多图：左右内边距 18，末尾留白 */
-.shots{
-  margin:16px 0 !important;
-  padding:0 18px !important;
-  gap:6px !important;
-  scroll-snap-type:x mandatory !important;
-}
-.shots::after{content:'';flex:0 0 18px}
-.shots .shotitem{flex:0 0 auto;scroll-snap-align:start !important;border-radius:16px;overflow:hidden;aspect-ratio:16/9}
+/* 详情多图：左右内边距 18，末尾留白 *
 @media (min-width:900px){
-  .shots{padding:0 36px !important;gap:20px !important}
-  .shots .shotitem{flex:0 0 calc(50% - 10px) !important}
-  .shots::after{display:none}
 }
 
-/* 详情多图：结构与 .hscroll 一致 */
-.shots{
-  margin:16px -18px !important;
-  padding:0 18px !important;
-  gap:6px !important;
-  scroll-padding-left:18px !important;
-  scroll-snap-type:x mandatory !important;
-}
-.shots::after{display:none !important}
-.shots .shotitem{
-  flex:0 0 auto;
-  border-radius:16px;
-  overflow:hidden;
-  aspect-ratio:16/9;
-  scroll-snap-align:start !important;
-}
+/* 详情多图：结构与 .hscroll 一致 *
 @media (min-width:900px){
-  .shots{margin:16px -36px !important;padding:0 36px !important;gap:20px !important;scroll-padding-left:36px !important}
-  .shots .shotitem{flex:0 0 calc(50% - 10px) !important}
 }
 
 /* 电脑端：多图间距与精选卡一致（覆盖手机端 6px） */
 @media (min-width:900px){
-  .shots{gap:20px !important}
-  .shots .shotitem{flex:0 0 calc(50% - 10px) !important}
 }
 
-/* 详情多图：左右各露 12，对称 */
+/* 详情多图：左右各露 12，对称 *
+@media (min-width:900px){
+}
+
+/* 详情多图：居中吸附 —— 停在中间时左右露出必然相等 *
+
+/* ===== 详情页多图（唯一一份规则） ===== */
 .shots{
-  margin:16px 0 !important;
-  padding:0 12px !important;
-  gap:6px !important;
-  scroll-padding-left:12px !important;
-  scroll-snap-type:x mandatory !important;
+  display:flex;
+  gap:6px;
+  overflow-x:auto;
+  margin:16px -18px;
+  padding:0 18px;
+  scroll-snap-type:x mandatory;
+  scroll-padding-left:18px;
+  scrollbar-width:none;
   touch-action:pan-x;
   -webkit-overflow-scrolling:touch;
   overscroll-behavior-x:contain;
 }
-.shots .shotitem{flex:0 0 auto;scroll-snap-align:start !important;border-radius:16px;overflow:hidden;aspect-ratio:16/9}
-@media (min-width:900px){
-  .shots{padding:0 24px !important;gap:20px !important;scroll-padding-left:24px !important}
-  .shots .shotitem{flex:0 0 calc(50% - 22px) !important}
+.shots::-webkit-scrollbar{display:none}
+.shots .shotitem{
+  position:relative;
+  flex:0 0 auto;
+  aspect-ratio:16/9;
+  border-radius:16px;
+  overflow:hidden;
+  scroll-snap-align:start;
+  background:#e9e9ee;
 }
-
-/* 详情多图：居中吸附 —— 停在中间时左右露出必然相等 */
-.shots{scroll-snap-type:x mandatory !important;scroll-padding:0 !important}
-.shots .shotitem{scroll-snap-align:center !important}
+.shots .shotbg{
+  position:absolute;inset:-20px;z-index:0;
+  background-size:cover;background-position:center;
+  filter:blur(22px) saturate(140%);transform:scale(1.12);
+}
+.shots .shotitem img{
+  position:relative;z-index:1;width:100%;height:100%;
+  object-fit:cover;display:block;
+  -webkit-user-drag:none;user-select:none;
+}
+@media (min-width:900px){
+  .shots{gap:20px;margin:16px -36px;padding:0 36px;scroll-padding-left:36px}
+  .shots .shotitem{flex:0 0 calc(50% - 10px)}
+}
