@@ -650,6 +650,8 @@
     }
 
     var card = e.target.closest('[data-open]');
+    var hsw = card ? card.closest('.hscroll') : null;
+    if(hsw && hsw.dataset.drag) return;      // 刚拖过，不当作点击
     if(card && !e.target.closest('.btn,.get')){
       var id = card.getAttribute('data-open');
       var app = ALL.filter(function(x){ return x.id === id; })[0];
@@ -1064,3 +1066,33 @@ if('serviceWorker' in navigator && location.protocol !== 'file:'){
     navigator.serviceWorker.register('sw.js').catch(function(){});
   });
 }
+
+/* ===== 精选横滑：手写拖拽（不依赖原生滚动） ===== */
+(function dragScroll(){
+  var hs = null, startX = 0, startLeft = 0, moved = false;
+
+  document.addEventListener('pointerdown', function(e){
+    var el = e.target.closest('.hscroll');
+    if(!el) return;
+    hs = el; startX = e.clientX; startLeft = el.scrollLeft; moved = false;
+  }, true);
+
+  document.addEventListener('pointermove', function(e){
+    if(!hs) return;
+    var dx = e.clientX - startX;
+    if(Math.abs(dx) > 4){
+      moved = true;
+      hs.scrollLeft = startLeft - dx;
+      hs.classList.add('dragging');
+    }
+  }, true);
+
+  function end(){
+    if(!hs) return;
+    if(moved){ hs.dataset.drag = '1'; setTimeout(function(){ hs.dataset.drag = ''; }, 60); }
+    hs.classList.remove('dragging');
+    hs = null;
+  }
+  document.addEventListener('pointerup', end, true);
+  document.addEventListener('pointercancel', end, true);
+})();
