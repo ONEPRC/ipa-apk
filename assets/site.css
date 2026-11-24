@@ -833,3 +833,23 @@ html[data-theme="dark"] .toast{
   box-shadow:none !important;
   background:transparent !important;
 }
+
+/* ===== 统一 16:9：一张图同时铺满 Today 与详情页 ===== */
+.card .art{
+  aspect-ratio:16/9 !important;
+  height:auto !important;
+  max-height:56vh;
+}
+.card .art .shotlb{object-fit:cover !important}
+
+.shots.single .shotitem,
+.shotitem{
+  aspect-ratio:16/9 !important;
+  height:auto !important;
+}
+.shotitem img{object-fit:cover !important}
+
+.dshot{
+  aspect-ratio:16/9 !important;
+  height:auto !important;
+}
