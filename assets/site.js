@@ -570,6 +570,18 @@
       if(a2 === 'share'){ if(navigator.share){ navigator.share({ title: document.title, url: location.href }).catch(function(){}); } else { location.href = 'mailto:?body=' + encodeURIComponent(location.href); } return; }
       if(a2 === 'help'){ var sh = document.getElementById('sheet'); if(sh) sh.classList.add('open'); return; }
       if(a2 === 'closesheet'){ var sh2 = document.getElementById('sheet'); if(sh2) sh2.classList.remove('open'); return; }
+      if(a2 === 'all'){
+        state.screen = 'list';
+        state.q = ''; state.catf = '';
+        state.listTitle = state.tab === 'games' ? '游戏' : (state.tab === 'apps' ? 'App' : 'Today');
+        render(); window.scrollTo(0, 0);
+        return;
+      }
+      if(a2 === 'back'){
+        state.screen = 'home';
+        render(); window.scrollTo(0, 0);
+        return;
+      }
     }
 
     if(e.target.closest('[data-clear]')){
