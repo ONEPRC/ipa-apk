@@ -163,7 +163,7 @@
         '</div>';
       return;
     }
-    var label = state.tab === 'games' ? '游戏' : (state.tab === 'apps' ? 'App' : (state.tab === 'today' ? 'Today' : '搜索'));
+    var label = state.screen === 'help' ? '使用说明' : (state.tab === 'games' ? '游戏' : (state.tab === 'apps' ? 'App' : (state.tab === 'today' ? 'Today' : '搜索')));
     box.innerHTML = '<button class="back" data-act="back">' +
       '<svg viewBox="0 0 24 24"><path d="m14.5 6-6 6 6 6"/></svg>' + label + '</button>' +
       '<div class="avatar" id="avabtn2" role="button" aria-label="设置"><img src="' + LOGO + '" alt=""></div>' +
@@ -508,6 +508,35 @@
     return arr;
   }
 
+  function renderHelp(){
+    var st = (window.APP_DATA && window.APP_DATA.site) || {};
+    var grp = st.qqGroup || '';
+    var stage = document.getElementById('stage');
+    stage.innerHTML =
+      '<div class="helpwrap">' +
+        '<div class="helpgroup">' +
+          '<div class="helprow"><b>①</b><div>点应用卡片查看详情，点「获取」打开网盘链接。</div></div>' +
+          '<div class="helprow"><b>②</b><div>「复制链接」或「复制+提取码」，到夸克 App 里打开即可转存。</div></div>' +
+          '<div class="helprow"><b>③</b><div>转存后就能在自己的网盘里下载；链路有有效期，过期等群里补。' +
+            (grp ? '群号：' + grp : '') + '</div></div>' +
+        '</div>' +
+        '<div class="helptag">已获取与更新</div>' +
+        '<div class="helpgroup">' +
+          '<div class="helprow"><b>·</b><div>点过「获取」的应用会记在本机，按钮变成「已获取」。</div></div>' +
+          '<div class="helprow"><b>·</b><div>该应用发布新版本后，按钮显示「更新」，账户页也会列出可用更新。</div></div>' +
+          '<div class="helprow"><b>·</b><div>记录只存在你自己的浏览器里，换设备或清缓存会清空。</div></div>' +
+        '</div>' +
+        '<div class="helptag">免责声明</div>' +
+        '<div class="helpgroup">' +
+          '<div class="helprow"><b>1</b><div>本站所有资源均收集于互联网，仅供学习和研究使用，版权归原作者或原公司所有。</div></div>' +
+          '<div class="helprow"><b>2</b><div>用户下载后请于 24 小时内删除，如果觉得资源满意，请务必购买正版支持开发者。</div></div>' +
+          '<div class="helprow"><b>3</b><div>本站不承担任何因使用本站资源而产生的法律责任。如有侵权，请联系管理员，我们将第一时间核实并删除。</div></div>' +
+          '<div class="helprow"><b>4</b><div>访问本站即视为您同意并接受本免责声明的所有条款。</div></div>' +
+        '</div>' +
+        (grp ? '<button class="helpbtn" data-sact="qq">加入 QQ 群 ' + grp + '</button>' : '') +
+      '</div>';
+  }
+
   function renderListScreen(){
     var stage = document.getElementById('stage');
     var items = sortItems(listFor(state.tab));
@@ -594,6 +623,7 @@
     if(nb){ nb.style.display = (state.tab === 'today' && state.screen === 'home') ? '' : 'none'; }
     if(state.screen === 'home') renderHome();
     else if(state.screen === 'list') renderListScreen();
+    else if(state.screen === 'help') renderHelp();
     else renderDetail();
     document.getElementById('tabbar').style.display = '';
     var tb = document.querySelector('.tabbar');
@@ -638,7 +668,7 @@
         return;
       }
       if(a2 === 'share'){ if(navigator.share){ navigator.share({ title: document.title, url: location.href }).catch(function(){}); } else { location.href = 'mailto:?body=' + encodeURIComponent(location.href); } return; }
-      if(a2 === 'help'){ var sh = document.getElementById('sheet'); if(sh) sh.classList.add('open'); return; }
+      if(a2 === 'help'){ return; }
       if(a2 === 'closesheet'){ var sh2 = document.getElementById('sheet'); if(sh2) sh2.classList.remove('open'); return; }
       if(a2 === 'all'){
         state.screen = 'list';
@@ -1108,7 +1138,12 @@
         else { try{ copyText(location.href, '链接已复制'); }catch(err){} }
         return;
       }
-      if(act === 'help'){ close(); var sh = document.getElementById('sheet'); if(sh) sh.classList.add('open'); return; }
+      if(act === 'help'){
+        close();
+        state.screen = 'help'; state.listTitle = '使用说明';
+        render(); window.scrollTo(0, 0);
+        return;
+      }
       if(act === 'qq'){
         var st2 = (window.APP_DATA && window.APP_DATA.site) || {};
         if(st2.qqLink){ window.open(st2.qqLink, '_blank'); return; }
