@@ -719,9 +719,15 @@ html[data-theme="dark"] .tabbar{background:rgba(30,30,33,.9) !important}
 .helpbtn{margin:16px 0 0;padding:13px;border-radius:12px;border:0;background:var(--blue);color:#fff;
   font-size:16px;font-weight:600;cursor:pointer}
 
-/* 页面左滑进入（使用说明等二级页） */
-#stage.page-in{animation:pageIn .28s cubic-bezier(.22,1,.36,1)}
-@keyframes pageIn{
-  from{transform:translateX(28%);opacity:.35}
+
+/* 二级页：从右侧推入 / 向右退出（iOS 风格） */
+#stage.page-in{animation:pageInRight .3s cubic-bezier(.22,1,.36,1)}
+#stage.page-out{animation:pageOutRight .24s ease forwards}
+@keyframes pageInRight{
+  from{transform:translateX(100%);opacity:.9}
   to{transform:translateX(0);opacity:1}
+}
+@keyframes pageOutRight{
+  from{transform:translateX(0);opacity:1}
+  to{transform:translateX(100%);opacity:.6}
 }
