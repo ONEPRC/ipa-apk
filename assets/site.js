@@ -262,6 +262,10 @@
   window.__BUILD = BUILD_ID;
   window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, label: dlLabel, all: dlAll };
   window.APP_NAV = {
+    help: function(){
+      state.screen = 'help'; state.listTitle = '使用说明';
+      render(); window.scrollTo(0, 0);
+    },
     detail: function(a){
       if(!a) return;
       state.detail = a; state.screen = 'detail'; state.listTitle = '账户';
@@ -1140,8 +1144,7 @@
       }
       if(act === 'help'){
         close();
-        state.screen = 'help'; state.listTitle = '使用说明';
-        render(); window.scrollTo(0, 0);
+        if(window.APP_NAV) window.APP_NAV.help();
         return;
       }
       if(act === 'qq'){
