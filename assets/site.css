@@ -949,3 +949,20 @@ html[data-theme="dark"] .toast{
 /* 横滑不再强制吸附（否则拖动后会弹回原位，看起来像滑不动） */
 .hscroll,.shots{scroll-snap-type:none !important}
 .hscroll .feat,.shots .shotitem{scroll-snap-align:none !important}
+
+/* 详情多图：显式宽度（否则 aspect-ratio + auto 宽会让图撑成竖长条） */
+.shots .shotitem{
+  flex:0 0 calc(100% - 54px) !important;
+  width:calc(100% - 54px) !important;
+  aspect-ratio:16/9 !important;
+  height:auto !important;
+  max-height:none !important;
+}
+.shots .shotitem img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+}
+@media (min-width:900px){
+  .shots .shotitem{flex:0 0 calc(50% - 10px) !important;width:calc(50% - 10px) !important}
+}
