@@ -282,6 +282,19 @@
       });
       return;
     }
+
+    /* ---------- 游戏 / App 首页：顶部置顶精选 + 最近 10 款 ---------- */
+    var pinned = list.filter(function(a){ return a.pinned; });
+    var feats = pinned.length ? pinned : list.slice(0, 1);
+    var rest = list.filter(function(a){ return feats.indexOf(a) === -1; }).slice(0, 10);
+    var secTitle = state.tab === 'games' ? (list.length + ' 款近期佳作') : (list.length + ' 款大家都在用');
+    stage.innerHTML =
+      '<div class="hscroll">' + feats.map(featBlock).join('') + '</div>' +
+      '<div class="sect"><h3>' + secTitle + '</h3>' +
+        '<button class="more" data-act="all">查看全部</button></div>' +
+      '<p class="sectsub">向下滑动 查看更多</p>' +
+      '<div class="list">' + rest.map(row).join('') + '</div>';
+    setTimeout(fitCards, 0);
   }
 
   function renderListScreen(){
