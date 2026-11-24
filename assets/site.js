@@ -241,7 +241,7 @@
     if(state.tab === 'search'){
       if(!state.q.trim()){
         var words = exploreWords(6);
-        var rec = ALL.slice().sort(function(x, y){ return String(latest(y)).localeCompare(String(latest(x))); }).slice(0, 5);
+        var rec = ALL.slice().sort(function(x, y){ return String(latest(y)).localeCompare(String(latest(x))); }).slice(0, 6);
         stage.innerHTML =
           '<div class="searchbar"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.8 15.8 4.6 4.6"/></svg>' +
           '<input id="q" placeholder="游戏、App、关键词" value=""></div>' +
@@ -424,7 +424,18 @@
     }
 
     var wd = e.target.closest('[data-word]');
-    if(wd){ state.q = wd.getAttribute('data-word'); qAdd(state.q); render(); return; }
+    if(wd){
+      var word = wd.getAttribute('data-word');
+      qAdd(word);
+      var hit = ALL.filter(function(x){ return x.name === word; })[0];
+      if(hit){
+        state.detail = hit; state.screen = 'detail';
+        state.listTitle = '搜索';
+        render(); window.scrollTo(0, 0);
+        return;
+      }
+      state.q = word; render(); return;
+    }
 
     var s = e.target.closest('[data-sort]');
     if(s){ state.sort = s.getAttribute('data-sort'); render(); return; }
