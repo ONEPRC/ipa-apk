@@ -146,7 +146,14 @@
     }
     var label = state.tab === 'games' ? '游戏' : (state.tab === 'apps' ? '应用' : (state.tab === 'today' ? 'Today' : '搜索'));
     box.innerHTML = '<button class="back" data-act="back">' +
-      '<svg viewBox="0 0 24 24"><path d="m14.5 6-6 6 6 6"/></svg>' + label + '</button>';
+      '<svg viewBox="0 0 24 24"><path d="m14.5 6-6 6 6 6"/></svg>' + label + '</button>' +
+      '<div class="avatar" id="avabtn2" role="button" aria-label="设置"><img src="' + LOGO + '" alt=""></div>' +
+      '<div class="menu" id="menu">' +
+          '<button class="mi" data-act="theme"><svg class="ic" viewBox="0 0 24 24"><path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8Z"/></svg>' +
+            '<span>暗黑模式</span><span class="sw' + (document.documentElement.dataset.theme === 'dark' ? ' on' : '') + '"></span></button>' +
+          '<button class="mi" data-act="share"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3.5v10"/><path d="m8.5 7 3.5-3.5L15.5 7"/><path d="M6 11.5V19a1.5 1.5 0 0 0 1.5 1.5h9A1.5 1.5 0 0 0 18 19v-7.5"/></svg><span>分享给朋友</span></button>' +
+          '<button class="mi" data-act="help"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .9-1 1.6v.4"/></svg><span>使用说明</span></button>' +
+        '</div>';
   }
 
   /* ---------- 卡片 ---------- */
@@ -198,11 +205,12 @@
       return;
     }
     if(state.tab === 'search'){
+      if(!state.q.trim()) list = list.slice(0, 10);
       stage.innerHTML =
         '<div class="searchbar"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.8 15.8 4.6 4.6"/></svg>' +
         '<input id="q" placeholder="游戏、App、关键词" value="' + state.q.replace(/"/g,'') + '"></div>' +
-        '<div class="sect"><h3>' + (state.q ? '搜索结果' : '为你推荐') + '</h3></div>' +
-        '<p class="sectsub" id="srcount">' + (list.length ? list.length + ' 个应用' : '没有匹配的应用') + '</p>' +
+        '<div class="sect"><h3>' + (state.q ? '搜索结果' : '探索更多') + '</h3></div>' +
+        '<p class="sectsub" id="srcount" style="display:' + (state.q ? '' : 'none') + '">' + (list.length ? list.length + ' 个应用' : '没有匹配的应用') + '</p>' +
         '<div class="list" id="srlist">' + list.map(row).join('') + '</div>' + (list.length ? '' : '<div class="empty" id="srempty">换个词试试</div>');
       var inp = document.getElementById('q');
       inp.addEventListener('input', function(){
@@ -296,7 +304,7 @@
       '</div>' +
       '<div class="dstats">' +
         '<div><em>版本</em><b>' + (a.version ? 'v' + a.version : '—') + '</b><small>当前版本</small></div>' +
-        '<div><em>平台</em><b>' + plat + '</b><small>系统</small></div>' +
+        '<div><em>平台</em><b>' + String(plat).split('/').map(function(x){return x.trim();}).join('<br>') + '</b><small>系统</small></div>' +
         '<div><em>分类</em><b>' + cat + '</b><small>排行榜</small></div>' +
         '<div><em>大小</em><b>' + sizeNum(a.size) + '</b><small>' + sizeUnit(a.size) + '</small></div>' +
       '</div>' +
@@ -366,7 +374,7 @@
     }
     if(e.target.id === 'sheet'){ e.target.classList.remove('open'); return; }
 
-    var av = e.target.closest('#avabtn');
+    var av = e.target.closest('#avabtn, #avabtn2');
     if(av){ var m = document.getElementById('menu'); if(m) m.classList.toggle('open'); e.stopPropagation(); return; }
     if(!e.target.closest('#menu')){ var mm = document.getElementById('menu'); if(mm) mm.classList.remove('open'); }
 
@@ -566,9 +574,26 @@
     // 复用页面里的实现
     try { return sha256hex(str); } catch(e){ return ''; }
   }
+  var LOCK_KEY = 'appindex.pwlock';
+  var LOCK_STEPS = { 5: 60, 6: 300, 7: 900, 8: 3600 };
+  function lockGet(){ try { return JSON.parse(localStorage.getItem(LOCK_KEY) || '{}'); } catch(e){ return {}; } }
+  function lockSet(o){ try { localStorage.setItem(LOCK_KEY, JSON.stringify(o)); } catch(e){} }
+  function lockLeft(){ var o = lockGet(); return Math.max(0, Math.round(((o.until || 0) - Date.now()) / 1000)); }
+  var lockTimer = null;
+  function startCountdown(){
+    clearInterval(lockTimer);
+    lockTimer = setInterval(function(){
+      var l = lockLeft();
+      if(l <= 0){ clearInterval(lockTimer); err.textContent = ''; wrap.classList.remove('locked'); return; }
+      var m = Math.floor(l / 60), ss = l % 60;
+      err.textContent = '密码错误次数过多，请 ' + (m ? m + ' 分 ' + (ss ? ss + ' 秒' : '') : ss + ' 秒') + '后重试';
+    }, 1000);
+  }
+  if(lockLeft() > 0){ wrap.classList.add('locked'); startCountdown(); }
+
   function check(){
     if(sha(val) === hashes){
-      try{ sessionStorage.setItem(KEY, hashes); }catch(e){}
+      try{ sessionStorage.setItem(KEY, hashes); localStorage.removeItem('appindex.pwlock'); }catch(e){}
       wrap.remove();
       try{ render(); }catch(e){}
     } else {
@@ -577,15 +602,17 @@
     }
   }
 
-  var keys = ['1','2','3','4','5','6','7','8','9','','0','del'];
+  var keys = [['1',''],['2','ABC'],['3','DEF'],['4','GHI'],['5','JKL'],['6','MNO'],['7','PQRS'],['8','TUV'],['9','WXYZ'],['',''],['0',''],['del','']];
   var pad = wrap.querySelector('#g2pad');
   keys.forEach(function(k){
     var b = document.createElement('button');
     b.type = 'button';
-    if(k === ''){ b.className = 'k empty'; }
-    else if(k === 'del'){ b.className = 'k del'; b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6H9L3 12l6 6h11a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1Z"/><path d="m12 9.5 5 5M17 9.5l-5 5"/></svg>'; }
-    else { b.className = 'k'; b.textContent = k; }
+    var num = k[0], lab = k[1];
+    if(num === ''){ b.className = 'k empty'; }
+    else if(num === 'del'){ b.className = 'k del'; b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6H9L3 12l6 6h11a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1Z"/><path d="m12 9.5 5 5M17 9.5l-5 5"/></svg>'; }
+    else { b.className = 'k'; b.innerHTML = '<b>' + num + '</b>' + (lab ? '<i>' + lab + '</i>' : ''); }
     b.onclick = function(){
+      if(wrap.classList.contains('locked')) return;
       err.textContent = '';
       if(k === 'del') val = val.slice(0, -1);
       else if(k && val.length < LEN) val += k;
@@ -596,7 +623,18 @@
   });
 
   wrap.querySelector('#g2help').onclick = function(){
-    window.open('https://wpa.qq.com/msgrd?v=3&uin=897763598&site=qq&menu=yes', '_blank');
+    var st = (window.APP_DATA && window.APP_DATA.site) || {};
+    var link = st.qqLink || '';
+    var grp  = st.qqGroup || '';
+    if(link){ window.open(link, '_blank'); return; }
+    if(grp){
+      var isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
+      window.open(isMobile
+        ? 'mqqapi://card/show_pslcard?src_type=internal&version=1&uin=' + grp + '&card_type=group&source=qrcode'
+        : 'https://qun.qq.com/', '_blank');
+      return;
+    }
+    err.textContent = '还没配置 QQ 群，请在数据里填 site.qqGroup';
   };
 })();
 
