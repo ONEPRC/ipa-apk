@@ -65,6 +65,7 @@
     return t ? t.slice(0, 48) : ((a.platform || '') + (a.size ? ' · ' + a.size : ''));
   }
   function fixPath(u){ if(!u) return ''; if(/^https?:|^data:/.test(u)) return u; return u.replace(/^\/+/, ''); }
+  window.fp = fixPath;
   function iconHTML(a){
     if(a.icon) return '<img src="' + fixPath(a.icon) + '" alt="">';
     return '<span>' + (a.iconText || a.name || '?').slice(0,2) + '</span>';
