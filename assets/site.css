@@ -966,3 +966,16 @@ html[data-theme="dark"] .toast{
 @media (min-width:900px){
   .shots .shotitem{flex:0 0 calc(50% - 10px) !important;width:calc(50% - 10px) !important}
 }
+
+/* 单张详情图：占满内容宽，左右各 18 内缩 */
+.shots.single .shotitem{
+  flex:0 0 calc(100% - 36px) !important;
+  width:calc(100% - 36px) !important;
+  aspect-ratio:16/9 !important;
+}
+@media (min-width:900px){
+  .shots.single .shotitem{
+    flex:0 0 calc(100% - 72px) !important;
+    width:calc(100% - 72px) !important;
+  }
+}
