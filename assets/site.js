@@ -202,7 +202,14 @@
     ALL.forEach(function(a){ cats[catOf(a)] = (cats[catOf(a)] || 0) + 1; });
     var rest = Object.keys(cats).sort(function(x, y){ return cats[y] - cats[x]; });
     t.forEach(function(w){ rest = rest.filter(function(r){ return r !== w; }); });
-    return t.concat(rest).slice(0, n);
+    var out = t.concat(rest).slice(0, n);
+    if(out.length < n){
+      ALL.slice().sort(function(x, y){ return String(latest(y)).localeCompare(String(latest(x))); })
+        .forEach(function(a){
+          if(out.length < n && out.indexOf(a.name) === -1) out.push(a.name);
+        });
+    }
+    return out;
   }
 
   function row(a){
