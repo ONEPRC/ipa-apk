@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/25 00:22:39
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 00:23:55
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795537359316,
+    "rev": 1795537435696,
     "categories": [
       "游戏",
       "应用",
@@ -160,14 +160,14 @@ window.APP_DATA = {
       "category": "应用",
       "platform": "iOS",
       "size": "3.2MB",
-      "icon": "https://hv.z.wiki/autoupload/20250305/P46M/a3be29565b107cc171da75dda8ebf96b.png",
+      "icon": "assets/Fii-20261124162353.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/63f799c1ddca",
       "pwd": "",
       "description": "文件管理器",
       "date": "2026-11-21",
       "addedAt": "2026-11-21T20:01",
-      "updatedAt": "2026-11-25T00:22"
+      "updatedAt": "2026-11-25T00:23"
     },
     {
       "id": "amwqc9zp5",
