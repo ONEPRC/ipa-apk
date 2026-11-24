@@ -657,7 +657,7 @@ html[data-theme="dark"] .updcard{background:#2c2c2e}
 
 /* 获取按钮：保持原玻璃底，三态等宽 */
 .get{
-  flex:0 0 auto;min-width:84px;height:34px;padding:0 14px;
+  flex:0 0 auto;min-width:72px;height:32px;padding:0 12px;
   display:inline-flex;align-items:center;justify-content:center;
   border-radius:999px;border:0;cursor:pointer;
   background:rgba(255,255,255,.24);color:#fff;
@@ -670,3 +670,7 @@ html[data-theme="dark"] .updcard{background:#2c2c2e}
 .btn[data-dl="update"]{background:var(--blue) !important;color:#fff !important}
 .dbtn[data-dl="got"]{background:rgba(120,120,128,.16) !important;color:var(--sub) !important}
 .dbtn[data-dl="update"]{background:var(--blue) !important;color:#fff !important}
+
+/* 横滑卡片：允许横向手势 */
+.hscroll{touch-action:pan-x !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.hscroll .feat{touch-action:pan-x}
