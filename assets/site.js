@@ -703,11 +703,18 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
 
   // 让横滑卡片左右露出完全一致
   function fitCards(){
-    // 1) 详情页多图：一屏一张，宽度交给 CSS
+    // 1) 详情页多图：与应用页精选卡同款（左18 间距6 右露12）
     document.querySelectorAll('.shots').forEach(function(sh){
       var n = sh.children.length;
       if(!n) return;
-      for(var q = 0; q < n; q++) sh.children[q].style.flex = '';
+      if(innerWidth >= 900){
+        for(var w0 = 0; w0 < n; w0++) sh.children[w0].style.flex = '';
+        sh.style.scrollSnapType = '';
+        return;
+      }
+      var G2 = 6, PEEK2 = 12, SIDE2 = 36;
+      var W2 = (n === 1) ? (sh.clientWidth - SIDE2) : (sh.clientWidth - SIDE2 - G2 - PEEK2);
+      for(var q = 0; q < n; q++) sh.children[q].style.flex = '0 0 ' + W2 + 'px';
       sh.style.scrollSnapType = (n === 1) ? 'none' : '';
       if(!sh.dataset.init){ sh.dataset.init = '1'; sh.scrollLeft = 0; }
     });
