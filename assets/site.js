@@ -352,7 +352,22 @@
   }
   window.__ME = { nick: getNick, setNick: setNick, makeCode: makeCode, applyCode: applyCode };
 
-  window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, label: dlLabel, all: dlAll };
+    window.__shotFail = function(img){
+    var item = img.closest('.shotitem');
+    if(item){ var bg = item.querySelector('.shotbg'); if(bg) bg.style.backgroundImage = 'none'; item.classList.add('shotdead'); }
+    var wrap = img.closest('.shots');
+    if(!wrap) return;
+    setTimeout(function(){
+      if(wrap.querySelector('.shotitem:not(.shotdead)')) return;
+      var a = state.detail; if(!a) return;
+      var holder = document.createElement('div');
+      holder.className = 'dshot';
+      holder.innerHTML = bgLayer(a) + (a.icon ? '<img src="' + fixPath(a.icon) + '" alt="">' : '<span class="tile">' + (a.iconText || a.name || '?').slice(0,2) + '</span>');
+      if(wrap.parentNode) wrap.parentNode.replaceChild(holder, wrap);
+    }, 80);
+  };
+
+window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, label: dlLabel, all: dlAll };
   window.gotoHelp = function(){
     state.screen = 'help'; state.listTitle = '使用说明';
     render(); window.scrollTo(0, 0);
@@ -675,7 +690,7 @@
         ? '<div class="shots">' + a.shots.map(function(sh){
             return '<div class="shotitem">' +
               '<div class="shotbg" style="background-image:url(' + fixPath(sh) + ')"></div>' +
-              '<img src="' + fixPath(sh) + '" alt="" onerror="this.style.display=&quot;none&quot;">' +
+              '<img src="' + fixPath(sh) + '" alt="" onerror="window.__shotFail&&window.__shotFail(this)">' +
             '</div>';
           }).join('') + '</div>'
         : '<div class="dshot">' + bgLayer(a) +
