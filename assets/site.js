@@ -250,6 +250,14 @@
     }
   };
 
+  function clearLockIfIdle(){
+    var g = document.getElementById('gate2');
+    var p = document.querySelector('.spnl');
+    var openPanel = p && p.classList.contains('on');
+    if(!g && !openPanel) document.documentElement.classList.remove('locked');
+  }
+  window.clearLockIfIdle = clearLockIfIdle;
+
   function paintBadge(){
     var n = 0;
     try { n = (window.__DL ? window.__DL.updates().length : 0); } catch(e){ n = 0; }
@@ -524,6 +532,7 @@
     if(hd) hd.style.display = (state.screen === 'home') ? '' : 'none';
     if(state.screen === 'home' && (state.tab === 'games' || state.tab === 'apps')) setTimeout(fitCards, 0);
     try{ if(window.paintBadge) window.paintBadge(); }catch(e){}
+    try{ if(window.clearLockIfIdle) window.clearLockIfIdle(); }catch(e){}
   }
 
   /* ---------- 事件 ---------- */
