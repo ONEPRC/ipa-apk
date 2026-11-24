@@ -920,3 +920,25 @@ html[data-theme="dark"] .toast{
   .shots{margin:16px -36px !important;padding:0 36px !important;gap:20px !important;scroll-padding-left:36px !important}
   .shots .shotitem{flex:0 0 calc(50% - 10px) !important}
 }
+
+/* 详情多图：左右露出完全对称 */
+.shots{
+  margin:16px 18px !important;
+  padding:0 !important;
+  gap:6px !important;
+  scroll-padding:0 !important;
+  scroll-snap-type:x mandatory;
+}
+.shots .shotitem{
+  flex:0 0 auto;
+  border-radius:16px;
+  overflow:hidden;
+  aspect-ratio:16/9;
+  scroll-snap-align:start;
+}
+@media (min-width:900px){
+  .shots{margin:16px 36px !important;gap:20px !important}
+  .shots .shotitem{flex:0 0 calc(50% - 10px) !important}
+}
+
+.card .art{display:grid !important;place-items:center !important;align-content:center !important}
