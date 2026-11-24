@@ -672,3 +672,84 @@
   bar.addEventListener('pointercancel', end);
   bar.addEventListener('pointerleave', end);
 })();
+
+/* ================= 右上角 logo → 账户抽屉 ================= */
+(function accountSheet(){
+  var built = false, bg = null, panel = null;
+
+  function build(){
+    if(built) return;
+    built = true;
+    var st = (window.APP_DATA && window.APP_DATA.site) || {};
+    var siteName = st.title || 'IPA&APK';
+    var grp = st.qqGroup || '';
+
+    bg = document.createElement('div');
+    bg.className = 'sbg';
+    bg.onclick = close;
+
+    panel = document.createElement('div');
+    panel.className = 'spnl';
+    panel.innerHTML =
+      '<div class="shead"><span>账户</span><button type="button" class="sdone">完成</button></div>' +
+      '<div class="sbody">' +
+        '<div class="sgroup">' +
+          '<div class="suser">' +
+            '<div class="suav"><img src="' + LOGO + '" alt=""></div>' +
+            '<div class="suinfo"><b>' + siteName + '</b><span>应用索引 · 网盘分享</span></div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="sgroup">' +
+          '<button class="srow" data-sact="theme"><span>暗黑模式</span><span class="sw' + (document.documentElement.dataset.theme === 'dark' ? ' on' : '') + '"></span></button>' +
+        '</div>' +
+        '<div class="sgroup">' +
+          '<button class="srow" data-sact="share"><span>分享给朋友</span><i class="chev">›</i></button>' +
+          '<button class="srow" data-sact="help"><span>使用说明</span><i class="chev">›</i></button>' +
+          '<button class="srow" data-sact="qq"><span>加入 QQ 群' + (grp ? ' · ' + grp : '') + '</span><i class="chev">›</i></button>' +
+        '</div>' +
+        '<div class="sgroup">' +
+          '<div class="srow plain"><span>版本</span><em>v' + (st.updated || '') + '</em></div>' +
+        '</div>' +
+      '</div>';
+
+    document.body.appendChild(bg);
+    document.body.appendChild(panel);
+
+    panel.querySelector('.sdone').onclick = close;
+    panel.addEventListener('click', function(e){
+      var row = e.target.closest('[data-sact]');
+      if(!row) return;
+      var act = row.getAttribute('data-sact');
+      if(act === 'theme'){
+        var dark = document.documentElement.dataset.theme === 'dark';
+        document.documentElement.dataset.theme = dark ? '' : 'dark';
+        try{ localStorage.setItem('appindex.theme', dark ? 'light' : 'dark'); }catch(err){}
+        var sw = row.querySelector('.sw'); if(sw) sw.classList.toggle('on', !dark);
+        return;
+      }
+      if(act === 'share'){
+        if(navigator.share){ navigator.share({ title: document.title, url: location.href }).catch(function(){}); }
+        else { try{ copyText(location.href, '链接已复制'); }catch(err){} }
+        return;
+      }
+      if(act === 'help'){ close(); var sh = document.getElementById('sheet'); if(sh) sh.classList.add('open'); return; }
+      if(act === 'qq'){
+        var st2 = (window.APP_DATA && window.APP_DATA.site) || {};
+        if(st2.qqLink){ window.open(st2.qqLink, '_blank'); return; }
+        if(st2.qqGroup){
+          var mob = /iPhone|iPad|Android/i.test(navigator.userAgent);
+          window.open(mob ? 'mqqapi://card/show_pslcard?src_type=internal&version=1&uin=' + st2.qqGroup + '&card_type=group&source=qrcode' : 'https://qun.qq.com/', '_blank');
+        }
+        return;
+      }
+    });
+  }
+
+  function open(){ build(); requestAnimationFrame(function(){ bg.classList.add('on'); panel.classList.add('on'); }); }
+  function close(){ if(!built) return; bg.classList.remove('on'); panel.classList.remove('on'); }
+
+  window.openAccountSheet = open;
+  document.addEventListener('click', function(e){
+    if(e.target.closest('#avabtn, #avabtn2, #avabtn3')){ e.preventDefault(); e.stopPropagation(); open(); }
+  }, true);
+})();
