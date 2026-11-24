@@ -590,8 +590,7 @@
         '<div class="helpgroup">' +
           '<div class="helprow"><b>①</b><div>点应用卡片查看详情，点「获取」打开网盘链接。</div></div>' +
           '<div class="helprow"><b>②</b><div>「复制链接」或「复制+提取码」，到夸克 App 里打开即可转存。</div></div>' +
-          '<div class="helprow"><b>③</b><div>转存后就能在自己的网盘里下载；链路有有效期，过期等群里补。' +
-            (grp ? '群号：' + grp : '') + '</div></div>' +
+          '<div class="helprow"><b>③</b><div>转存后就能在自己的网盘里下载；链路有有效期，过期等群里补。</div></div>' +
         '</div>' +
         '<div class="helptag">已获取与更新</div>' +
         '<div class="helpgroup">' +
@@ -606,7 +605,7 @@
           '<div class="helprow"><b>3</b><div>本站不承担任何因使用本站资源而产生的法律责任。如有侵权，请联系管理员，我们将第一时间核实并删除。</div></div>' +
           '<div class="helprow"><b>4</b><div>访问本站即视为您同意并接受本免责声明的所有条款。</div></div>' +
         '</div>' +
-        (grp ? '<button class="helpbtn" data-sact="qq">加入 QQ 群 ' + grp + '</button>' : '') +
+        '<button class="helpbtn" data-sact="qq">加入 QQ 群</button>' +
       '</div>';
   }
 
@@ -893,6 +892,8 @@
     clearTimeout(toast._t);
     toast._t = setTimeout(function(){ t.classList.remove('on'); }, 2000);
   }
+
+  window.toast = toast;
 
   function copyText(text, okMsg){
     var done = function(){ toast(okMsg || '已复制'); };
@@ -1197,7 +1198,6 @@
         '</div>' +
         '<div class="sgroup">' +
           '<button class="srow" data-sact="share"><span>分享给朋友</span><i class="chev">›</i></button>' +
-          '<button class="srow" data-sact="nick"><span>修改昵称</span><i class="chev">›</i></button>' +
           '<button class="srow" data-sact="restore"><span>恢复记录</span><i class="chev">›</i></button>' +
           '<button class="srow" data-sact="help" onclick="try{window.gotoHelp&&window.gotoHelp();document.documentElement.classList.remove(\'locked\');}catch(e){}"><span>使用说明</span><i class="chev">›</i></button>' +
         '</div>' +
