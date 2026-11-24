@@ -26,37 +26,46 @@
     if(ICON_BG[a.id]) return ICON_BG[a.id];
     if(ICON_BUSY[a.id]) return null;
     ICON_BUSY[a.id] = true;
-    var img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = function(){
-      try{
-        var c = document.createElement('canvas');
-        c.width = 16; c.height = 16;
-        var x = c.getContext('2d');
-        x.drawImage(img, 0, 0, 16, 16);
-        var d = x.getImageData(0, 0, 16, 16).data;
-        var r = 0, g = 0, b = 0, n = 0, best = null, bestSat = -1;
-        for(var i = 0; i < d.length; i += 4){
-          if(d[i + 3] < 120) continue;
-          r += d[i]; g += d[i + 1]; b += d[i + 2]; n++;
-          var mx = Math.max(d[i], d[i + 1], d[i + 2]), mn = Math.min(d[i], d[i + 1], d[i + 2]);
-          var sat = mx === 0 ? 0 : (mx - mn) / mx;
-          if(sat > bestSat && mx > 40 && mx < 245){ bestSat = sat; best = [d[i], d[i + 1], d[i + 2]]; }
+
+    function paint(src, revoke){
+      var img = new Image();                 // 不要设 crossOrigin，同源图直接可用
+      img.onload = function(){
+        try{
+          var cv = document.createElement('canvas');
+          cv.width = 16; cv.height = 16;
+          var x = cv.getContext('2d');
+          x.drawImage(img, 0, 0, 16, 16);
+          var d = x.getImageData(0, 0, 16, 16).data;
+          var r = 0, g = 0, b = 0, n = 0, best = null, bestSat = -1;
+          for(var i = 0; i < d.length; i += 4){
+            if(d[i + 3] < 120) continue;
+            r += d[i]; g += d[i + 1]; b += d[i + 2]; n++;
+            var mx = Math.max(d[i], d[i + 1], d[i + 2]), mn = Math.min(d[i], d[i + 1], d[i + 2]);
+            var sat = mx === 0 ? 0 : (mx - mn) / mx;
+            if(sat > bestSat && mx > 40 && mx < 245){ bestSat = sat; best = [d[i], d[i + 1], d[i + 2]]; }
+          }
+          var rgb = best || (n ? [r / n, g / n, b / n] : null);
+          ICON_BUSY[a.id] = false;
+          if(!rgb) return;
+          var k = 0.82;
+          ICON_BG[a.id] = 'rgb(' + Math.round(rgb[0] * k) + ',' + Math.round(rgb[1] * k) + ',' + Math.round(rgb[2] * k) + ')';
+          if(!colorFromIcon._t){
+            colorFromIcon._t = setTimeout(function(){ colorFromIcon._t = null; try{ render(); }catch(e){} }, 60);
+          }
+        }catch(e){
+          // 画布被污染 → 用 fetch 拿 blob 再画一次
+          if(revoke) { ICON_BUSY[a.id] = false; return; }
+          fetch(src).then(function(r){ return r.blob(); }).then(function(bl){
+            var u = URL.createObjectURL(bl);
+            paint(u, true);
+          }).catch(function(){ ICON_BUSY[a.id] = false; });
         }
-        var rgb = best || (n ? [r / n, g / n, b / n] : null);
-        if(!rgb){ ICON_BUSY[a.id] = false; return; }
-        var R = Math.round(rgb[0]), G = Math.round(rgb[1]), B = Math.round(rgb[2]);
-        // 压暗 + 提饱和，做成底色
-        var k = 0.82;
-        ICON_BG[a.id] = 'rgb(' + Math.round(R * k) + ',' + Math.round(G * k) + ',' + Math.round(B * k) + ')';
-        ICON_BUSY[a.id] = false;
-        if(!colorFromIcon._t){
-          colorFromIcon._t = setTimeout(function(){ colorFromIcon._t = null; try{ render(); }catch(e){} }, 60);
-        }
-      }catch(e){ ICON_BUSY[a.id] = false; }
-    };
-    img.onerror = function(){ ICON_BUSY[a.id] = false; };
-    img.src = fixPath(a.icon);
+      };
+      img.onerror = function(){ ICON_BUSY[a.id] = false; };
+      img.src = src;
+    }
+
+    paint(fixPath(a.icon), false);
     return null;
   }
 
