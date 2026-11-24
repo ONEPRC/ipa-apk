@@ -614,8 +614,8 @@
     b.onclick = function(){
       if(wrap.classList.contains('locked')) return;
       err.textContent = '';
-      if(k === 'del') val = val.slice(0, -1);
-      else if(k && val.length < LEN) val += k;
+      if(num === 'del') val = val.slice(0, -1);
+      else if(num && val.length < LEN) val += num;
       paint();
       if(val.length === LEN) setTimeout(check, 130);
     };
