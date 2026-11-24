@@ -1537,7 +1537,7 @@ document.addEventListener('dragstart', function(e){
   document.addEventListener('pointermove', function(e){
     if(!drag) return;
     var dx = e.clientX - drag.x;
-    if(Math.abs(dx) > 4){
+    if(Math.abs(dx) > 10){
       drag.moved = true;
       e.preventDefault();
       var now = performance.now();
@@ -1556,7 +1556,7 @@ document.addEventListener('dragstart', function(e){
 
   function end(){
     if(!drag) return;
-    var el = drag.el, moved = drag.moved;
+    var el = drag.el, moved = drag.moved && Math.abs(el.scrollLeft - drag.left) > 2;
     el.classList.remove('dragging');
     drag = null;
     if(raf){ cancelAnimationFrame(raf); raf = 0; }
