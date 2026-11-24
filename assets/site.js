@@ -432,7 +432,7 @@
     var cat = catOf(a);
     stage.innerHTML =
       '<div class="dtop">' +
-        '<div class="iconbox">' + (a.icon ? '<img src="' + fixPath(a.icon) + '" alt="">' : (a.iconText || a.name).slice(0,2)) + '</div>' +
+        '<div class="iconbox">' + (a.icon ? '<img src="' + fp(a.icon) + '" alt="">' : (a.iconText || a.name).slice(0,2)) + '</div>' +
         '<div style="flex:1;min-width:0">' +
           '<h2>' + a.name + '</h2>' +
           '<p class="dline">' + (a.note || '') + '</p>' +
@@ -859,6 +859,12 @@
 /* ================= 右上角 logo → 账户抽屉 ================= */
 (function accountSheet(){
   var built = false, bg = null, panel = null;
+
+  function fp(u){
+    if(!u) return '';
+    if(/^(https?:|data:)/.test(u)) return u;
+    return String(u).replace(/^\/+/, '');
+  }
 
   function updBlock(){
     var list = [];
