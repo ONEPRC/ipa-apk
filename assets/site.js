@@ -741,7 +741,7 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
         if(stg){ stg.classList.remove('page-in'); void stg.offsetWidth; stg.classList.add('page-in'); }
       }
     }
-    else renderDetail();
+    else { renderDetail(); setTimeout(fitCards, 0); }
     document.getElementById('tabbar').style.display = (state.screen === 'help') ? 'none' : '';
     var tb = document.querySelector('.tabbar');
     if(tb) tb.classList.add('ready');
