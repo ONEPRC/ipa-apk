@@ -282,6 +282,17 @@
         '<div class="list" id="srlist">' + list.map(row).join('') + '</div>' + (list.length ? '' : '<div class="empty" id="srempty">换个词试试</div>');
       var inp = document.getElementById('q');
       var wrap1 = inp ? inp.closest('.searchwrap') : null;
+      var clrBtn = document.querySelector('.sclear');
+      if(clrBtn && inp){
+        clrBtn.onmousedown = function(ev){ ev.preventDefault(); };
+        clrBtn.onclick = function(ev){
+          ev.preventDefault(); ev.stopPropagation();
+          inp.value = ''; state.q = '';
+          var c2 = document.querySelector('.sclear'); if(c2) c2.hidden = true;
+          render();
+          var q9 = document.getElementById('q'); if(q9) q9.focus();
+        };
+      }
       if(inp){
         inp.addEventListener('focus', function(){ if(wrap1) wrap1.classList.add('focus'); });
         inp.addEventListener('blur', function(){ if(wrap1) wrap1.classList.remove('focus'); });
