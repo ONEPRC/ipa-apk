@@ -1189,8 +1189,7 @@
           '</div>' +
           '<button class="srow sync" data-sact="sync">' +
             '<span>备份码</span>' +
-            '<em class="scode">' + (syncShort || '点击生成') + '</em>' +
-            '<i class="chev">›</i>' +
+            '<span class="sright"><em class="scode">' + (syncShort || '点击生成') + '</em><i class="chev">›</i></span>' +
           '</button>' +
         '</div>' +
         '<div class="sgroup">' +
@@ -1199,7 +1198,6 @@
         '<div class="sgroup">' +
           '<button class="srow" data-sact="share"><span>分享给朋友</span><i class="chev">›</i></button>' +
           '<button class="srow" data-sact="nick"><span>修改昵称</span><i class="chev">›</i></button>' +
-          '<button class="srow" data-sact="backup"><span>备份记录（同步码）</span><i class="chev">›</i></button>' +
           '<button class="srow" data-sact="restore"><span>恢复记录</span><i class="chev">›</i></button>' +
           '<button class="srow" data-sact="help" onclick="try{window.gotoHelp&&window.gotoHelp();document.documentElement.classList.remove(\'locked\');}catch(e){}"><span>使用说明</span><i class="chev">›</i></button>' +
         '</div>' +
