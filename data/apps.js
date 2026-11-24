@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/25 00:24:30
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 00:26:30
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795537470929,
+    "rev": 1795537590095,
     "categories": [
       "游戏",
       "应用",
@@ -32,7 +32,7 @@ window.APP_DATA = {
     {
       "id": "amw4xwyc8",
       "name": "CS手游",
-      "version": "1.4.2",
+      "version": "1.4.1",
       "category": "游戏",
       "platform": "iOS / Android",
       "size": "1.6G",
@@ -45,8 +45,8 @@ window.APP_DATA = {
       "whatsNew": "修复一些已知问题",
       "date": "2026-11-01",
       "addedAt": "2026-11-06",
-      "updatedAt": "2026-11-24T23:15",
-      "pinned": true
+      "pinned": true,
+      "updatedAt": "2026-11-25T00:24"
     },
     {
       "id": "amwt8wq1r",
@@ -459,12 +459,13 @@ window.APP_DATA = {
       "note": "联机版",
       "whatsNew": "无",
       "shots": [
-        "assets/shot-20261124132728.jpg"
+        "assets/shot-20261124132728.jpg",
+        "assets/shot-20261124162627.jpg"
       ],
       "date": "2026-11-07",
       "addedAt": "2026-11-07",
       "pinned": true,
-      "updatedAt": "2026-11-25T00:05"
+      "updatedAt": "2026-11-25T00:26"
     },
     {
       "id": "amw563sof",
