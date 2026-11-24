@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/24 21:03:22
+// 应用数据文件 —— 由本地管理页写入 2026/11/24 21:04:34
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795525402950,
+    "rev": 1795525474123,
     "categories": [
       "游戏",
       "应用",
@@ -212,7 +212,6 @@ window.APP_DATA = {
       "date": "2026-11-18",
       "expireAt": "2026-11-25",
       "addedAt": "2026-11-18T23:57",
-      "pinned": true,
       "updatedAt": "2026-11-24T20:57"
     },
     {
@@ -222,7 +221,7 @@ window.APP_DATA = {
       "category": "应用",
       "platform": "iOS",
       "size": "206MB",
-      "icon": "https://kkimgs.yisou.com/ims?kt=url&at=ori&key=aHR0cDovL2ltZy5xcXpoaS5jb20vaS8yYTI3MDk4MTM2NDh4MTIxMTY1MTg2OGIyNTMuanBn&sign=yx:RDvHSryzV68MSSGylKO3QLAFnYY=&tv=0_0",
+      "icon": "assets/网易云音乐-20261124130431.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/71203cb465b9",
       "pwd": "",
@@ -231,8 +230,7 @@ window.APP_DATA = {
       "date": "2026-11-18",
       "expireAt": "2026-11-25",
       "addedAt": "2026-11-18T23:21",
-      "pinned": true,
-      "updatedAt": "2026-11-24T19:23"
+      "updatedAt": "2026-11-24T21:04"
     },
     {
       "id": "amwm1u529",
