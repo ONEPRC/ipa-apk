@@ -444,6 +444,37 @@
     setTimeout(fitCards, 0);
   }
 
+  var PY_PAIRS = [['阿','A'],['八','B'],['擦','C'],['搭','D'],['蛾','E'],['发','F'],['噶','G'],['哈','H'],
+    ['击','J'],['喀','K'],['拉','L'],['妈','M'],['拿','N'],['哦','O'],['啪','P'],['期','Q'],['然','R'],['撒','S'],
+    ['塌','T'],['挖','W'],['昔','X'],['压','Y'],['匝','Z']];
+  var PY_COL = null;
+  try { PY_COL = new Intl.Collator('zh-Hans-CN', { sensitivity: 'base' }); } catch(e){}
+  function nameMeta(str){
+    var t = String(str || '').trim();
+    var ch = t ? Array.from(t)[0] : '';
+    var out = { letter: '#', ascii: false, rest: t.toLowerCase() };
+    if(!ch) return out;
+    if(/[0-9]/.test(ch)){ out.letter = '0'; out.ascii = true; return out; }
+    if(/[a-zA-Z]/.test(ch)){ out.letter = ch.toUpperCase(); out.ascii = true; return out; }
+    if(!PY_COL) return out;
+    for(var i = 0; i < PY_PAIRS.length; i++){
+      if(PY_COL.compare(ch, PY_PAIRS[i][0]) >= 0) out.letter = PY_PAIRS[i][1]; else break;
+    }
+    return out;
+  }
+  function byName(x, y){
+    var a = nameMeta(x.name), b = nameMeta(y.name);
+    if(a.letter !== b.letter) return a.letter < b.letter ? -1 : 1;
+    if(a.ascii !== b.ascii) return a.ascii ? 1 : -1;
+    return a.rest.localeCompare(b.rest, 'zh-Hans-CN', { numeric: true, sensitivity: 'base' });
+  }
+  function sortItems(items){
+    var arr = items.slice();
+    if(state.sort === 'name') arr.sort(byName);
+    else if(state.sort === 'date') arr.sort(function(a, b){ return String(latest(b)).localeCompare(String(latest(a))); });
+    return arr;
+  }
+
   function renderListScreen(){
     var stage = document.getElementById('stage');
     var items = sortItems(listFor(state.tab));
