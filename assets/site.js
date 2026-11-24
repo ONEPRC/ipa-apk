@@ -290,6 +290,41 @@
   }
   function dlCount(){ try { return dlUpdates().length; } catch(e){ return 0; } }
   window.__BUILD = BUILD_ID;
+  var NICKKEY = 'appindex.nick';
+  function getNick(){ try{ return localStorage.getItem(NICKKEY) || ''; }catch(e){ return ''; } }
+  function setNick(v){ try{ localStorage.setItem(NICKKEY, String(v || '').slice(0, 16)); }catch(e){} }
+  function makeCode(){
+    var items = {};
+    var all = dlAll();
+    Object.keys(all).forEach(function(id){
+      var r = all[id];
+      items[id] = (typeof r === 'string') ? { v: r } : { v: r.v, at: r.at || null };
+    });
+    var payload = { n: getNick(), t: Date.now(), items: items };
+    var b64 = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    return b64.replace(/=+$/, '');
+  }
+  function readCode(code){
+    var clean = String(code || '').replace(/\s+/g, '');
+    var pad = clean.length % 4 ? '='.repeat(4 - clean.length % 4) : '';
+    var json = decodeURIComponent(escape(atob(clean + pad)));
+    var obj = JSON.parse(json);
+    if(!obj || typeof obj !== 'object' || !obj.items) throw new Error('码无效');
+    return obj;
+  }
+  function applyCode(code){
+    var obj = readCode(code);
+    var all = dlAll();
+    Object.keys(obj.items).forEach(function(id){
+      var it = obj.items[id] || {};
+      all[id] = { v: String(it.v || ''), at: it.at || new Date().toISOString() };
+    });
+    try{ localStorage.setItem(DLKEY, JSON.stringify(all)); }catch(e){}
+    if(obj.n) setNick(obj.n);
+    return Object.keys(obj.items).length;
+  }
+  window.__ME = { nick: getNick, setNick: setNick, makeCode: makeCode, applyCode: applyCode };
+
   window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, label: dlLabel, all: dlAll };
   window.gotoHelp = function(){
     state.screen = 'help'; state.listTitle = '使用说明';
@@ -1143,7 +1178,8 @@
         '<div class="sgroup">' +
           '<div class="suser" data-sact="qq">' +
             '<div class="suav">' + (logo ? '<img src="' + logo + '" alt="">' : '') + '</div>' +
-            '<div class="suinfo"><b>' + siteName + '</b><span>' + (grp ? grp : '点击加入 QQ 群') + '</span></div>' +
+            '<div class="suinfo"><b>' + (window.__ME && window.__ME.nick() ? window.__ME.nick() : '未设置昵称') + '</b>' +
+              '<span>' + siteName + (grp ? ' · 群 ' + grp : '') + '</span></div>' +
             '<i class="chev">›</i>' +
           '</div>' +
         '</div>' +
@@ -1304,3 +1340,92 @@ document.addEventListener('click', function(e){
   document.documentElement.classList.remove('locked');
   if(window.gotoHelp) window.gotoHelp();
 }, true);
+
+/* ================= 昵称 / 同步码 弹层 ================= */
+(function meUI(){
+  var box = null, bg = null;
+
+  function ensure(){
+    if(box) return;
+    bg = document.createElement('div');
+    bg.className = 'mebg';
+    bg.onclick = close;
+    box = document.createElement('div');
+    box.className = 'mebox';
+    document.body.appendChild(bg);
+    document.body.appendChild(box);
+  }
+
+  function close(){
+    if(!box) return;
+    bg.classList.remove('on'); box.classList.remove('on');
+    document.documentElement.classList.remove('locked');
+  }
+
+  function open(mode){
+    ensure();
+    var ME = window.__ME || {};
+    var nick = ME.nick ? ME.nick() : '';
+
+    if(mode === 'nick'){
+      box.innerHTML =
+        '<h3>修改昵称</h3>' +
+        '<input id="me-nick" maxlength="16" placeholder="最多 16 个字" value="' + String(nick).replace(/"/g,'') + '">' +
+        '<div class="mefoot"><button class="mebtn ghost" data-me="cancel">取消</button>' +
+        '<button class="mebtn" data-me="savenick">保存</button></div>';
+    } else if(mode === 'backup'){
+      var code = '';
+      try{ code = ME.makeCode ? ME.makeCode() : ''; }catch(e){ code = ''; }
+      box.innerHTML =
+        '<h3>同步码</h3>' +
+        '<p class="metip">复制这串码保存好。换设备后在「恢复记录」里粘贴，就能把获取记录和昵称带过去。</p>' +
+        '<textarea id="me-code" readonly>' + code + '</textarea>' +
+        '<div class="mefoot"><button class="mebtn ghost" data-me="cancel">关闭</button>' +
+        '<button class="mebtn" data-me="copycode">复制</button></div>';
+    } else {
+      box.innerHTML =
+        '<h3>恢复记录</h3>' +
+        '<p class="metip">粘贴之前备份的同步码，会合并到本机记录。</p>' +
+        '<textarea id="me-in" placeholder="粘贴同步码"></textarea>' +
+        '<div class="mefoot"><button class="mebtn ghost" data-me="cancel">取消</button>' +
+        '<button class="mebtn" data-me="dorestore">恢复</button></div>';
+    }
+
+    bg.classList.add('on'); box.classList.add('on');
+    document.documentElement.classList.add('locked');
+
+    box.querySelectorAll('[data-me]').forEach(function(b){
+      b.onclick = function(){
+        var act = b.getAttribute('data-me');
+        if(act === 'cancel') return close();
+        if(act === 'savenick'){
+          var v = (document.getElementById('me-nick').value || '').trim();
+          if(window.__ME) window.__ME.setNick(v);
+          close(); if(window.openAccountSheet) setTimeout(window.openAccountSheet, 120);
+          return;
+        }
+        if(act === 'copycode'){
+          var ta = document.getElementById('me-code');
+          ta.focus(); ta.select();
+          try{ document.execCommand('copy'); }catch(e){}
+          b.textContent = '已复制';
+          return;
+        }
+        if(act === 'dorestore'){
+          var code2 = document.getElementById('me-in').value || '';
+          try{
+            var n = window.__ME.applyCode(code2);
+            close();
+            alert('已恢复 ' + n + ' 条记录');
+            if(window.openAccountSheet) setTimeout(window.openAccountSheet, 120);
+          }catch(e){
+            alert('同步码无效，请检查是否完整');
+          }
+          return;
+        }
+      };
+    });
+  }
+
+  window.ME_UI = { open: open, close: close };
+})();
