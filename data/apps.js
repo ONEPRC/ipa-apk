@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/24 19:23:05
+// 应用数据文件 —— 由本地管理页写入 2026/11/24 19:28:28
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795519385495,
+    "rev": 1795519708251,
     "categories": [
       "游戏",
       "应用",
@@ -283,7 +283,7 @@ window.APP_DATA = {
     {
       "id": "amwm0i1rp",
       "name": "抖音助手",
-      "version": "2.2.7",
+      "version": "2.2.8",
       "category": "插件",
       "platform": "iOS",
       "size": "",
@@ -293,7 +293,8 @@ window.APP_DATA = {
       "pwd": "",
       "description": "dy插件",
       "date": "2026-11-18",
-      "addedAt": "2026-11-18T19:02"
+      "addedAt": "2026-11-18T19:02",
+      "updatedAt": "2026-11-24T19:28"
     },
     {
       "id": "amwjfdq5t",
