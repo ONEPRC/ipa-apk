@@ -879,3 +879,9 @@ html[data-theme="dark"] .toast{
 /* 详情多图：与精选卡一致的露出 */
 .shots{gap:10px !important;scroll-padding-left:18px}
 .shotitem{flex:0 0 auto}
+
+/* 电脑端：详情多图与精选卡同款（两列，可原生横滑） */
+@media (min-width:900px){
+  .shots{gap:20px}
+  .shots .shotitem{flex:0 0 calc(50% - 10px)}
+}
