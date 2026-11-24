@@ -712,9 +712,9 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
         sh.style.scrollSnapType = '';
         return;
       }
-      var inner = sh.clientWidth;              // 已减去左右 18 外边距
-      var G2 = 6, PEEK2 = 12;
-      var W2 = (n === 1) ? inner : (inner - G2 - PEEK2);
+      // clientWidth 含左右各 18 内边距：可见宽 = clientWidth - 36
+      // 多张时：可见宽 = 18(左露) + W + 6(间距) + 18(右露) → W = clientWidth - 78
+      var W2 = (n === 1) ? (sh.clientWidth - 36) : (sh.clientWidth - 78);
       for(var q = 0; q < n; q++) sh.children[q].style.flex = '0 0 ' + W2 + 'px';
       sh.style.scrollSnapType = (n === 1) ? 'none' : '';
       if(!sh.dataset.init){ sh.dataset.init = '1'; sh.scrollLeft = 0; }
