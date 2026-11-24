@@ -669,8 +669,8 @@ html[data-theme="dark"] .updcard{background:#2c2c2e}
 .dbtn[data-dl="update"]{background:var(--blue) !important;color:#fff !important}
 
 /* 横滑卡片：允许横向手势 */
-.hscroll{touch-action:pan-x !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
-.hscroll .feat{touch-action:pan-x}
+.hscroll{touch-action:pan-y !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.hscroll .feat{touch-action:pan-y}
 
 .hscroll{cursor:grab}
 .hscroll.dragging{cursor:grabbing;scroll-snap-type:none}
@@ -902,7 +902,7 @@ html[data-theme="dark"] .toast{
   scroll-snap-type:x mandatory;
   scroll-padding-left:18px;
   scrollbar-width:none;
-  touch-action:pan-x;
+  touch-action:pan-y;
   -webkit-overflow-scrolling:touch;
   overscroll-behavior-x:contain;
 }
@@ -944,3 +944,9 @@ html[data-theme="dark"] .toast{
   transform:translate(-50%,-50%) !important;
   margin:0 !important;
 }
+
+/* 横滑区域：允许上下滚动，横向用脚本接管 */
+.hscroll,.shots{touch-action:pan-y pinch-zoom !important}
+
+/* 图片本身不拦截纵向手势 */
+img{touch-action:auto !important}
