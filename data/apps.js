@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/25 00:22:12
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 00:22:39
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795537332696,
+    "rev": 1795537359316,
     "categories": [
       "游戏",
       "应用",
@@ -155,7 +155,7 @@ window.APP_DATA = {
     },
     {
       "id": "amwqcx2q3",
-      "name": "FilzaMod",
+      "name": "Fii",
       "version": "2.2",
       "category": "应用",
       "platform": "iOS",
@@ -166,7 +166,8 @@ window.APP_DATA = {
       "pwd": "",
       "description": "文件管理器",
       "date": "2026-11-21",
-      "addedAt": "2026-11-21T20:01"
+      "addedAt": "2026-11-21T20:01",
+      "updatedAt": "2026-11-25T00:22"
     },
     {
       "id": "amwqc9zp5",
