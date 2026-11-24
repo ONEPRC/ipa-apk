@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/24 12:59:37
+// 应用数据文件 —— 由本地管理页写入 2026/11/24 13:01:47
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795496377084,
+    "rev": 1795496507210,
     "categories": [
       "游戏",
       "应用",
@@ -32,7 +32,7 @@ window.APP_DATA = {
     {
       "id": "amw4xwyc8",
       "name": "CS2手游",
-      "version": "1.4.2",
+      "version": "1.4.1",
       "category": "游戏",
       "platform": "iOS / Android",
       "size": "1.6G",
@@ -46,7 +46,7 @@ window.APP_DATA = {
       "date": "2026-11-06",
       "addedAt": "2026-11-06",
       "pinned": true,
-      "updatedAt": "2026-11-24T12:59"
+      "updatedAt": "2026-11-24T13:01"
     },
     {
       "id": "amwt8wq1r",
