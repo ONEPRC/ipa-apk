@@ -953,3 +953,14 @@ img{touch-action:auto !important}
 
 /* 有大图时：只留底部渐变，图片保持清晰 */
 .veil.soft{background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.42)) !important}
+
+/* 触屏：上下左右都交给系统滚动（最顺） */
+.hscroll,.shots{touch-action:auto !important}
+
+/* iOS：blur/transform 子元素会破坏父级圆角裁切，加隔离修复直角 */
+.card,.feat{
+  isolation:isolate;
+  -webkit-mask-image:-webkit-radial-gradient(white, black);
+  transform:translateZ(0);
+}
+.card .art,.feat .visual{overflow:hidden}
