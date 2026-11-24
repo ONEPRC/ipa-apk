@@ -1238,3 +1238,15 @@ if('serviceWorker' in navigator && location.protocol !== 'file:'){
   document.addEventListener('pointerup', end, true);
   document.addEventListener('pointercancel', end, true);
 })();
+
+/* 使用说明：文档级捕获，保证一次点击就跳转 */
+document.addEventListener('click', function(e){
+  if(!e.target.closest('[data-sact="help"]')) return;
+  e.preventDefault(); e.stopPropagation();
+  var pl = document.querySelector('.spnl');
+  if(pl) pl.classList.remove('on');
+  var bg = document.querySelector('.sbg');
+  if(bg) bg.classList.remove('on');
+  document.documentElement.classList.remove('locked');
+  if(window.gotoHelp) window.gotoHelp();
+}, true);
