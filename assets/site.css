@@ -466,3 +466,8 @@ html[data-theme="dark"] .tab.on{background:rgba(120,120,128,.34) !important}
 
 /* 详情页获取：保持胶囊形状 */
 .drow .dbtn{border-radius:999px !important}
+
+/* 详情页：获取按钮底部与图标底部齐平 */
+.dtop{align-items:stretch !important}
+.dtop > div:not(.iconbox){display:flex;flex-direction:column;min-width:0}
+.drow{margin-top:auto}
