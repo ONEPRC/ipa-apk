@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/24 20:58:12
+// 应用数据文件 —— 由本地管理页写入 2026/11/24 20:58:40
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795525092139,
+    "rev": 1795525120466,
     "categories": [
       "游戏",
       "应用",
@@ -342,7 +342,7 @@ window.APP_DATA = {
       "url": "https://pan.quark.cn/s/61421519663c",
       "pwd": "",
       "description": "✅抖音漫剧软件\n✅动画短剧一应俱全\n✅解锁会员功能",
-      "whatsNew": "修复一些问题",
+      "whatsNew": "修复一些问题.",
       "date": "2026-11-09",
       "addedAt": "2026-11-09T18:30",
       "updatedAt": "2026-11-24T20:58"
