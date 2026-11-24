@@ -942,3 +942,22 @@ html[data-theme="dark"] .toast{
 }
 
 .card .art{display:grid !important;place-items:center !important;align-content:center !important}
+
+/* 详情多图：居中吸附，左右露出相等 */
+.shots .shotitem{scroll-snap-align:center !important}
+.shots{scroll-snap-type:x mandatory !important;scroll-padding:0 !important}
+
+/* 详情多图：左右内边距 18，末尾留白 */
+.shots{
+  margin:16px 0 !important;
+  padding:0 18px !important;
+  gap:6px !important;
+  scroll-snap-type:x mandatory !important;
+}
+.shots::after{content:'';flex:0 0 18px}
+.shots .shotitem{flex:0 0 auto;scroll-snap-align:start !important;border-radius:16px;overflow:hidden;aspect-ratio:16/9}
+@media (min-width:900px){
+  .shots{padding:0 36px !important;gap:20px !important}
+  .shots .shotitem{flex:0 0 calc(50% - 10px) !important}
+  .shots::after{display:none}
+}
