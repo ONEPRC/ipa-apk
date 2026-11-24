@@ -968,3 +968,7 @@ img{touch-action:auto !important}
 /* 横滑区：吸附用 proximity（不再强行弹回第一张） */
 .hscroll,.shots{scroll-snap-type:x proximity !important}
 .hscroll.dragging,.shots.dragging{scroll-snap-type:none !important}
+
+/* 横滑：去掉强制吸附，避免拖动后被弹回原位置 */
+.hscroll,.shots{scroll-snap-type:none !important}
+.hscroll .feat,.shots .shotitem{scroll-snap-align:none !important}
