@@ -712,9 +712,9 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
         sh.style.scrollSnapType = '';
         return;
       }
-      // clientWidth 含左右各 18 内边距：可见宽 = clientWidth - 36
-      // 多张时：可见宽 = 18(左露) + W + 6(间距) + 18(右露) → W = clientWidth - 78
-      var W2 = (n === 1) ? (sh.clientWidth - 36) : (sh.clientWidth - 78);
+      // 与 .hscroll 完全一致：左内边距 18、间距 6、右侧露出 12
+      var SIDE2 = 36, G2 = 6, PEEK2 = 12;
+      var W2 = (n === 1) ? (sh.clientWidth - SIDE2) : (sh.clientWidth - SIDE2 - G2 - PEEK2);
       for(var q = 0; q < n; q++) sh.children[q].style.flex = '0 0 ' + W2 + 'px';
       sh.style.scrollSnapType = (n === 1) ? 'none' : '';
       if(!sh.dataset.init){ sh.dataset.init = '1'; sh.scrollLeft = 0; }
