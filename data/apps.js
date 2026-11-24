@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/24 19:29:16
+// 应用数据文件 —— 由本地管理页写入 2026/11/24 19:42:38
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795519756475,
+    "rev": 1795520558050,
     "categories": [
       "游戏",
       "应用",
@@ -292,10 +292,10 @@ window.APP_DATA = {
       "url": "https://pan.quark.cn/s/f27b85c756ee",
       "pwd": "",
       "description": "dy插件",
-      "whatsNew": "评论改红色字体",
+      "whatsNew": "评论改红色字体.",
       "date": "2026-11-18",
       "addedAt": "2026-11-18T19:02",
-      "updatedAt": "2026-11-24T19:29"
+      "updatedAt": "2026-11-24T19:42"
     },
     {
       "id": "amwjfdq5t",
