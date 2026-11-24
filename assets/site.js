@@ -293,6 +293,24 @@
         });
         return;
       }
+      if(state.catf){
+        var cf = state.catf;
+        var cl = ALL.filter(function(x){
+          return cf === '应用' ? catOf(x) !== '游戏' : catOf(x) === cf;
+        });
+        stage.innerHTML =
+          '<div class="searchwrap"><div class="searchbar"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.8 15.8 4.6 4.6"/></svg>' +
+            '<input id="q" placeholder="' + cf + '" value="">' +
+          '</div></div>' +
+          '<p class="sectsub">' + cl.length + ' 个' + cf + '</p>' +
+          '<div class="list">' + cl.map(row).join('') + '</div>' +
+          '<div class="sect"><button class="more" data-clearcat="1" style="color:var(--blue);background:none;border:0;font-size:15px">显示全部</button></div>';
+        var qc = document.getElementById('q');
+        if(qc) qc.addEventListener('input', function(){
+          state.catf = ''; state.q = this.value; render();
+        });
+        return;
+      }
       stage.innerHTML =
         '<div class="searchwrap"><div class="searchbar"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.8 15.8 4.6 4.6"/></svg>' +
         '<input id="q" placeholder="游戏、App、关键词" value="' + state.q.replace(/"/g, '') + '">' +
@@ -307,7 +325,7 @@
         var exitInput = function(ev){
           if(ev){ ev.stopPropagation(); }
           try{ inp.blur(); }catch(e){}
-          state.q = '';                    // 退出搜索
+          state.q = ''; state.catf = '';      // 退出搜索
           render();                        // 回到探索页
           // iOS 有时会在重绘后再把焦点塞回输入框，这里多次兜底清除
           [0, 60, 160, 320].forEach(function(t){
@@ -503,10 +521,18 @@
       return;
     }
 
+    if(e.target.closest('[data-clearcat]')){ state.catf = ''; render(); return; }
+
     var wd = e.target.closest('[data-word]');
     if(wd){
       var word = wd.getAttribute('data-word');
       qAdd(word);
+      var CAT_WORDS = ['游戏', '应用', '插件', '其他'];
+      if(CAT_WORDS.indexOf(word) > -1){
+        state.catf = word; state.q = '';
+        render(); window.scrollTo(0, 0);
+        return;
+      }
       var hit = ALL.filter(function(x){ return x.name === word; })[0];
       if(hit){
         state.detail = hit; state.screen = 'detail';
