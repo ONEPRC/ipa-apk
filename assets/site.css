@@ -982,3 +982,9 @@ html[data-theme="dark"] .toast{
   .shots{margin:16px -36px !important;padding:0 36px !important;gap:20px !important;scroll-padding-left:36px !important}
   .shots .shotitem{flex:0 0 calc(50% - 10px) !important}
 }
+
+/* 电脑端：多图间距与精选卡一致（覆盖手机端 6px） */
+@media (min-width:900px){
+  .shots{gap:20px !important}
+  .shots .shotitem{flex:0 0 calc(50% - 10px) !important}
+}
