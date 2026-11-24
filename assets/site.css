@@ -979,3 +979,8 @@ img{touch-action:auto !important}
   -webkit-overflow-scrolling:touch;
 }
 .hscroll .feat,.shots .shotitem{scroll-snap-align:none !important}
+
+/* 电脑端精选卡：56% 宽，右侧露出，保证能横滑 */
+@media (min-width:900px){
+  .hscroll .feat{flex:0 0 calc(56% - 10px) !important}
+}
