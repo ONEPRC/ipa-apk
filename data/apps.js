@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/24 20:54:12
+// 应用数据文件 —— 由本地管理页写入 2026/11/24 20:57:18
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795524852057,
+    "rev": 1795525038688,
     "categories": [
       "游戏",
       "应用",
@@ -203,7 +203,7 @@ window.APP_DATA = {
       "category": "应用",
       "platform": "iOS",
       "size": "220MB",
-      "icon": "https://i.urusai.cc/cUPA0.png",
+      "icon": "assets/红果短剧-20261124125716.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/c0c1778c7118",
       "pwd": "",
@@ -213,7 +213,7 @@ window.APP_DATA = {
       "expireAt": "2026-11-25",
       "addedAt": "2026-11-18T23:57",
       "pinned": true,
-      "updatedAt": "2026-11-24T19:22"
+      "updatedAt": "2026-11-24T20:57"
     },
     {
       "id": "amwm9r6um",
