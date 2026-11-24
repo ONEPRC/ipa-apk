@@ -743,3 +743,19 @@ html[data-theme="dark"] .tabbar{background:rgba(30,30,33,.9) !important}
 /* 密码锁定：键盘不可点 */
 .gate2.locked .g2-pad{pointer-events:none}
 .gate2.locked .g2-err{color:#ffb4b4}
+
+/* 昵称 / 同步码 弹层 */
+.mebg{position:fixed;inset:0;z-index:160;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:.2s}
+.mebg.on{opacity:1;pointer-events:auto}
+.mebox{position:fixed;left:50%;top:50%;transform:translate(-50%,-46%) scale(.96);z-index:161;
+  width:min(420px,calc(100vw - 40px));background:var(--bg);border-radius:18px;padding:20px 18px 16px;
+  box-shadow:0 24px 60px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:.22s}
+.mebox.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.mebox h3{margin:0 0 10px;font-size:17px;font-weight:700;color:var(--ink)}
+.mebox .metip{margin:0 0 12px;font-size:13px;line-height:1.6;color:var(--sub)}
+.mebox input,.mebox textarea{width:100%;box-sizing:border-box;padding:10px 12px;border-radius:10px;
+  border:1px solid var(--line);background:var(--gray);color:var(--ink);font-size:15px;font-family:inherit}
+.mebox textarea{height:120px;resize:none;word-break:break-all;line-height:1.5}
+.mefoot{display:flex;gap:10px;margin-top:14px}
+.mebtn{flex:1;padding:11px;border:0;border-radius:12px;background:var(--blue);color:#fff;font-size:15px;font-weight:600;cursor:pointer}
+.mebtn.ghost{background:var(--gray);color:var(--ink)}
