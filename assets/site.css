@@ -674,3 +674,7 @@ html[data-theme="dark"] .updcard{background:#2c2c2e}
 /* 横滑卡片：允许横向手势 */
 .hscroll{touch-action:pan-x !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
 .hscroll .feat{touch-action:pan-x}
+
+.hscroll{cursor:grab}
+.hscroll.dragging{cursor:grabbing;scroll-snap-type:none}
+.hscroll .feat{user-select:none;-webkit-user-select:none}
