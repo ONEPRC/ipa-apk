@@ -440,7 +440,7 @@ body{-webkit-text-size-adjust:100%}
 html[data-theme="dark"] body{background:#000 !important}
 
 /* ===== 5) 详情页「获取」按钮缩小 ===== */
-.drow .dbtn{height:36px;padding:0 20px;font-size:15px;border-radius:10px}
+.drow .dbtn{height:34px;padding:0 22px;font-size:15px;border-radius:999px}
 
 /* ===== 6) 分享图标底部与按钮底部齐平 ===== */
 .drow .dshare{height:36px;display:flex;align-items:flex-end;padding-bottom:0}
@@ -463,3 +463,6 @@ html[data-theme="dark"] .tab.on{background:rgba(120,120,128,.34) !important}
 .dtop,.drow,.dstats{min-width:0;max-width:100%;box-sizing:border-box}
 .dstats{overflow:hidden}
 .dtop{display:flex;align-items:flex-start;gap:14px}
+
+/* 详情页获取：保持胶囊形状 */
+.drow .dbtn{border-radius:999px !important}
