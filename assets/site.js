@@ -212,6 +212,35 @@
     return out;
   }
 
+  var DLKEY = 'appindex.dl';
+  function dlAll(){
+    try{ return JSON.parse(localStorage.getItem(DLKEY) || '{}'); }catch(e){ return {}; }
+  }
+  function dlGet(id){ return dlAll()[id] || null; }
+  function dlSet(id, ver){
+    var o = dlAll(); o[id] = String(ver || '');
+    try{ localStorage.setItem(DLKEY, JSON.stringify(o)); }catch(e){}
+  }
+  function dlState(a){
+    var rec = dlGet(a.id);
+    if(rec === null) return 'get';
+    return String(rec) === String(a.version || '') ? 'got' : 'update';
+  }
+  function dlLabel(a){
+    var st = dlState(a);
+    return st === 'got' ? '已获取' : (st === 'update' ? '更新' : '获取');
+  }
+  function dlUpdates(){
+    var o = dlAll(), out = [];
+    ALL.forEach(function(a){
+      var rec = o[a.id];
+      if(rec === undefined) return;
+      if(String(rec) !== String(a.version || '')) out.push({ app: a, from: rec });
+    });
+    return out;
+  }
+  function dlCount(){ try { return dlUpdates().length; } catch(e){ return 0; } }
+
   function row(a){
     return '<div class="row" data-open="' + a.id + '"><div class="ic">' + iconHTML(a) + '</div>' +
       '<div class="tx' + (a.note ? ' has-note' : '') + '">' +
@@ -406,7 +435,7 @@
         '<div style="flex:1;min-width:0">' +
           '<h2>' + a.name + '</h2>' +
           '<p class="dline">' + (a.note || '') + '</p>' +
-          '<div class="drow"><button class="dbtn">获取</button>' +
+          '<div class="drow"><button class="dbtn ' + dlState(a) + '">' + dlLabel(a) + '</button>' +
             '<span class="dshare" data-act="copypwd"><svg viewBox="0 0 24 24"><path d="M12 3.5v10"/><path d="m8.5 7 3.5-3.5L15.5 7"/><path d="M6 11.5V19a1.5 1.5 0 0 0 1.5 1.5h9A1.5 1.5 0 0 0 18 19v-7.5"/></svg></span>' +
           '</div>' +
         '</div>' +
@@ -563,7 +592,13 @@
       var target = null;
       if(host){ target = ALL.filter(function(x){ return x.id === host.getAttribute('data-open'); })[0]; }
       if(!target && state.screen === 'detail') target = state.detail;
-      if(target && target.url){ window.open(fullLink(target), '_blank'); }
+      if(target && target.url){
+        window.open(fullLink(target), '_blank');
+        dlSet(target.id, target.version);
+        var lb = dlLabel(target);
+        gbtn.textContent = lb;
+        gbtn.className = gbtn.className.replace(/\s*(get|got|update)\b/g, '') + ' ' + dlState(target);
+      }
       else toast('这条还没有链接');
       return;
     }
@@ -824,6 +859,23 @@
 (function accountSheet(){
   var built = false, bg = null, panel = null;
 
+  function updBlock(){
+    var list = [];
+    try { list = dlUpdates(); } catch(e){ list = []; }
+    if(!list.length) return '';
+    var rows = list.map(function(o){
+      var a = o.app;
+      var ic = a.icon ? '<img src="' + fixPath(a.icon) + '" alt="">' : '<span class="t">' + (a.iconText || a.name).slice(0,2) + '</span>';
+      return '<button class="srow upd" data-upd="' + a.id + '">' +
+        '<span class="uic">' + ic + '</span>' +
+        '<span class="utx"><b>' + a.name + '</b><em>v' + (o.from || '—') + ' → v' + (a.version || '—') + '</em></span>' +
+        '<span class="ubtn">更新</span></button>';
+    }).join('');
+    return '<div class="sgroup">' +
+      '<div class="srow plain updhead"><span>可用更新</span><em>' + list.length + '</em></div>' +
+      rows + '</div>';
+  }
+
   function build(){
     if(built) return;
     built = true;
@@ -849,6 +901,7 @@
             '<i class="chev">›</i>' +
           '</div>' +
         '</div>' +
+        updBlock() +
         '<div class="sgroup">' +
           '<button class="srow" data-sact="theme"><span>暗黑模式</span><span class="sw' + (document.documentElement.dataset.theme === 'dark' ? ' on' : '') + '"></span></button>' +
         '</div>' +
@@ -864,6 +917,19 @@
 
     panel.querySelector('.sdone').onclick = close;
     panel.addEventListener('click', function(e){
+      var up = e.target.closest('[data-upd]');
+      if(up){
+        var id = up.getAttribute('data-upd');
+        var app = (window.APP_DATA.apps || []).filter(function(x){ return x.id === id; })[0];
+        if(app && app.url){
+          var u = app.url + (app.pwd && app.url.indexOf('pwd=') === -1 ? (app.url.indexOf('?') > -1 ? '&' : '?') + 'pwd=' + app.pwd : '');
+          window.open(u, '_blank');
+          dlSet(app.id, app.version);
+          close();
+        }
+        return;
+      }
+
       var row = e.target.closest('[data-sact]');
       if(!row) return;
       var act = row.getAttribute('data-sact');
@@ -894,6 +960,10 @@
 
   function open(){
     build();
+    if(panel){
+      var old = panel.querySelector('.sbody');
+      if(old) old.innerHTML = old.innerHTML; // 保留结构
+    }
     document.documentElement.classList.add('locked');
     requestAnimationFrame(function(){ bg.classList.add('on'); panel.classList.add('on'); });
   }
