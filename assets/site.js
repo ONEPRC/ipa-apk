@@ -928,7 +928,6 @@
             '<i class="chev">›</i>' +
           '</div>' +
         '</div>' +
-        updBlock() +
         '<div class="sgroup">' +
           '<button class="srow" data-sact="theme"><span>暗黑模式</span><span class="sw' + (document.documentElement.dataset.theme === 'dark' ? ' on' : '') + '"></span></button>' +
         '</div>' +
@@ -936,6 +935,7 @@
           '<button class="srow" data-sact="share"><span>分享给朋友</span><i class="chev">›</i></button>' +
           '<button class="srow" data-sact="help"><span>使用说明</span><i class="chev">›</i></button>' +
         '</div>' +
+        updBlock() +
 
       '</div>';
 
