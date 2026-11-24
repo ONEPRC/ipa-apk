@@ -546,19 +546,7 @@
   }
 
   // 让横滑卡片左右露出完全一致
-  function fitCards(){
-    var hs = document.querySelector('.hscroll');
-    if(!hs) return;
-    if(innerWidth >= 900){
-      for(var k = 0; k < hs.children.length; k++) hs.children[k].style.flex = '';
-      return;
-    }
-    var PAD = 18, GAP = 6, PEEK = 12;
-    var W = hs.clientWidth - PAD - GAP - PEEK;
-    for(var i = 0; i < hs.children.length; i++){
-      hs.children[i].style.flex = '0 0 ' + W + 'px';
-    }
-  }
+  function fitCards(){ /* 宽度交给 CSS，避免手写像素导致变形 */ }
   window.addEventListener('resize', function(){
     clearTimeout(fitCards._t);
     fitCards._t = setTimeout(fitCards, 120);
@@ -710,7 +698,7 @@
 
     var card = e.target.closest('[data-open]');
     var hsw = card ? card.closest('.hscroll') : null;
-    if(hsw && hsw.dataset.drag) return;      // 刚拖过，不当作点击
+    if(hsw && hsw._dragEnd && Date.now() - hsw._dragEnd < 200) return;   // 刚拖过，忽略这次点击
     if(card && !e.target.closest('.btn,.get')){
       var id = card.getAttribute('data-open');
       var app = ALL.filter(function(x){ return x.id === id; })[0];
@@ -1148,7 +1136,7 @@ if('serviceWorker' in navigator && location.protocol !== 'file:'){
 
   function end(){
     if(!hs) return;
-    if(moved){ hs.dataset.drag = '1'; setTimeout(function(){ hs.dataset.drag = ''; }, 60); }
+    if(moved){ hs._dragEnd = Date.now(); }
     hs.classList.remove('dragging');
     hs = null;
   }
