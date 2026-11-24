@@ -607,7 +607,7 @@
       '<div class="dstats">' +
         '<div><em>版本</em><b>' + (a.version ? 'v' + a.version : '—') + '</b><small>当前版本</small></div>' +
         '<div><em>平台</em><b>' + String(plat).split('/').map(function(x){return x.trim();}).join('<br>') + '</b><small>系统</small></div>' +
-        '<div><em>分类</em><b>' + cat + '</b><small>排行榜</small></div>' +
+        '<div><em>分类</em><b>' + cat + '</b><small>类别</small></div>' +
         '<div><em>大小</em><b>' + sizeNum(a.size) + '</b><small>' + sizeUnit(a.size) + '</small></div>' +
       '</div>' +
       (a.shots && a.shots.length
