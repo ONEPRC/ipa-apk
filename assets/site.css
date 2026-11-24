@@ -548,3 +548,13 @@ html[data-theme="dark"] .sgroup{background:#2c2c2e}
 
 /* 探索页默认不显示取消 */
 .searchwrap:not(.focus) .scancel{display:none}
+
+/* 账户抽屉：加长到盖住页面顶部标题 */
+.spnl{
+  top:calc(52px + env(safe-area-inset-top,0px)) !important;
+  bottom:0 !important;
+  max-height:none !important;
+  height:auto !important;
+}
+.sbody{min-height:calc(100% - 52px)}
+.sbody::after{content:"";display:block;flex:1}
