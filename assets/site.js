@@ -1520,3 +1520,41 @@ document.addEventListener('wheel', function(e){
 document.addEventListener('dragstart', function(e){
   if(e.target.closest('.hscroll, .shots')) e.preventDefault();
 }, true);
+
+/* ===== 桌面端鼠标拖拽（不影响点击、不用指针捕获） ===== */
+(function mouseDragBoot(){
+  var drag = null;
+
+  document.addEventListener('pointerdown', function(e){
+    if(e.pointerType && e.pointerType !== 'mouse') return;      // 触屏走原生滚动
+    var el = e.target.closest('.hscroll, .shots');
+    if(!el) return;
+    drag = { el: el, x: e.clientX, left: el.scrollLeft, moved: false };
+    el.classList.add('dragging');
+  }, true);
+
+  document.addEventListener('pointermove', function(e){
+    if(!drag) return;
+    var dx = e.clientX - drag.x;
+    if(Math.abs(dx) > 5){
+      drag.moved = true;
+      e.preventDefault();
+      drag.el.scrollLeft = drag.left - dx;
+    }
+  }, true);
+
+  function end(){
+    if(!drag) return;
+    var el = drag.el, moved = drag.moved;
+    el.classList.remove('dragging');
+    drag = null;
+    if(moved){
+      // 拖完的一次 click 吞掉，避免误进详情
+      var stop = function(ev){ ev.stopPropagation(); ev.preventDefault(); };
+      document.addEventListener('click', stop, true);
+      setTimeout(function(){ document.removeEventListener('click', stop, true); }, 0);
+    }
+  }
+  document.addEventListener('pointerup', end, true);
+  document.addEventListener('pointercancel', end, true);
+})();
