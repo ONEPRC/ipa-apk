@@ -875,3 +875,7 @@ html[data-theme="dark"] .toast{
 }
 .shots.dragging{cursor:grabbing;scroll-snap-type:none}
 .shotitem{user-select:none;-webkit-user-select:none}
+
+/* 详情多图：与精选卡一致的露出 */
+.shots{gap:10px !important;scroll-padding-left:18px}
+.shotitem{flex:0 0 auto}
