@@ -627,9 +627,13 @@
     if(nb){ nb.style.display = (state.tab === 'today' && state.screen === 'home') ? '' : 'none'; }
     if(state.screen === 'home') renderHome();
     else if(state.screen === 'list') renderListScreen();
-    else if(state.screen === 'help') renderHelp();
+    else if(state.screen === 'help'){
+      renderHelp();
+      var stg = document.getElementById('stage');
+      if(stg){ stg.classList.remove('page-in'); void stg.offsetWidth; stg.classList.add('page-in'); }
+    }
     else renderDetail();
-    document.getElementById('tabbar').style.display = '';
+    document.getElementById('tabbar').style.display = (state.screen === 'help') ? 'none' : '';
     var tb = document.querySelector('.tabbar');
     if(tb) tb.classList.add('ready');
     var hd = document.querySelector('.headdiv');
@@ -682,8 +686,12 @@
         return;
       }
       if(a2 === 'back'){
+        var wasHelp = state.screen === 'help';
         state.screen = 'home';
         render(); window.scrollTo(0, 0);
+        if(wasHelp && window.openAccountSheet){
+          setTimeout(function(){ window.openAccountSheet(); }, 120);
+        }
         return;
       }
     }
