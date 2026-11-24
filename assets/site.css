@@ -930,3 +930,8 @@ html[data-theme="dark"] .toast{
   .shots{gap:20px;margin:16px -36px;padding:0 36px;scroll-padding-left:36px}
   .shots .shotitem{flex:0 0 calc(50% - 10px)}
 }
+
+/* 拖动期间：关掉吸附、禁止平滑滚动 */
+.hscroll.dragging,.shots.dragging{scroll-snap-type:none !important;scroll-behavior:auto !important}
+.hscroll,.shots{scroll-behavior:auto}
+.hscroll.dragging .feat,.shots.dragging .shotitem{pointer-events:none}
