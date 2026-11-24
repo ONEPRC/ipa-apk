@@ -150,24 +150,7 @@
     if(a.icon) return '<img src="' + fixPath(a.icon) + '" alt="">';
     return '<span>' + (a.iconText || a.name || '?').slice(0,2) + '</span>';
   }
-  function bgLayer(a){
-    return a.icon
-      ? '<div class="bg" style="background-image:url(\'' + fixPath(a.icon) + '\')"></div><div class="veil"></div>'
-      : '<div class="veil"></div>' +
-          '<div class="menu" id="menu">' +
-            '<button class="mi" data-act="theme">' +
-              '<svg class="ic" viewBox="0 0 24 24"><path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8Z"/></svg>' +
-              '暗黑模式<span class="sw' + (document.documentElement.dataset.theme === 'dark' ? ' on' : '') + '"></span>' +
-            '</button>' +
-            '<button class="mi" data-act="share">' +
-              '<svg class="ic" viewBox="0 0 24 24"><path d="M12 3.5v10"/><path d="m8.5 7 3.5-3.5L15.5 7"/><path d="M6 11.5V19a1.5 1.5 0 0 0 1.5 1.5h9A1.5 1.5 0 0 0 18 19v-7.5"/></svg>' +
-              '分享给朋友</button>' +
-            '<button class="mi" data-act="help">' +
-              '<svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .9-1 1.6v.4"/><circle cx="12" cy="17" r=".6" fill="currentColor"/></svg>' +
-              '使用说明</button>' +
-          '</div>' +
-        '</button>';
-  }
+  
   function sizeNum(s){ var m = String(s||'').match(/[\d.]+/); return m ? m[0] : '—'; }
   function sizeUnit(s){ var m = String(s||'').match(/[a-zA-Z]+/); return m ? m[0].toUpperCase() : ''; }
   function ago(v){
