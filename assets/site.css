@@ -507,3 +507,11 @@ html[data-theme="dark"] .sgroup{background:#2c2c2e}
 .suser{padding:18px 16px !important}
 .suser .chev{margin-left:auto;color:#c1c1c6;font-style:normal;font-size:18px}
 .srow{padding:16px 16px !important}
+
+/* 搜索页：探索更多 两列网格 */
+.explore{display:grid;grid-template-columns:1fr 1fr;column-gap:28px;margin:2px 0 6px}
+.exrow{display:flex;align-items:center;gap:8px;padding:12px 2px;background:none;border:0;
+  border-bottom:1px solid var(--line);cursor:pointer;text-align:left}
+.exrow svg{width:17px;height:17px;flex:0 0 auto;stroke:var(--blue);fill:none;stroke-width:1.9;stroke-linecap:round}
+.exrow span{font-size:16px;color:var(--blue);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.exrow:nth-last-child(-n+2){border-bottom:0}
