@@ -712,9 +712,9 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
         sh.style.scrollSnapType = '';
         return;
       }
-      // 与 .hscroll 完全一致：左内边距 18、间距 6、右侧露出 12
-      var SIDE2 = 36, G2 = 6, PEEK2 = 12;
-      var W2 = (n === 1) ? (sh.clientWidth - SIDE2) : (sh.clientWidth - SIDE2 - G2 - PEEK2);
+      // 左右各留 12 内边距 + 左右各露 12：可见宽 = clientWidth - 24
+      // 多张：V = 12 + W + 6 + 12 → W = clientWidth - 24 - 30
+      var W2 = (n === 1) ? (sh.clientWidth - 24) : (sh.clientWidth - 54);
       for(var q = 0; q < n; q++) sh.children[q].style.flex = '0 0 ' + W2 + 'px';
       sh.style.scrollSnapType = (n === 1) ? 'none' : '';
       if(!sh.dataset.init){ sh.dataset.init = '1'; sh.scrollLeft = 0; }
@@ -1369,36 +1369,8 @@ if('serviceWorker' in navigator && location.protocol !== 'file:'){
   });
 }
 
-/* ===== 精选横滑：手写拖拽（不依赖原生滚动） ===== */
-(function dragScroll(){
-  var hs = null, startX = 0, startLeft = 0, moved = false;
+/* 横滑改为原生滚动（更顺滑） */
 
-  document.addEventListener('pointerdown', function(e){
-    var el = e.target.closest('.hscroll, .shots');
-    if(!el) return;
-    hs = el; startX = e.clientX; startLeft = el.scrollLeft; moved = false;
-  }, true);
-
-  document.addEventListener('pointermove', function(e){
-    if(!hs) return;
-    var dx = e.clientX - startX;
-    if(Math.abs(dx) > 4){
-      moved = true;
-      e.preventDefault();
-      hs.scrollLeft = startLeft - dx;
-      hs.classList.add('dragging');
-    }
-  }, true);
-
-  function end(){
-    if(!hs) return;
-    if(moved){ hs._dragEnd = Date.now(); }
-    hs.classList.remove('dragging');
-    hs = null;
-  }
-  document.addEventListener('pointerup', end, true);
-  document.addEventListener('pointercancel', end, true);
-})();
 
 /* 使用说明：文档级捕获，保证一次点击就跳转 */
 document.addEventListener('click', function(e){
