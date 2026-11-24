@@ -1521,47 +1521,59 @@ document.addEventListener('dragstart', function(e){
   if(e.target.closest('.hscroll, .shots')) e.preventDefault();
 }, true);
 
-/* ===== 桌面端鼠标拖拽：rAF 节流 + 惯性，更顺滑 ===== */
-(function mouseDragBoot(){
+/* ===== 横滑拖拽：鼠标 + 触屏，轴向锁定 ===== */
+(function dragBoot(){
   var drag = null, raf = 0, lastX = 0, lastT = 0, vel = 0;
 
   document.addEventListener('pointerdown', function(e){
-    if(e.pointerType && e.pointerType !== 'mouse') return;
     var el = e.target.closest('.hscroll, .shots');
     if(!el) return;
-    drag = { el: el, x: e.clientX, left: el.scrollLeft, moved: false };
+    drag = {
+      el: el, x: e.clientX, y: e.clientY, left: el.scrollLeft,
+      moved: false, axis: null, id: e.pointerId
+    };
     lastX = e.clientX; lastT = performance.now(); vel = 0;
-    el.classList.add('dragging');
   }, true);
 
   document.addEventListener('pointermove', function(e){
     if(!drag) return;
     var dx = e.clientX - drag.x;
-    if(Math.abs(dx) > 10){
-      drag.moved = true;
-      e.preventDefault();
-      var now = performance.now();
-      var dt = Math.max(1, now - lastT);
-      vel = (e.clientX - lastX) / dt;      // px/ms
-      lastX = e.clientX; lastT = now;
-      var target = drag.left - dx;
-      if(!raf){
-        raf = requestAnimationFrame(function(){
-          raf = 0;
-          if(drag) drag.el.scrollLeft = target;
-        });
-      }
+    var dy = e.clientY - drag.y;
+
+    // 先判断方向：竖向就放弃接管，让页面正常滚
+    if(!drag.axis){
+      if(Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+      drag.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+      if(drag.axis === 'y'){ drag = null; return; }
+      drag.el.classList.add('dragging');
     }
-  }, true);
+    if(drag.axis !== 'x') return;
+
+    drag.moved = true;
+    if(e.cancelable) e.preventDefault();
+
+    var now = performance.now();
+    var dt = Math.max(1, now - lastT);
+    vel = (e.clientX - lastX) / dt;
+    lastX = e.clientX; lastT = now;
+
+    var target = drag.left - dx;
+    if(!raf){
+      raf = requestAnimationFrame(function(){
+        raf = 0;
+        if(drag) drag.el.scrollLeft = target;
+      });
+    }
+  }, { capture: true, passive: false });
 
   function end(){
     if(!drag) return;
-    var el = drag.el, moved = drag.moved && Math.abs(el.scrollLeft - drag.left) > 2;
+    var el = drag.el;
+    var moved = drag.moved && Math.abs(el.scrollLeft - drag.left) > 2;
     el.classList.remove('dragging');
     drag = null;
     if(raf){ cancelAnimationFrame(raf); raf = 0; }
     if(moved){
-      // 惯性：按松手瞬间的速度滑一小段
       var glide = -vel * 220;
       if(Math.abs(glide) > 12){
         try{ el.scrollBy({ left: glide, behavior: 'smooth' }); }catch(err){ el.scrollLeft += glide; }
@@ -1574,4 +1586,5 @@ document.addEventListener('dragstart', function(e){
   document.addEventListener('pointerup', end, true);
   document.addEventListener('pointercancel', end, true);
 })();
+
 
