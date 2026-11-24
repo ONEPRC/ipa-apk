@@ -678,3 +678,6 @@ html[data-theme="dark"] .updcard{background:#2c2c2e}
 .hscroll{cursor:grab}
 .hscroll.dragging{cursor:grabbing;scroll-snap-type:none}
 .hscroll .feat{user-select:none;-webkit-user-select:none}
+
+/* 列表行按钮与获取同尺寸 */
+.btn{min-width:72px;height:32px;padding:0 12px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;line-height:1}
