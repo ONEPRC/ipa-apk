@@ -718,3 +718,10 @@ html[data-theme="dark"] .tabbar{background:rgba(30,30,33,.9) !important}
 .helprow b{flex:0 0 auto;color:var(--blue);font-weight:600}
 .helpbtn{margin:16px 0 0;padding:13px;border-radius:12px;border:0;background:var(--blue);color:#fff;
   font-size:16px;font-weight:600;cursor:pointer}
+
+/* 页面左滑进入（使用说明等二级页） */
+#stage.page-in{animation:pageIn .28s cubic-bezier(.22,1,.36,1)}
+@keyframes pageIn{
+  from{transform:translateX(28%);opacity:.35}
+  to{transform:translateX(0);opacity:1}
+}
