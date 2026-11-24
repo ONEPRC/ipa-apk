@@ -124,7 +124,7 @@
       var u = fixPath(shot);
       return '<div class="bg" style="background-image:url(\'' + u + '\')"></div>' +
              '<img class="shotlb" src="' + u + '" alt="" draggable="false">' +
-             '<div class="veil soft"></div>';
+             '<div class="veil"></div>';
     }
     if(!a.icon) return '<div class="veil"></div>';
     return '<div class="bg" style="background-image:url(\'' + fixPath(a.icon) + '\')"></div><div class="veil"></div>';
@@ -609,24 +609,14 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
   }
   function sortItems(items){
     var arr = items.slice();
-    if(state.sort === 'name'){
-      arr.sort(byName);
-    } else if(state.sort === 'date'){
-      arr.sort(function(a, b){
-        return String(latest(b)).localeCompare(String(latest(a)));
-      });
-    } else {
-      // 收录顺序：按收录时间（addedAt 优先，其次 date），新的在前
-      arr.sort(function(a, b){
-        var ka = String(a.addedAt || a.date || '');
-        var kb = String(b.addedAt || b.date || '');
-        return kb.localeCompare(ka);
-      });
-    }
+    if(state.sort === 'name') arr.sort(byName);
+    else if(state.sort === 'date') arr.sort(function(a, b){ return String(latest(b)).localeCompare(String(latest(a))); });
     return arr;
   }
 
   function renderHelp(){
+    var st = (window.APP_DATA && window.APP_DATA.site) || {};
+    var grp = st.qqGroup || '';
     var stage = document.getElementById('stage');
     stage.innerHTML =
       '<div class="helpwrap">' +
@@ -648,6 +638,7 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
           '<div class="helprow"><b>3</b><div>本站不承担任何因使用本站资源而产生的法律责任。如有侵权，请联系管理员，我们将第一时间核实并删除。</div></div>' +
           '<div class="helprow"><b>4</b><div>访问本站即视为您同意并接受本免责声明的所有条款。</div></div>' +
         '</div>' +
+        
       '</div>';
   }
 
@@ -1530,64 +1521,47 @@ document.addEventListener('dragstart', function(e){
   if(e.target.closest('.hscroll, .shots')) e.preventDefault();
 }, true);
 
-/* ===== 横滑拖拽：鼠标 + 触屏，轴向锁定 ===== */
-(function dragBoot(){
+/* ===== 桌面端鼠标拖拽：rAF 节流 + 惯性，更顺滑 ===== */
+(function mouseDragBoot(){
   var drag = null, raf = 0, lastX = 0, lastT = 0, vel = 0;
 
   document.addEventListener('pointerdown', function(e){
-    if(e.pointerType && e.pointerType !== 'mouse') return;   // 触屏走原生滚动
+    if(e.pointerType && e.pointerType !== 'mouse') return;
     var el = e.target.closest('.hscroll, .shots');
     if(!el) return;
-    drag = {
-      el: el, x: e.clientX, y: e.clientY, left: el.scrollLeft,
-      moved: false, axis: null, id: e.pointerId
-    };
+    drag = { el: el, x: e.clientX, left: el.scrollLeft, moved: false };
     lastX = e.clientX; lastT = performance.now(); vel = 0;
+    el.classList.add('dragging');
   }, true);
 
   document.addEventListener('pointermove', function(e){
     if(!drag) return;
     var dx = e.clientX - drag.x;
-    var dy = e.clientY - drag.y;
-
-    // 先判断方向：竖向就放弃接管，让页面正常滚
-    if(!drag.axis){
-      if(Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
-      drag.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
-      if(drag.axis === 'y'){ drag = null; return; }
-      drag.el.classList.add('dragging');
+    if(Math.abs(dx) > 10){
+      drag.moved = true;
+      e.preventDefault();
+      var now = performance.now();
+      var dt = Math.max(1, now - lastT);
+      vel = (e.clientX - lastX) / dt;      // px/ms
+      lastX = e.clientX; lastT = now;
+      var target = drag.left - dx;
+      if(!raf){
+        raf = requestAnimationFrame(function(){
+          raf = 0;
+          if(drag) drag.el.scrollLeft = target;
+        });
+      }
     }
-    if(drag.axis !== 'x') return;
+  }, true);
 
-    drag.moved = true;
-    if(e.cancelable) e.preventDefault();
-
-    var now = performance.now();
-    var dt = Math.max(1, now - lastT);
-    vel = (e.clientX - lastX) / dt;
-    lastX = e.clientX; lastT = now;
-
-    var target = drag.left - dx;
-    var elNow = drag.el;
-    if(!raf){
-      raf = requestAnimationFrame(function(){
-        raf = 0;
-        if(elNow) elNow.scrollLeft = target;
-      });
-    }
-  }, { capture: true, passive: false });
-
-  function end(e){
+  function end(){
     if(!drag) return;
-    var el = drag.el;
-    if(drag.moved && drag.axis === 'x' && e && typeof e.clientX === 'number'){
-      el.scrollLeft = drag.left - (e.clientX - drag.x);
-    }
-    var moved = drag.moved && Math.abs(el.scrollLeft - drag.left) > 2;
+    var el = drag.el, moved = drag.moved && Math.abs(el.scrollLeft - drag.left) > 2;
     el.classList.remove('dragging');
     drag = null;
     if(raf){ cancelAnimationFrame(raf); raf = 0; }
     if(moved){
+      // 惯性：按松手瞬间的速度滑一小段
       var glide = -vel * 220;
       if(Math.abs(glide) > 12){
         try{ el.scrollBy({ left: glide, behavior: 'smooth' }); }catch(err){ el.scrollLeft += glide; }
@@ -1601,36 +1575,3 @@ document.addEventListener('dragstart', function(e){
   document.addEventListener('pointercancel', end, true);
 })();
 
-
-
-/* ===== 鼠标事件兜底拖拽（pointer 失效时接管） ===== */
-(function mouseFallbackBoot(){
-  var d = null;
-  document.addEventListener('mousedown', function(e){
-    if(e.button !== 0) return;
-    var el = e.target.closest('.hscroll, .shots');
-    if(!el) return;
-    d = { el: el, x: e.clientX, left: el.scrollLeft, moved: false };
-  }, true);
-  document.addEventListener('mousemove', function(e){
-    if(!d) return;
-    var dx = e.clientX - d.x;
-    if(Math.abs(dx) > 6){
-      d.moved = true;
-      e.preventDefault();
-      d.el.scrollLeft = d.left - dx;
-    }
-  }, true);
-  function up(){
-    if(!d) return;
-    var el = d.el, moved = d.moved;
-    d = null;
-    if(moved){
-      var stop = function(ev){ ev.stopPropagation(); ev.preventDefault(); };
-      document.addEventListener('click', stop, true);
-      setTimeout(function(){ document.removeEventListener('click', stop, true); }, 0);
-    }
-  }
-  document.addEventListener('mouseup', up, true);
-  document.addEventListener('mouseleave', up, true);
-})();
