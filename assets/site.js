@@ -889,8 +889,16 @@
     });
   }
 
-  function open(){ build(); requestAnimationFrame(function(){ bg.classList.add('on'); panel.classList.add('on'); }); }
-  function close(){ if(!built) return; bg.classList.remove('on'); panel.classList.remove('on'); }
+  function open(){
+    build();
+    document.documentElement.classList.add('locked');
+    requestAnimationFrame(function(){ bg.classList.add('on'); panel.classList.add('on'); });
+  }
+  function close(){
+    if(!built) return;
+    bg.classList.remove('on'); panel.classList.remove('on');
+    document.documentElement.classList.remove('locked');
+  }
 
   window.openAccountSheet = open;
   document.addEventListener('click', function(e){
