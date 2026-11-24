@@ -972,3 +972,13 @@ img{touch-action:auto !important}
 /* 横滑：去掉强制吸附，避免拖动后被弹回原位置 */
 .hscroll,.shots{scroll-snap-type:none !important}
 .hscroll .feat,.shots .shotitem{scroll-snap-align:none !important}
+
+/* 电脑端：两张卡各 48%，右侧留露出 → 始终可横滑 */
+@media (min-width:900px){
+  .hscroll .feat,.shots .shotitem{flex:0 0 calc(48% + 0px) !important}
+}
+
+/* 电脑端：卡片放大到 56%，右侧露出，保证可横滑 */
+@media (min-width:900px){
+  .hscroll .feat,.shots .shotitem{flex:0 0 calc(56% - 10px) !important}
+}
