@@ -934,3 +934,13 @@ html[data-theme="dark"] .toast{
 /* 拖动期间：关掉吸附、禁止平滑滚动 */
 .hscroll.dragging,.shots.dragging{scroll-snap-type:none !important;scroll-behavior:auto !important}
 .hscroll,.shots{scroll-behavior:auto}
+
+/* Today 卡片图标：绝对居中（不受 grid 行影响） */
+.card .art > span,
+.card .art > img:not(.shotlb){
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  margin:0 !important;
+}
