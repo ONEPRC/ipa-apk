@@ -707,6 +707,11 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
     document.querySelectorAll('.shots').forEach(function(sh){
       var n = sh.children.length;
       if(!n) return;
+      if(innerWidth >= 900){
+        for(var w0 = 0; w0 < n; w0++) sh.children[w0].style.flex = '';
+        sh.style.scrollSnapType = '';
+        return;
+      }
       var G2 = 10, PEEK2 = 12, SIDE2 = 36;
       var base = sh.parentElement ? sh.parentElement.clientWidth : sh.clientWidth;
       var W2 = (n === 1) ? (base - SIDE2) : (base - SIDE2 - G2 - PEEK2);
@@ -736,6 +741,12 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
     clearTimeout(fitCards._t);
     fitCards._t = setTimeout(fitCards, 120);
   });
+  if(window.visualViewport){
+    window.visualViewport.addEventListener('resize', function(){
+      clearTimeout(fitCards._t);
+      fitCards._t = setTimeout(fitCards, 120);
+    });
+  }
 
   function render(){
     renderHead();
