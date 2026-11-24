@@ -685,13 +685,3 @@ html[data-theme="dark"] .updcard{background:#2c2c2e}
 /* 列表行按钮：覆盖 .row .btn 的 padding，三态等宽 */
 .row .btn{flex:0 0 auto;min-width:72px;height:32px;padding:0 12px;display:inline-flex;align-items:center;justify-content:center;line-height:1}
 
-/* 横滑卡片：统一宽度与圆角（CSS 控制，不用 JS 像素） */
-.hscroll{gap:10px}
-.hscroll .feat{
-  flex:0 0 calc(100% - 26px) !important;
-  max-width:none !important;
-  border-radius:20px !important;
-  overflow:hidden;
-  scroll-snap-align:start;
-}
-.hscroll .feat .visual{border-radius:0}
