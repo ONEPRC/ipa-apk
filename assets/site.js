@@ -696,9 +696,10 @@
       '<div class="shead"><span>账户</span><button type="button" class="sdone">完成</button></div>' +
       '<div class="sbody">' +
         '<div class="sgroup">' +
-          '<div class="suser">' +
+          '<div class="suser" data-sact="qq">' +
             '<div class="suav">' + (logo ? '<img src="' + logo + '" alt="">' : '') + '</div>' +
-            '<div class="suinfo"><b>' + siteName + '</b><span>应用索引 · 网盘分享</span></div>' +
+            '<div class="suinfo"><b>' + siteName + '</b><span>' + (grp ? grp : '点击加入 QQ 群') + '</span></div>' +
+            '<i class="chev">›</i>' +
           '</div>' +
         '</div>' +
         '<div class="sgroup">' +
@@ -707,11 +708,8 @@
         '<div class="sgroup">' +
           '<button class="srow" data-sact="share"><span>分享给朋友</span><i class="chev">›</i></button>' +
           '<button class="srow" data-sact="help"><span>使用说明</span><i class="chev">›</i></button>' +
-          '<button class="srow" data-sact="qq"><span>加入 QQ 群' + (grp ? ' · ' + grp : '') + '</span><i class="chev">›</i></button>' +
         '</div>' +
-        '<div class="sgroup">' +
-          '<div class="srow plain"><span>版本</span><em>v' + (st.updated || '') + '</em></div>' +
-        '</div>' +
+
       '</div>';
 
     document.body.appendChild(bg);
