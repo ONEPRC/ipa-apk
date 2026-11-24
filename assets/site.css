@@ -428,3 +428,38 @@ body{-webkit-text-size-adjust:100%}
 .drow .dbtn{height:44px;display:inline-flex;align-items:center;justify-content:center}
 .drow .dshare{margin-left:auto;height:44px;display:flex;align-items:flex-end;padding-bottom:9px}
 .drow .dshare svg{width:27px;height:27px}
+
+/* ===== 1) 键盘：数字居中、加大、带字母 ===== */
+.gate2 .k{font-size:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0}
+.gate2 .k b{font-size:34px;font-weight:500;line-height:1.05;letter-spacing:0}
+.gate2 .k i{font-size:9.5px;font-style:normal;letter-spacing:.14em;color:rgba(255,255,255,.92);line-height:1;margin-top:1px}
+.gate2 .k.del{display:grid;place-items:center}
+.gate2.locked .k{opacity:.45}
+
+/* ===== 3) 电脑端暗色：两侧背景也变黑 ===== */
+html[data-theme="dark"] body{background:#000 !important}
+
+/* ===== 5) 详情页「获取」按钮缩小 ===== */
+.drow .dbtn{height:36px;padding:0 20px;font-size:15px;border-radius:10px}
+
+/* ===== 6) 分享图标底部与按钮底部齐平 ===== */
+.drow .dshare{height:36px;display:flex;align-items:flex-end;padding-bottom:0}
+.drow .dshare svg{width:25px;height:25px;margin-bottom:0}
+
+/* ===== 7) 底栏选中：玻璃胶囊 ===== */
+.tab.on{background:rgba(255,255,255,.62) !important;
+  backdrop-filter:blur(14px) saturate(180%);-webkit-backdrop-filter:blur(14px) saturate(180%);
+  box-shadow:0 1px 2px rgba(0,0,0,.06)}
+html[data-theme="dark"] .tab.on{background:rgba(120,120,128,.34) !important}
+
+/* ===== 12) 右上角 logo 圆形 ===== */
+.avatar{border-radius:50% !important;overflow:hidden}
+.avatar img{border-radius:50% !important;object-fit:cover}
+
+/* ===== 8) 非首页时头部右侧 logo ===== */
+.head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+/* 详情页避免横向溢出 */
+.dtop,.drow,.dstats{min-width:0;max-width:100%;box-sizing:border-box}
+.dstats{overflow:hidden}
+.dtop{display:flex;align-items:flex-start;gap:14px}
