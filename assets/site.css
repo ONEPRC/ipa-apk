@@ -570,3 +570,11 @@ html[data-theme="dark"] .sgroup{background:#2c2c2e}
 .spnl .sgroup{max-width:100%;box-sizing:border-box}
 .spnl .srow,.spnl .suser{max-width:100%;box-sizing:border-box}
 .spnl .srow .sw{flex:0 0 auto}
+
+/* 抽屉盖住页面标题 */
+.spnl{top:env(safe-area-inset-top,0px) !important}
+
+/* 锁定滚动 */
+html.locked, html.locked body{overflow:hidden !important;height:100% !important;touch-action:none}
+.spnl{overscroll-behavior:contain}
+.spnl .sbody{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
