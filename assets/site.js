@@ -123,7 +123,7 @@
     if(shot){
       var u = fixPath(shot);
       return '<div class="bg" style="background-image:url(\'' + u + '\')"></div>' +
-             '<img class="shotlb" src="' + u + '" alt="">' +
+             '<img class="shotlb" src="' + u + '" alt="" draggable="false">' +
              '<div class="veil"></div>';
     }
     if(!a.icon) return '<div class="veil"></div>';
@@ -681,7 +681,7 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
         ? '<div class="shots' + (a.shots.length === 1 ? ' single' : '') + '">' + a.shots.map(function(sh){
             return '<div class="shotitem">' +
               '<div class="shotbg" style="background-image:url(' + fixPath(sh) + ')"></div>' +
-              '<img src="' + fixPath(sh) + '" alt="" onerror="window.__shotFail&&window.__shotFail(this)">' +
+              '<img src="' + fixPath(sh) + '" alt="" draggable="false" onerror="window.__shotFail&&window.__shotFail(this)">' +
             '</div>';
           }).join('') + '</div>'
         : '<div class="dshot">' + bgLayer(a) +
@@ -1542,3 +1542,8 @@ document.addEventListener('wheel', function(e){
   e.preventDefault();
   el.scrollLeft += (e.deltaY || e.deltaX);
 }, { passive: false });
+
+/* 横滑区域里禁止浏览器原生拖图，否则鼠标一拖会把图片拽出来 */
+document.addEventListener('dragstart', function(e){
+  if(e.target.closest('.hscroll, .shots')) e.preventDefault();
+}, true);
