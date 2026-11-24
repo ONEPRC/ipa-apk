@@ -243,8 +243,10 @@
         var words = exploreWords(6);
         var rec = ALL.slice().sort(function(x, y){ return String(latest(y)).localeCompare(String(latest(x))); }).slice(0, 6);
         stage.innerHTML =
-          '<div class="searchbar"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.8 15.8 4.6 4.6"/></svg>' +
-          '<input id="q" placeholder="游戏、App、关键词" value=""></div>' +
+          '<div class="searchwrap"><div class="searchbar"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.8 15.8 4.6 4.6"/></svg>' +
+          '<input id="q" placeholder="游戏、App、关键词" value="">' +
+          '<button class="sclear" type="button" data-clear hidden><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+          '</div><button class="scancel" type="button" data-cancel>取消</button></div>' +
           '<div class="sect"><h3>探索更多</h3></div>' +
           '<div class="explore">' + words.map(function(w, i){
             return '<button class="exrow' + (i % 2 ? ' r' : '') + '" data-word="' + w.replace(/"/g, '') + '">' +
@@ -256,6 +258,7 @@
         var inp0 = document.getElementById('q');
         inp0.addEventListener('input', function(){
           state.q = this.value;
+          var clr = document.querySelector('.sclear'); if(clr) clr.hidden = !this.value;
           if(this.value.trim()) qAdd(this.value.trim());
           render();
           var el = document.getElementById('q');
@@ -264,8 +267,10 @@
         return;
       }
       stage.innerHTML =
-        '<div class="searchbar"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.8 15.8 4.6 4.6"/></svg>' +
-        '<input id="q" placeholder="游戏、App、关键词" value="' + state.q.replace(/"/g, '') + '"></div>' +
+        '<div class="searchwrap"><div class="searchbar"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.8 15.8 4.6 4.6"/></svg>' +
+        '<input id="q" placeholder="游戏、App、关键词" value="' + state.q.replace(/"/g, '') + '">' +
+        '<button class="sclear" type="button" data-clear><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+        '</div><button class="scancel" type="button" data-cancel>取消</button></div>' +
         '<p class="sectsub" id="srcount">' + (list.length ? list.length + ' 个应用' : '没有匹配的应用') + '</p>' +
         '<div class="list" id="srlist">' + list.map(row).join('') + '</div>' + (list.length ? '' : '<div class="empty" id="srempty">换个词试试</div>');
       var inp = document.getElementById('q');
@@ -421,6 +426,17 @@
       if(a2 === 'share'){ if(navigator.share){ navigator.share({ title: document.title, url: location.href }).catch(function(){}); } else { location.href = 'mailto:?body=' + encodeURIComponent(location.href); } return; }
       if(a2 === 'help'){ var sh = document.getElementById('sheet'); if(sh) sh.classList.add('open'); return; }
       if(a2 === 'closesheet'){ var sh2 = document.getElementById('sheet'); if(sh2) sh2.classList.remove('open'); return; }
+    }
+
+    if(e.target.closest('[data-clear]')){
+      state.q = ''; render();
+      var q1 = document.getElementById('q'); if(q1) q1.focus();
+      return;
+    }
+    if(e.target.closest('[data-cancel]')){
+      state.q = ''; render();
+      var q2 = document.getElementById('q'); if(q2) q2.blur();
+      return;
     }
 
     var wd = e.target.closest('[data-word]');
