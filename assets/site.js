@@ -546,7 +546,20 @@
   }
 
   // 让横滑卡片左右露出完全一致
-  function fitCards(){ /* 宽度交给 CSS，避免手写像素导致变形 */ }
+  function fitCards(){
+    var hs = document.querySelector('.hscroll');
+    if(!hs) return;
+    if(innerWidth >= 900){
+      for(var k = 0; k < hs.children.length; k++) hs.children[k].style.flex = '';
+      return;
+    }
+    var PAD = 18, GAP = 6, PEEK = 12;
+    var W = hs.clientWidth - PAD - GAP - PEEK;
+    for(var i = 0; i < hs.children.length; i++){
+      hs.children[i].style.flex = '0 0 ' + W + 'px';
+      hs.children[i].style.borderRadius = '20px';
+    }
+  }
   window.addEventListener('resize', function(){
     clearTimeout(fitCards._t);
     fitCards._t = setTimeout(fitCards, 120);
