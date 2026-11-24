@@ -715,6 +715,9 @@
           if(window.openAccountSheet) window.openAccountSheet();
           return;
         }
+        state.screen = (state._prevScreen === 'list') ? 'list' : 'home';
+        render(); window.scrollTo(0, 0);
+        return;
         state.screen = 'home';
         render(); window.scrollTo(0, 0);
         return;
@@ -805,7 +808,7 @@
       var id = card.getAttribute('data-open');
       var app = ALL.filter(function(x){ return x.id === id; })[0];
       if(app){
-        state.detail = app; state.screen = 'detail';
+        state._prevScreen = state.screen; state.detail = app; state.screen = 'detail';
         if(!state.listTitle) state.listTitle = state.tab === 'games' ? '游戏' : (state.tab === 'apps' ? '应用' : 'Today');
         render(); window.scrollTo(0,0);
       }
@@ -1209,7 +1212,7 @@
       if(old) old.innerHTML = old.innerHTML; // 保留结构
     }
     document.documentElement.classList.add('locked');
-    requestAnimationFrame(function(){ bg.classList.add('on'); panel.classList.add('on'); });
+    bg.classList.add('on'); panel.classList.add('on');
   }
   function close(){
     if(!built) return;
