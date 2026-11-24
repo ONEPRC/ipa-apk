@@ -256,6 +256,11 @@
           '<div class="sect"><h3>为你推荐</h3></div>' +
           '<div class="list">' + rec.map(row).join('') + '</div>';
         var inp0 = document.getElementById('q');
+        var wrap0 = inp0 ? inp0.closest('.searchwrap') : null;
+        if(inp0){
+          inp0.addEventListener('focus', function(){ if(wrap0) wrap0.classList.add('focus'); });
+          inp0.addEventListener('blur', function(){ if(wrap0) wrap0.classList.remove('focus'); });
+        }
         inp0.addEventListener('input', function(){
           state.q = this.value;
           var clr = document.querySelector('.sclear'); if(clr) clr.hidden = !this.value;
@@ -274,6 +279,11 @@
         '<p class="sectsub" id="srcount">' + (list.length ? list.length + ' 个应用' : '没有匹配的应用') + '</p>' +
         '<div class="list" id="srlist">' + list.map(row).join('') + '</div>' + (list.length ? '' : '<div class="empty" id="srempty">换个词试试</div>');
       var inp = document.getElementById('q');
+      var wrap1 = inp ? inp.closest('.searchwrap') : null;
+      if(inp){
+        inp.addEventListener('focus', function(){ if(wrap1) wrap1.classList.add('focus'); });
+        inp.addEventListener('blur', function(){ if(wrap1) wrap1.classList.remove('focus'); });
+      }
       inp.addEventListener('input', function(){
         state.q = this.value;
         var v = this.value.trim().toLowerCase();
@@ -434,7 +444,9 @@
       return;
     }
     if(e.target.closest('[data-cancel]')){
-      state.q = ''; render();
+      state.q = '';
+      var wc = document.querySelector('.searchwrap'); if(wc) wc.classList.remove('focus');
+      render();
       var q2 = document.getElementById('q'); if(q2) q2.blur();
       return;
     }
