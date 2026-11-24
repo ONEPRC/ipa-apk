@@ -964,3 +964,7 @@ img{touch-action:auto !important}
   transform:translateZ(0);
 }
 .card .art,.feat .visual{overflow:hidden}
+
+/* 横滑区：吸附用 proximity（不再强行弹回第一张） */
+.hscroll,.shots{scroll-snap-type:x proximity !important}
+.hscroll.dragging,.shots.dragging{scroll-snap-type:none !important}
