@@ -178,6 +178,33 @@
           '<button class="get">获取</button></div>' +
       '</div></div>';
   }
+  var QKEY = 'appindex.qlog';
+  function qLog(){
+    try{ return JSON.parse(localStorage.getItem(QKEY) || '{}'); }catch(e){ return {}; }
+  }
+  function qAdd(w){
+    w = String(w || '').trim();
+    if(w.length < 1) return;
+    var o = qLog();
+    o[w] = (o[w] || 0) + 1;
+    try{ localStorage.setItem(QKEY, JSON.stringify(o)); }catch(e){}
+  }
+  function qTop(n){
+    var o = qLog();
+    var arr = Object.keys(o).sort(function(x, y){ return o[y] - o[x]; });
+    return arr.slice(0, n);
+  }
+  function exploreWords(n){
+    var t = qTop(n);
+    if(t.length >= n) return t.slice(0, n);
+    // 不够就用分类名 + 应用名补
+    var cats = {};
+    ALL.forEach(function(a){ cats[catOf(a)] = (cats[catOf(a)] || 0) + 1; });
+    var rest = Object.keys(cats).sort(function(x, y){ return cats[y] - cats[x]; });
+    t.forEach(function(w){ rest = rest.filter(function(r){ return r !== w; }); });
+    return t.concat(rest).slice(0, n);
+  }
+
   function row(a){
     return '<div class="row" data-open="' + a.id + '"><div class="ic">' + iconHTML(a) + '</div>' +
       '<div class="tx' + (a.note ? ' has-note' : '') + '">' +
@@ -205,19 +232,41 @@
       return;
     }
     if(state.tab === 'search'){
-      if(!state.q.trim()) list = list.slice(0, 10);
+      if(!state.q.trim()){
+        var words = exploreWords(6);
+        var rec = ALL.slice().sort(function(x, y){ return String(latest(y)).localeCompare(String(latest(x))); }).slice(0, 5);
+        stage.innerHTML =
+          '<div class="searchbar"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.8 15.8 4.6 4.6"/></svg>' +
+          '<input id="q" placeholder="游戏、App、关键词" value=""></div>' +
+          '<div class="sect"><h3>探索更多</h3></div>' +
+          '<div class="explore">' + words.map(function(w, i){
+            return '<button class="exrow' + (i % 2 ? ' r' : '') + '" data-word="' + w.replace(/"/g, '') + '">' +
+              '<svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.8 15.8 4.6 4.6"/></svg>' +
+              '<span>' + w + '</span></button>';
+          }).join('') + '</div>' +
+          '<div class="sect"><h3>为你推荐</h3></div>' +
+          '<div class="list">' + rec.map(row).join('') + '</div>';
+        var inp0 = document.getElementById('q');
+        inp0.addEventListener('input', function(){
+          state.q = this.value;
+          if(this.value.trim()) qAdd(this.value.trim());
+          render();
+          var el = document.getElementById('q');
+          if(el){ el.focus(); el.setSelectionRange(el.value.length, el.value.length); }
+        });
+        return;
+      }
       stage.innerHTML =
         '<div class="searchbar"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.8 15.8 4.6 4.6"/></svg>' +
-        '<input id="q" placeholder="游戏、App、关键词" value="' + state.q.replace(/"/g,'') + '"></div>' +
-        '<div class="sect"><h3>' + (state.q ? '搜索结果' : '探索更多') + '</h3></div>' +
-        '<p class="sectsub" id="srcount" style="display:' + (state.q ? '' : 'none') + '">' + (list.length ? list.length + ' 个应用' : '没有匹配的应用') + '</p>' +
+        '<input id="q" placeholder="游戏、App、关键词" value="' + state.q.replace(/"/g, '') + '"></div>' +
+        '<p class="sectsub" id="srcount">' + (list.length ? list.length + ' 个应用' : '没有匹配的应用') + '</p>' +
         '<div class="list" id="srlist">' + list.map(row).join('') + '</div>' + (list.length ? '' : '<div class="empty" id="srempty">换个词试试</div>');
       var inp = document.getElementById('q');
       inp.addEventListener('input', function(){
         state.q = this.value;
-        var v = state.q.trim().toLowerCase();
+        var v = this.value.trim().toLowerCase();
         var r = v ? ALL.filter(function(x){
-          return (x.name + ' ' + (x.description||'') + ' ' + (x.version||'') + ' ' + catOf(x)).toLowerCase().indexOf(v) > -1;
+          return (x.name + ' ' + (x.description || '') + ' ' + (x.version || '') + ' ' + catOf(x) + ' ' + (x.note || '')).toLowerCase().indexOf(v) > -1;
         }) : ALL;
         var box = document.getElementById('srlist');
         var cnt = document.getElementById('srcount');
@@ -226,53 +275,8 @@
       });
       return;
     }
-
-    var HOME_MAX = 10;
-    // 顶部「本周热玩」：有置顶就只显示置顶（多个可横滑翻页）；没有置顶就显示最近更新的 1 个
-    var pinned = list.filter(function(a){ return a.pinned; });
-    var feats = pinned.length ? pinned : list.slice(0, 1);
-    // 下面列表：置顶的不重复出现，最多 10 行
-    var rest = list.filter(function(a){ return feats.indexOf(a) === -1; }).slice(0, HOME_MAX);
-    var secTitle = state.tab === 'games' ? (list.length + ' 款近期佳作') : (list.length + ' 款大家都在用');
-    stage.innerHTML =
-      '<div class="hscroll">' + feats.map(featBlock).join('') + '</div>' +
-      '<div class="sect"><h3>' + secTitle + '</h3>' +
-        '<button class="all" data-act="all">查看全部</button></div>' +
-      '<p class="sectsub">向下滑动 查看更多</p>' +
-      '<div class="list">' + rest.map(row).join('') + '</div>';
   }
 
-  var PY_PAIRS = [['阿','A'],['八','B'],['擦','C'],['搭','D'],['蛾','E'],['发','F'],['噶','G'],['哈','H'],
-    ['击','J'],['喀','K'],['拉','L'],['妈','M'],['拿','N'],['哦','O'],['啪','P'],['期','Q'],['然','R'],['撒','S'],
-    ['塌','T'],['挖','W'],['昔','X'],['压','Y'],['匝','Z']];
-  var PY_COL = null;
-  try { PY_COL = new Intl.Collator('zh-Hans-CN', { sensitivity: 'base' }); } catch(e){}
-  function nameMeta(str){
-    var t = String(str || '').trim();
-    var ch = t ? Array.from(t)[0] : '';
-    var out = { letter: '#', ascii: false, rest: t.toLowerCase() };
-    if(!ch) return out;
-    if(/[0-9]/.test(ch)){ out.letter = '0'; out.ascii = true; return out; }
-    if(/[a-zA-Z]/.test(ch)){ out.letter = ch.toUpperCase(); out.ascii = true; return out; }
-    if(!PY_COL) return out;
-    for(var i = 0; i < PY_PAIRS.length; i++){
-      if(PY_COL.compare(ch, PY_PAIRS[i][0]) >= 0) out.letter = PY_PAIRS[i][1]; else break;
-    }
-    return out;
-  }
-  function byName(x, y){
-    var a = nameMeta(x.name), b = nameMeta(y.name);
-    if(a.letter !== b.letter) return a.letter < b.letter ? -1 : 1;
-    if(a.ascii !== b.ascii) return a.ascii ? 1 : -1;
-    return a.rest.localeCompare(b.rest, 'zh-Hans-CN', { numeric: true, sensitivity: 'base' });
-  }
-
-  function sortItems(items){
-    var arr = items.slice();
-    if(state.sort === 'name') arr.sort(byName);
-    else if(state.sort === 'date') arr.sort(function(a,b){ return String(latest(b)).localeCompare(String(latest(a))); });
-    return arr;
-  }
   function renderListScreen(){
     var stage = document.getElementById('stage');
     var items = sortItems(listFor(state.tab));
@@ -398,6 +402,9 @@
       if(a2 === 'help'){ var sh = document.getElementById('sheet'); if(sh) sh.classList.add('open'); return; }
       if(a2 === 'closesheet'){ var sh2 = document.getElementById('sheet'); if(sh2) sh2.classList.remove('open'); return; }
     }
+
+    var wd = e.target.closest('[data-word]');
+    if(wd){ state.q = wd.getAttribute('data-word'); qAdd(state.q); render(); return; }
 
     var s = e.target.closest('[data-sort]');
     if(s){ state.sort = s.getAttribute('data-sort'); render(); return; }
