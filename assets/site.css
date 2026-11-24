@@ -616,3 +616,28 @@ html.locked{touch-action:auto}
 .srow.upd .utx em{font-style:normal;font-size:12px;color:var(--sub)}
 .srow.upd .ubtn{flex:0 0 auto;padding:6px 14px;border-radius:999px;background:var(--blue);color:#fff;font-size:13px;font-weight:600}
 .updhead{cursor:default;color:var(--sub);font-size:13px}
+
+/* 可用更新（App Store 样式） */
+.updwrap{margin:2px 0 4px}
+.updtag{font-size:13px;color:var(--sub);padding:0 4px 6px}
+.updcard{background:var(--bg);border-radius:14px;overflow:hidden}
+html[data-theme="dark"] .updcard{background:#2c2c2e}
+.updhead{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line)}
+.uall{background:none;border:0;color:var(--blue);font-size:17px;font-weight:600;cursor:pointer}
+.ubadge{min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:#ff3b30;color:#fff;
+  font-size:14px;font-weight:600;display:grid;place-items:center}
+.updrow{border-bottom:1px solid var(--line);padding:12px 16px 10px}
+.updrow:last-child{border-bottom:0}
+.updtop{display:flex;align-items:center;gap:12px;cursor:pointer}
+.updtop .uic{width:44px;height:44px;border-radius:10px;overflow:hidden;flex:0 0 auto;background:#e9e9ee;display:grid;place-items:center}
+.updtop .uic img{width:100%;height:100%;object-fit:cover}
+.updtop .uic .t{font-size:15px;font-weight:700;color:#6b7280}
+.updtop .utx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.updtop .utx b{font-size:16px;font-weight:400;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.updtop .utx em{font-style:normal;font-size:13px;color:var(--sub)}
+.updtop .ubtn{flex:0 0 auto;padding:7px 18px;border-radius:999px;background:rgba(120,120,128,.14);
+  color:var(--blue);font-size:15px;font-weight:600}
+.unote{display:flex;align-items:flex-start;gap:10px;margin-top:8px}
+.unote span{flex:1;min-width:0;font-size:14px;line-height:1.45;color:var(--ink);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.umore{background:none;border:0;color:var(--blue);font-size:14px;flex:0 0 auto;cursor:pointer}
