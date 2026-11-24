@@ -609,14 +609,15 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
   }
   function sortItems(items){
     var arr = items.slice();
-    if(state.sort === 'name') arr.sort(byName);
-    else if(state.sort === 'date') arr.sort(function(a, b){ return String(latest(b)).localeCompare(String(latest(a))); });
+    if(state.sort === 'name') arr.sort(byName);            // 纯按名称，不看置顶
+    else if(state.sort === 'date') arr.sort(function(a, b){
+      return String(latest(b)).localeCompare(String(latest(a)));   // 纯按时间
+    });
+    // default = 收录顺序（数据原顺序），同样不看置顶
     return arr;
   }
 
   function renderHelp(){
-    var st = (window.APP_DATA && window.APP_DATA.site) || {};
-    var grp = st.qqGroup || '';
     var stage = document.getElementById('stage');
     stage.innerHTML =
       '<div class="helpwrap">' +
@@ -638,7 +639,6 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
           '<div class="helprow"><b>3</b><div>本站不承担任何因使用本站资源而产生的法律责任。如有侵权，请联系管理员，我们将第一时间核实并删除。</div></div>' +
           '<div class="helprow"><b>4</b><div>访问本站即视为您同意并接受本免责声明的所有条款。</div></div>' +
         '</div>' +
-        
       '</div>';
   }
 
