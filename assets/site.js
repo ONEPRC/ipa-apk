@@ -261,6 +261,10 @@
   function dlCount(){ try { return dlUpdates().length; } catch(e){ return 0; } }
   window.__BUILD = BUILD_ID;
   window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, label: dlLabel, all: dlAll };
+  window.gotoHelp = function(){
+    state.screen = 'help'; state.listTitle = '使用说明';
+    render(); window.scrollTo(0, 0);
+  };
   window.APP_NAV = {
     help: function(){
       state.screen = 'help'; state.listTitle = '使用说明';
@@ -1094,7 +1098,7 @@
         '</div>' +
         '<div class="sgroup">' +
           '<button class="srow" data-sact="share"><span>分享给朋友</span><i class="chev">›</i></button>' +
-          '<button class="srow" data-sact="help"><span>使用说明</span><i class="chev">›</i></button>' +
+          '<button class="srow" data-sact="help" onclick="try{window.gotoHelp&&window.gotoHelp();document.documentElement.classList.remove(\'locked\');}catch(e){}"><span>使用说明</span><i class="chev">›</i></button>' +
         '</div>' +
         updBlock() +
 
@@ -1104,6 +1108,16 @@
     document.body.appendChild(panel);
 
     panel.querySelector('.sdone').onclick = close;
+
+    // 「使用说明」直接绑事件，避免委托失效
+    var helpRow = panel.querySelector('[data-sact="help"]');
+    if(helpRow){
+      helpRow.addEventListener('click', function(ev){
+        ev.preventDefault(); ev.stopPropagation();
+        close();
+        if(window.APP_NAV) window.APP_NAV.help();
+      }, true);
+    }
     panel.addEventListener('click', function(e){
       if(e.target.closest('[data-allupd]')){
         var lst = (window.__DL ? window.__DL.updates() : []);
