@@ -669,8 +669,8 @@ html[data-theme="dark"] .updcard{background:#2c2c2e}
 .dbtn[data-dl="update"]{background:var(--blue) !important;color:#fff !important}
 
 /* 横滑卡片：允许横向手势 */
-.hscroll{touch-action:pan-y !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
-.hscroll .feat{touch-action:pan-y}
+.hscroll{touch-action:pan-x !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.hscroll .feat{touch-action:pan-x}
 
 .hscroll{cursor:grab}
 .hscroll.dragging{cursor:grabbing;scroll-snap-type:none}
@@ -902,7 +902,7 @@ html[data-theme="dark"] .toast{
   scroll-snap-type:x mandatory;
   scroll-padding-left:18px;
   scrollbar-width:none;
-  touch-action:pan-y;
+  touch-action:pan-x;
   -webkit-overflow-scrolling:touch;
   overscroll-behavior-x:contain;
 }
@@ -935,50 +935,13 @@ html[data-theme="dark"] .toast{
 .hscroll.dragging,.shots.dragging{scroll-snap-type:none !important;scroll-behavior:auto !important}
 .hscroll,.shots{scroll-behavior:auto}
 
-/* Today 卡片图标：绝对居中（不受 grid 行影响） */
-.card .art > span,
-.card .art > img:not(.shotlb){
-  position:absolute !important;
-  left:50% !important;
-  top:50% !important;
-  transform:translate(-50%,-50%) !important;
-  margin:0 !important;
-}
-
-/* 横滑区域：允许上下滚动，横向用脚本接管 */
-.hscroll,.shots{touch-action:pan-y pinch-zoom !important}
-
-/* 图片本身不拦截纵向手势 */
-img{touch-action:auto !important}
-
-/* 有大图时：只留底部渐变，图片保持清晰 */
-.veil.soft{background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.42)) !important}
-
-/* 触屏：上下左右都交给系统滚动（最顺） */
+/* ===== 2026-11-25 仅此三条追加 ===== */
+/* 1) iOS：blur/transform 子元素破坏父级圆角裁切 → 加隔离 */
+.card,.feat{isolation:isolate;-webkit-mask-image:-webkit-radial-gradient(white, black);transform:translateZ(0)}
+/* 2) 触屏允许上下+左右原生手势 */
 .hscroll,.shots{touch-action:auto !important}
-
-/* iOS：blur/transform 子元素会破坏父级圆角裁切，加隔离修复直角 */
-.card,.feat{
-  isolation:isolate;
-  -webkit-mask-image:-webkit-radial-gradient(white, black);
-  transform:translateZ(0);
-}
-.card .art,.feat .visual{overflow:hidden}
-
-/* 横滑区：吸附用 proximity（不再强行弹回第一张） */
-.hscroll,.shots{scroll-snap-type:x proximity !important}
-.hscroll.dragging,.shots.dragging{scroll-snap-type:none !important}
-
-/* 横滑：去掉强制吸附，避免拖动后被弹回原位置 */
-.hscroll,.shots{scroll-snap-type:none !important}
-.hscroll .feat,.shots .shotitem{scroll-snap-align:none !important}
-
-/* 电脑端：两张卡各 48%，右侧留露出 → 始终可横滑 */
-@media (min-width:900px){
-  .hscroll .feat,.shots .shotitem{flex:0 0 calc(48% + 0px) !important}
-}
-
-/* 电脑端：卡片放大到 56%，右侧露出，保证可横滑 */
-@media (min-width:900px){
-  .hscroll .feat,.shots .shotitem{flex:0 0 calc(56% - 10px) !important}
+/* 3) 卡片图标绝对居中 */
+.card .art > span,.card .art > img:not(.shotlb){
+  position:absolute !important;left:50% !important;top:50% !important;
+  transform:translate(-50%,-50%) !important;margin:0 !important;
 }
