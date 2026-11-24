@@ -715,7 +715,7 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
       // 与游戏页精选卡完全一致：左内边距 18、间距 6、右露 12
       // clientWidth 已含左右各 18 内边距 → 可见宽 = clientWidth - 36
       // 多张：可见宽 = 18(左) + W + 6(间距) + 12(右露) → W = clientWidth - 72
-      var W2 = (n === 1) ? (sh.clientWidth - 36) : (sh.clientWidth - 72);
+      var W2 = sh.clientWidth - 36;   // 左 18 + W + 6 + 右露 12 = clientWidth
       for(var q = 0; q < n; q++) sh.children[q].style.flex = '0 0 ' + W2 + 'px';
       sh.style.scrollSnapType = (n === 1) ? 'none' : '';
       if(!sh.dataset.init){ sh.dataset.init = '1'; sh.scrollLeft = 0; }
