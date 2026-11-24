@@ -319,6 +319,10 @@
     render(); window.scrollTo(0, 0);
   };
   window.APP_NAV = {
+    mine: function(){
+      state.screen = 'mine'; state.listTitle = '我的获取'; state._mineShown = false;
+      render(); window.scrollTo(0, 0);
+    },
     help: function(){
       state.screen = 'help'; state.listTitle = '使用说明';
       render(); window.scrollTo(0, 0);
@@ -736,7 +740,7 @@
       }
     }
     else renderDetail();
-    document.getElementById('tabbar').style.display = (state.screen === 'help') ? 'none' : '';
+    document.getElementById('tabbar').style.display = (state.screen === 'help' || state.screen === 'mine') ? 'none' : '';
     var tb = document.querySelector('.tabbar');
     if(tb) tb.classList.add('ready');
     var hd = document.querySelector('.headdiv');
@@ -789,6 +793,14 @@
         return;
       }
       if(a2 === 'back'){
+        var wasMine = state.screen === 'mine';
+        if(wasMine){
+          state._mineShown = false;
+          state.screen = 'home';
+          render(); window.scrollTo(0, 0);
+          if(window.openAccountSheet) window.openAccountSheet();
+          return;
+        }
         var wasHelp = state.screen === 'help';
         if(wasHelp){
           state._helpShown = false;
@@ -1218,6 +1230,7 @@
         '</div>' +
         '<div class="sgroup">' +
           '<button class="srow" data-sact="share"><span>分享给朋友</span><i class="chev">›</i></button>' +
+          '<button class="srow" data-sact="mine"><span>我的获取</span><i class="chev">›</i></button>' +
           '<button class="srow" data-sact="help" onclick="try{window.gotoHelp&&window.gotoHelp();document.documentElement.classList.remove(\'locked\');}catch(e){}"><span>使用说明</span><i class="chev">›</i></button>' +
         '</div>' +
         updBlock() +
@@ -1282,6 +1295,11 @@
       if(act === 'share'){
         if(navigator.share){ navigator.share({ title: document.title, url: location.href }).catch(function(){}); }
         else { try{ copyText(location.href, '链接已复制'); }catch(err){} }
+        return;
+      }
+      if(act === 'mine'){
+        close();
+        if(window.APP_NAV) window.APP_NAV.mine();
         return;
       }
       if(act === 'help'){
