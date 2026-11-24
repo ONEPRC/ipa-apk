@@ -475,7 +475,7 @@ html[data-theme="dark"] .tab.on{background:rgba(120,120,128,.34) !important}
 /* ===== 账户抽屉 ===== */
 .sbg{position:fixed;inset:0;z-index:140;background:rgba(0,0,0,.35);opacity:0;transition:opacity .24s;pointer-events:none}
 .sbg.on{opacity:1;pointer-events:auto}
-.spnl{position:fixed;left:0;right:0;bottom:0;z-index:141;min-height:92vh;max-height:92vh;
+.spnl{position:fixed;left:0;right:0;bottom:0;z-index:141;max-height:74vh;
   background:#f2f2f7;border-radius:22px 22px 0 0;transform:translateY(102%);
   transition:transform .32s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column}
 .spnl.on{transform:translateY(0)}
@@ -503,7 +503,7 @@ html[data-theme="dark"] .sgroup{background:#2c2c2e}
 .srow .sw.on{background:var(--blue)}
 .srow .sw.on::after{left:20px}
 
-.sbody{gap:22px !important;padding-top:14px !important}
+.sbody{gap:18px !important;padding-top:10px !important}
 .suser{padding:18px 16px !important}
 .suser .chev{margin-left:auto;color:#c1c1c6;font-style:normal;font-size:18px}
 .srow{padding:16px 16px !important}
@@ -518,3 +518,12 @@ html[data-theme="dark"] .sgroup{background:#2c2c2e}
 
 /* 查看全部按钮 */
 .sect .more{background:none;border:0;color:var(--blue);font-size:15px;font-weight:400;cursor:pointer;padding:0}
+
+/* 搜索框：叉号 + 取消 */
+.searchwrap{display:flex;align-items:center;gap:10px}
+.searchwrap .searchbar{flex:1;min-width:0;position:relative}
+.sclear{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:20px;height:20px;
+  border:0;border-radius:50%;background:#c7c7cc;display:grid;place-items:center;cursor:pointer;padding:0}
+.sclear svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.6;stroke-linecap:round}
+.scclear[hidden],.sclear[hidden]{display:none}
+.scancel{background:none;border:0;color:var(--blue);font-size:16px;padding:0 2px;cursor:pointer;flex:0 0 auto}
