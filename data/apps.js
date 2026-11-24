@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/24 20:49:33
+// 应用数据文件 —— 由本地管理页写入 2026/11/24 20:54:12
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795524573921,
+    "rev": 1795524852057,
     "categories": [
       "游戏",
       "应用",
@@ -69,7 +69,7 @@ window.APP_DATA = {
     {
       "id": "amwt6wf4e",
       "name": "dsh-purge",
-      "version": "1.7.20",
+      "version": "1.7.21",
       "category": "插件",
       "platform": "Windows",
       "size": "",
@@ -79,7 +79,8 @@ window.APP_DATA = {
       "pwd": "",
       "description": "让 AI 安装，把下面这句话发给能操作本机的 Agent：\n帮我把 https://github.com/kingcharleslzy-ai/dsh-purge 的最新稳定版装到我正在用的 DSH。先读仓库 AGENTS.md 的安装章节，检查有没有旧版，有就保留设置原地迁移。装好告诉我实际版本和 profile，重启由我自己操作。",
       "date": "2026-11-23",
-      "addedAt": "2026-11-23T19:35"
+      "addedAt": "2026-11-23T19:35",
+      "updatedAt": "2026-11-24T20:54"
     },
     {
       "id": "amwqf7omb",
