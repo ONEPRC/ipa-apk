@@ -646,7 +646,12 @@
         '<div><em>大小</em><b>' + sizeNum(a.size) + '</b><small>' + sizeUnit(a.size) + '</small></div>' +
       '</div>' +
       (a.shots && a.shots.length
-        ? '<div class="shots">' + a.shots.map(function(s){ return '<img src="' + fixPath(s) + '" alt="">'; }).join('') + '</div>'
+        ? '<div class="shots">' + a.shots.map(function(sh){
+            return '<div class="shotitem">' +
+              '<div class="shotbg" style="background-image:url(' + fixPath(sh) + ')"></div>' +
+              '<img src="' + fixPath(sh) + '" alt="" onerror="this.style.display=&quot;none&quot;">' +
+            '</div>';
+          }).join('') + '</div>'
         : '<div class="dshot">' + bgLayer(a) +
         (a.icon
           ? '<img src="' + fixPath(a.icon) + '" alt="">'
