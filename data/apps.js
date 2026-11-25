@@ -1,5 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/25 21:28:17
-// 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
+/* 应用索引数据：site 站点信息，apps 应用列表 */
 window.APP_DATA = {
   "site": {
     "qqGroup": "873866223",
@@ -44,7 +43,8 @@ window.APP_DATA = {
       "description": "美国罪恶城。杰森和露西娅心里一直清楚，命运对他们不公。本应简单的行动出了差错，美国阳光最灿烂的地方向两人展露出它最阴暗的一面，将他们卷入一场横跨雷奥奈达的犯罪阴谋。若想活着逃出生天，他们比以往任何时候都更需要彼此依靠。",
       "note": "xbox移植 全DLC本体",
       "date": "2026-11-25",
-      "addedAt": "2026-11-25T20:40"
+      "addedAt": "2026-11-25T20:40",
+      "color": "rgb(112,100,136)"
     },
     {
       "id": "amw4xwyc8",
@@ -63,7 +63,8 @@ window.APP_DATA = {
       "date": "2026-11-01",
       "addedAt": "2026-11-06",
       "pinned": true,
-      "updatedAt": "2026-11-25T00:24"
+      "updatedAt": "2026-11-25T00:24",
+      "color": "rgb(30,38,90)"
     },
     {
       "id": "amwt8wq1r",
@@ -84,7 +85,8 @@ window.APP_DATA = {
       ],
       "date": "2026-11-23",
       "addedAt": "2026-11-23T20:32",
-      "updatedAt": "2026-11-24T22:51"
+      "updatedAt": "2026-11-24T22:51",
+      "color": "rgb(9,33,34)"
     },
     {
       "id": "amwt6wf4e",
@@ -101,7 +103,8 @@ window.APP_DATA = {
       "note": "dsk破甲",
       "date": "2026-11-23",
       "addedAt": "2026-11-23T19:35",
-      "updatedAt": "2026-11-24T23:02"
+      "updatedAt": "2026-11-24T23:02",
+      "color": "#5b3aa8"
     },
     {
       "id": "amwqf7omb",
@@ -117,7 +120,8 @@ window.APP_DATA = {
       "description": "✅砸壳破解版✅增强功能\n✅无限货币✅无限弹药\n✅无警察\n(进入游戏前请关闭网络）",
       "date": "2026-11-21",
       "expireAt": "2026-11-22",
-      "addedAt": "2026-11-21T21:05"
+      "addedAt": "2026-11-21T21:05",
+      "color": "#2b6e37"
     },
     {
       "id": "amwqee4jx",
@@ -134,7 +138,8 @@ window.APP_DATA = {
       "date": "2026-11-21",
       "expireAt": "2026-11-22",
       "addedAt": "2026-11-21T20:42",
-      "updatedAt": "2026-11-21T20:44"
+      "updatedAt": "2026-11-21T20:44",
+      "color": "#2b6e37"
     },
     {
       "id": "amwqdzksj",
@@ -151,7 +156,8 @@ window.APP_DATA = {
       "date": "2026-11-21",
       "expireAt": "2026-11-22",
       "addedAt": "2026-11-21T20:31",
-      "updatedAt": "2026-11-21T20:34"
+      "updatedAt": "2026-11-21T20:34",
+      "color": "#2b6e37"
     },
     {
       "id": "amwqddtzz",
@@ -168,7 +174,8 @@ window.APP_DATA = {
       "date": "2026-11-21",
       "expireAt": "2026-11-22",
       "addedAt": "2026-11-21T20:14",
-      "updatedAt": "2026-11-21T20:44"
+      "updatedAt": "2026-11-21T20:44",
+      "color": "#2b6e37"
     },
     {
       "id": "amwqcx2q3",
@@ -184,7 +191,8 @@ window.APP_DATA = {
       "description": "文件管理器",
       "date": "2026-11-21",
       "addedAt": "2026-11-21T20:01",
-      "updatedAt": "2026-11-25T00:24"
+      "updatedAt": "2026-11-25T00:24",
+      "color": "rgb(15,165,202)"
     },
     {
       "id": "amwoyu6ot",
@@ -200,7 +208,8 @@ window.APP_DATA = {
       "description": "屏蔽系统更新\n✅屏蔽 iOS系统更新—详细教程！\n在 Safari 浏览器中打开链接，点击跳转 -> 允许。\n1️⃣进入设置，点击顶部的已下载描述文件，点击安装。\n2️⃣输入锁屏密码安装。\n3️⃣点击重新启动，安装完成！\n4️⃣重启后，你的 iPhone 就不会再收到 iOS 系统更新的提示了。",
       "date": "2026-11-20",
       "addedAt": "2026-11-20T20:39",
-      "updatedAt": "2026-11-20T21:53"
+      "updatedAt": "2026-11-20T21:53",
+      "color": "rgb(109,109,112)"
     },
     {
       "id": "amwmb12cn",
@@ -219,7 +228,8 @@ window.APP_DATA = {
       "expireAt": "2026-11-25",
       "addedAt": "2026-11-18T23:57",
       "updatedAt": "2026-11-24T20:57",
-      "offline": true
+      "offline": true,
+      "color": "rgb(209,70,10)"
     },
     {
       "id": "amwm9r6um",
@@ -238,7 +248,8 @@ window.APP_DATA = {
       "expireAt": "2026-11-25",
       "addedAt": "2026-11-18T23:21",
       "updatedAt": "2026-11-24T21:04",
-      "offline": true
+      "offline": true,
+      "color": "rgb(178,22,22)"
     },
     {
       "id": "amwm1u529",
@@ -254,7 +265,8 @@ window.APP_DATA = {
       "description": "Over peak •巅峰崛起~\n✅锁定120帧•无限能量\n✅移速 •飞行速度调节\n✅中文•全局NoAds \n无敌没写•写了会毫无意思",
       "date": "2026-11-18",
       "addedAt": "2026-11-18T19:39",
-      "updatedAt": "2026-11-25T20:31"
+      "updatedAt": "2026-11-25T20:31",
+      "color": "#2b6e37"
     },
     {
       "id": "amwm11rsh",
@@ -269,7 +281,8 @@ window.APP_DATA = {
       "pwd": "",
       "description": "液态玻璃显示最低支持iOS26+系统！\n\nAdd:\n- 新增听抖音页面与播放控件液态玻璃\n- 新增首页双列作品流与精选频道底部拉伸\n- 新增首页双列作品流AI按钮移除\n\nFix:\n- 修复聊天顶栏玻璃显示异常与尺寸更新不及时\n- 修复聊天页液态玻璃顶栏失效",
       "date": "2026-11-18",
-      "addedAt": "2026-11-18T19:17"
+      "addedAt": "2026-11-18T19:17",
+      "color": "#5b3aa8"
     },
     {
       "id": "amwm0r2pm",
@@ -285,7 +298,8 @@ window.APP_DATA = {
       "description": "新UI\n支持iOS26～iOS27.3Beta1\n适用于iOS26和iO27的文件浏览器、应用程序数据管理器和缓存清理器。\n证书需要有 App Groups 权限，才能使用。",
       "date": "2026-11-18",
       "addedAt": "2026-11-18T19:09",
-      "updatedAt": "2026-11-20T22:15"
+      "updatedAt": "2026-11-20T22:15",
+      "color": "#2f5fbf"
     },
     {
       "id": "amwm0i1rp",
@@ -303,7 +317,8 @@ window.APP_DATA = {
       "whatsNew": "2.3-1更新如下：\n· 因红字和谐 现已去除红字\n现在只有全蓝 与 蓝和普通 的组合\n⚠️此版本请重新去开启并设置\n建议去 其它设置➡️评论颜色设置\n\n·发送语音表情  再次优化整改\n  2.3-1版本下 发送选择音频时 \n  可选择 弹出 表情管理器 或 系统文件\n ⚠️默认是弹出管理器 自行去菜单中切换即可",
       "date": "2026-11-18",
       "addedAt": "2026-11-18T19:02",
-      "updatedAt": "2026-11-25T20:16"
+      "updatedAt": "2026-11-25T20:16",
+      "color": "#5b3aa8"
     },
     {
       "id": "amwjfdq5t",
@@ -319,7 +334,8 @@ window.APP_DATA = {
       "description": "WX美化插件",
       "date": "2026-11-16",
       "addedAt": "2026-11-16T23:35",
-      "updatedAt": "2026-11-18T19:02"
+      "updatedAt": "2026-11-18T19:02",
+      "color": "#5b3aa8"
     },
     {
       "id": "amw9aa6ii",
@@ -335,7 +351,8 @@ window.APP_DATA = {
       "description": "修复预设停用逻辑：原本不存在的字段会被删除，原本存在的字段恢复其原始值和类型，不再统一写入 0\n• 首次没有备份时，会自动创建备份，并保留修改前的字段状态，重新打开 App 后仍可还原。\n• 每个预设新增“还原”按钮，支持单独还原该项，保留其他尚未应用的修改。\n• 新增“移除新增字段”功能，用于清理确认是后来添加的字段。\n• 调整 NeoSpring 的加载和触发时机，修正回到前台时提前关闭注销页面的问题。\n\n支持 iOS / iPadOS 27.x；iOS / iPadOS 26.x 不支持本机 MobileGestalt 访问。签名至少需要一个可用的 App Group。",
       "date": "2026-11-09",
       "addedAt": "2026-11-09T21:15",
-      "updatedAt": "2026-11-20T22:15"
+      "updatedAt": "2026-11-20T22:15",
+      "color": "#2f5fbf"
     },
     {
       "id": "amw94dx4m",
@@ -352,7 +369,8 @@ window.APP_DATA = {
       "whatsNew": "修复一些问题.",
       "date": "2026-11-09",
       "addedAt": "2026-11-09T18:30",
-      "updatedAt": "2026-11-24T20:58"
+      "updatedAt": "2026-11-24T20:58",
+      "color": "rgb(2,209,173)"
     },
     {
       "id": "amw94auxj",
@@ -368,7 +386,8 @@ window.APP_DATA = {
       "description": "风灵月影修改器大全免费版",
       "date": "2026-11-09",
       "addedAt": "2026-11-09T18:27",
-      "updatedAt": "2026-11-20T22:14"
+      "updatedAt": "2026-11-20T22:14",
+      "color": "rgb(28,37,43)"
     },
     {
       "id": "amw944ef2",
@@ -384,7 +403,8 @@ window.APP_DATA = {
       "description": "秒过激励式视频。",
       "date": "2026-11-09",
       "addedAt": "2026-11-09T18:22",
-      "updatedAt": "2026-11-20T22:14"
+      "updatedAt": "2026-11-20T22:14",
+      "color": "#2f5fbf"
     },
     {
       "id": "amw7x4xfq",
@@ -399,7 +419,8 @@ window.APP_DATA = {
       "pwd": "",
       "description": "一键解锁钻石金币",
       "date": "2026-11-08",
-      "addedAt": "2026-11-08T22:19"
+      "addedAt": "2026-11-08T22:19",
+      "color": "#2b6e37"
     },
     {
       "id": "amw7wdhuz",
@@ -414,7 +435,8 @@ window.APP_DATA = {
       "pwd": "",
       "description": "✅解锁丛林等全DLC\n✅无限金币/冻结物品\n✅无限氧气/无限子弹\n✅无敌免伤/使用不消耗\n✅多倍餐厅/潜水加速\n✅新增丛林无限金币，物品不减等",
       "date": "2026-11-08",
-      "addedAt": "2026-11-08T21:58"
+      "addedAt": "2026-11-08T21:58",
+      "color": "#2b6e37"
     },
     {
       "id": "amw7vvqxa",
@@ -431,7 +453,8 @@ window.APP_DATA = {
       "note": "破解版",
       "date": "2026-11-08",
       "addedAt": "2026-11-08T21:44",
-      "updatedAt": "2026-11-25T21:28"
+      "updatedAt": "2026-11-25T21:28",
+      "color": "rgb(5,177,206)"
     },
     {
       "id": "amw6agvin",
@@ -447,7 +470,8 @@ window.APP_DATA = {
       "description": "✅微信全权限砸壳安装包\n✅多开版",
       "date": "2026-11-07",
       "addedAt": "2026-11-07",
-      "updatedAt": "2026-11-20T22:14"
+      "updatedAt": "2026-11-20T22:14",
+      "color": "rgb(3,176,86)"
     },
     {
       "id": "amw6a1m5r",
@@ -469,7 +493,8 @@ window.APP_DATA = {
       "date": "2026-11-07",
       "addedAt": "2026-11-07",
       "pinned": true,
-      "updatedAt": "2026-11-25T21:07"
+      "updatedAt": "2026-11-25T21:07",
+      "color": "rgb(54,98,4)"
     },
     {
       "id": "amw563sof",
@@ -485,7 +510,8 @@ window.APP_DATA = {
       "description": "交互壁纸软件+530张交互壁纸合集",
       "date": "2026-11-06",
       "addedAt": "2026-11-06",
-      "updatedAt": "2026-11-20T22:14"
+      "updatedAt": "2026-11-20T22:14",
+      "color": "#3a3a3c"
     },
     {
       "id": "amw53xcka",
@@ -500,7 +526,8 @@ window.APP_DATA = {
       "pwd": "",
       "description": "TG表情包提取\n小黄鸭，小恐龙等",
       "date": "2026-11-06",
-      "addedAt": "2026-11-06"
+      "addedAt": "2026-11-06",
+      "color": "rgb(209,175,32)"
     },
     {
       "id": "amw53e8ge",
@@ -516,7 +543,8 @@ window.APP_DATA = {
       "description": "音乐播放器",
       "date": "2026-11-06",
       "addedAt": "2026-11-06",
-      "updatedAt": "2026-11-20T22:15"
+      "updatedAt": "2026-11-20T22:15",
+      "color": "rgb(124,139,176)"
     },
     {
       "id": "amw52cu56",
@@ -532,7 +560,8 @@ window.APP_DATA = {
       "description": "液态Dyyy",
       "date": "2026-11-06",
       "addedAt": "2026-11-06",
-      "updatedAt": "2026-11-20T22:15"
+      "updatedAt": "2026-11-20T22:15",
+      "color": "rgb(27,188,185)"
     },
     {
       "id": "amw50e9a0",
@@ -549,7 +578,8 @@ window.APP_DATA = {
       "whatsNew": "无",
       "date": "2026-11-24",
       "addedAt": "2026-11-06",
-      "updatedAt": "2026-11-24T23:17"
+      "updatedAt": "2026-11-24T23:17",
+      "color": "rgb(101,84,72)"
     }
   ]
 };
