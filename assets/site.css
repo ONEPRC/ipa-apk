@@ -1353,3 +1353,15 @@ img{touch-action:auto !important}
     margin-right:auto !important;
   }
 }
+
+/* 电脑端抽屉必须贴底：之前被 top:52px 规则顶到页面上方 */
+@media (min-width:900px){
+  .spnl{
+    top:auto !important;
+    bottom:0 !important;
+    max-height:88vh !important;
+    height:auto !important;
+  }
+  .spnl.on{transform:translateY(0) !important}
+  .spnl{transform:translateY(102%) !important}
+}
