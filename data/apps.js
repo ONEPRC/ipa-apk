@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/25 19:01:25
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 19:06:38
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795604485438,
+    "rev": 1795604798503,
     "categories": [
       "游戏",
       "应用",
@@ -26,7 +26,8 @@ window.APP_DATA = {
       "其他"
     ],
     "passwordHash": "4739ee3bd29e4f415da8ba9298a087e0fdc9c61378420ba8fbbab298bd74c4df",
-    "pwdLen": 4
+    "pwdLen": 4,
+    "version": "0.2"
   },
   "apps": [
     {
@@ -245,14 +246,14 @@ window.APP_DATA = {
       "category": "游戏",
       "platform": "iOS",
       "size": "",
-      "icon": "https://pic.ncsep.com/up/2026-10/2026100909463381361.webp",
+      "icon": "",
       "iconText": "",
       "url": "https://pan.quark.cn/s/45864fc5a136",
       "pwd": "",
       "description": "Over peak •巅峰崛起~\n✅锁定120帧•无限能量\n✅移速 •飞行速度调节\n✅中文•全局NoAds \n无敌没写•写了会毫无意思",
       "date": "2026-11-18",
       "addedAt": "2026-11-18T19:39",
-      "updatedAt": "2026-11-18T19:42"
+      "updatedAt": "2026-11-25T19:06"
     },
     {
       "id": "amwm11rsh",
