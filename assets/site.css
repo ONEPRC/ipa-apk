@@ -994,3 +994,52 @@ img{touch-action:auto !important}
   letter-spacing:.3px;
 }
 [data-theme="dark"] .sver{color:#8e8e93}
+
+/* ================= 横滑宽度最终规则（覆盖前面所有） ================= */
+.hscroll{
+  display:flex; gap:6px; overflow-x:auto;
+  margin:0 -18px; padding:0 18px 4px;
+  scroll-snap-type:none !important;
+  touch-action:pan-x pan-y !important;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.hscroll::-webkit-scrollbar{display:none}
+/* 手机：一屏一张 + 右侧露出 */
+.hscroll .feat{flex:0 0 calc(100% - 24px) !important;max-width:none !important}
+
+.shots{
+  display:flex; gap:6px; overflow-x:auto;
+  margin:16px -18px; padding:0 18px;
+  scroll-snap-type:none !important;
+  touch-action:pan-x pan-y !important;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.shots::-webkit-scrollbar{display:none}
+.shots .shotitem{
+  flex:0 0 calc(100% - 54px) !important;
+  width:calc(100% - 54px) !important;
+  aspect-ratio:16/9 !important;
+  border-radius:16px; overflow:hidden; background:#e9e9ee;
+}
+.shots.single .shotitem{
+  flex:0 0 calc(100% - 36px) !important;
+  width:calc(100% - 36px) !important;
+}
+.shots .shotitem img{width:100% !important;height:100% !important;object-fit:cover !important;display:block}
+
+/* 电脑端：顶部大卡正好两张；详情多图露出下一张 */
+@media (min-width:900px){
+  .hscroll{margin:0 -36px;padding:0 36px 6px;gap:20px}
+  .hscroll .feat{flex:0 0 calc(50% - 10px) !important}
+
+  .shots{margin:16px -36px;padding:0 36px;gap:20px}
+  .shots .shotitem{flex:0 0 calc(48% - 10px) !important;width:calc(48% - 10px) !important}
+  .shots.single .shotitem{flex:0 0 calc(100% - 72px) !important;width:calc(100% - 72px) !important}
+}
+
+/* 电脑端顶部大卡：正好两张铺满，不露第三张 */
+@media (min-width:900px){
+  .hscroll .feat{flex:0 0 calc(50% + 26px) !important}
+}
