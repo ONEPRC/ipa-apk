@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/25 20:45:29
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 20:46:47
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795610729730,
+    "rev": 1795610807587,
     "categories": [
       "游戏",
       "应用",
@@ -218,7 +218,8 @@ window.APP_DATA = {
       "date": "2026-11-18",
       "expireAt": "2026-11-25",
       "addedAt": "2026-11-18T23:57",
-      "updatedAt": "2026-11-24T20:57"
+      "updatedAt": "2026-11-24T20:57",
+      "offline": true
     },
     {
       "id": "amwm9r6um",
@@ -236,7 +237,8 @@ window.APP_DATA = {
       "date": "2026-11-18",
       "expireAt": "2026-11-25",
       "addedAt": "2026-11-18T23:21",
-      "updatedAt": "2026-11-24T21:04"
+      "updatedAt": "2026-11-24T21:04",
+      "offline": true
     },
     {
       "id": "amwm1u529",
