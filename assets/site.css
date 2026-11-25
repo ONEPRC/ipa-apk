@@ -1299,3 +1299,9 @@ img{touch-action:auto !important}
   .spnl.on{transform:translate(-50%, 0) !important}
   .spnl .sbody{max-height:calc(86vh - 52px)}
 }
+
+/* 账户抽屉：禁止 flex 压缩行高（内容挤压变扁的根因） */
+.spnl .sbody{flex:1 1 auto;overflow-y:auto}
+.spnl .sbody > *{flex:0 0 auto !important;min-height:0}
+.spnl .sgroup,.spnl .srow,.spnl .suser,.spnl .sver,.spnl .updrow{flex:0 0 auto !important}
+.spnl .srow{min-height:52px}
