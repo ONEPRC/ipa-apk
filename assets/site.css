@@ -1213,3 +1213,9 @@ img{touch-action:auto !important}
 
 /* 去掉 scroll-padding 偏移，否则居中吸附会偏，左右露出不等 */
 .hscroll,.shots{scroll-padding:0 !important}
+
+/* 详情图：单张与多张同长同宽（都按 100% - 36px），纵向高度一致 */
+.shots .shotitem:only-child{flex:0 0 calc(100% - 36px) !important;width:calc(100% - 36px) !important}
+@media (min-width:900px){
+  .shots .shotitem:only-child{flex:0 0 calc(100% - 36px) !important;width:calc(100% - 36px) !important}
+}
