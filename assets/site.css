@@ -1245,3 +1245,13 @@ img{touch-action:auto !important}
 .feat .visual .bg{filter:blur(16px) saturate(150%) !important;transform:scale(1.15) !important}
 .shotitem .shotbg{filter:blur(16px) saturate(140%) !important}
 .hscroll .feat,.shots .shotitem{contain:paint}
+
+/* 横滑：完全交给原生滚动 */
+.hscroll,.shots{
+  touch-action:auto !important;
+  overflow-x:auto !important;
+  -webkit-overflow-scrolling:touch;
+  scroll-snap-type:x mandatory !important;
+  scroll-padding:0 !important;
+}
+.hscroll .feat,.shots .shotitem{scroll-snap-align:center !important}
