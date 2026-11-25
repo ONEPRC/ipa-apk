@@ -1688,3 +1688,28 @@ document.addEventListener('dragstart', function(e){
 
 /* 横滑交给原生滚动（最快最顺） */
 
+
+/* ===== 暗黑模式：文档级 pointerdown 捕获（最优先，不会被吃掉） ===== */
+(function themeGlobalBoot(){
+  var last = 0;
+  function apply(){
+    var dark = document.documentElement.dataset.theme === 'dark';
+    document.documentElement.dataset.theme = dark ? '' : 'dark';
+    try{ localStorage.setItem('appindex.theme', dark ? 'light' : 'dark'); }catch(e){}
+    var sw = document.querySelector('.spnl [data-sact="theme"] .sw');
+    if(sw) sw.classList.toggle('on', !dark);
+    try{ if(window.__RENDER) window.__RENDER(); }catch(e){}
+    try{ if(window.paintBadge) window.paintBadge(); }catch(e){}
+  }
+
+  document.addEventListener('pointerdown', function(e){
+    var row = e.target.closest && e.target.closest('[data-sact="theme"]');
+    if(!row) return;
+    var now = Date.now();
+    if(now - last < 220) return;
+    last = now;
+    e.preventDefault();
+    e.stopPropagation();
+    apply();
+  }, true);
+})();
