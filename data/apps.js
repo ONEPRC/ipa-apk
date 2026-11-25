@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/25 21:26:34
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 21:27:34
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795613194540,
+    "rev": 1795613254796,
     "categories": [
       "游戏",
       "应用",
@@ -30,38 +30,6 @@ window.APP_DATA = {
     "version": "V1.1"
   },
   "apps": [
-    {
-      "id": "amww5qfuz",
-      "name": "1",
-      "version": "",
-      "category": "插件",
-      "platform": "",
-      "size": "",
-      "icon": "",
-      "iconText": "",
-      "url": "",
-      "pwd": "",
-      "description": "",
-      "date": "2026-11-25",
-      "addedAt": "2026-11-25T21:26"
-    },
-    {
-      "id": "amww5e3mc",
-      "name": "WCRefine",
-      "version": "2.1.9",
-      "category": "插件",
-      "platform": "iOS",
-      "size": "10MB",
-      "icon": "",
-      "iconText": "",
-      "url": "https://pan.quark.cn/s/2b20ee15d8e7",
-      "pwd": "",
-      "description": "",
-      "note": "WX插件",
-      "whatsNew": "1. 修复自动抢红包在企业群无效问题\n2. 优化套壳截图可单独添加横屏模板\n3. 版本控制新增强开公众号语音评论功能\n4. 修复视频转表情与本地表情仓库发送失败问题\n5. 修复转账自动回复等中e被无脑识别为星期问题\n6. 优化微信加密与伪装计算器功能\n7. 新增内部功能视频通话美颜功能\n8. 优化红包消息提醒排除他人专属\n9. 尝试修复半屏偶发的无法输入问题\n10.优化消息手势，引用手势可自定义\n11.再次开放超级悬浮修复投喂一元才能用的bug\n12.开放自用的锁屏页面callkit来电显示功能\n13.新增禁用表情面板最近使用功能\n14.修复wxid搜记录非好友不显示问题",
-      "date": "2026-11-25",
-      "addedAt": "2026-11-25T21:16"
-    },
     {
       "id": "amww4372u",
       "name": "GTAVI",
