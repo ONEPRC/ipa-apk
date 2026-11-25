@@ -114,6 +114,7 @@
   }
   function fixPath(u){ if(!u) return ''; if(/^https?:|^data:/.test(u)) return u; return u.replace(/^\/+/, ''); }
   window.fp = fixPath;
+  window.__RENDER = function(){ try{ render(); }catch(e){} };
   function iconHTML(a){
     if(a.icon) return '<img src="' + fixPath(a.icon) + '" alt="">';
     return '<span>' + (a.iconText || a.name || '?').slice(0,2) + '</span>';
@@ -1293,6 +1294,9 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
         try{ localStorage.setItem('appindex.theme', dark ? 'light' : 'dark'); }catch(err){}
         var sw = themeRow.querySelector('.sw');
         if(sw) sw.classList.toggle('on', !dark);
+        try{ if(window.__RENDER) window.__RENDER(); }catch(e){}
+        try{ if(window.paintBadge) window.paintBadge(); }catch(e){}
+
       }, true);
     }
 
@@ -1344,6 +1348,8 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
         document.documentElement.dataset.theme = dark ? '' : 'dark';
         try{ localStorage.setItem('appindex.theme', dark ? 'light' : 'dark'); }catch(err){}
         var sw = row.querySelector('.sw'); if(sw) sw.classList.toggle('on', !dark);
+        try{ if(window.__RENDER) window.__RENDER(); }catch(e){}
+        try{ if(window.paintBadge) window.paintBadge(); }catch(e){}
         return;
       }
       if(act === 'share'){
