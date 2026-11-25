@@ -1658,3 +1658,57 @@ document.addEventListener('dragstart', function(e){
   document.addEventListener('pointerup', end, true);
   document.addEventListener('pointercancel', end, true);
 })();
+
+/* ===== 触屏横滑（iOS 原生失效时兜底） ===== */
+(function touchDragBoot(){
+  var st = null;
+
+  document.addEventListener('touchstart', function(e){
+    var el = e.target.closest('.hscroll, .shots');
+    if(!el || e.touches.length !== 1) return;
+    var t = e.touches[0];
+    st = { el: el, x: t.clientX, y: t.clientY, left: el.scrollLeft, axis: null, moved: false };
+  }, { passive: true });
+
+  document.addEventListener('touchmove', function(e){
+    if(!st || e.touches.length !== 1) return;
+    var t = e.touches[0];
+    var dx = t.clientX - st.x;
+    var dy = t.clientY - st.y;
+
+    if(!st.axis){
+      if(Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+      st.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+      if(st.axis === 'y'){ st = null; return; }   // 纵向 → 让页面滚
+    }
+    if(st.axis !== 'x') return;
+
+    st.moved = true;
+    if(e.cancelable) e.preventDefault();          // 阻止页面跟随横滑
+    st.el.scrollLeft = st.left - dx;
+  }, { passive: false });
+
+  function done(){
+    if(!st) return;
+    var el = st.el, moved = st.moved;
+    st = null;
+    if(moved){
+      // 松手吸到最近的卡片
+      var kids = [].slice.call(el.children).filter(function(k){ return k.offsetWidth > 0; });
+      if(kids.length){
+        var cur = el.scrollLeft, best = cur, min = 1e9;
+        kids.forEach(function(k){
+          var p = k.offsetLeft - (el.clientWidth - k.offsetWidth) / 2;   // 居中吸附
+          var d = Math.abs(p - cur);
+          if(d < min){ min = d; best = p; }
+        });
+        try{ el.scrollTo({ left: best, behavior: 'smooth' }); }catch(err){ el.scrollLeft = best; }
+      }
+      var stop = function(ev){ ev.stopPropagation(); ev.preventDefault(); };
+      document.addEventListener('click', stop, true);
+      setTimeout(function(){ document.removeEventListener('click', stop, true); }, 0);
+    }
+  }
+  document.addEventListener('touchend', done, { passive: true });
+  document.addEventListener('touchcancel', done, { passive: true });
+})();
