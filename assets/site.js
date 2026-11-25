@@ -98,14 +98,96 @@
     return null;
   }
 
+  /* 从详情大图取主色（有就用它，最贴合内容） */
+  var SHOT_BG = {}, SHOT_BUSY = {};
+  function colorFromShot(a){
+    if(!a || !a.shots || !a.shots.length) return null;
+    if(SHOT_BG[a.id]) return SHOT_BG[a.id];
+    if(SHOT_BUSY[a.id]) return null;
+    SHOT_BUSY[a.id] = true;
+
+    function paint(src, isRetry){
+      var img = new Image();
+      img.onload = function(){
+        try{
+          var cv = document.createElement('canvas');
+          cv.width = 32; cv.height = 32;
+          var x = cv.getContext('2d');
+          x.drawImage(img, 0, 0, 32, 32);
+          var d = x.getImageData(0, 0, 32, 32).data;
+
+          var bucket = {}, list = [];
+          for(var i = 0; i < d.length; i += 4){
+            if(d[i + 3] < 140) continue;
+            var r = d[i], g = d[i + 1], b = d[i + 2];
+            var key = (r >> 4) + ',' + (g >> 4) + ',' + (b >> 4);
+            if(!bucket[key]) bucket[key] = { n: 0, r: 0, g: 0, b: 0 };
+            bucket[key].n++; bucket[key].r += r; bucket[key].g += g; bucket[key].b += b;
+          }
+          for(var k in bucket){
+            var o = bucket[k];
+            var R = o.r / o.n, G = o.g / o.n, B = o.b / o.n;
+            var lum = (0.299 * R + 0.587 * G + 0.114 * B) / 255;
+            var mx = Math.max(R, G, B), mn = Math.min(R, G, B);
+            var sat = mx === 0 ? 0 : (mx - mn) / mx;
+            list.push({ n: o.n, r: R, g: G, b: B, lum: lum, sat: sat });
+          }
+          list.sort(function(p1, p2){ return p2.n - p1.n; });
+
+          SHOT_BUSY[a.id] = false;
+          if(!list.length) return;
+
+          var pick = null;
+          for(var j = 0; j < list.length; j++){
+            var c = list[j];
+            if(c.lum < 0.10 || c.lum > 0.88) continue;
+            if(c.sat < 0.10) continue;
+            pick = c; break;
+          }
+          if(!pick){
+            for(var m = 0; m < list.length; m++){
+              if(list[m].lum >= 0.10 && list[m].lum <= 0.88){ pick = list[m]; break; }
+            }
+          }
+          if(!pick) pick = list[0];
+
+          var f = 0.80;
+          SHOT_BG[a.id] = 'rgb(' + Math.round(pick.r * f) + ',' + Math.round(pick.g * f) + ',' + Math.round(pick.b * f) + ')';
+
+          if(!colorFromShot._t){
+            colorFromShot._t = setTimeout(function(){ colorFromShot._t = null; try{ render(); }catch(e){} }, 60);
+          }
+        }catch(e){
+          if(isRetry){ SHOT_BUSY[a.id] = false; return; }
+          fetch(src).then(function(r){ return r.blob(); }).then(function(bl){
+            paint(URL.createObjectURL(bl), true);
+          }).catch(function(){ SHOT_BUSY[a.id] = false; });
+        }
+      };
+      img.onerror = function(){ SHOT_BUSY[a.id] = false; };
+      img.src = src;
+    }
+
+    paint(fixPath(a.shots[0]), false);
+    return null;
+  }
+
   function color(a){
-    var ic = colorFromIcon(a);
+    var sh = colorFromShot(a);            // ① 详情大图主色（最贴合内容）
+    if(sh) return sh;
+    var ic = colorFromIcon(a);            // ② 图标主色
     if(ic) return ic;
-    var c = COLOR[catOf(a)];
+    var c = COLOR[catOf(a)];              // ③ 分类固定色
     if(c) return c;
-    var PAL = ['#2f5fbf', '#5b3aa8', '#2b6e37', '#b0462f', '#1f7a8c', '#7a4b1f'];
+    // ④ 名称哈希 → 16 色调色板（稳定、不随机）
+    var PAL = [
+      '#2f5fbf', '#5b3aa8', '#2b6e37', '#b0462f',
+      '#1f7a8c', '#7a4b1f', '#8c2f6b', '#3d6b1f',
+      '#2f4b8c', '#6b2f8c', '#8c5a2f', '#1f5f6b',
+      '#8c2f3d', '#4b2f6b', '#2f8c5a', '#6b5a2f'
+    ];
     var h = 0, nm = String(a.name || '');
-    for(var i = 0; i < nm.length; i++) h = (h * 31 + nm.charCodeAt(i)) % 997;
+    for(var i = 0; i < nm.length; i++) h = (h * 31 + nm.charCodeAt(i)) % 9979;
     return PAL[h % PAL.length];
   }
   function sub(a){
