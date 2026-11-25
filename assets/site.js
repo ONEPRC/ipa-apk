@@ -173,6 +173,7 @@
   }
 
   function color(a){
+    if(a.color) return a.color;            // ⓪ 后台算好的固定色（两端完全一致）
     var sh = colorFromShot(a);            // ① 详情大图主色（最贴合内容）
     if(sh) return sh;
     var ic = colorFromIcon(a);            // ② 图标主色
