@@ -1341,3 +1341,15 @@ img{touch-action:auto !important}
   white-space:normal !important;
   max-height:1.5em !important;
 }
+
+/* 修正：滚动容器占满整屏，只有内容限宽居中 */
+@media (min-width:900px){
+  .spnl .shead{max-width:none !important;margin:0 !important}
+  .spnl .sbody{max-width:none !important;margin:0 !important;width:100% !important}
+  .spnl .sgroup,.spnl .updwrap,.spnl .sver{
+    max-width:560px !important;
+    width:100% !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+}
