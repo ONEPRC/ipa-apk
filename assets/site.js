@@ -1284,20 +1284,28 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
 
     panel.querySelector('.sdone').onclick = close;
 
-    // 「暗黑模式」直接绑事件（iOS 委托首点可能失效）
+    // 「暗黑模式」直接绑事件：click + pointerup 双通道，首点必生效
     var themeRow = panel.querySelector('[data-sact="theme"]');
     if(themeRow){
-      themeRow.addEventListener('click', function(ev){
-        ev.preventDefault(); ev.stopPropagation();
+      var lastTap = 0;
+      var doToggle = function(ev){
+        if(ev){ ev.preventDefault(); ev.stopPropagation(); }
+        var now = Date.now();
+        if(now - lastTap < 300) return;      // 两个通道都触发时只算一次
+        lastTap = now;
+
         var dark = document.documentElement.dataset.theme === 'dark';
         document.documentElement.dataset.theme = dark ? '' : 'dark';
         try{ localStorage.setItem('appindex.theme', dark ? 'light' : 'dark'); }catch(err){}
         var sw = themeRow.querySelector('.sw');
         if(sw) sw.classList.toggle('on', !dark);
+
         try{ if(window.__RENDER) window.__RENDER(); }catch(e){}
         try{ if(window.paintBadge) window.paintBadge(); }catch(e){}
-
-      }, true);
+      };
+      themeRow.addEventListener('click', doToggle, true);
+      themeRow.addEventListener('pointerup', doToggle, true);
+      themeRow.addEventListener('touchend', doToggle, { capture: true, passive: false });
     }
 
     // 「使用说明」直接绑事件，避免委托失效
