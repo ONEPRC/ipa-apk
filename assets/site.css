@@ -1043,3 +1043,29 @@ img{touch-action:auto !important}
 @media (min-width:900px){
   .hscroll .feat{flex:0 0 calc(50% + 26px) !important}
 }
+
+/* 电脑端顶部大卡：两张整卡，右侧 padding 区用遮罩隐藏第三张 */
+@media (min-width:900px){
+  .hscroll .feat{flex:0 0 calc(50% - 10px) !important}
+  .hscroll{
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%);
+    mask-image:linear-gradient(90deg,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%);
+  }
+}
+
+/* 电脑端：把右侧多余露出彻底淡出 */
+@media (min-width:900px){
+  .hscroll{
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 38px,#000 calc(100% - 56px),transparent calc(100% - 10px)) !important;
+    mask-image:linear-gradient(90deg,transparent 0,#000 38px,#000 calc(100% - 56px),transparent calc(100% - 10px)) !important;
+  }
+}
+
+/* 电脑端：裁掉右侧 padding 区里的第三张，仅保留两张整卡 */
+@media (min-width:900px){
+  .hscroll{
+    -webkit-mask-image:none !important;
+    mask-image:none !important;
+    clip-path:inset(0 36px 0 36px);
+  }
+}
