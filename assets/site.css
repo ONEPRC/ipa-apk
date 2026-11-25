@@ -1167,3 +1167,20 @@ img{touch-action:auto !important}
   }
   .shots .shotitem:only-child{flex:0 0 100% !important;width:100% !important}
 }
+
+/* ===== 电脑端与手机端统一：同一套尺寸，不再分两套维护 ===== */
+@media (min-width:900px){
+  /* 顶部大卡 */
+  .hscroll{margin:0 -18px !important;padding:0 18px 4px !important;gap:6px !important;scroll-padding-left:18px !important}
+  .hscroll .feat{flex:0 0 calc(100% - 36px) !important;max-width:none !important}
+  .hscroll .feat:only-child{flex:0 0 100% !important}
+
+  /* 详情大图 */
+  .shots{margin:16px -18px !important;padding:0 18px !important;gap:6px !important;scroll-padding-left:18px !important}
+  .shots .shotitem,
+  .shots.single .shotitem{
+    flex:0 0 calc(100% - 36px) !important;
+    width:calc(100% - 36px) !important;
+  }
+  .shots .shotitem:only-child{flex:0 0 100% !important;width:100% !important}
+}
