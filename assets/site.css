@@ -1069,3 +1069,27 @@ img{touch-action:auto !important}
     clip-path:inset(0 36px 0 36px);
   }
 }
+
+/* ===== 电脑端最终：两张整卡 + 右侧露一点下一张 ===== */
+@media (min-width:900px){
+  /* ① 顶部大卡：取消裁切，两张完整 + 右侧露出下一张 */
+  .hscroll{
+    -webkit-mask-image:none !important;
+    mask-image:none !important;
+    clip-path:none !important;
+  }
+  .hscroll .feat{flex:0 0 calc(50% - 10px) !important}
+
+  /* ② 详情大图：每张尺寸和单张一致（满宽 16:9），右侧露一点 */
+  .shots .shotitem,
+  .shots.single .shotitem{
+    flex:0 0 calc(100% - 72px) !important;
+    width:calc(100% - 72px) !important;
+    aspect-ratio:16/9 !important;
+  }
+}
+
+/* 电脑端顶部大卡：两张 + 更清晰的右侧露出（约 4%） */
+@media (min-width:900px){
+  .hscroll .feat{flex:0 0 calc(48% - 10px) !important}
+}
