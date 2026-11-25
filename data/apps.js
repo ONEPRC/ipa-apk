@@ -1,4 +1,5 @@
-/* 应用索引数据：site 站点信息，apps 应用列表 */
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 22:42:53
+// 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
     "qqGroup": "873866223",
@@ -17,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795617615058,
+    "rev": 1795617773916,
     "categories": [
       "游戏",
       "应用",
@@ -26,7 +27,7 @@ window.APP_DATA = {
     ],
     "passwordHash": "4739ee3bd29e4f415da8ba9298a087e0fdc9c61378420ba8fbbab298bd74c4df",
     "pwdLen": 4,
-    "version": "V1.2"
+    "version": "V1.3"
   },
   "apps": [
     {
@@ -454,8 +455,7 @@ window.APP_DATA = {
       "note": "破解版",
       "date": "2026-11-08",
       "addedAt": "2026-11-08T21:44",
-      "updatedAt": "2026-11-25T22:35",
-      "color": "rgb(5,177,206)"
+      "updatedAt": "2026-11-25T22:35"
     },
     {
       "id": "amw6agvin",
