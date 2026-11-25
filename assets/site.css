@@ -1261,3 +1261,24 @@ img{touch-action:auto !important}
 
 /* 统一：横滑区域内所有元素都放开手势限制 */
 .hscroll,.hscroll *,.shots,.shots *{touch-action:auto !important}
+
+/* ===== 露出统一：贴左吸附 + 末尾补白，任何位置露出都一样 ===== */
+.hscroll,.shots{
+  padding:0 18px !important;
+  margin-left:-18px !important;
+  margin-right:-18px !important;
+  gap:6px !important;
+  scroll-padding:0 !important;
+  scroll-snap-type:x mandatory !important;
+}
+.hscroll .feat,
+.shots .shotitem,
+.shots.single .shotitem,
+.shots .shotitem:only-child{
+  flex:0 0 100% !important;
+  width:100% !important;
+  scroll-snap-align:start !important;
+}
+/* 末尾补 18px，让最后一张也能贴到正确位置 */
+.hscroll::after,.shots::after{content:'';flex:0 0 18px}
+.hscroll::before,.shots::before{content:'';flex:0 0 0}
