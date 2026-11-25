@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/25 21:25:30
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 21:26:34
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795613130619,
+    "rev": 1795613194540,
     "categories": [
       "游戏",
       "应用",
@@ -30,6 +30,21 @@ window.APP_DATA = {
     "version": "V1.1"
   },
   "apps": [
+    {
+      "id": "amww5qfuz",
+      "name": "1",
+      "version": "",
+      "category": "插件",
+      "platform": "",
+      "size": "",
+      "icon": "",
+      "iconText": "",
+      "url": "",
+      "pwd": "",
+      "description": "",
+      "date": "2026-11-25",
+      "addedAt": "2026-11-25T21:26"
+    },
     {
       "id": "amww5e3mc",
       "name": "WCRefine",
