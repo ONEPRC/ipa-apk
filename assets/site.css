@@ -1285,3 +1285,17 @@ img{touch-action:auto !important}
 
 /* 让吸附起点也含 18px 内缩，否则首张会贴边 */
 .hscroll,.shots{scroll-padding-left:18px !important;scroll-padding:18px 0 0 18px !important}
+
+/* 账户抽屉：电脑端限制宽度并居中，避免拉成整屏 */
+@media (min-width:900px){
+  .spnl{
+    left:50% !important;
+    right:auto !important;
+    width:560px !important;
+    max-width:560px !important;
+    transform:translate(-50%, 102%) !important;
+    border-radius:22px 22px 0 0 !important;
+  }
+  .spnl.on{transform:translate(-50%, 0) !important}
+  .spnl .sbody{max-height:calc(86vh - 52px)}
+}
