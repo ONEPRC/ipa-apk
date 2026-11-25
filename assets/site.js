@@ -712,6 +712,9 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
 
   // 让横滑卡片左右露出完全一致
   function fitCards(){
+    return;   // 宽度改由 CSS 控制（桌面/手机各自的百分比），这里不再算像素
+
+    /* eslint-disable */
     // 1) 详情页多图：左对齐 + 右侧露出 12px
     document.querySelectorAll('.shots').forEach(function(sh){
       var n = sh.children.length;
