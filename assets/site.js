@@ -1274,7 +1274,7 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
           '<button class="srow" data-sact="help" onclick="try{window.gotoHelp&&window.gotoHelp();document.documentElement.classList.remove(\'locked\');}catch(e){}"><span>使用说明</span><i class="chev">›</i></button>' +
         '</div>' +
         updBlock() +
-        '<div class="sver">' + siteName + ' · ' + (site.version || 'V0.1') + '</div>' +
+        '<div class="sver">IPA&APK · ' + (((window.APP_DATA && window.APP_DATA.site && window.APP_DATA.site.version) || 'V0.1')) + '</div>' +
 
       '</div>';
 
