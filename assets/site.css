@@ -1200,3 +1200,13 @@ img{touch-action:auto !important}
     margin-right:auto !important;
   }
 }
+
+/* ===== 电脑端：取消居中收窄，卡片撑满；吸附居中 → 左右露出对称 ===== */
+@media (min-width:900px){
+  .hscroll,.shots{
+    max-width:none !important;
+    margin-left:-18px !important;
+    margin-right:-18px !important;
+  }
+}
+.hscroll .feat,.shots .shotitem{scroll-snap-align:center !important}
