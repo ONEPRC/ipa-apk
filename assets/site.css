@@ -1282,3 +1282,6 @@ img{touch-action:auto !important}
 /* 末尾补 18px，让最后一张也能贴到正确位置 */
 .hscroll::after,.shots::after{content:'';flex:0 0 18px}
 .hscroll::before,.shots::before{content:'';flex:0 0 0}
+
+/* 让吸附起点也含 18px 内缩，否则首张会贴边 */
+.hscroll,.shots{scroll-padding-left:18px !important;scroll-padding:18px 0 0 18px !important}
