@@ -1283,6 +1283,19 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
 
     panel.querySelector('.sdone').onclick = close;
 
+    // 「暗黑模式」直接绑事件（iOS 委托首点可能失效）
+    var themeRow = panel.querySelector('[data-sact="theme"]');
+    if(themeRow){
+      themeRow.addEventListener('click', function(ev){
+        ev.preventDefault(); ev.stopPropagation();
+        var dark = document.documentElement.dataset.theme === 'dark';
+        document.documentElement.dataset.theme = dark ? '' : 'dark';
+        try{ localStorage.setItem('appindex.theme', dark ? 'light' : 'dark'); }catch(err){}
+        var sw = themeRow.querySelector('.sw');
+        if(sw) sw.classList.toggle('on', !dark);
+      }, true);
+    }
+
     // 「使用说明」直接绑事件，避免委托失效
     var helpRow = panel.querySelector('[data-sact="help"]');
     if(helpRow){
