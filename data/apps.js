@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/25 20:31:50
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 20:40:30
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795609910312,
+    "rev": 1795610430461,
     "categories": [
       "游戏",
       "应用",
@@ -30,6 +30,22 @@ window.APP_DATA = {
     "version": "V0.9"
   },
   "apps": [
+    {
+      "id": "amww4372u",
+      "name": "GTAVI",
+      "version": "1.02.1",
+      "category": "游戏",
+      "platform": "Windows",
+      "size": "193.2G",
+      "icon": "assets/GTAVI-20261125124027.png",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/d77bdae9b2a2",
+      "pwd": "",
+      "description": "美国罪恶城。杰森和露西娅心里一直清楚，命运对他们不公。本应简单的行动出了差错，美国阳光最灿烂的地方向两人展露出它最阴暗的一面，将他们卷入一场横跨雷奥奈达的犯罪阴谋。若想活着逃出生天，他们比以往任何时候都更需要彼此依靠。",
+      "note": "xbox移植 全DLC本体",
+      "date": "2026-11-25",
+      "addedAt": "2026-11-25T20:40"
+    },
     {
       "id": "amw4xwyc8",
       "name": "CS手游",
