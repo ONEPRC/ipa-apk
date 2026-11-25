@@ -1,4 +1,5 @@
-/* 应用索引数据：site 站点信息，apps 应用列表 */
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 22:56:27
+// 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
     "qqGroup": "873866223",
@@ -17,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-25T22:46"
     },
     "icon": "assets/logo.png",
-    "rev": 1795617978406,
+    "rev": 1795618587774,
     "categories": [
       "游戏",
       "应用",
@@ -26,7 +27,7 @@ window.APP_DATA = {
     ],
     "passwordHash": "4739ee3bd29e4f415da8ba9298a087e0fdc9c61378420ba8fbbab298bd74c4df",
     "pwdLen": 4,
-    "version": "V1.3"
+    "version": "V1.4"
   },
   "apps": [
     {
@@ -259,15 +260,15 @@ window.APP_DATA = {
       "category": "游戏",
       "platform": "iOS",
       "size": "",
-      "icon": "",
+      "icon": "assets/OverPAKE-20261125145624.png",
       "iconText": "",
       "url": "https://pan.quark.cn/s/45864fc5a136",
       "pwd": "",
       "description": "Over peak •巅峰崛起~\n✅锁定120帧•无限能量\n✅移速 •飞行速度调节\n✅中文•全局NoAds \n无敌没写•写了会毫无意思",
       "date": "2026-11-18",
       "addedAt": "2026-11-18T19:39",
-      "updatedAt": "2026-11-25T20:31",
-      "color": "#2b6e37"
+      "updatedAt": "2026-11-25T22:56",
+      "color": "rgb(187,142,111)"
     },
     {
       "id": "amwm11rsh",
@@ -454,8 +455,7 @@ window.APP_DATA = {
       "note": "破解版",
       "date": "2026-11-08",
       "addedAt": "2026-11-08T21:44",
-      "updatedAt": "2026-11-25T22:35",
-      "color": "rgb(5,177,206)"
+      "updatedAt": "2026-11-25T22:35"
     },
     {
       "id": "amw6agvin",
