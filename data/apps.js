@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/25 21:16:58
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 21:25:30
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795612618806,
+    "rev": 1795613130619,
     "categories": [
       "游戏",
       "应用",
@@ -440,13 +440,14 @@ window.APP_DATA = {
       "category": "游戏",
       "platform": "iOS",
       "size": "495MB",
-      "icon": "https://i.urusai.cc/vlUJX.jpg",
+      "icon": "assets/王国保卫战6-20261125132527.jpg",
       "iconText": "",
       "url": "https://pan.quark.cn/s/682f6c899ba0",
       "pwd": "",
       "description": "✅解锁全内购英雄/防御塔/法术\n✅无敌免伤/超级秒杀\n✅无限钻石/局内无限金币\n✅英雄/法术/技能升级无限点数\n✅多倍加速",
       "date": "2026-11-08",
-      "addedAt": "2026-11-08T21:44"
+      "addedAt": "2026-11-08T21:44",
+      "updatedAt": "2026-11-25T21:25"
     },
     {
       "id": "amw6agvin",
