@@ -1,8 +1,7 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/25 18:46:13
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 19:01:25
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
-    "version": "V0.1",
     "qqGroup": "873866223",
     "tagline": "搜索应用，跳转夸克网盘转存下载",
     "eyebrow": "SEARCH · COPY · OPEN ·  仅限群友使用·  873866223",
@@ -19,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795603573515,
+    "rev": 1795604485438,
     "categories": [
       "游戏",
       "应用",
@@ -462,12 +461,13 @@ window.APP_DATA = {
       "whatsNew": "无",
       "shots": [
         "assets/shot-20261124132728.jpg",
-        "assets/shot-20261125104610.jpg"
+        "assets/shot-20261125104610.jpg",
+        "assets/shot-20261125110123.png"
       ],
       "date": "2026-11-07",
       "addedAt": "2026-11-07",
       "pinned": true,
-      "updatedAt": "2026-11-25T18:46"
+      "updatedAt": "2026-11-25T19:01"
     },
     {
       "id": "amw563sof",
