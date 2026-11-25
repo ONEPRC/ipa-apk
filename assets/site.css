@@ -1184,3 +1184,19 @@ img{touch-action:auto !important}
   }
   .shots .shotitem:only-child{flex:0 0 100% !important;width:100% !important}
 }
+
+/* 电脑端：给卡片最大宽度，避免 16:9 在大容器里过高（手机不受影响） */
+@media (min-width:900px){
+  .hscroll .feat{max-width:720px !important}
+  .shots .shotitem{max-width:720px !important}
+}
+
+/* 电脑端：不改卡片宽度，而是把横向滚动区整体收窄并居中，比例与露出都不变 */
+@media (min-width:900px){
+  .hscroll .feat,.shots .shotitem{max-width:none !important}
+  .hscroll,.shots{
+    max-width:700px !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+}
