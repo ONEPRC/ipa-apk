@@ -1130,3 +1130,40 @@ img{touch-action:auto !important}
 @media (min-width:900px){
   .shots .shotitem,.shots.single .shotitem{flex:0 0 calc(100% - 34px) !important;width:calc(100% - 34px) !important}
 }
+
+/* 只有一张卡时：占满，不留露出 */
+.hscroll .feat:only-child{flex:0 0 calc(100% - 36px) !important}
+.shots .shotitem:only-child{flex:0 0 calc(100% - 36px) !important;width:calc(100% - 36px) !important}
+
+/* 手机端：单张与多张同宽，保证视觉一致 */
+.shots .shotitem,
+.shots.single .shotitem{
+  flex:0 0 calc(100% - 54px) !important;
+  width:calc(100% - 54px) !important;
+}
+
+@media (min-width:900px){
+  .hscroll .feat:only-child{flex:0 0 calc(100% - 72px) !important}
+  .shots .shotitem:only-child{flex:0 0 calc(100% - 72px) !important;width:calc(100% - 72px) !important}
+}
+
+/* ===== 收口：单张/多张统一宽度，只有一张卡时占满 ===== */
+.hscroll .feat:only-child{flex:0 0 100% !important;max-width:none !important}
+
+.shots .shotitem,
+.shots.single .shotitem{
+  flex:0 0 calc(100% - 36px) !important;
+  width:calc(100% - 36px) !important;
+  aspect-ratio:16/9 !important;
+}
+.shots .shotitem:only-child{flex:0 0 100% !important;width:100% !important}
+
+@media (min-width:900px){
+  .hscroll .feat:only-child{flex:0 0 100% !important}
+  .shots .shotitem,
+  .shots.single .shotitem{
+    flex:0 0 calc(100% - 72px) !important;
+    width:calc(100% - 72px) !important;
+  }
+  .shots .shotitem:only-child{flex:0 0 100% !important;width:100% !important}
+}
