@@ -1093,3 +1093,35 @@ img{touch-action:auto !important}
 @media (min-width:900px){
   .hscroll .feat{flex:0 0 calc(48% - 10px) !important}
 }
+
+/* ================= 横滑最终统一规则 ================= */
+/* 吸附：滑到哪就停在最近的整卡 */
+.hscroll,.shots{scroll-snap-type:x mandatory !important}
+.hscroll .feat,.shots .shotitem{scroll-snap-align:start !important}
+
+/* 大卡图片区统一 16:9 */
+.hscroll .feat .visual{
+  aspect-ratio:16/9 !important;
+  height:auto !important;
+  max-height:none !important;
+}
+
+/* 电脑端：顶部大卡两张 + 右侧精确露出 50px */
+@media (min-width:900px){
+  .hscroll .feat{flex:0 0 calc(50% - 17px) !important}
+  /* 详情多图：每张 16:9，右侧同样露出 50px */
+  .shots .shotitem,
+  .shots.single .shotitem{
+    flex:0 0 calc(100% - 106px) !important;
+    width:calc(100% - 106px) !important;
+    aspect-ratio:16/9 !important;
+  }
+  .hscroll{scroll-padding-left:36px}
+  .shots{scroll-padding-left:36px}
+}
+
+/* 电脑端：露出精确 50px（实测校准） */
+@media (min-width:900px){
+  .hscroll .feat{flex:0 0 calc(50% - 27px) !important}
+  .shots .shotitem,.shots.single .shotitem{flex:0 0 calc(100% - 116px) !important;width:calc(100% - 116px) !important}
+}
