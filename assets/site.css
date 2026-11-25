@@ -1210,3 +1210,6 @@ img{touch-action:auto !important}
   }
 }
 .hscroll .feat,.shots .shotitem{scroll-snap-align:center !important}
+
+/* 去掉 scroll-padding 偏移，否则居中吸附会偏，左右露出不等 */
+.hscroll,.shots{scroll-padding:0 !important}
