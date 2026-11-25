@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/25 23:34:13
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 23:36:57
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-25T22:46"
     },
     "icon": "assets/logo.png",
-    "rev": 1795620853066,
+    "rev": 1795621017298,
     "categories": [
       "游戏",
       "应用",
@@ -442,12 +442,12 @@ window.APP_DATA = {
     },
     {
       "id": "amw7vvqxa",
-      "name": "王国保卫战 6",
+      "name": "Kingdom Rush 6",
       "version": "1.01.010",
       "category": "游戏",
       "platform": "iOS",
       "size": "495MB",
-      "icon": "assets/王国保卫战6-20261125150147.jpg",
+      "icon": "assets/Kingdom-Rush-6-20261125153653.jpg",
       "iconText": "",
       "url": "https://pan.quark.cn/s/682f6c899ba0",
       "pwd": "",
@@ -455,8 +455,8 @@ window.APP_DATA = {
       "note": "破解版",
       "date": "2026-11-08",
       "addedAt": "2026-11-08T21:44",
-      "color": "rgb(9,178,207)",
-      "updatedAt": "2026-11-25T23:34"
+      "updatedAt": "2026-11-25T23:36",
+      "color": "rgb(9,178,205)"
     },
     {
       "id": "amw6agvin",
