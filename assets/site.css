@@ -1125,3 +1125,8 @@ img{touch-action:auto !important}
   .hscroll .feat{flex:0 0 calc(50% - 27px) !important}
   .shots .shotitem,.shots.single .shotitem{flex:0 0 calc(100% - 116px) !important;width:calc(100% - 116px) !important}
 }
+
+/* 详情多图：露出精确 50px（实测校准） */
+@media (min-width:900px){
+  .shots .shotitem,.shots.single .shotitem{flex:0 0 calc(100% - 34px) !important;width:calc(100% - 34px) !important}
+}
