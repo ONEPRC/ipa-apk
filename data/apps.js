@@ -1,4 +1,5 @@
-/* 应用索引数据：site 站点信息，apps 应用列表 */
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 22:18:18
+// 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
     "qqGroup": "873866223",
@@ -17,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795613297090,
+    "rev": 1795616298169,
     "categories": [
       "游戏",
       "应用",
@@ -44,7 +45,8 @@ window.APP_DATA = {
       "note": "xbox移植 全DLC本体",
       "date": "2026-11-25",
       "addedAt": "2026-11-25T20:40",
-      "color": "rgb(112,100,136)"
+      "color": "rgb(112,100,136)",
+      "pinned": true
     },
     {
       "id": "amw4xwyc8",
