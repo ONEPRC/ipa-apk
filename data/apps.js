@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/25 19:45:41
+// 应用数据文件 —— 由本地管理页写入 2026/11/25 19:59:50
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-23T23:38"
     },
     "icon": "assets/logo.png",
-    "rev": 1795607141498,
+    "rev": 1795607990109,
     "categories": [
       "游戏",
       "应用",
@@ -27,7 +27,7 @@ window.APP_DATA = {
     ],
     "passwordHash": "4739ee3bd29e4f415da8ba9298a087e0fdc9c61378420ba8fbbab298bd74c4df",
     "pwdLen": 4,
-    "version": "V0.7"
+    "version": "V0.8"
   },
   "apps": [
     {
@@ -170,22 +170,6 @@ window.APP_DATA = {
       "date": "2026-11-21",
       "addedAt": "2026-11-21T20:01",
       "updatedAt": "2026-11-25T00:24"
-    },
-    {
-      "id": "amwqc9zp5",
-      "name": "XP3Player",
-      "version": "1.3.11",
-      "category": "应用",
-      "platform": "iOS",
-      "size": "16.1MB",
-      "icon": "https://hv.z.wiki/autoupload/20241216/4yFJ/51db2858dc62bb78f8236cb4e270d919.png?type=ha",
-      "iconText": "",
-      "url": "https://pan.quark.cn/s/ae49d56710f2",
-      "pwd": "",
-      "description": "全权限砸壳\n以C++语言编写的视频播放器\n国区商店58¥\n额外说明：\n纯净无弹窗\n支持自签和巨魔",
-      "date": "2026-11-21",
-      "addedAt": "2026-11-21T19:43",
-      "updatedAt": "2026-11-21T19:43"
     },
     {
       "id": "amwoyu6ot",
