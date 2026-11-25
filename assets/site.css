@@ -1239,3 +1239,9 @@ img{touch-action:auto !important}
   transform:translate(-50%,-50%) !important;
   margin:0 !important;
 }
+
+/* 横滑性能：降低模糊半径、提升合成层 */
+.hscroll,.shots{transform:translateZ(0);will-change:scroll-position}
+.feat .visual .bg{filter:blur(16px) saturate(150%) !important;transform:scale(1.15) !important}
+.shotitem .shotbg{filter:blur(16px) saturate(140%) !important}
+.hscroll .feat,.shots .shotitem{contain:paint}
