@@ -1219,3 +1219,23 @@ img{touch-action:auto !important}
 @media (min-width:900px){
   .shots .shotitem:only-child{flex:0 0 calc(100% - 36px) !important;width:calc(100% - 36px) !important}
 }
+
+/* 上方大卡：图标居中（不受 grid 行/内容影响） */
+.feat .visual > img.big,
+.feat .visual > span.big{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  margin:0 !important;
+}
+.feat .visual{position:relative}
+
+/* 大卡图标居中（用直接子元素选择器，模板里没有 .big 类） */
+.feat .visual > img:not(.shotlb),
+.feat .visual > span{
+  position:absolute !important;
+  left:50% !important;top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  margin:0 !important;
+}
