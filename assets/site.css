@@ -1305,3 +1305,39 @@ img{touch-action:auto !important}
 .spnl .sbody > *{flex:0 0 auto !important;min-height:0}
 .spnl .sgroup,.spnl .srow,.spnl .suser,.spnl .sver,.spnl .updrow{flex:0 0 auto !important}
 .spnl .srow{min-height:52px}
+
+/* ===== 电脑端账户抽屉：滚动条贴屏幕右侧，内容仍居中 560 ===== */
+@media (min-width:900px){
+  .spnl{
+    left:0 !important;
+    right:0 !important;
+    width:auto !important;
+    max-width:100vw !important;
+    max-height:86vh !important;
+    transform:translateY(102%) !important;
+    border-radius:22px 22px 0 0 !important;
+  }
+  .spnl.on{transform:translateY(0) !important}
+
+  /* 内容限宽居中，滚动条在被遮住的屏幕边缘 */
+  .spnl .shead,
+  .spnl .sbody{
+    width:100% !important;
+    max-width:560px !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+    box-sizing:border-box !important;
+  }
+  /* 内容不超时不出滚动条 */
+  .spnl .sbody{overflow-y:auto}
+}
+
+/* 更新说明只显示一行，超出省略 */
+.unote span{
+  display:-webkit-box !important;
+  -webkit-line-clamp:1 !important;
+  -webkit-box-orient:vertical !important;
+  overflow:hidden !important;
+  white-space:normal !important;
+  max-height:1.5em !important;
+}
