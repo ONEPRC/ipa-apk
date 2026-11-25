@@ -984,3 +984,13 @@ img{touch-action:auto !important}
 @media (min-width:900px){
   .hscroll .feat{flex:0 0 calc(56% - 10px) !important}
 }
+
+/* 账户页版本号 */
+.sver{
+  text-align:center;
+  font-size:12px;
+  color:#8e8e93;
+  padding:18px 0 6px;
+  letter-spacing:.3px;
+}
+[data-theme="dark"] .sver{color:#8e8e93}
