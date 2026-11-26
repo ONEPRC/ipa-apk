@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/26 19:45:26
+// 应用数据文件 —— 由本地管理页写入 2026/11/26 21:10:59
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -8,7 +8,7 @@ window.APP_DATA = {
     "h1": "找到应用，",
     "h1accent": "一键转存。",
     "note": "链接指向夸克网盘 · 请先转存再下载",
-    "updated": "2026-11-25",
+    "updated": "2026-11-26",
     "title": "IPA&APK",
     "accent": "#100f0f",
     "pageSize": 10,
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-25T22:46"
     },
     "icon": "assets/logo.png",
-    "rev": 1795693526429,
+    "rev": 1795698659961,
     "categories": [
       "游戏",
       "应用",
@@ -30,6 +30,22 @@ window.APP_DATA = {
     "version": "V1.5"
   },
   "apps": [
+    {
+      "id": "amwxkm9e9",
+      "name": "屏蔽抖音更新",
+      "version": "",
+      "category": "插件",
+      "platform": "iOS",
+      "size": "169kb",
+      "icon": "",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/bc294990f401",
+      "pwd": "",
+      "description": "屏蔽抖音检测更新",
+      "note": "注入使用",
+      "date": "2026-11-26",
+      "addedAt": "2026-11-26T21:10"
+    },
     {
       "id": "amww4372u",
       "name": "GTAVI",
