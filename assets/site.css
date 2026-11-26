@@ -1489,7 +1489,7 @@ html[data-theme="dark"] .notice{
 
 /* 账户 / 使用说明：整块玻璃抽屉 */
 .spnl{
-  background:linear-gradient(180deg,rgba(252,253,255,.74),rgba(243,245,250,.58)) !important;
+  background:linear-gradient(180deg,rgba(253,254,255,.90),rgba(248,249,252,.80)) !important;
   backdrop-filter:blur(32px) saturate(190%);-webkit-backdrop-filter:blur(32px) saturate(190%);
   box-shadow:0 -20px 50px rgba(16,24,40,.20),inset 0 1px 0 rgba(255,255,255,.70) !important}
 html[data-theme="dark"] .spnl{
