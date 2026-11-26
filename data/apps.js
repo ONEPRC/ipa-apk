@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/26 21:10:59
+// 应用数据文件 —— 由本地管理页写入 2026/11/26 21:12:10
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-25T22:46"
     },
     "icon": "assets/logo.png",
-    "rev": 1795698659961,
+    "rev": 1795698730520,
     "categories": [
       "游戏",
       "应用",
@@ -41,10 +41,11 @@ window.APP_DATA = {
       "iconText": "",
       "url": "https://pan.quark.cn/s/bc294990f401",
       "pwd": "",
-      "description": "屏蔽抖音检测更新",
+      "description": "",
       "note": "注入使用",
       "date": "2026-11-26",
-      "addedAt": "2026-11-26T21:10"
+      "addedAt": "2026-11-26T21:10",
+      "updatedAt": "2026-11-26T21:12"
     },
     {
       "id": "amww4372u",
