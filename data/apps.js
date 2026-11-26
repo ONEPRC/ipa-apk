@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/26 21:14:19
+// 应用数据文件 —— 由本地管理页写入 2026/11/26 21:15:30
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-25T22:46"
     },
     "icon": "assets/logo.png",
-    "rev": 1795698859536,
+    "rev": 1795698930594,
     "categories": [
       "游戏",
       "应用",
@@ -41,11 +41,11 @@ window.APP_DATA = {
       "iconText": "",
       "url": "https://pan.quark.cn/s/bc294990f401",
       "pwd": "",
-      "description": "",
+      "description": "屏蔽检测",
       "note": "注入使用",
       "date": "2026-11-26",
       "addedAt": "2026-11-26T21:10",
-      "updatedAt": "2026-11-26T21:14"
+      "updatedAt": "2026-11-26T21:15"
     },
     {
       "id": "amww4372u",
