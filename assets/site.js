@@ -306,6 +306,14 @@
   }
 
   /* ---------- 卡片 ---------- */
+  // Today 大卡第二行：只显示 平台 · 版本 · 大小，不显示简介
+  function meta(a){
+    var bits = [];
+    if(a.platform) bits.push(a.platform);
+    if(a.version) bits.push('v' + a.version);
+    if(a.size) bits.push(a.size);
+    return bits.length ? bits.join(' · ') : '—';
+  }
   function todayCard(a){
     return '<div class="card" data-open="' + a.id + '" style="background:' + color(a) + '">' +
       '<div class="art">' + bgLayer(a) +
@@ -314,7 +322,7 @@
       '<div class="txt"><div class="kick">' + catOf(a) + '</div>' +
         '<h2>' + a.name + '</h2><p>' + (a.note || '') + '</p>' +
         '<div class="foot"><div class="ic">' + iconHTML(a) + '</div>' +
-          '<div class="m"><b>' + a.name + '</b><span>' + (a.version ? 'v' + a.version : sub(a)) + '</span></div>' +
+          '<div class="m"><b>' + a.name + '</b><span>' + meta(a) + '</span></div>' +
           '<button class="get" data-dl="' + dlState(a) + '">' + dlLabel(a) + '</button></div>' +
       '</div></div>';
   }
