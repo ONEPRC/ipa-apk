@@ -785,8 +785,9 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
       '<div class="ddesc">' + (a.description || '暂无简介') + '</div>' +
 
       (a.whatsNew ? '<div class="dnew">' +
-        '<div class="nt"><h3>新功能</h3><span>' + ago(a.updatedAt || a.addedAt || a.date) + '</span></div>' +
-        '<div class="ver">版本 ' + (a.version || '—') + '</div>' +
+        '<div class="nt"><h3>新功能</h3></div>' +
+        '<div class="ver"><span>版本 ' + (a.version || '—') + '</span>' +
+        '<em>' + ago(a.updatedAt || a.addedAt || a.date) + '</em></div>' +
         '<p>' + String(a.whatsNew).replace(/\n/g, '<br>') + '</p></div>' : '') +
       '<div class="ddev">' +
         '<div class="v"><span class="blue">' + (a.updatedAt ? '更新时间' : '收录时间') + '</span>' +
