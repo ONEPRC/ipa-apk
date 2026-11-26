@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/26 21:18:52
+// 应用数据文件 —— 由本地管理页写入 2026/11/26 21:19:18
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-25T22:46"
     },
     "icon": "assets/logo.png",
-    "rev": 1795699132750,
+    "rev": 1795699158673,
     "categories": [
       "游戏",
       "应用",
@@ -35,7 +35,7 @@ window.APP_DATA = {
       "name": "屏蔽抖音更新",
       "version": "",
       "category": "插件",
-      "platform": "iOS / Android / Windows / Macos",
+      "platform": "iOS",
       "size": "169kb",
       "icon": "",
       "iconText": "",
@@ -45,7 +45,7 @@ window.APP_DATA = {
       "note": "注入使用",
       "date": "2026-11-26",
       "addedAt": "2026-11-26T21:10",
-      "updatedAt": "2026-11-26T21:18"
+      "updatedAt": "2026-11-26T21:19"
     },
     {
       "id": "amww4372u",
