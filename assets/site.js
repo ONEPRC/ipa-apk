@@ -320,7 +320,7 @@
         ((a.shots && a.shots.length) ? '' : iconHTML(a)) +
       '</div>' +
       '<div class="txt"><div class="kick">' + catOf(a) + '</div>' +
-        '<h2>' + a.name + '</h2><p>' + (a.note || '') + '</p>' +
+        '<h2>' + a.name + '</h2>' + (String(a.note || '').trim() ? '<p>' + a.note + '</p>' : '') +
         '<div class="foot"><div class="ic">' + iconHTML(a) + '</div>' +
           '<div class="m"><b>' + a.name + '</b><span>' + meta(a) + '</span></div>' +
           '<button class="get" data-dl="' + dlState(a) + '">' + dlLabel(a) + '</button></div>' +
@@ -766,7 +766,7 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
         '<div class="iconbox">' + (a.icon ? '<img src="' + fp(a.icon) + '" alt="">' : (a.iconText || a.name).slice(0,2)) + '</div>' +
         '<div style="flex:1;min-width:0">' +
           '<h2>' + a.name + '</h2>' +
-          '<p class="dline">' + (a.note || '') + '</p>' +
+          (String(a.note || '').trim() ? '<p class="dline">' + a.note + '</p>' : '') +
           '<div class="drow"><button class="dbtn" data-dl="' + dlState(a) + '">' + dlLabel(a) + '</button>' +
             '<span class="dshare" data-act="copypwd"><svg viewBox="0 0 24 24"><path d="M12 3.5v10"/><path d="m8.5 7 3.5-3.5L15.5 7"/><path d="M6 11.5V19a1.5 1.5 0 0 0 1.5 1.5h9A1.5 1.5 0 0 0 18 19v-7.5"/></svg></span>' +
           '</div>' +
