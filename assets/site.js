@@ -790,7 +790,7 @@ window.__DL = { updates: dlUpdates, set: dlSet, get: dlGet, state: dlState, labe
           ? '<img src="' + fixPath(a.icon) + '" alt="">'
           : '<span class="tile">' + (a.iconText || a.name || '?').slice(0,2) + '</span>') +
       '</div>') +
-      '<div class="ddesc">' + (a.description || '暂无简介') + '</div>' +
+      (String(a.description || '').trim() ? '<div class="ddesc">' + a.description + '</div>' : '') +
 
       (a.whatsNew ? '<div class="dnew">' +
         '<div class="nt"><h3>新功能</h3></div>' +
