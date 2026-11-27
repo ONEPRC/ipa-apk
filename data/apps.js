@@ -1,4 +1,4 @@
-// 应用数据文件 —— 由本地管理页写入 2026/11/26 21:35:47
+// 应用数据文件 —— 由本地管理页写入 2026/11/27 22:11:27
 // 结构：site 站点信息，apps 应用列表（数组顺序就是默认展示顺序）
 window.APP_DATA = {
   "site": {
@@ -8,7 +8,7 @@ window.APP_DATA = {
     "h1": "找到应用，",
     "h1accent": "一键转存。",
     "note": "链接指向夸克网盘 · 请先转存再下载",
-    "updated": "2026-11-26",
+    "updated": "2026-11-27",
     "title": "IPA&APK",
     "accent": "#100f0f",
     "pageSize": 10,
@@ -18,7 +18,7 @@ window.APP_DATA = {
       "updated": "2026-11-25T22:46"
     },
     "icon": "assets/logo.png",
-    "rev": 1795700147142,
+    "rev": 1795788687388,
     "categories": [
       "游戏",
       "应用",
@@ -30,6 +30,23 @@ window.APP_DATA = {
     "version": "V1.6"
   },
   "apps": [
+    {
+      "id": "amwz27uyi",
+      "name": "番茄全系",
+      "version": "5.0.2",
+      "category": "插件",
+      "platform": "iOS",
+      "size": "47kb",
+      "icon": "assets/番茄全系-20261127141124.webp",
+      "iconText": "",
+      "url": "https://pan.quark.cn/s/2c5408e100a5",
+      "pwd": "",
+      "description": "番茄系列注入破解vip",
+      "note": "注入使用",
+      "date": "2026-11-27",
+      "addedAt": "2026-11-27T22:11",
+      "color": "rgb(192,60,15)"
+    },
     {
       "id": "amwxl8v4l",
       "name": "屏蔽抖音更新",
